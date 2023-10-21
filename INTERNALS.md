@@ -119,3 +119,7 @@ Parsing is the process of recognizing tokens within a data instance and looking 
 
 **Note** : The AST output of this stage is handy to work off of for tools such as static code analysers (e.g. [PHPStan](https://github.com/phpstan/phpstan)).
 
+#### Compilation
+
+The compilation stage consumes the AST, where it emits opcodes by recursively traversing the tree. This stage also performs a few optimizations. These include resolving some function calls with literal arguments (such as `strlen("abc")` to `int(3)`) and folding constant mathematical expressions (such as `60 * 60 * 24` to `int(86400)`).
+

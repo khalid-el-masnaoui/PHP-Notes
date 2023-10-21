@@ -52,7 +52,7 @@ PHP-FPM’s architecture shares design similarities with event-driven web server
 As stated before, PHP isolates every execution. No shared memory or shared resources among the executions.  PHP uses the Zend Engine which is the internal compiler and runtime engine.
 For the execution of PHP files, we have an interpreter called “PHP Interpreter”. It is based on the Zend engine. Zend engine compiles the PHP Script into Zend Opcodes and later on execute this opcode list.
 
-In simple terms, php will **parse, compile and execute**.
+Opcodes are short for Operation codes. It is low-level binary instructions.In simple terms, php will **parse, compile and execute**.
 
 **Note** : Syntactic errors and language checks happen during the parsing and compiling phase. Logical errors (like exceptions) occur during execution phase only.
 
@@ -73,6 +73,34 @@ The first time a request hits `index.php`, for example, php parses, compiles an
 </p>
 
 
+#### Code Execution Flow
 
+The PHP Interpreter undergoes the following four phases:
+
+- **Lexing (Tokenizing)**
+- '**Parsing**
+- **Compilation**
+- **Interpretation**
+
+###### Lexing/Tokenizing
+
+Lexing is the process of converting the PHP source code into tokens. A token in a named identifier for the value.
+In this step, the PHP interpreter takes the PHP codes and builds a set of understandable units called tokens.
+
+For example 
+```php
+<?php
+echo "Hello world";  
+```
+
+This will convert to
+
+```php
+<?php to T_OPEN_TAG  
+echo to T_ECHO  
+"Hello world" to T_CONSTANT_ENCAPSED_STRING
+```
+
+[Here](https://www.php.net/manual/en/tokens.php) is the list of all parser tokens.
 
 

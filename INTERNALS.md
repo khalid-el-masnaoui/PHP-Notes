@@ -199,7 +199,7 @@ The three components of JIT is to store, inspect, and seamlessly invoke the code
 PHP 8.0 adds two _modes_ of JIT operation. This is further customizable, but the most prominent types of JIT functionality are aliased `function` and `tracing`.
 
 
-- **Function JIT** mode is a rather simple one in comparison. It JIT compiles a whole function, without tracing for frequently used code structures such as loops inside a function. It still supports profiling for frequently used _functions_, and triggering a JIT compile or execution of the compiled machine code at before, after, or during the execution of an application request.
+- **Function JIT** mode is a rather simple one in comparison. JIT compiles a whole function, without tracing for frequently used code structures such as loops inside a function. It still supports profiling for frequently used _functions_, and triggering a JIT compile or execution of the compiled machine code at before, after, or during the execution of an application request.
 
 - **Tracing JIT**, that is selected by default in PHP 8.0, tries to identify the frequently used _parts_ of code, and selectively compiles those structures for the best balance of compilation time and memory usage. Not all programming languages support tracing JIT compilers, but PHP supports tracing JIT right out of the first release, and is selected by default too.
 

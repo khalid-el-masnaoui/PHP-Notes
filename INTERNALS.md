@@ -2,9 +2,8 @@
 
 Notes about PHP , PHP internals (code execution flow), what is and how PHP-FPM works and other PHP related concepts.
 
-## Introduction
 
-#### How does PHP work with HTTP-Servers?
+## How does PHP work with HTTP-Servers?
 
 In general HTTP servers have a very clear responsibility: provide hypermedia content using the HTTP Protocol. This means that **http servers would receive a request, fetch a string content from somewhere, and respond with this string** based on the HTTP Protocol.
 
@@ -24,9 +23,9 @@ The way php works (with FPM) is basically: **HTTP Server ⇨ PHP-FPM (Server) �
 
 You can read more about [Fast-CGI Protocol](https://github.com/khalid-el-masnaoui/Nginx-Notes/blob/main/ARCHITECTURE.md#nginx-fastcgi) which PHP-FPM relies on.
 
-#### PHP-FPM
+## PHP-FPM
 
-###### Introduction
+#### Introduction
 
 PHP-FPM is a simple and robust _FastCGI Process Manager_ for PHP (PHP FastCGI implementation). It works as a process manager, managing PHP processes and handling PHP requests separately from the web server. By doing so, it can efficiently handle multiple PHP requests concurrently, leading to a significant reduction in latency and improved overall performance.
 
@@ -34,7 +33,7 @@ Internally, PHP-FPM is organized as a **_master process_** managing pools of ind
 
 PHP-FPM's primary focus is on improving the **performance** of PHP-based applications.By maintaining separate PHP worker processes, it can handle a larger number of concurrent requests more efficiently (minimizing the overhead of process creation and destruction each time a request is received). It is also **Resource efficient** since it can control the number of active PHP processes based on the server's resources and the incoming request load. Providing a **stable and secure** environment for running PHP applications. If one PHP process encounters an error or becomes unresponsive, it won't affect other active processes. This isolation ensures that individual requests are isolated and do not impact the overall system stability.
 
-###### PHP-FPM’s Architecture
+#### PHP-FPM’s Architecture
 
 PHP-FPM Internally adheres to a _master-slave architecture_. where it is organized as a “_master process_” managing pools of individual “_worker processes_.” When the web server has a request for a PHP script, the web server uses a proxy, _FastCGI_ connection to forward the request to the PHP-FPM service. The PHP-FPM service can listen for these requests on the host server’s network ports or through Unix sockets. Although requests pass via a proxy connection, the PHP-FPM service must run on the same server as the web server. Notably, the proxy connection for PHP-FPM is not the same as a traditional proxy connection. As PHP-FPM receives a proxied connection, a free PHP-FPM worker accepts the web server’s request. PHP-FPM then compiles and executes the PHP script, sending the output back to the web server. Once a PHP-FPM worker finishes handling a request, the system releases the worker and waits for new requests.
 

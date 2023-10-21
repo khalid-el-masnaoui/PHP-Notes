@@ -103,6 +103,9 @@ echo to T_ECHO
 
 [Here](https://www.php.net/manual/en/tokens.php) is the list of all parser tokens.
 
+**Note** : We can see the output of the lexing stage via the [tokenizer](http://php.net/manual/en/book.tokenizer.php) extension.
+
+**Note 2** : The first point is that not all pieces of the source code are named tokens. Instead, some symbols are considered tokens in and of themselves (such as `=`, `;`, `:`, `?`, etc). 
 
 ###### Parsing
 
@@ -113,3 +116,6 @@ Parsing is the process of recognizing tokens within a data instance and looking 
 <p align="center">
 <img src="./images/ast.png"/>
 </p>
+
+**Note** : The AST output of this stage is handy to work off of for tools such as static code analysers (e.g. [PHPStan](https://github.com/phpstan/phpstan)).
+

@@ -147,7 +147,7 @@ The first time a request hits `index.php`, for example, php parses, compiles an
 
 We have other Bytecode cache engines such as [APC](https://secure.php.net/manual/en/book.apc.php), and [Xcache](https://xcache.lighttpd.net/) 
 
-### How PHP Opcode Caching Works
+###### How PHP Opcode Caching Works
 
 When a PHP script executes, your server’s cache memory is checked to see if the script has already been cached. If it hasn’t, it’s parsed, which means the code is analyzed.
 
@@ -158,3 +158,27 @@ In other words, it’s stored in your server’s cache. The next time a visitor 
 <p align="center">
 <img src="./images/opcache.jpg"/>
 </p>
+
+#### JIT (Just-In-Time Compilation)
+
+**PHP 8.0** introduces **JIT**. as a next step to improve performance of PHP applications,
+
+###### Overview
+
+Pure **_interpreted_ programming languages** has no compilation step, and directly executes the code in a virtual machine. Most of the interpreted languages including PHP, in fact, has a light-weight compilation step to improve its performance.
+
+Programming languages with **Ahead-Of-Time (AOT) compilation**, on other hand requires the code to be compiled first before it runs.
+
+**Just-In-Time** compilation is a hybrid model of interpreter and Ahead-of-Time compilation, that some or all of the code is compiled, often at run-time, without requiring the developer to manually compile it.
+
+So far we saw that PHP code, once processed (tokenize, parse, build AST, and build opcodes), is run on Zend Virtual Machine. Similar to Java and JavaScript, the virtual machine abstracts the hardware side of the application, which makes it possible to "run" a PHP source code without compiling.
+
+Opcache extension can help store the opcodes in a shared memory, to skip repetitive tokenize/parse/opcode steps.
+
+PHP already includes several optimizations such as dead code elimination at Opcode level, but it was not possible to perform optimizations beyond the virtual machine level, because at that point, the code is interpreted by the virtual machine, as opposed to compiling it,  the VM still needed to compile these to native machine code.
+
+The natural next step of reaching as close as possible to the CPU is skipping the virtual machine. JIT is. What JIT does is allow an extra layer of caching: caching of the native machine code.
+
+**JIT** is a technique that will compile parts of the code at runtime so that the compiled version can be used instead. Think of it like a “cached version” of the interpreted code (Zend VM) , generated at runtime.
+
+For CPU-intensive tasks, having a JIT compiler in PHP boasts significant performance gains.

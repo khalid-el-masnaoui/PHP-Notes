@@ -73,7 +73,7 @@ The first time a request hits `index.php`, for example, php parses, compiles an
 </p>
 
 
-#### Code Execution Flow
+#### Execution Flow
 
 The PHP Interpreter undergoes the following four phases:
 
@@ -104,3 +104,12 @@ echo to T_ECHO
 [Here](https://www.php.net/manual/en/tokens.php) is the list of all parser tokens.
 
 
+###### Parsing
+
+Parsing is the process of recognizing tokens within a data instance and looking for recognizable patterns. The parser takes the tokens from the lexer as input and it has two tasks. First, it validates the token, and second, the parser produces the Abstract Syntax Tree( AST ) i.e a tree representation of the source code.
+
+**AST (Abstract syntax tree):** AST, is a tree representation of the source code of a computer program that conveys the structure of the source code. Each node in the tree represents a construct occurring in the source code.
+
+<p align="center">
+<img src="./images/ast.png"/>
+</p>

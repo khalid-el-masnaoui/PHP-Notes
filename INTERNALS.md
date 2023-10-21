@@ -66,7 +66,7 @@ With **OPcache** php can benefit from a _shared memory space_: read/store alread
 
 The first time a request hits `index.php`, for example, php parses, compiles and executes it. Second time a request hits `index.php`, php will simply fetch from opcache and execute it right away.
 
-**Note** : The above behavious can be changed using _OPcache preloader_
+**Note** : The above behavior can be changed using _OPcache preloader_
 
 <p align="center">
 <img src="./images/php_execution_flow.png"/>
@@ -119,11 +119,11 @@ Parsing is the process of recognizing tokens within a data instance and looking 
 
 **Note** : The AST output of this stage is handy to work off of for tools such as static code analysers (e.g. [PHPStan](https://github.com/phpstan/phpstan)).
 
-#### Compilation
+###### Compilation
 
 The compilation stage consumes the AST, where it emits opcodes by recursively traversing the tree. This stage also performs a few optimizations. These include resolving some function calls with literal arguments (such as `strlen("abc")` to `int(3)`) and folding constant mathematical expressions (such as `60 * 60 * 24` to `int(86400)`).
 
-#### Interpretation
+###### Interpretation
 
 The final stage is the interpretation of the opcodes. This is where the opcodes are run on the Zend Engine VM. There’s actually very little to say about this stage (from a high-level perspective, at least). The output is pretty much whatever your PHP script outputs via commands such as `echo`, `print`, `var_dump`, and so on.
 
@@ -133,3 +133,28 @@ The final stage is the interpretation of the opcodes. This is where the opcodes 
 <img src="./images/execution_flow_2.png"/>
 </p>
 
+#### OPcache
+
+###### What is OPcache or PHP Opcode Caching?
+
+OPcache is **a caching engine built into PHP** and it is a type of **OPcode caching** . OPcache stores precompiled script bytecode in shared memory, improving PHP performance. It caches opcode, allowing scripts to be served directly from the cache. This reduces CPU and memory usage, optimizing resource utilization and enhancing PHP application scalability.
+
+With OPcache enabled, scripts are stored in memory, and only updates are compiled. It eliminates the need for PHP to recompile scripts, reducing server overhead and speeding up PHP execution.
+
+The first time a request hits `index.php`, for example, php parses, compiles and executes it. Second time a request hits `index.php`, php will simply fetch from opcache and execute it right away.
+
+**Note** : The above behavior can be changed using _OPcache preloader_
+
+We have other Bytecode cache engines such as [APC](https://secure.php.net/manual/en/book.apc.php), and [Xcache](https://xcache.lighttpd.net/) 
+
+### How PHP Opcode Caching Works
+
+When a PHP script executes, your server’s cache memory is checked to see if the script has already been cached. If it hasn’t, it’s parsed, which means the code is analyzed.
+
+Then, the script is compiled into opcode making the file readable by the server. Once that’s done, the opcode is saved to the server’s memory.
+
+In other words, it’s stored in your server’s cache. The next time a visitor loads the page with the PHP script, the cached code is executed and loaded much faster.
+
+<p align="center">
+<img src="./images/opache.jpg"/>
+</p>

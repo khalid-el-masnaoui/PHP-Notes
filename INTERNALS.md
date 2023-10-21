@@ -156,5 +156,5 @@ Then, the script is compiled into opcode making the file readable by the server.
 In other words, it’s stored in your server’s cache. The next time a visitor loads the page with the PHP script, the cached code is executed and loaded much faster.
 
 <p align="center">
-<img src="./images/opache.jpg"/>
+<img src="./images/opcache.jpg"/>
 </p>

@@ -44,3 +44,30 @@ PHP-FPM’s architecture shares design similarities with event-driven web server
 <p align="center">
 <img src="./images/nginx_php_fpm.png"/>
 </p>
+
+## How PHP works internally?
+
+#### Overview
+
+As stated before, PHP isolates every execution. No shared memory or shared resources among the executions.  PHP uses the Zend Engine which is the internal compiler and runtime engine.
+For the execution of PHP files, we have an interpreter called “PHP Interpreter”. It is based on the Zend engine. Zend engine compiles the PHP Script into Zend Opcodes and later on execute this opcode list.
+
+In simple terms, php will **parse, compile and execute**.
+
+**Note** : Syntactic errors and language checks happen during the parsing and compiling phase. Logical errors (like exceptions) occur during execution phase only.
+
+The way PHP currently does this is by using an _Abstract Syntactic Tree_ to figure out what the things inside a php file actually mean.
+
+This syntactic tree maps language constructs to compiling instructions, that when compiled turn into Zend VM opcodes. Such opcodes are then to be interpreted by the Zend VM and executed.
+
+In the end of the day **having a fresh execution on every request doesn't seem that smart if we have to compile php syntax into opcode every single time**.
+
+With **OPcache** php can benefit from a _shared memory space_: read/store already parsed script opcodes and boost future executions.
+
+The first time a request hits `index.php`, for example, php parses, compiles and executes it. Second time a request hits `index.php`, php will simply fetch from opcache and execute it right away.
+
+**Note** : The above behavious can be changed using _OPcache preloader_
+
+
+
+

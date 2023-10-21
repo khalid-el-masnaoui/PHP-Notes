@@ -41,3 +41,7 @@ PHP-FPM Internally adheres to a _master-slave architecture_. where it is organiz
 The PHP-FPM master process can dynamically creates and terminates worker processes — within configurable limits — as traffic to PHP scripts increases and decreases. The extra worker processes it spawns to handle increases in traffic terminate only after a set amount of time has passed, allowing the worker processes to remain available while increased traffic persists. Worker processes also periodically terminate and respawn after serving a fixed number of requests. This helps to prevent memory leaks during the processing of PHP scripts.
 
 PHP-FPM’s architecture shares design similarities with event-driven web servers such as the NGINX web server and the Apache web server with the Event Multi-Processing Module. Processing PHP scripts in this way allows for much higher processing performance, improved security, better stability, and greater configurability.
+
+<p align="center">
+<img src="./images/nginx_php_fpm.png"/>
+</p>

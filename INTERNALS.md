@@ -68,6 +68,11 @@ The first time a request hits `index.php`, for example, php parses, compiles an
 
 **Note** : The above behavious can be changed using _OPcache preloader_
 
+<p align="center">
+<img src="./images/php_execution_flow.png"/>
+</p>
+
+
 
 
 

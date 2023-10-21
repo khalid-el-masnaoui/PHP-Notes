@@ -182,3 +182,29 @@ The natural next step of reaching as close as possible to the CPU is skipping th
 **JIT** is a technique that will compile parts of the code at runtime so that the compiled version can be used instead. Think of it like a “cached version” of the interpreted code (Zend VM) , generated at runtime.
 
 For CPU-intensive tasks, having a JIT compiler in PHP boasts significant performance gains.
+
+
+###### How PHP JIT Works
+
+**PHP JIT is implemented as a part of Opcache**. This keeps JIT separated from the PHP engine.
+
+The three components of JIT is to store, inspect, and seamlessly invoke the code with the virtual machine or directly using the machine code stored in the buffer.
+
+- Buffer : JIT Buffer is where the compiled CPU machine code is stored. PHP provides configuration options  (`opcache.jit_buffer_size` INI setting) to control how much memory should be allocated for the JIT buffer.
+
+- Triggers :Triggers in Opcache are responsible in invoking the compiled machine code when it encounters a code structure. These triggers can be a function call entry, a loop, etc.
+
+- Tracer : JIT tracer functionality inspects the code before, after, or during its execution, and determines which code is "_hot_", as in which structures can be compiled with JIT.
+
+
+- **Function JIT** mode is a rather simple one in comparison. It JIT compiles a whole function, without tracing for frequently used code structures such as loops inside a function. It still supports profiling for frequently used _functions_, and triggering a JIT compile or execution of the compiled machine code at before, after, or during the execution of an application request.
+
+PHP 8.0 adds two _modes_ of JIT operation. This is further customizable, but the most prominent types of JIT functionality are aliased `function` and `tracing`.
+
+- **Tracing JIT**, that is selected by default in PHP 8.0, tries to identify the frequently used _parts_ of code, and selectively compiles those structures for the best balance of compilation time and memory usage. Not all programming languages support tracing JIT compilers, but PHP supports tracing JIT right out of the first release, and is selected by default too.
+
+There are several configuration options that enable further tweaking how a hot code structure is determined, such as the number of function calls, number of iterations of a loop structure, etc.
+
+<p align="center">
+<img src="./images/jit.svg"/>
+</p>

@@ -1,6 +1,8 @@
 # PHP INTERNALS
 
-Notes about PHP , PHP internals (code execution flow), what is and how PHP-FPM works and other PHP related concepts.
+In-depth Notes about PHP , PHP internals (code execution flow), what is and how PHP-FPM works and other PHP related concepts.
+
+# Table Of Contents
 
 
 ## How does PHP work with HTTP-Servers?

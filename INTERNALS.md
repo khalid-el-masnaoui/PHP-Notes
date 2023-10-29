@@ -7,19 +7,19 @@ In-depth Notes about PHP , PHP internals (code execution flow), what is and how 
 -  **[PHP-FPM](#php-fpm)**
 	-  **[Introduction](#introduction)**
 	-  **[PHP-FPM’s Architecture](#php-fpms-architecture)**
--  **[How PHP works internally?](#)**
-	-  **[Overview](#)**
-	-  **[Execution Flow](#)**
-		-  **[Lexing/Tokenizing](#)**
-		-  **[Parsing](#)**
-		-  **[Compilation](#)**
-		-  **[Interpretation](#)**
-	-  **[OPcache](#)**
-		-  **[What is OPcache or PHP Opcode Caching?](#)**
-		-  **[How PHP Opcode Caching Works](#)**
-	-  **[JIT (Just-In-Time Compilation)](#)**
-		-  **[Overview](#)**
-		-  **[How PHP JIT Works](#)**
+-  **[How PHP works internally?](#ow-php-works-internally)**
+	-  **[Overview](#overview)**
+	-  **[Execution Flow](#execution-flow)**
+		-  **[Lexing/Tokenizing](#lexingtokenizing)**
+		-  **[Parsing](#parsing)**
+		-  **[Compilation](#compilation)**
+		-  **[Interpretation](#interpretaion)**
+	-  **[OPcache](#opcache)**
+		-  **[What is OPcache or PHP Opcode Caching?](#what-is-opcache-or-php-opcode-caching)**
+		-  **[How PHP Opcode Caching Works](#how-php-opcode-caching-works)**
+	-  **[JIT (Just-In-Time Compilation)](#jit-just-in-time-compilation)**
+		-  **[Overview](#overview)**
+		-  **[How PHP JIT Works](#how-php-jit-works)**
 
 
 ## How does PHP work with HTTP-Servers?
@@ -97,7 +97,7 @@ The first time a request hits `index.php`, for example, php parses, compiles an
 The PHP Interpreter undergoes the following four phases:
 
 - **Lexing (Tokenizing)**
-- '**Parsing**
+- **Parsing**
 - **Compilation**
 - **Interpretation**
 

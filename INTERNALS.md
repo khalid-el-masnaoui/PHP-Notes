@@ -3,10 +3,10 @@
 In-depth Notes about PHP , PHP internals (code execution flow), what is and how PHP-FPM works and other PHP related concepts.
 
 # Table Of Contents
-- **[How does PHP work with HTTP-Servers?](#)**
--  **[PHP-FPM](#)**
-	-  **[Introduction](#)**
-	-  **[PHP-FPM’s Architecture](#)**
+- **[How does PHP work with HTTP-Servers?](#how-does-php-work-with-http-servers)**
+-  **[PHP-FPM](#php-fpm)**
+	-  **[Introduction](#introduction)**
+	-  **[PHP-FPM’s Architecture](#php-fpms-architecture)**
 -  **[How PHP works internally?](#)**
 	-  **[Overview](#)**
 	-  **[Execution Flow](#)**

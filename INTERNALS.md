@@ -3,6 +3,23 @@
 In-depth Notes about PHP , PHP internals (code execution flow), what is and how PHP-FPM works and other PHP related concepts.
 
 # Table Of Contents
+- **[How does PHP work with HTTP-Servers?](#)**
+-  **[PHP-FPM](#)**
+	-  **[Introduction](#)**
+	-  **[PHP-FPM’s Architecture](#)**
+-  **[How PHP works internally?](#)**
+	-  **[Overview](#)**
+	-  **[Execution Flow](#)**
+		-  **[Lexing/Tokenizing](#)**
+		-  **[Parsing](#)**
+		-  **[Compilation](#)**
+		-  **[Interpretation](#)**
+	-  **[OPcache](#)**
+		-  **[What is OPcache or PHP Opcode Caching?](#)**
+		-  **[How PHP Opcode Caching Works](#)**
+	-  **[JIT (Just-In-Time Compilation)](#)**
+		-  **[Overview](#)**
+		-  **[How PHP JIT Works](#)**
 
 
 ## How does PHP work with HTTP-Servers?

@@ -7,13 +7,13 @@ In-depth Notes about PHP , PHP internals (code execution flow), what is and how 
 -  **[PHP-FPM](#php-fpm)**
 	-  **[Introduction](#introduction)**
 	-  **[PHP-FPM’s Architecture](#php-fpms-architecture)**
--  **[How PHP works internally?](#ow-php-works-internally)**
+-  **[How PHP works internally?](#how-php-works-internally)**
 	-  **[Overview](#overview)**
 	-  **[Execution Flow](#execution-flow)**
 		-  **[Lexing/Tokenizing](#lexingtokenizing)**
 		-  **[Parsing](#parsing)**
 		-  **[Compilation](#compilation)**
-		-  **[Interpretation](#interpretaion)**
+		-  **[Interpretation](#interpretation)**
 	-  **[OPcache](#opcache)**
 		-  **[What is OPcache or PHP Opcode Caching?](#what-is-opcache-or-php-opcode-caching)**
 		-  **[How PHP Opcode Caching Works](#how-php-opcode-caching-works)**

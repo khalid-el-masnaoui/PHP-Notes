@@ -207,3 +207,12 @@ Settings defined with `php_admin_value` and `php_admin_flag` cannot be overr
 
 Only use the `php_admin_value` and `php_admin_flag` if you explicitly want to forbid that configuration directive from being changed by your application.
 
+### Set PHP settings in nginx.conf
+
+```nginx
+set $php_value "pcre.backtrack_limit=424242";
+set $php_value "$php_value \n pcre.recursion_limit=99999";
+fastcgi_param  PHP_VALUE $php_value;
+
+fastcgi_param  PHP_ADMIN_VALUE "open_basedir=/var/www/htdocs";
+```

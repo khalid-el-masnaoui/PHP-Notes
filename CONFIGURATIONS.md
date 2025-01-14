@@ -120,3 +120,26 @@ Some of the  most important parameters in the **php-fpm.conf** file.
 > **`emergency_restart_interval`** : nterval of time used to determine when a graceful restart will be initiated. This can be useful to work around accidental corruptions in an accelerator’s shared memory
 
 > **`process_control_timeout`** : Time limit for child processes to wait for a reaction on signals from master.
+
+
+## pool.d
+
+Multiple pools of child processes may be started with different listening ports and different management options.  The name of the pool will be used in logs and stats. There is no limitation on the number of pools which FPM can handle. So system limit is the FPM limit.
+
+> **`listen`** : FPM supports Unix Socket and TCP Socket, It used to mode connecting mechanism of PHP request from frontend server (like nginx, etc)
+
+```bash
+listen = 127.0.0.1:9000
+listen = /run/php/php8.1-fpm.sock
+```
+
+> **`listen.backlog`** : The backlog argument defines the maximum length to which the queue of pending connections
+
+> **`listen.owner`** and **`listen.group = www-data`** :  Set permissions for unix socket, if one is used. In Linux, read/write permissions must be set in order to allow connections from a web server.
+
+```bash
+listen.owner = www-data
+listen.group = www-data
+```
+
+> **`listen.allowed_clients`** : List of IPv4 or IPv6 addresses of FastCGI clients which are allowed to connect. Makes sense only with a tcp listening socket

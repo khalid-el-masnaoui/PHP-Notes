@@ -106,6 +106,8 @@ we will explain the most important parameters in the **php.ini** file, includi
 
 > **`arg_separator.output`** : Use this data-handling directive to separate arguments in PHP-generated URLs. Its default value is an ampersand (**&**).
 
+> **`auto_prepend_file`** and **`auto_append_file`** : These two PHP directives perform the same function as `require()` but they do it globally on all PHP scripts,  before and after it parses the php scripts.
+
 
 ## php-fpm.conf
 
@@ -216,3 +218,11 @@ fastcgi_param  PHP_VALUE $php_value;
 
 fastcgi_param  PHP_ADMIN_VALUE "open_basedir=/var/www/htdocs";
 ```
+
+### Multiple PHP-FPM pools
+
+Each pool operates independently, and multiple pools can coexist on the same server. PHP-FPM pools allow for better resource management, isolation, and flexibility in handling PHP requests.
+
+Configuring PHP-FPM pools involves creating or modifying pool configuration files. Each pool can have its own set of configuration parameters, allowing you to customize the behavior of PHP-FPM for different applications or websites. These pool configuration files are stored in the `/etc/php/{VERSION}/fpm/pool.d/` directory.
+
+**Note**: Pools are not a security mechanism, because they do not provide full separation; e.g. all pools would use a single OPcache instance.

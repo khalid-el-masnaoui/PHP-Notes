@@ -143,3 +143,24 @@ listen.group = www-data
 ```
 
 > **`listen.allowed_clients`** : List of IPv4 or IPv6 addresses of FastCGI clients which are allowed to connect. Makes sense only with a tcp listening socket
+
+>**`pm`** : Define Process Manager controll mechanism of Child process
+
+```bash
+- **static**  – a fixed number (pm.max_children) of child processes
+- **dynamic** – the number of child processes are set dynamically based on the following directives : `pm.max_children`, `pm.start_servers`, `pm.min_spare_servers`, `pm.max_spare_servers.. With this process management, there will be always at least 1 children
+- **ondemand** – no children are created at startup. Children will be forked when new requests will connect
+```
+
+> **`pm.max_children`** : The number of child processes to be created when `pm` is set to `static` and the maximum number of child processes to be created when `pm` is set to `dynamic`. This option is mandatory.
+>This option sets the limit on the number of simultaneous requests that will be served.
+
+> **`pm.start_servers`**  : The number of child processes created on startup. Used only when `pm` is set to `dynamic`.
+
+> **`pm.min_spare_servers`** : The desired minimum number of idle server processes. Used only when `pm` is set to `dynamic`. Also mandatory in this case.
+
+> **`pm.max_spare_servers`**: The desired maximum number of idle server processes. Used only when `pm` is set to `dynamic`. Also mandatory in this case.
+
+> **`pm.process_idle_timeout`** : The number of seconds after which an idle process will be killed. Used only when `pm` is set to `ondemand`. Available units: s(econds)(default), m(inutes), h(ours), or d(ays). Default value: 10s.
+
+> **`pm.max_requests`** : The number of requests each child process should execute before respawning. (avoiding the risk of memory leaks)

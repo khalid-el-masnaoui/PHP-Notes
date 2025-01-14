@@ -12,7 +12,7 @@ Php-fpm has the capacity to adjust the number of workers **dynamically** to th
     - **[mods-available](#mods-available)**
 - **[Basic Configurations](#basic-configurations)**
     - **[Configuration layouts](#configuration-layouts)**
-    - **[php-ini](#phpini)**
+    - **[php-ini](#phpini-1)**
     - **[php-fpm.conf](#php-fpmconf)**
     - **[pool.d](#poold)**
 - **[Other Configurations](#other-configurations)**

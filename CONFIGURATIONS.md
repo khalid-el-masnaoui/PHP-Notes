@@ -88,3 +88,35 @@ Set whether the HTTP file uploads are enabled or not. The **on** value will al
 **upload_max_filesize**
 
 This parameter determines the maximum uploaded file size PHP allowed on your site. Since the default value is **2 MB**, you can increase the maximum upload file size limit to enable users to upload large files.
+
+**post_max_size**
+
+The maximum POST data size PHP can collect from HTML forms on your site. The value should be larger than the maximum file size, as it is handled with the POST function.
+
+**allow_url_fopen**
+
+Write a PHP script to access remote files from another server. It is **off** by default, as enabling it may expose your server to a code injection attack.
+
+**allow_url_include**
+
+This directive has a similar function as **allow_url_open**, but uses the include function To enable it, **allow_url_open** must be set to **on**.
+
+**session.name**
+
+This directive sets the current session’s name used in cookies and URLs. You may change the default **PHPSESSID** value to any descriptive name with alphanumeric characters.
+
+**session.auto_start**
+
+Choose whether a PHP session starts automatically or on request when users access your site. If you set the value to **0,** the session will start manually using the **session_start** script.
+
+**session.cookie_lifetime**
+
+Specify a session cookie’s lifetime in your site’s visitors’ browsers. By default, the value is set to **0** seconds, meaning your site erases visitors’ session data after they close their browsers.
+
+**memory_limit**
+
+Set the maximum amount of RAM a PHP script can use. Be careful when increasing the memory limit, as wrong configurations may lead to slow sites or server outages.
+
+**max_execution_time**
+
+Determine a script’s maximum running time. You can change the default 30-second maximum execution time to any value, but setting it too high might cause performance issues.

@@ -91,13 +91,13 @@ You can read more about this awesome tool by reading [the official documentatio
 
 PHPBench is an open-source benchmark runner for PHP analogous to _PHPUnit_ but for performance rather than correctness.
 
-you can simply write your test classes , like you do with unit testing and run the tests like below:
+You can simply write your test classes , like you do with unit testing and run the tests like below:
 
 ```bash
 vendor/bin/phpbench run tests/Benchmark --report=aggregate
 ```
 
-you get something like :
+You get something like :
 
 ```bash
 PHPBench (1.2.15) running benchmarks...

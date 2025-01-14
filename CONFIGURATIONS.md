@@ -23,6 +23,12 @@ Here's an overview of this PHP configuration directory structure:
 |   |-- .....
 ```
 
+### php.ini
+When it comes to modifying PHP configurations, it is important to understand the difference between CLI and FPM runtime environments.
+
+- FPM (FastCGI Process Manager) is a runtime environment for HTTP servers `/etc/php/<VERSION>/fpm/php.ini`;
+- CLI (Command Line Interface) is a command-line execution environment => `/etc/php/<VERSION>/cli/php.ini`
+
 ### mods-available
 
 This is where our Available modules are stored, some that come with PHP, and some we installed ourselves, are available in `/etc/php/<VERSION>/mods-avaiable`.

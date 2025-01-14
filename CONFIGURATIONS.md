@@ -164,3 +164,15 @@ listen.group = www-data
 > **`pm.process_idle_timeout`** : The number of seconds after which an idle process will be killed. Used only when `pm` is set to `ondemand`. Available units: s(econds)(default), m(inutes), h(ours), or d(ays). Default value: 10s.
 
 > **`pm.max_requests`** : The number of requests each child process should execute before respawning. (avoiding the risk of memory leaks)
+
+> **`pm.status_listen`**: The address on which to accept FastCGI status request. This creates a new invisible pool that can handle requests independently. This is useful if the main pool is busy with long running requests because it is still possible to get the [FPM status page](https://www.php.net/manual/en/fpm.status.php) before finishing the long running requests.
+
+> **`pm.status_path`** :The URI to view the [FPM status page](https://www.php.net/manual/en/fpm.status.php). This value must start with a leading slash (/). If this value is not set, no URI will be recognized as a status page. (For PHP-FPM monitoring)
+
+> **`access.log`** : The access log file.
+
+> **`access.format`** : The access log format.
+
+> **`request_slowlog_timeout`** : The timeout for serving a single request after which a PHP backtrace will be dumped to the 'slowlog' file. 
+
+> **`slowlog`** : The log file for slow requests. Default value: `#INSTALL_PREFIX#/log/php-fpm.log.slow`.

@@ -5,6 +5,20 @@ This is an example configuration `php-fpm`  which is the preferred way of serv
 
 Php-fpm has the capacity to adjust the number of workers **dynamically** to the load, varying from a minimum to a specified maximum.
 
+# Table Of Contents
+
+- **[Configuration Directory Structure](#configuration-directory-structure)**
+    - **[php.ini](#phpini)**
+    - **[mods-available](#mods-available)**
+- **[Basic Configurations](#basic-configurations)**
+    - **[Configuration layouts](#configuration-layouts)**
+    - **[php-ini](#phpini)**
+    - **[php-fpm.conf](#php-fpmconf)**
+    - **[pool.d](#poold)**
+- **[Other Configurations](#other-configurations)**
+	- **[Passing environment variables and PHP settings to a pool](#passing-environment-variables-and-php-settings-to-a-pool)**
+	- **[Set PHP settings in nginx.conf](#-set-php-settings-in-nginxconf)**
+	- **[Multiple PHP-FPM pools](#multiple-php-fpm-pools)**
 
 ## Configuration Directory Structure
 

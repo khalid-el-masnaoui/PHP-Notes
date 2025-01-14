@@ -59,3 +59,32 @@ The configuration comes in two flavors (`SAPI`):
 > 1. **UNIX** : which is the **default**. It uses **UNIX domain sockets** for communication between the FCGI responder provided by php-fpm and the server or request frontend.
     
 > 2. **TCP** : It uses **TCP sockets** for communication between the FCGI responder provided by php-fpm and the server or request frontend.
+
+
+### php.ini
+
+we will explain the most important parameters in the **php.ini** file, including their values and purposes. These parameters are also known as **directives**.
+
+**display_errors**
+
+Determine if PHP error messages are displayed to users during script execution or not using the **on** and **off** value. Due to security reasons, you should use this directive only when developing your site.
+
+**error_reporting**
+
+Set which error message is displayed to users when **display_errors** is enabled. The **error_reporting** parameter takes several [constants to display different errors](https://www.php.net/manual/en/errorfunc.constants.php).
+
+You may use multiple constants and exclude specific errors. For instance, to show all errors but the deprecation warning, use the following:
+
+E_ALL &amp; ~E_DEPRECATED
+
+**error_log**
+
+Specify the file where PHP will log errors for error troubleshooting. Before enabling it, ensure the web server’s users have permission to write the file.
+
+**file_uploads**
+
+Set whether the HTTP file uploads are enabled or not. The **on** value will allow users to upload files to your site, while **off** disables it.
+
+**upload_max_filesize**
+
+This parameter determines the maximum uploaded file size PHP allowed on your site. Since the default value is **2 MB**, you can increase the maximum upload file size limit to enable users to upload large files.

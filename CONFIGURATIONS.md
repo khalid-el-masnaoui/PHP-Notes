@@ -180,3 +180,30 @@ listen.group = www-data
 > **`request_terminate_timeout`** : The timeout for serving a single request after which the worker process will be killed. This option should be used when the max_execution_time ini option does not stop script execution for some reason
 
 > **`rlimit_files`** : This directive allows to override a system defined limit for Open File descriptor for PHP-FPM.
+
+
+## Other Configurations
+
+###  Passing environment variables and PHP settings to a pool
+
+```bash
+env[HOSTNAME] = $HOSTNAME
+env[PATH] = /usr/local/bin:/usr/bin:/bin
+env[TMP] = /tmp
+env[TMPDIR] = /tmp
+env[TEMP] = /tmp
+
+php_admin_value[sendmail_path] = /usr/sbin/sendmail -t -i -f www@my.domain.com
+php_flag[display_errors] = off
+php_admin_value[error_log] = /var/log/fpm-php.www.log
+php_admin_flag[log_errors] = on
+php_admin_value[memory_limit] = 32M
+```
+
+`php_flag` is used for booleans, `php_value` is used for everything else. Any kind of configuration directive that takes parameters other than On/Off, you can use php_value for
+
+PHP settings passed with `php_value` or `php_flag` will overwrite their previous value.
+Settings defined with `php_admin_value` and `php_admin_flag` cannot be overridden with `ini_set()`.
+
+Only use the `php_admin_value` and `php_admin_flag` if you explicitly want to forbid that configuration directive from being changed by your application.
+

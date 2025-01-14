@@ -7,7 +7,7 @@ Some Techniques to help bench-marking php applications to compare raw performanc
 
 - **[Benchmarking](#Benchmarking)**
     - **[Overview](#overview)**
-    - **[Why Benchmark?](#why-becnhmark-?)**
+    - **[Why Benchmark?](#why-becnhmark)**
 - **[Tools And Techniques](#tools-and-techniques)**
 	- **[K6](#k6)**
 	- **[Phpbench](#phpbench)**

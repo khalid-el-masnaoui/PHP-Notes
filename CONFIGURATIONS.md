@@ -82,38 +82,20 @@ we will explain the most important parameters in the **php.ini** file, includi
 
 > **`allow_url_include`** :This directive has a similar function as **allow_url_open**, but uses the include function To enable it, **allow_url_open** must be set to **on**.
 
-**session.name**
+>**`session.name`** : This directive sets the current session’s name used in cookies and URLs. You may change the default **PHPSESSID** value to any descriptive name with alphanumeric characters.
 
-This directive sets the current session’s name used in cookies and URLs. You may change the default **PHPSESSID** value to any descriptive name with alphanumeric characters.
+> **`session.auto_start`** : Choose whether a PHP session starts automatically or on request when users access your site. If you set the value to **0,** the session will start manually using the **session_start** script.
 
-**session.auto_start**
+> **`session.cookie_lifetime`** : Specify a session cookie’s lifetime in your site’s visitors’ browsers. By default, the value is set to **0** seconds, meaning your site erases visitors’ session data after they close their browsers.
 
-Choose whether a PHP session starts automatically or on request when users access your site. If you set the value to **0,** the session will start manually using the **session_start** script.
+> **`memory_limit`** : Set the maximum amount of RAM a PHP script can use. Be careful when increasing the memory limit, as wrong configurations may lead to slow sites or server outages.
 
-**session.cookie_lifetime**
+> **`max_execution_time`** : Determine a script’s maximum running time. You can change the default 30-second maximum execution time to any value, but setting it too high might cause performance issues.
 
-Specify a session cookie’s lifetime in your site’s visitors’ browsers. By default, the value is set to **0** seconds, meaning your site erases visitors’ session data after they close their browsers.
+> **`max_input_time`** : Set how long a script can parse data collected from HTML forms on your site using a POST or GET method]. The more data your site collects, the higher the **max_input_time** value should be.
 
-**memory_limit**
+> **`upload_temp_dir`** : Specify the temporary directory for storing uploaded files. All users should be able to write in the specified directory, or PHP will use the system’s default.
 
-Set the maximum amount of RAM a PHP script can use. Be careful when increasing the memory limit, as wrong configurations may lead to slow sites or server outages.
+> **`realpath_cache_ttl`** : Set the duration for your system to cache the realpath information. We recommend increasing the value for systems with rarely changing files.
 
-**max_execution_time**
-
-Determine a script’s maximum running time. You can change the default 30-second maximum execution time to any value, but setting it too high might cause performance issues.
-
-**max_input_time**
-
-Set how long a script can parse data collected from HTML forms on your site using a POST or GET method]. The more data your site collects, the higher the **max_input_time** value should be.
-
-**upload_temp_dir**
-
-Specify the temporary directory for storing uploaded files. All users should be able to write in the specified directory, or PHP will use the system’s default.
-
-**realpath_cache_ttl**
-
-Set the duration for your system to cache the realpath information. We recommend increasing the value for systems with rarely changing files.
-
-**arg_separator.output**
-
-Use this data-handling directive to separate arguments in PHP-generated URLs. Its default value is an ampersand (**&**).
+> **`arg_separator.output`** : Use this data-handling directive to separate arguments in PHP-generated URLs. Its default value is an ampersand (**&**).

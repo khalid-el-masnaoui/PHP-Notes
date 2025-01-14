@@ -48,3 +48,14 @@ We can also use the simpler `phpenmod` and `phpdismod` commands. Use the `-
 sudo phpdismod -s fpm xdebug
 sudo service php8.1-fpm reload
 ```
+
+
+## Basic Configurations
+
+### Configuration layouts
+
+The configuration comes in two flavors (`SAPI`):
+
+> 1. **UNIX** : which is the **default**. It uses **UNIX domain sockets** for communication between the FCGI responder provided by php-fpm and the server or request frontend.
+    
+> 2. **TCP** : It uses **TCP sockets** for communication between the FCGI responder provided by php-fpm and the server or request frontend.

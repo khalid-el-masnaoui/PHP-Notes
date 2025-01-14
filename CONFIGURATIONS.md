@@ -17,8 +17,34 @@ Here's an overview of this PHP configuration directory structure:
 |-- pool.d                # Your PHP-FPM resource pool Config
 |   |-- app1.conf
 |   |-- app2.conf
-|-- mods-available         # Your extensions/modules Config
+|-- mods-available        # Your extensions/modules Config
 |   |-- opcache.ini
 |   |-- pdo.ini
 |   |-- .....
+```
+
+### mods-available
+
+This is where our Available modules are stored, some that come with PHP, and some we installed ourselves, are available in `/etc/php/<VERSION>/mods-avaiable`.
+
+We can check the `conf.d` directory:
+
+```bash
+ls -lah /etc/php/<VERSION>/{fpm,cli}/conf.d
+```
+
+We see a bunch of symlinks to the `mods-available` directory.
+
+**Enable / Disable Modules**
+
+To enable or disable a module for a `SAPI`, we can create or destroy a symlink in the `conf.d` directory for that `SAPI`. We'll need to restart php-fpm if we change it, but CLI-run PHP is affected immediately (since each call to `php` on the command line is starting a new process).
+
+Note that this means your cron tasks / queue workers may have a different php.ini and set of modules than your web-run php.
+
+We can also use the simpler `phpenmod` and `phpdismod` commands. Use the `-s` flag to define a specific `SAPI` if you don't want all of them affected.
+
+```bash
+# Disable xdebug for php-fpm
+sudo phpdismod -s fpm xdebug
+sudo service php8.1-fpm reload
 ```

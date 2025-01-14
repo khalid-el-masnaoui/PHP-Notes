@@ -161,7 +161,7 @@ listen.group = www-data
 
 > **`pm.max_spare_servers`**: The desired maximum number of idle server processes. Used only when `pm` is set to `dynamic`. Also mandatory in this case.
 
-> **`pm.process_idle_timeout`** : The number of seconds after which an idle process will be killed. Used only when `pm` is set to `ondemand`. Available units: s(econds)(default), m(inutes), h(ours), or d(ays). Default value: 10s.
+> **`pm.process_idle_timeout`** : The number of seconds after which an idle process will be killed. Used only when `pm` is set to `ondemand`.
 
 > **`pm.max_requests`** : The number of requests each child process should execute before respawning. (avoiding the risk of memory leaks)
 
@@ -175,4 +175,8 @@ listen.group = www-data
 
 > **`request_slowlog_timeout`** : The timeout for serving a single request after which a PHP backtrace will be dumped to the 'slowlog' file. 
 
-> **`slowlog`** : The log file for slow requests. Default value: `#INSTALL_PREFIX#/log/php-fpm.log.slow`.
+> **`slowlog`** : The log file for slow requests. 
+
+> **`request_terminate_timeout`** : The timeout for serving a single request after which the worker process will be killed. This option should be used when the max_execution_time ini option does not stop script execution for some reason
+
+> **`rlimit_files`** : This directive allows to override a system defined limit for Open File descriptor for PHP-FPM.

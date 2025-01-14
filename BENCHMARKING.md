@@ -120,3 +120,58 @@ Subjects: 1, Assertions: 0, Failures: 0, Errors: 0
 Check the [github repository](https://github.com/phpbench/phpbench) for this tool 
 
 
+## Custom Scripts
+
+You can use/write, simple, custom scripts that calculate execution time of common control flows and function of the PHP. Helps you to compare benchmark speeds (PHP execution times), performances of servers, web hosting and also across PHP versions.
+
+### Example Output
+
+this is taken from the example from the script from the repository 1 below
+
+```bash
+-------------------------------------------------------
+|       PHP BENCHMARK SCRIPT v.2.0 by @SergiX44       |
+-------------------------------------------------------
+PHP............................................. 8.2.10
+Platform........................................ Darwin
+Arch............................................. arm64
+Server........................................ hostname
+Max memory usage.................................. 512M
+OPCache status................................. enabled
+OPCache JIT.................................... enabled
+PCRE JIT....................................... enabled
+XDebug extension.............................. disabled
+Difficulty multiplier............................... 1x
+Started at..................... 06/12/2023 13:45:37.453
+-------------------------------------------------------
+math.......................................... 0.0935 s
+loops......................................... 0.0121 s
+ifelse........................................ 0.0173 s
+switch........................................ 0.0172 s
+string........................................ 0.1842 s
+array......................................... 0.3212 s
+regex......................................... 0.1769 s
+is_{type}..................................... 0.0322 s
+hash.......................................... 0.1202 s
+json.......................................... 0.1586 s
+-----------------Additional Benchmarks-----------------
+io::file_read................................. 0.0129 s
+io::file_write................................ 0.0715 s
+io::file_zip.................................. 0.5335 s
+io::file_unzip................................ 0.1571 s
+rand::rand.................................... 0.0089 s
+rand::mt_rand................................. 0.0089 s
+rand::random_int.............................. 0.0679 s
+rand::random_bytes............................ 0.2320 s
+rand::openssl_random_pseudo_bytes............. 0.2953 s
+-------------------------------------------------------
+Total time.................................... 2.5214 s
+Peak memory usage................................ 2 MiB
+```
+
+while you can write your own custom script , i  encourage you to take a look these two repositories for some benchmarking scripts example:
+
+[repository 1]https://github.com/sergix44/php-benchmark-script/blob/master/README.md
+[repository 2](https://github.com/vanilla-php/benchmark-php/blob/master/README.md)
+
+

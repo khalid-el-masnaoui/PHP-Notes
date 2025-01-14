@@ -10,7 +10,8 @@ Some Techniques to help bench-marking php applications to compare raw performanc
     - **[Why Benchmark?](#why-becnhmark-?)**
 - **[Tools And Techniques](#tools-and-techniques)**
 	- **[K6](#k6)**
-	- **[Visualizing Results](#visualizing-results)**
+	- **[Phpbench](#phpbench)**
+	- **[Custom Script](#custom-scripts)**
 
 
 
@@ -87,7 +88,7 @@ vus_max........................: 500 min=500 max=500
 
 You can read more about this awesome tool by reading [the official documentations](https://k6.io/docs/)
 
-## phpbench
+## Phpbench
 
 PHPBench is an open-source benchmark runner for PHP analogous to _PHPUnit_ but for performance rather than correctness.
 
@@ -171,7 +172,7 @@ Peak memory usage................................ 2 MiB
 
 while you can write your own custom script , i  encourage you to take a look these two repositories for some benchmarking scripts example:
 
-[repository 1]https://github.com/sergix44/php-benchmark-script/blob/master/README.md
-[repository 2](https://github.com/vanilla-php/benchmark-php/blob/master/README.md)
+- [repository 1](https://github.com/sergix44/php-benchmark-script/blob/master/README.md)
+- [repository 2](https://github.com/vanilla-php/benchmark-php/blob/master/README.md)
 
 

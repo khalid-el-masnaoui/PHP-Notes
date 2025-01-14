@@ -65,41 +65,22 @@ The configuration comes in two flavors (`SAPI`):
 
 we will explain the most important parameters in the **php.ini** file, including their values and purposes. These parameters are also known as **directives**.
 
-**display_errors**
+> **`display_errors`** : Determine if PHP error messages are displayed to users during script execution or not using the **on** and **off** value. Due to security reasons, you should use this directive only when developing your site.
 
-Determine if PHP error messages are displayed to users during script execution or not using the **on** and **off** value. Due to security reasons, you should use this directive only when developing your site.
+> **`error_reporting`** : Set which error message is displayed to users when **display_errors** is enabled. The **error_reporting** parameter takes several [constants to display different errors](https://www.php.net/manual/en/errorfunc.constants.php).
+> You may use multiple constants and exclude specific errors. For instance, to show all errors but the deprecation warning, use the following: _E_ALL &amp; ~E_DEPRECATED_
 
-**error_reporting**
+> **`error_log`** :  Specify the file where PHP will log errors for error troubleshooting. Before enabling it, ensure the web server’s users have permission to write the file.
 
-Set which error message is displayed to users when **display_errors** is enabled. The **error_reporting** parameter takes several [constants to display different errors](https://www.php.net/manual/en/errorfunc.constants.php).
+> **`file_uploads`** :  Set whether the HTTP file uploads are enabled or not. The **on** value will allow users to upload files to your site, while **off** disables it.
 
-You may use multiple constants and exclude specific errors. For instance, to show all errors but the deprecation warning, use the following:
+> **`upload_max_filesize`** : This parameter determines the maximum uploaded file size PHP allowed on your site. Since the default value is **2 MB**, you can increase the maximum upload file size limit to enable users to upload large files.
 
-E_ALL &amp; ~E_DEPRECATED
+> **`post_max_size`** : The maximum POST data size PHP can collect from HTML forms on your site. The value should be larger than the maximum file size, as it is handled with the POST function.
 
-**error_log**
+> **`allow_url_fopen`**: Write a PHP script to access remote files from another server. It is **off** by default, as enabling it may expose your server to a code injection attack.
 
-Specify the file where PHP will log errors for error troubleshooting. Before enabling it, ensure the web server’s users have permission to write the file.
-
-**file_uploads**
-
-Set whether the HTTP file uploads are enabled or not. The **on** value will allow users to upload files to your site, while **off** disables it.
-
-**upload_max_filesize**
-
-This parameter determines the maximum uploaded file size PHP allowed on your site. Since the default value is **2 MB**, you can increase the maximum upload file size limit to enable users to upload large files.
-
-**post_max_size**
-
-The maximum POST data size PHP can collect from HTML forms on your site. The value should be larger than the maximum file size, as it is handled with the POST function.
-
-**allow_url_fopen**
-
-Write a PHP script to access remote files from another server. It is **off** by default, as enabling it may expose your server to a code injection attack.
-
-**allow_url_include**
-
-This directive has a similar function as **allow_url_open**, but uses the include function To enable it, **allow_url_open** must be set to **on**.
+> **`allow_url_include`** :This directive has a similar function as **allow_url_open**, but uses the include function To enable it, **allow_url_open** must be set to **on**.
 
 **session.name**
 
@@ -120,3 +101,19 @@ Set the maximum amount of RAM a PHP script can use. Be careful when increasing t
 **max_execution_time**
 
 Determine a script’s maximum running time. You can change the default 30-second maximum execution time to any value, but setting it too high might cause performance issues.
+
+**max_input_time**
+
+Set how long a script can parse data collected from HTML forms on your site using a POST or GET method]. The more data your site collects, the higher the **max_input_time** value should be.
+
+**upload_temp_dir**
+
+Specify the temporary directory for storing uploaded files. All users should be able to write in the specified directory, or PHP will use the system’s default.
+
+**realpath_cache_ttl**
+
+Set the duration for your system to cache the realpath information. We recommend increasing the value for systems with rarely changing files.
+
+**arg_separator.output**
+
+Use this data-handling directive to separate arguments in PHP-generated URLs. Its default value is an ampersand (**&**).

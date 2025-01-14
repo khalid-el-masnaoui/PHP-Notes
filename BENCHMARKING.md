@@ -86,3 +86,37 @@ vus_max........................: 500 min=500 max=500
 ```
 
 You can read more about this awesome tool by reading [the official documentations](https://k6.io/docs/)
+
+## phpbench
+
+PHPBench is an open-source benchmark runner for PHP analogous to _PHPUnit_ but for performance rather than correctness.
+
+you can simply write your test classes , like you do with unit testing and run the tests like below:
+
+```bash
+vendor/bin/phpbench run tests/Benchmark --report=aggregate
+```
+
+you get something like :
+
+```bash
+PHPBench (1.2.15) running benchmarks...
+with configuration file: laravel-10/phpbench.json
+with PHP version 8.1.24, xdebug ✔, opcache ✔
+
+\Tests\Benchmark\ComputeServiceBench
+
+benchIterate............................I0 - Mo360.000μs (±0.00%)
+
+Subjects: 1, Assertions: 0, Failures: 0, Errors: 0
+
++---------------------+--------------+-----+------+-----+----------+-----------+--------+
+| benchmark | subject | set | revs | its | mem_peak | mode | rstdev |
++---------------------+--------------+-----+------+-----+----------+-----------+--------+
+| ComputeServiceBench | benchIterate | | 1 | 1 | 6.743mb | 360.000μs | ±0.00% |
++---------------------+--------------+-----+------+-----+----------+-----------+--------+
+```
+
+Check the [github repository](https://github.com/phpbench/phpbench) for this tool 
+
+

@@ -105,3 +105,18 @@ we will explain the most important parameters in the **php.ini** file, includi
 > **`realpath_cache_ttl`** : Set the duration for your system to cache the realpath information. We recommend increasing the value for systems with rarely changing files.
 
 > **`arg_separator.output`** : Use this data-handling directive to separate arguments in PHP-generated URLs. Its default value is an ampersand (**&**).
+
+
+## php-fpm.conf
+
+Some of the  most important parameters in the **php-fpm.conf** file.
+
+> **`error_log`** :  Specify the file where PHP will log errors for error troubleshooting. Before enabling it, ensure the web server’s users have permission to write the file.
+
+> **`log_level`** : Error log level. Possible values: alert, error, warning, notice, debug. Default value: notice.
+
+> **`emergency_restart_threshold`**:  If this number of child processes exit with Segmentation, page fault, and access violation (SIGSEGV or SIGBUS) within the time interval set by emergency_restart_interval then FPM will restart
+
+> **`emergency_restart_interval`** : nterval of time used to determine when a graceful restart will be initiated. This can be useful to work around accidental corruptions in an accelerator’s shared memory
+
+> **`process_control_timeout`** : Time limit for child processes to wait for a reaction on signals from master.

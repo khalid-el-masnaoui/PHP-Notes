@@ -315,3 +315,25 @@ php_flag engine off
 > Since, it is out of scope to access from URL we need to create either symlinks or alias from nginx configuration file. Moreover, we can add additional access restrictions like setting only valid file type to be accessible and preventing files access directly via URL in particular image directory.
 
 3. Other validations – like file size, file rename, and store uploaded files in private location – are also required to strengthen the security of the applications.
+
+
+### Passwords 
+
+Reversible encryption is harmful. It can easily be cracked and decrypted, making your data vulnerable to theft or exposure
+
+Hashing passwords is a safer bet than not hashing passwords at all (or Reversible encrypted passwords) as hackers can expose sensitive information if passwords are not secured properly. But the idea of using any hashing algorithm is not effective as there are still proper ways of hashing passwords for guaranteed security.
+
+**Remediation** : 
+
+ 1. Hash Passwords to Prevent Vulnerabilities
+ 
+>If you are using anything other than the `password_hash` method provided by php, like `sha-1`, `sha-256`, `sha-512`, `md5`, you are still risking data theft due to brute force.
+
+```php
+// Create the hash on account creation
+$password = "securedpass";
+password_hash($password, PASSWORD_DEFAULT); // default algo is BCRYPT
+
+// Verifying password on Login
+password_verify($inputedPass, $db_password);
+```

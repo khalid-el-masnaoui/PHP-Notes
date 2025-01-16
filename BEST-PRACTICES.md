@@ -271,3 +271,28 @@ TO => http://www.malidkha.com/product?pid=12345&price=1
 4. In the case when parameters from client is needed, they should accompanied (escort) by a valid session token (Eg. above example of hidden field).
 5. Use cryptographic protection for sensitive parameter in a URL.
 6. Use proper validation of input received (sanitize data, cross check user input in database, use JOIN TABLE)
+
+### Remote & Local File Inclusion RFI/LFI
+
+_**RFI**_ : Remote File Inclusion (RFI) vulnerabilities occur when the application allows a malicious user to include files from a remote server in the code executed by the application server.
+
+By exploiting an RFI, an attacker can potentially execute malicious code on the target server, compromising the integrity, confidentiality and availability of the application and the data it processes.
+
+**_LFI_** : A Local File Inclusion (LFI) occurs when the application allows the inclusion of local files, i.e. files that reside on the server itself.
+
+
+An RFI vulnerability occurs mainly in web applications that accept user input to determine which file to include in a page. If this input is not properly filtered or validated, an attacker can manipulate the input to point to a file hosted on a server under his control. This remote file, often written in a scripting language such as PHP, can then contain malicious code that will be executed by the vulnerable application’s server.
+
+**Remediation** : 
+1. Avoid using user-controlled data directly in `include` and `require` statements and instead consider an allow-list approach for dynamically including scripts. 
+
+2.  Input validation is essential to protect web applications against RFI attacks.
+
+3. Secure configuration
+```ini
+; Whether to allow the treatment of URLs (like http:// or ftp://) as files.
+allow_url_fopen = Off
+
+; Whether to allow include/require to open URLs (like https:// or ftp://) as files.
+allow_url_include = Off
+```

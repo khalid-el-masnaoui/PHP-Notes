@@ -337,3 +337,7 @@ password_hash($password, PASSWORD_DEFAULT); // default algo is BCRYPT
 // Verifying password on Login
 password_verify($inputedPass, $db_password);
 ```
+
+### SSL Certificates For HTTPS
+
+All the modern browsers like Google Chrome, Opera, Firefox and others, recommend using HTTPS protocol for web applications. HTTPs provides a secured and encrypted accessing channel for untrusted sites. You must include HTTPS by installing an SSL certificate on your website. It also strengthens your web applications against XSS attacks and prevents hackers to read transported data using codes.

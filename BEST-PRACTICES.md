@@ -296,3 +296,22 @@ allow_url_fopen = Off
 ; Whether to allow include/require to open URLs (like https:// or ftp://) as files.
 allow_url_include = Off
 ```
+
+### File Upload
+
+It allows your visitor to place files (upload files) on your server. This can result in various security problems such as delete your files, delete a database, get user details and much more. You can disable file uploads using PHP or write secure code (like validating user input and only allow image file types such as png or gif).
+
+**Remediation** : 
+1. Disable PHP execution in selected directories
+
+> Put a .htaccess with the following content in upload directory to prevent the execution of PHP file. Instead, it will download the file.
+
+```conf
+php_flag engine off
+```
+
+2. Move upload directory outside of web-root which will not allow direct access to images.
+
+> Since, it is out of scope to access from URL we need to create either symlinks or alias from nginx configuration file. Moreover, we can add additional access restrictions like setting only valid file type to be accessible and preventing files access directly via URL in particular image directory.
+
+3. Other validations – like file size, file rename, and store uploaded files in private location – are also required to strengthen the security of the applications.

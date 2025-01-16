@@ -24,6 +24,17 @@ Your web server should be configured properly to protect your website from attac
 
 **Note** : We discuss servers/network security in depth on my repository
 
+### Apply the principles of security through obscurity
+
+Although security through obscurity is not a complete strategy in itself, it can slow down attackers and make their task more difficult.
+
+For example:
+
+- **Hide PHP version**: prevents attackers from knowing the exact version of PHP being used. This can be done by disabling `expose_php` in the php.ini file: `expose_php = Off`.
+- **Generic login error messages**: when a connection attempt fails, do not specify whether it is the password or the user name that is incorrect. Use a generic message such as ‘Incorrect identifiers’ to avoid revealing that a valid identifier has been found (enumeration attacks).
+
+These techniques do not replace fundamental security measures, but they do make it harder for attackers to gather exploitable information.
+
 ### Configure error reports appropriately
 
 Errors displayed are valuable for development. However, they can also expose sensitive information when visible in production. It is therefore essential to configure error reports appropriately.
@@ -35,6 +46,7 @@ display_errors=Off
 log_errors=On
 error_log=/var/log/php/error.log
 ```
+
 
 ### SQL Injection
 

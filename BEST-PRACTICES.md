@@ -166,3 +166,13 @@ PHP uses a default session name _PHPSESSID_, it would be more secure to change i
 ```ini
 session.name = CUSTOMID
 ```
+
+3. **_Use Cookies_**
+
+Exchanging session ID through the URL is a major security risk resulting session fixation abuse. Following there configuration can help to prevent such abuse.
+
+```ini
+session.use_only_cookies = 1    // tells PHP to set a cookie with a session ID when session started
+session.use_cookies	=	1         // tells PHP to only accept session IDs comming from a cookie, not from URL
+session.use_trans_sid	=	0       // prevents PHP from automatically inserting the session ID into links.
+```

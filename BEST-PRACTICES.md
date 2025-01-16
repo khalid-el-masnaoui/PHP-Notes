@@ -411,6 +411,25 @@ password_verify($inputedPass, $db_password);
 
 All the modern browsers like Google Chrome, Opera, Firefox and others, recommend using HTTPS protocol for web applications. HTTPs provides a secured and encrypted accessing channel for untrusted sites. You must include HTTPS by installing an SSL certificate on your website. It also strengthens your web applications against XSS attacks and prevents hackers to read transported data using codes.
 
+### Other Techniques and Tools
+
+##### Add Rate limiting to costly calls and requests
+
+Rate limiting is a technology that puts a cap on the number of times a user can request a resource from a server. Many services implement rate limiting to prevent abuse to a service when a user may try to put too much load on a server
+
+**Remediation** : 
+
+1. Have a `Rate Limit`Mechanism in place
+```php
+#limit the access of the endpiint1 to 120 request per minute using sessions based on an api-key header , ip ..
+$rateLimiter->rateLimit(120, 1, "endpoint1");
+```
+
+
+> **Note** : It might be practical to code a rate-limiting module by logging user activities in a database like MySQL. However, the end product may not be scalable when many users access the system since the data must be fetched from disk and compared against the set limit. This is not only slow, but relational database management systems are not designed for this purpose.
+
+> Since Redis works as an in-memory database, it is a qualified candidate for creating a rate limiter, and it has been proven reliable for this purpose.
+
 ## Resources
 
 - [resource 1](https://www.vaadata.com/blog/php-security-best-practices-vulnerabilities-and-attacks)

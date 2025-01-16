@@ -186,3 +186,10 @@ session.cookie_httponly	=	1   // makes sure the session cookie is not accessible
 session.cookie_secure	=	1     // (HTTPS only) makes sure the cookie will only be transmitted over a HTTPS connection.
 ```
 
+5. **_Regenerating the Session ID_**
+
+It is a good practice to generate new session ID once user logs in/out (state changed) which will help to prevent session fixation attacks.
+
+```ini
+session_regenerate_id(true)   // the argument tells PHP to delete the old session.
+```

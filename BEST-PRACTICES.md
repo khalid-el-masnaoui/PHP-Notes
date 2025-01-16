@@ -204,3 +204,36 @@ It is a good practice to generate new session ID once user logs in/out (state ch
 ```ini
 session_regenerate_id(true)   // the argument tells PHP to delete the old session.
 ```
+
+### Cross-Site Request Forgery XSRF/CSRF
+
+This attack forces an end user to execute unwanted actions on a web application in which he/she is currently authenticated. A successful CSRF exploit can compromise end user data and operation in case of normal user. If the targeted end user is the administrator account, this can compromise the entire web application.
+
+**Remediation** :
+
+1. Random token with each request
+> A application will generate the token which will be included in the form as a hidden input field. This unique token key will be use to varify valid request by comparing the submitted token with the one stored in the session. 
+> Plus, you can check for the REQUEST type and make sure that it is a POST request, chekc it is an ajax request , check the correct HTTP-Referer ...
+
+the token generation :
+```html
+<input type="hidden" name="_token" value="<?= token::generate('display_users')">
+```
+
+then the checking:
+
+```php 
+$_SERVER['HTTP_REFERER'] = str_replace("http://", "https://", $_SERVER['HTTP_REFERER']); //some browsers like safari sends the referer with http instead of https
+
+if (input::exists("post") && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest' && isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] == "https://malikdha.com/referer") {
+
+	#code
+	if (token::check(input::get("_token"), "display_users")) {
+		#code
+	}
+	#code
+}
+#code
+```
+
+**Note** : You might as well generate a token for each session, instead of each request. (i prefer it with each request*) 

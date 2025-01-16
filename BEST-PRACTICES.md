@@ -24,6 +24,17 @@ Your web server should be configured properly to protect your website from attac
 
 **Note** : We discuss servers/network security in depth on my repository
 
+### Configure error reports appropriately
+
+Errors displayed are valuable for development. However, they can also expose sensitive information when visible in production. It is therefore essential to configure error reports appropriately.
+
+**Remediation** : 
+
+```ini
+display_errors=Off
+log_errors=On
+error_log=/var/log/php/error.log
+```
 
 ### SQL Injection
 

@@ -115,3 +115,23 @@ $expires = new DateTime('+1 day');
  setcookie('username', 'malidkha', $expires->getTimestamp(), '/', null, null, true ); // expires 1 day after initialization
 ```
 
+### Session Hijacking and Session fixation
+
+It can be lethal if combined with an XSS attack, where cookies of users can be stolen.
+
+##### Session Fixation
+
+There are three common methods used to obtain a valid session identifier:
+
+- Prediction It refers to guessing a valid session identifier. The session identifier is extremely random, and this is unlikely to be the weakest point in your implementation.
+    
+-  Capturing a valid session identifier is the most common type of session attack, and there are numerous approaches like GET, cookies.
+    
+- Fixation Fixation is the simplest method of obtaining a valid session identifier. While it's not very difficult to defend against, if your session mechanism consists of nothing more than `session_start()`, you are vulnerable.
+    
+
+##### Session Hijacking
+
+Session hijacking refers to all attacks that attempt to gain access to another user's session. Like session fixation, if your session mechanism consists of `session_start()` then your are vulnerable.
+
+Session hijacking is a particular type of malicious web attack in which the attacker secretly steals the session ID of the user. That session ID is sent to the server where the associated $_SESSION array validates its storage in the stack and grants access to the application. Session hijacking is possible through an XSS attack or when someone gains access to the folder on a server where the session data is stored.

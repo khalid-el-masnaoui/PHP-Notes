@@ -320,6 +320,27 @@ escapeshellcmd() #Escapes special characters in a command to prevent them from b
 escapeshellarg() #Escapes arguments passed to a command to treat them as literal strings. This prevents the injection of special characters or additional commands.
 ```
 
+### Brute Force 
+
+A brute force attack can manifest itself in many different ways, but primarily consists in an attacker configuring predetermined values, making requests to a server using those values, and then analyzing the response.
+
+This attack is used to break in (log in) to websites, getting access to applications and APIs...
+
+**Remediation** : 
+1. Have a `BruteForce Block` mechanism in place
+```php
+# if a login/access to api/site is failed
+BruteForceBlock::addFailedLoginAttempt(...) #add the failed attempt and bind it with the IP
+
+
+# check the client IP is not blocked due to many failed attemepts 
+BruteForceBlock::checkIP()
+```
+
+1. when a connection attempt fails, do not specify whether it is the password or the user name that is incorrect. Use a generic message such as ‘Incorrect identifiers’ to avoid revealing that a valid identifier has been found (enumeration attacks). 
+
+> > Since Redis works as an in-memory database, it is a qualified candidate for creating a BruteForce Blocker.
+
 ### Remote & Local File Inclusion RFI/LFI
 
 _**RFI**_ : Remote File Inclusion (RFI) vulnerabilities occur when the application allows a malicious user to include files from a remote server in the code executed by the application server.
@@ -389,3 +410,7 @@ password_verify($inputedPass, $db_password);
 ### SSL Certificates For HTTPS
 
 All the modern browsers like Google Chrome, Opera, Firefox and others, recommend using HTTPS protocol for web applications. HTTPs provides a secured and encrypted accessing channel for untrusted sites. You must include HTTPS by installing an SSL certificate on your website. It also strengthens your web applications against XSS attacks and prevents hackers to read transported data using codes.
+
+## Resources
+
+- [resource 1](https://www.vaadata.com/blog/php-security-best-practices-vulnerabilities-and-attacks)

@@ -156,3 +156,13 @@ Also its good idea to change the hash algorithm. By deafult, PHP uses the obsole
 ```ini
 session.hash_function = sha512
 ```
+
+**Note** : the above three directive are removed since PHP 7.1
+
+2. **_Use another session name_**
+
+PHP uses a default session name _PHPSESSID_, it would be more secure to change it to another not revealing name.
+
+```ini
+session.name = CUSTOMID
+```

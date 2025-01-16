@@ -85,3 +85,33 @@ if (empty($email)) {
         throw new AppSpecificSecurityException("Possible SQL injection attempt.");
     }
 ```
+
+### XSS
+
+**Cross-site scripting is a type of malicious web attack in which an external script is injected into the website’s code or output.** The attacker can send infected code to the end-user while the browser can not identify it as a trusted script. This attack occurs mostly in the places where the user can input and submit data. The attack can access cookies, sessions and other sensitive information about the browser.
+
+**Stealing cookies": 
+
+It can be lethal if combined with an XSS attack, where cookies of users can be stolen. A more damaging attack would be to redirect any user to a PHP file that steals cookies.
+
+**Remediation** : 
+
+ 1. Employ the `htmlspecialchars`, and `ENT_QUOTES` method on the client body (user input) to prevent injecting malicious data into the database. These are built-in PHP methods to help sanitize input.
+
+```php
+// htmlspecialchars sanitization
+$search = htmlspecialchars($search, ENT_QUOTES, 'UTF-8');
+echo 'Search results for '.$search;
+
+// ent_quotes sanitization
+$body =  htmlspecialchars($_POST['body'], ENT_QUOTES);
+```
+
+2. When setting cookies make sure that you select the additional options like the secure, httponly, and make it available for a limited time.
+
+```php
+<?php
+$expires = new DateTime('+1 day');
+ setcookie('username', 'malidkha', $expires->getTimestamp(), '/', null, null, true ); // expires 1 day after initialization
+```
+

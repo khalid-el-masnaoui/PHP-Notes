@@ -176,3 +176,13 @@ session.use_only_cookies = 1    // tells PHP to set a cookie with a session ID w
 session.use_cookies	=	1         // tells PHP to only accept session IDs comming from a cookie, not from URL
 session.use_trans_sid	=	0       // prevents PHP from automatically inserting the session ID into links.
 ```
+
+4. **_Secure Session Cookies_**
+
+To protect session ID, set the following configurations-
+
+```ini
+session.cookie_httponly	=	1   // makes sure the session cookie is not accessible via JavaScript and prevent xss
+session.cookie_secure	=	1     // (HTTPS only) makes sure the cookie will only be transmitted over a HTTPS connection.
+```
+

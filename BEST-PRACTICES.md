@@ -430,6 +430,12 @@ $rateLimiter->rateLimit(120, 1, "endpoint1");
 
 > Since Redis works as an in-memory database, it is a qualified candidate for creating a rate limiter, and it has been proven reliable for this purpose.
 
+##### Security Configurations
+
+- `memory_limit`: limits the amount of memory a script can use.
+- `max_execution_time`: prevents scripts from running indefinitely.
+- `file_uploads` and `upload_max_filesize`: control file upload authorisations and limits.
+
 ## Resources
 
 - [resource 1](https://www.vaadata.com/blog/php-security-best-practices-vulnerabilities-and-attacks)

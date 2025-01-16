@@ -272,6 +272,35 @@ TO => http://www.malidkha.com/product?pid=12345&price=1
 5. Use cryptographic protection for sensitive parameter in a URL.
 6. Use proper validation of input received (sanitize data, cross check user input in database, use JOIN TABLE)
 
+### Command Injections
+
+Executing commands via PHP can be extremely powerful, but it also presents a high risk if precautions are not taken.
+
+Poor management can allow attackers to inject malicious commands into your server, compromising the security of your application.
+
+**Remediation** :
+
+1. Disable dangerous functions with disable_functions
+>  These functions are commonly used to execute system commands, open processes or access sensitive information. Disabling them prevents misuse in the event of a breach.
+
+```ini
+disable_functions = show_source, exec, shell_exec, system, passthru, proc_open, popen, curl_exec, curl_multi_exec, parse_ini_file, show_source, eval
+```
+
+2. Strictly validate input parameters
+
+> If you absolutely must use command execution functions (such as `exec()` or `system()`), you must be extremely careful about the parameters passed to them.
+> Validate all input data using whitelists, i.e. accepting only pre-approved values. This reduces the likelihood of malicious input being executed as a command.
+
+3. Escape commands and arguments using the appropriate functions
+4. 
+> These functions prevent malicious users from injecting additional commands or modifying the executed command via malformed inputs.
+
+```php 
+escapeshellcmd() #Escapes special characters in a command to prevent them from being interpreted as shell operators. Use this function to secure the entire command.
+escapeshellarg() #Escapes arguments passed to a command to treat them as literal strings. This prevents the injection of special characters or additional commands.
+```
+
 ### Remote & Local File Inclusion RFI/LFI
 
 _**RFI**_ : Remote File Inclusion (RFI) vulnerabilities occur when the application allows a malicious user to include files from a remote server in the code executed by the application server.

@@ -12,4 +12,4 @@ By following the key recommendations outlined below, you can avoid common config
 
 ## Get Latest PHP
 
-Try to make sure to have the latest PHP versions installed as they come with updates and features that can help prevent major security flaws.
+New versions of PHP are released regularly with security fixes and improvements. By using the latest version, you’ll have the benefit of these fixes and improvements as well as any new features that might be helpful for your application.

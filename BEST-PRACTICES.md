@@ -122,8 +122,15 @@ $body =  htmlspecialchars($_POST['body'], ENT_QUOTES);
 
 ```php
 <?php
-$expires = new DateTime('+1 day');
- setcookie('username', 'malidkha', $expires->getTimestamp(), '/', null, null, true ); // expires 1 day after initialization
+
+setcookie('user_session', $value, [ 
+'expires' => time() + 3600, 
+'path' => '/', 
+'domain' => 'maldikha.com', 
+'secure' => true, // Cookie sent only via HTTPS 
+'httponly' => true, // Inaccessible via JavaScript 
+'samesite' => 'Strict' // Prevents cookies being sent by cross-site requests ]); 
+
 ```
 
 ### Session Hijacking and Session fixation

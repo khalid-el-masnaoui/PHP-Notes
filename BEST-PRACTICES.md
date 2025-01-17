@@ -436,6 +436,35 @@ $rateLimiter->rateLimit(120, 1, "endpoint1");
 - `max_execution_time`: prevents scripts from running indefinitely.
 - `file_uploads` and `upload_max_filesize`: control file upload authorisations and limits.
 
+##### PHPCS-Security-Audit
+
+phpcs-security-audit is a set of [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) rules that finds vulnerabilities and weaknesses related to security in PHP code.
+
+The tool also checks for CVE issues , it being an extension of `PHP_CodeSniffer` makes it easy integration into continuous integration systems. It also allows for finding security bugs that are not detected with some object oriented analysis (such as [PHPMD](http://phpmd.org/)).
+
+**Example**
+
+A quick example of the results and hos it works,
+
+```bash
+$ phpcs --extensions=php,inc,lib,module,info --standard=./vendor/pheromone/phpcs-security-audit/example_base_ruleset.xml ./vendor/pheromone/phpcs-security-audit/tests.php
+
+FILE: tests.php
+--------------------------------------------------------------------------------
+FOUND 18 ERRORS AND 36 WARNINGS AFFECTING 44 LINES
+--------------------------------------------------------------------------------
+
+  6 | WARNING | Possible XSS detected with . on echo
+  6 | ERROR   | Easy XSS detected because of direct user input with $_POST on echo
+  9 | WARNING | Usage of preg_replace with /e modifier is not recommended.
+ 10 | WARNING | Usage of preg_replace with /e modifier is not recommended.
+ 10 | ERROR   | User input and /e modifier found in preg_replace, remote code execution possible.
+ 11 | ERROR   | User input found in preg_replace, /e modifier could be used for malicious intent.
+   ...
+```
+
+You can easily customize the rulesets.
+
 ##### PHPMD
 
 What PHPMD does is: It takes a given PHP source code base and look for several potential problems within that source. These problems can be things like:

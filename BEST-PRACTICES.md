@@ -7,8 +7,8 @@ This document revisits the essential security and optimized-performance configur
 By following the key recommendations outlined below, you can avoid common configuration errors and prevent security vulnerabilities as well as ensuring optimized performances.
 
 
-- **[Security](#security)**
-    - **[Get Latest PHP](#get-latest-php)**
+-  **[Security](#security)**
+	- **[Get Latest PHP](#get-latest-php)**
     - **[Use Up to date code dependencies and third party components](#useup-to-date-code-dependencies-and-third-party-components-)**
     - **[Secure your server](#secure-your-server)**
     - **[Apply the principles of security through obscurity](#apply-the-principles-of-security-through-obscurity)**
@@ -366,6 +366,29 @@ BruteForceBlock::checkIP()
 1. when a connection attempt fails, do not specify whether it is the password or the user name that is incorrect. Use a generic message such as ‘Incorrect identifiers’ to avoid revealing that a valid identifier has been found (enumeration attacks). 
 
 > > Since Redis works as an in-memory database, it is a qualified candidate for creating a BruteForce Blocker.
+
+
+### Broken Access-Control And Authentication
+
+When designing an internal application, you must provide a form of access control through authentication and authorization. You use authentication to confirm whether users have the right to access your system by validating their usernames and passwords against their account values. On the other hand, authorization allows you to verify whether an authenticated user has the correct permission to access a particular resource. For instance, to delete or update a product.
+
+##### Broken Access Control
+> Access control weaknesses are common due to the lack of automated detection, and lack of effective functional testing by application developers.  
+> Access control detection is not typically amenable to automated static or dynamic testing. Manual testing is the best way to detect missing or ineffective access control, including HTTP method (GET vs PUT, etc), controller, direct object references, etc.
+
+* With the exception of public resources, deny by default.  
+* Implement access control mechanisms once and re-use them throughout the application, including minimizing CORS usage.  
+* Model access controls should enforce record ownership, rather than accepting that the user can create, read, update, or delete any record.  
+* Unique application business limit requirements should be enforced by domain models.  
+* Disable web server directory listing and ensure file metadata (e.g. .git) and backup files are not present within web roots.  
+* Log access control failures, alert admins when appropriate (e.g. repeated failures).  
+* Rate limit API and controller access to minimize the harm from automated attack tooling.  
+* JWT tokens should be invalidated on the server after logout.
+
+Some access control mechanisms are : 
+1.  Role Based Access Control (RBAC) : Role based access control is giving access to a resource when the subject has a given role.
+2. Permission Based Access Control (PBAC) : Role based access control is giving access to a resource when the subject has a given permission
+3. Access Control Lists (ACL): specifies which subjects are granted access to a resource, as well as what operations are allowed on a given resource.
 
 ### Remote & Local File Inclusion RFI/LFI
 

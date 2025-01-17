@@ -436,6 +436,22 @@ $rateLimiter->rateLimit(120, 1, "endpoint1");
 - `max_execution_time`: prevents scripts from running indefinitely.
 - `file_uploads` and `upload_max_filesize`: control file upload authorisations and limits.
 
+##### PHPMD
+
+What PHPMD does is: It takes a given PHP source code base and look for several potential problems within that source. These problems can be things like:
+
+1. Possible bugs
+2. Suboptimal code
+3.  Overcomplicated expressions
+4. Unused parameters, methods, properties
+
+it can help us with avoiding some security bugs early-on,
+
+we will discuss such tool and other static analysis tools like `phpstan`, in the folder `Coding-Practices`.
+
+
+
+
 ## Resources
 
 - [resource 1](https://www.vaadata.com/blog/php-security-best-practices-vulnerabilities-and-attacks)

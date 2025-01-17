@@ -490,3 +490,4 @@ we will discuss such tool and other static analysis tools like `phpstan`, in the
 ## Resources
 
 - [resource 1](https://www.vaadata.com/blog/php-security-best-practices-vulnerabilities-and-attacks)
+- [resource 2](https://github.com/guardrailsio/awesome-php-security)

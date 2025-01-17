@@ -7,6 +7,32 @@ This document revisits the essential security and optimized-performance configur
 By following the key recommendations outlined below, you can avoid common configuration errors and prevent security vulnerabilities as well as ensuring optimized performances.
 
 
+- **[Security](#security)**
+    - **[Get Latest PHP](#get-latest-php)**
+    - **[Use Up to date code dependencies and third party components](#useup-to-date-code-dependencies-and-third-party-components-)**
+    - **[Secure your server](#secure-your-server)**
+    - **[Apply the principles of security through obscurity](#apply-the-principles-of-security-through-obscurity)**
+    - **[Configure error reports appropriately](#configure-error-reports-appropriately)**
+    - **[SQL Injection](#sql-injection)**
+    - **[XSS](#xss)**
+    - **[Session Hijacking and Session fixation](#session-hijacking-and-session-fixation)**
+    - **[Cross-Site Request Forgery XSRF/CSRF](#cross-site-request-forgery-xsrfcsrf)**
+    - **[Parameter Tempering](#parameter-tempering)**
+    - **[Command Injections](#command-injections)**
+    - **[Brute Force](#brute-force)**
+    - **[Remote & Local File Inclusion RFI/LFI](#remote--local-file-inclusion-rfilfi)**
+    - **[File Upload](#file-upload)**
+    - **[Passwords](#passwords)**
+    - **[SSL Certificates For HTTPS](#ssl-certificates-for-https)**
+    - **[Other Techniques and Tools](#other-techniques-and-tools)**
+	    - **[ Add Rate limiting to costly calls and requests](#add-rate-limiting-to-costly-calls-and-requests)**
+	    - **[Security Configurations](#security-configurations)**
+	    - **[PHPCS-Security-Audit](#phpcs-security-audit)**
+	    - **[ Parse: A PHP Security Scanner](#parse-a-php-security-scanner)**
+	    - **[PHPMD](#phpmd)**
+	    
+- **[Resources](#resources)**
+
 
 ## Security 
 
@@ -483,8 +509,6 @@ What PHPMD does is: It takes a given PHP source code base and look for several p
 it can help us with avoiding some security bugs early-on,
 
 we will discuss such tool and other static analysis tools like `phpstan`, in the folder `Coding-Practices`.
-
-
 
 
 ## Resources

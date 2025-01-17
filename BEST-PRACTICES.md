@@ -438,7 +438,7 @@ $rateLimiter->rateLimit(120, 1, "endpoint1");
 
 ##### PHPCS-Security-Audit
 
-phpcs-security-audit is a set of [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) rules that finds vulnerabilities and weaknesses related to security in PHP code.
+[_phpcs-security-audit_](https://github.com/FloeDesignTechnologies/phpcs-security-audit) is a set of [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) rules that finds vulnerabilities and weaknesses related to security in PHP code.
 
 The tool also checks for CVE issues , it being an extension of `PHP_CodeSniffer` makes it easy integration into continuous integration systems. It also allows for finding security bugs that are not detected with some object oriented analysis (such as [PHPMD](http://phpmd.org/)).
 
@@ -464,6 +464,12 @@ FOUND 18 ERRORS AND 36 WARNINGS AFFECTING 44 LINES
 ```
 
 You can easily customize the rulesets.
+
+##### Parse: A PHP Security Scanner
+
+The [_Parse_](https://github.com/psecio/parse) scanner is a static scanning tool to review your PHP code for potential security-related issues.
+
+For example, you really shouldn't be using [eval](http://php.net/eval) in your code anywhere if you can help it. When the scanner runs, it will parse down each of your files and look for any `eval()` calls. If it finds any, it adds that match to the file and reports it in the results.
 
 ##### PHPMD
 

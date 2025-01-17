@@ -376,6 +376,8 @@ When designing an internal application, you must provide a form of access contro
 > Access control weaknesses are common due to the lack of automated detection, and lack of effective functional testing by application developers.  
 > Access control detection is not typically amenable to automated static or dynamic testing. Manual testing is the best way to detect missing or ineffective access control, including HTTP method (GET vs PUT, etc), controller, direct object references, etc.
 
+**Remediation** : 
+
 * With the exception of public resources, deny by default.  
 * Implement access control mechanisms once and re-use them throughout the application, including minimizing CORS usage.  
 * Model access controls should enforce record ownership, rather than accepting that the user can create, read, update, or delete any record.  
@@ -389,6 +391,28 @@ Some access control mechanisms are :
 1.  Role Based Access Control (RBAC) : Role based access control is giving access to a resource when the subject has a given role.
 2. Permission Based Access Control (PBAC) : Role based access control is giving access to a resource when the subject has a given permission
 3. Access Control Lists (ACL): specifies which subjects are granted access to a resource, as well as what operations are allowed on a given resource.
+
+##### Broken Authentication
+> When authentication is broken, it means there are loopholes in how users are authenticated, and web sessions are managed. Such loopholes can allow attackers to impersonate a user and perform unauthorized actions
+
+>Attackers can take advantage of poor authentication mechanisms to hijack a users’ account and access sensitive data. This is what happens in the case of broken authentication where weak authentication features result in security compromises.
+
+**Types of Broken Authentication Attacks**
+* Brute Force
+* Session Hijacking
+* Session Fixation
+* Credential Stuffing
+* Session ID in URL Rewrite
+
+**Remediation** : 
+
+* Where possible, implement multi-factor authentication to prevent automated, credential stuffing, brute force, and stolen credential re-use attacks.  
+* Do not ship or deploy with any default credentials, particularly for admin users.  
+* Enforce Strong passwords constraints and Implement weak-password checks, such as testing new or changed passwords against a list of the [top 10000 worst passwords](https://github.com/danielmiessler/SecLists/tree/master/Passwords).  
+* Align password length, complexity and rotation policies with [NIST 800-63 B’s guidelines in section 5.1.1 for Memorized Secrets](https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret) or other modern, evidence based password policies.  
+* Ensure registration, credential recovery, and API pathways are hardened against account enumeration attacks by using the same messages for all outcomes.  
+* Limit or increasingly delay failed login attempts. Log all failures and alert administrators when credential stuffing, brute force, or other attacks are detected.  
+* Use a server-side, secure, built-in session manager that generates a new random session ID with high entropy after login. Session IDs should not be in the URL, be securely stored and invalidated after logout, idle, and absolute timeouts.
 
 ### Remote & Local File Inclusion RFI/LFI
 

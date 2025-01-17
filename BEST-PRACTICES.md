@@ -20,6 +20,9 @@ By following the key recommendations outlined below, you can avoid common config
     - **[Parameter Tempering](#parameter-tempering)**
     - **[Command Injections](#command-injections)**
     - **[Brute Force](#brute-force)**
+    - **[Broken Access-Control And Authentication](#broken-access-control-and-authentication)**
+	    - **[Broken Access Control](#broken-access-control)**
+	    - **[Broken Authentication](#broken-authentication)**
     - **[Remote & Local File Inclusion RFI/LFI](#remote--local-file-inclusion-rfilfi)**
     - **[File Upload](#file-upload)**
     - **[Passwords](#passwords)**

@@ -68,7 +68,7 @@ These techniques do not replace fundamental security measures, but they do make 
 
 Errors displayed are valuable for development. However, they can also expose sensitive information when visible in production. It is therefore essential to configure error reports appropriately.
 
-**Remediation** : 
+:lock: **Remediation** : 
 
 ```ini
 display_errors=Off

@@ -87,7 +87,7 @@ Suppose your PHP application processes user data based on input to generate SQL 
 $sql = "SELECT * from table_name1 where name = ' malidkha'); Drop TABLE table_name2;-- '";
 ```
 
-**Remediation** : 
+:lock: **Remediation** : 
 1. Use Prepared Statements, also known as parameterized queries.
 ```php
 // for PDO
@@ -146,7 +146,7 @@ if (empty($email)) {
 
 It can be lethal if combined with an XSS attack, where cookies of users can be stolen. A more damaging attack would be to redirect any user to a PHP file that steals cookies.
 
-**Remediation** : 
+:lock: **Remediation** : 
 
  1. Employ the `htmlspecialchars`, and `ENT_QUOTES` method on the client body (user input) to prevent injecting malicious data into the database. These are built-in PHP methods to help sanitize input.
 
@@ -195,7 +195,7 @@ Session hijacking refers to all attacks that attempt to gain access to another u
 
 Session hijacking is a particular type of malicious web attack in which the attacker secretly steals the session ID of the user. That session ID is sent to the server where the associated $_SESSION array validates its storage in the stack and grants access to the application. Session hijacking is possible through an XSS attack or when someone gains access to the folder on a server where the session data is stored.
 
-**Remediation** :
+:lock: **Remediation** :
 
 ##### Configure PHP Setting
 
@@ -257,7 +257,7 @@ session_regenerate_id(true)   // the argument tells PHP to delete the old sessio
 
 This attack forces an end user to execute unwanted actions on a web application in which he/she is currently authenticated. A successful CSRF exploit can compromise end user data and operation in case of normal user. If the targeted end user is the administrator account, this can compromise the entire web application.
 
-**Remediation** :
+:lock: **Remediation** :
 
 1. Random token with each request
 > A application will generate the token which will be included in the form as a hidden input field. This unique token key will be use to varify valid request by comparing the submitted token with the one stored in the session. 
@@ -305,7 +305,7 @@ TO => http://www.malidkha.com/product?pid=12345&price=1
 ```
 
 
-**Remediation** : 
+:lock: **Remediation** : 
 1. Use session variable instead of using hidden form fields to store variables.
 2. Or use encrypted values to compare if the field has been altered or not.
 
@@ -326,7 +326,7 @@ Executing commands via PHP can be extremely powerful, but it also presents a hig
 
 Poor management can allow attackers to inject malicious commands into your server, compromising the security of your application.
 
-**Remediation** :
+:lock: **Remediation** :
 
 1. Disable dangerous functions with disable_functions
 >  These functions are commonly used to execute system commands, open processes or access sensitive information. Disabling them prevents misuse in the event of a breach.
@@ -355,7 +355,7 @@ A brute force attack can manifest itself in many different ways, but primarily c
 
 This attack is used to break in (log in) to websites, getting access to applications and APIs...
 
-**Remediation** : 
+:lock: **Remediation** : 
 1. Have a `BruteForce Block` mechanism in place
 ```php
 # if a login/access to api/site is failed
@@ -379,7 +379,7 @@ When designing an internal application, you must provide a form of access contro
 > Access control weaknesses are common due to the lack of automated detection, and lack of effective functional testing by application developers.  
 > Access control detection is not typically amenable to automated static or dynamic testing. Manual testing is the best way to detect missing or ineffective access control, including HTTP method (GET vs PUT, etc), controller, direct object references, etc.
 
-**Remediation** : 
+:lock: **Remediation** : 
 
 * With the exception of public resources, deny by default.  
 * Implement access control mechanisms once and re-use them throughout the application, including minimizing CORS usage.  
@@ -407,7 +407,7 @@ Some access control mechanisms are :
 * Credential Stuffing
 * Session ID in URL Rewrite
 
-**Remediation** : 
+:lock: **Remediation** : 
 
 * Where possible, implement multi-factor authentication to prevent automated, credential stuffing, brute force, and stolen credential re-use attacks.  
 * Do not ship or deploy with any default credentials, particularly for admin users.  
@@ -428,7 +428,7 @@ By exploiting an RFI, an attacker can potentially execute malicious code on the 
 
 An RFI vulnerability occurs mainly in web applications that accept user input to determine which file to include in a page. If this input is not properly filtered or validated, an attacker can manipulate the input to point to a file hosted on a server under his control. This remote file, often written in a scripting language such as PHP, can then contain malicious code that will be executed by the vulnerable application’s server.
 
-**Remediation** : 
+:lock: **Remediation** : 
 1. Avoid using user-controlled data directly in `include` and `require` statements and instead consider an allow-list approach for dynamically including scripts. 
 
 2.  Input validation is essential to protect web applications against RFI attacks.
@@ -446,7 +446,7 @@ allow_url_include = Off
 
 It allows your visitor to place files (upload files) on your server. This can result in various security problems such as delete your files, delete a database, get user details and much more. You can disable file uploads using PHP or write secure code (like validating user input and only allow image file types such as png or gif).
 
-**Remediation** : 
+:lock: **Remediation** : 
 1. Disable PHP execution in selected directories
 
 > Put a .htaccess with the following content in upload directory to prevent the execution of PHP file. Instead, it will download the file.
@@ -468,7 +468,7 @@ Reversible encryption is harmful. It can easily be cracked and decrypted, making
 
 Hashing passwords is a safer bet than not hashing passwords at all (or Reversible encrypted passwords) as hackers can expose sensitive information if passwords are not secured properly. But the idea of using any hashing algorithm is not effective as there are still proper ways of hashing passwords for guaranteed security.
 
-**Remediation** : 
+:lock: **Remediation** : 
 
  1. Hash Passwords to Prevent Vulnerabilities
  
@@ -493,7 +493,7 @@ All the modern browsers like Google Chrome, Opera, Firefox and others, recommend
 
 Rate limiting is a technology that puts a cap on the number of times a user can request a resource from a server. Many services implement rate limiting to prevent abuse to a service when a user may try to put too much load on a server
 
-**Remediation** : 
+:lock: **Remediation** : 
 
 1. Have a `Rate Limit`Mechanism in place
 ```php

@@ -1,10 +1,10 @@
-# PHP Best Practices
+# PHP Security Best Practices
 
 ## Overview
 
-This document revisits the essential security and optimized-performance configurations for PHP & PHP-FPM runtime from a practical perspective.
+This document revisits the essential security configurations for PHP & PHP-FPM runtime from a practical perspective.
 
-By following the key recommendations outlined below, you can avoid common configuration errors and prevent security vulnerabilities as well as ensuring optimized performances.
+By following the key recommendations outlined below, you can avoid common configuration errors and prevent security vulnerabilities.
 
 
 -  **[Security](#security)**

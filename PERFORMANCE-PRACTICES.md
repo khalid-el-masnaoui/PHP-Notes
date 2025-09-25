@@ -203,3 +203,28 @@ pm.max_requests = 1000 # avoiding memory leaks
 ```
 
 ##### Adjusting child processes for PHP-FPM
+
+When setting these options consider the following:
+
+- How long is your average request?
+- How much memory on average does each child process consume?
+
+
+```shell
+## Determine if the max_children limit has been reached
+sudo grep max_children /var/log/php?.?-fpm.log
+
+## php-fpm average memory usage
+ps --no-headers -o "rss,cmd" -C php-fpm7.0 | awk '{ sum+=$1 } END { printf ("%d%s\n", sum/NR/1024,"M") }'
+
+## print every php-fpm process memeory
+ps -eo size,pid,user,command --sort -size | awk '{ hr=$1/1024 ; printf("%13.2f Mb ",hr) } { for ( x=4 ; x<=NF ; x++ ) { printf("%s ",$x) } print "" }' | grep php-fpm
+```
+
+###### Calculate max_children
+* **based on RAM** :
+	* `pm.max_children = Total RAM dedicated to the web server / Max child process size`
+ * ***Based on average script execution time** :
+	 * -`max_children = (average PHP script execution time) * (PHP requests per second)`
+
+

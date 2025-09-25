@@ -225,7 +225,7 @@ ps -eo size,pid,user,command --sort -size | awk '{ hr=$1/1024 ; printf("%13.2f M
 #### Calculate max_children
 * **based on RAM** :
 	* `pm.max_children = Total RAM dedicated to the web server / Max child process size`
- * ***Based on average script execution time** :
+ * **Based on average script execution time** :
 	 * -`max_children = (average PHP script execution time) * (PHP requests per second)`
 
 
@@ -260,10 +260,10 @@ Database interactions are often a major source of performance issues in PHP appl
 
 Caching is a powerful technique that can drastically improve the performance of your PHP applications. By storing and reusing data or computations, caching can reduce the need for expensive database queries or complex calculations.
 
-* ***Object caching**: Storing and reusing the results of database queries or expensive calculations to reduce the need for repeated database operations.
+* **Object caching**: Storing and reusing the results of database queries or expensive calculations to reduce the need for repeated database operations.
 	* Using `Redis`, `Memecache`, `APCu`
 
-* ***Page caching**: Saving and reusing the output of entire HTML pages to minimize the need for server-side processing on subsequent requests.
+* **Page caching**: Saving and reusing the output of entire HTML pages to minimize the need for server-side processing on subsequent requests.
 	* Using `HTTP-Caching` => check my repository [Nginx-Notes](https://github.com/khalid-el-masnaoui/Nginx-Notes)
 ### Concurrency with Asynchronous PHP
 
@@ -307,6 +307,101 @@ On top of caching static assets , you can minify them. It is recommended minifyi
 
 ### Memory Management and Resource Handling
 
+Memory management in PHP is crucial because poor management can lead to memory leaks and degraded performance.
+
+- Using generators (`yield`) prevents loading entire files/resources into memory
+	- **Traditional iterator**: build the whole array, then loop.
+	-  **Generator**: compute and `yield` one value at a time, on demand.
+	-  **Database cursors**  : Fetch rows one by one to avoid loading the entire result-set.
+- The `finally` block ensures resources are always freed
+- Processing data in chunks reduces memory footprint
+- Explicitly un-setting variables when no longer needed helps garbage collection
+
+```php
+
+//----------------------------------------------------
+
+//processing large files, line by line
+function processLargeFile($filePath) {
+    // Using fopen in 'r' mode for memory efficiency
+    $handle = fopen($filePath, 'r');
+    if (!$handle) {
+        throw new RuntimeException('Failed to open file');
+    }
+
+    try {
+        while (!feof($handle)) {
+            // Using yield instead of storing all lines in memory
+            yield fgets($handle);
+        }
+    } finally {
+        // Ensure file handle is always closed, even if an exception occurs
+        fclose($handle);
+    }
+}
+
+// Example of processing a 1GB file with minimal memory usage
+function processGiantLogFile($logPath) {
+    $stats = ['errors' => 0, 'warnings' => 0];
+
+    foreach (processLargeFile($logPath) as $line) {
+        // Process one line at a time instead of loading entire file
+        if (strpos($line, 'ERROR') !== false) {
+            $stats['errors']++;
+        } elseif (strpos($line, 'WARNING') !== false) {
+            $stats['warnings']++;
+        }
+
+        // Free up memory after processing each line
+        unset($line);
+    }
+
+    return $stats;
+}
+
+// --------------------------------------------------
+
+// database cursor
+function getDatabaseRows(PDO $pdo, string $query): Generator  
+{  
+	$stmt = $pdo->query($query); // Or $pdo->prepare($query) and then $stmt->execute()  
+	try {
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {  
+			yield $row;  
+		}  
+	} finally {
+		$stmt->closeCursor();
+		# $stmt = null;
+	}
+	
+}
+
+// Iterate with the Generator
+$pdo->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, false);
+$rowsGenerator = getDatabaseRows($pdo, "SELECT * FROM large_table");  
+  
+foreach ($rowsGenerator as $row) {  
+	// Process each row here  
+	echo $row['column_name'] . "\n";  
+}
+
+/*
+- **Unbuffered Queries:** 
+    Generators naturally align with unbuffered queries, where data is fetched row by row from the database server. Be aware of the implications of unbuffered queries, such as the inability to send further queries over the same connection until the result set is exhausted.
+*/
+```
+
+* **Buffered Queries :**  Queries are using the buffered mode by default. This means that query results are immediately transferred from the MySQL Server to PHP and then are kept in the memory of the PHP process. This allows additional operations like counting the number of rows, and moving (seeking) the current result pointer. It also allows issuing further queries on the same connection while working on the result set. The downside of the buffered mode is that larger result sets might require quite a lot memory. The memory will be kept occupied till all references to the result set are unset or the result set was explicitly freed, which will automatically happen during request end at the latest.
+
+- **Un-buffered queries**:  Should be used only when a large result set is expected that will be processed sequentially. Unbuffered queries contain a number of pitfalls that makes it more difficult to use them, (e.g. the number of rows in the result set is unknown until the last row is fetched,  increase the load on the server.). Buffered queries are the easier and more flexible way to process result sets.
+
+```php 
+
+//----------------------------------------------------
+
+// File upload in chunks using Plupload
+
+```
 ### String Operations Optimization
 
 ### Database Query Optimization
@@ -315,6 +410,8 @@ On top of caching static assets , you can minify them. It is recommended minifyi
 
 ### Error Handling and Logging
 
+
+- Keep **JSON responses small** — only return what’s needed.
 
 
 ## Monitoring, Profiling and Proactive Optimization

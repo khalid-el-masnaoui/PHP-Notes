@@ -243,7 +243,6 @@ Database interactions are often a major source of performance issues in PHP appl
 * **Excessive database connections**: Opening and closing numerous database connections can introduce latency and consume system resources.
 
 * **Inefficient data fetching**: Fetching large amounts of data, especially when only a small portion is needed, can slow down your application.
-
 ##### Techniques for Optimizing Database Queries and Interactions
 
 * **Optimize SQL queries**: Analyze and optimize your SQL queries using tools like `EXPLAIN` or the `MySQL Query Analyzer`. Consider using  JOINs, subqueries, or temporary tables to improve query performance.
@@ -256,6 +255,16 @@ Database interactions are often a major source of performance issues in PHP appl
 
 * **Opening/closing database connections** : Un-setting variables and closing database connections in your code will save precious memory. Also consider using singleton pattern for when trying to open/use a database connection
 
+
+### Caching
+
+Caching is a powerful technique that can drastically improve the performance of your PHP applications. By storing and reusing data or computations, caching can reduce the need for expensive database queries or complex calculations.
+
+* ***Object caching**: Storing and reusing the results of database queries or expensive calculations to reduce the need for repeated database operations.
+	* Using `Redis`, `Memecache`, `APCu`
+
+* ***Page caching**: Saving and reusing the output of entire HTML pages to minimize the need for server-side processing on subsequent requests.
+	* Using `HTTP-Caching` => check my repository [Nginx-Notes](https://github.com/khalid-el-masnaoui/Nginx-Notes)
 ### Concurrency with Asynchronous PHP
 
 Asynchronous operations allow your code to continue running while waiting for a response from an external resource, such as a database or API. This can improve performance by allowing your server to handle more requests at once.

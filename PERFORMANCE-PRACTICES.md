@@ -387,7 +387,9 @@ foreach ($rowsGenerator as $row) {
 
 /*
 - **Unbuffered Queries:** 
-    Generators naturally align with unbuffered queries, where data is fetched row by row from the database server. Be aware of the implications of unbuffered queries, such as the inability to send further queries over the same connection until the result set is exhausted.
+    Generators naturally align with unbuffered queries, where data is fetched row by row from the database server. 
+    Be aware of the implications of unbuffered queries, such as the inability to send further queries 
+    over the same connection until the result set is exhausted.
 */
 ```
 

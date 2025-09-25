@@ -37,3 +37,40 @@ To enable and configure Opcache, follow these steps:
 * `interned_strings_buffer` : Sets the memory allocated for storing interned strings. Increasing this value can improve performance, especially for applications with many string literals
 * `opcache.max_wasted_percentage` : determines the maximum percentage of "wasted" memory in the OPcache shared memory until a restart is scheduled.  "wasted memory" refers to memory allocated within the OPcache that is no longer being used to store active, cached scripts. This can occur when scripts are deleted, modified, or become otherwise invalid, but their corresponding bytecode still occupies space in the cache.
 * `opcache.file_update_protection` : prevents caching files that are less than this number of seconds old. It protects from caching of incompletely updated files. You may increase performance by setting this to “0” (ensure your file update are **atomic**).
+
+
+3.  **Monitor OPcache performance**: Use monitoring tools like **opcache_get_status()** or third-party solutions like the **OPcache GUI**  or **CachTool** to review cache usage, cache hits, and other relevant metrics. Analyzing this data can help you fine-tune your OPcache settings for optimal performance.
+
+```shell
+# CachTool
+php cachetool.phar opcache:status --fcgi=/var/run/php5-fpm.sock #php-fpm
+php cachetool.phar opcache:status --cli #cli
+```
++----------------------+---------------------------------+
+| Name                 | Value                           |
++----------------------+---------------------------------+
+| Enabled              | Yes                             |
+| Cache full           | No                              |
+| Restart pending      | No                              |
+| Restart in progress  | No                              |
+| Memory used          | 66.83 MiB                       |
+| Memory free          | 444.8 MiB                       |
+| Memory wasted (%)    | 381.68 KiB (0.072799623012543%) |
+| Strings buffer size  | 48 MiB                          |
+| Strings memory used  | 503.22 KiB                      |
+| Strings memory free  | 47.51 MiB                       |
+| Number of strings    | 10569                           |
++----------------------+---------------------------------+
+| Cached scripts       | 59                              |
+| Cached keys          | 63                              |
+| Max cached keys      | 32531                           |
+| Start time           | Fri, 18 Jul 2025 07:43:21 +0900 |
+| Last restart time    | Never                           |
+| Oom restarts         | 0                               |
+| Hash restarts        | 0                               |
+| Manual restarts      | 0                               |
+| Hits                 | 234846874                       |
+| Misses               | 86                              |
+| Blacklist misses (%) | 0 (0%)                          |
+| Opcache hit rate     | 99.999963380407                 |
++----------------------+---------------------------------+

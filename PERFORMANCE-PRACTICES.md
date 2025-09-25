@@ -129,3 +129,15 @@ opcache.enable = 1 # opache must be enabled
 opcache.jit_buffer_size =  # determines the amount of memory allocated for storing compiled machine code
 opcache.jit = on  # default 'tracing/on' JIT compilation mode[check INTERNALS.md]
 ```
+
+### Enable realpath_cache
+The PHP realpath cache is a mechanism within PHP that stores the resolved, canonical paths of files and directories. When PHP needs to access a file, it often first needs to determine its absolute path, resolving any symbolic links, relative path components (like `.` or `..`), and directory separators. This process can be computationally intensive, especially when dealing with complex file structures or frequent file access.
+
+- When a file path is first requested in PHP (e.g., through `include`, `require`, `file_exists()`, `realpath()`), PHP resolves its real path on the filesystem.
+- This resolved path, along with other metadata like expiration time, is then stored in the `realpath` cache.
+- Subsequent requests for the same file path can then retrieve the real path directly from the cache, avoiding the need for repeated filesystem lookups.
+
+```shell
+realpath_cache_size = 4M # the maximum size of the realpath cache in bytes.
+realpath_cache_ttl = 300 #he time-to-live (TTL) for realpath cache entries in seconds. After this duration, an entry is considered expired and will be re-resolved on the next access.
+```

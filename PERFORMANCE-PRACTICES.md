@@ -184,3 +184,22 @@ max_input_time = 60
 post_max_size = 1.5M
 upload_max_filesize = 1.1M
 ```
+
+
+## PHP-FPM: Fine-Tuning for High Loads
+
+##### General
+PHP-FPM helps improve your app’s performance by maintaining pools of workers that can process PHP requests. This is essential when your app needs to handle a high number of simultaneous requests.  The `pm.static` configuration can offer maximum performance.
+
+
+The PHP-FPM _pm static_ setting depends heavily on how much free memory your server has. If you suffer from low server memory, then pm _ondemand_ or _dynamic_ maybe be better options. On the other hand, if you have the memory available, you can avoid much of the PHP process manager (PM) overhead by setting pm _static_ to the max capacity of your server.
+*  `pm.static` should be set to the max amount of PHP-FPM processes that can run _without creating memory availability or cache pressure issues_
+
+```shell
+# pool.conf
+pm = static
+pm.max_children = 30
+pm.max_requests = 1000 # avoiding memory leaks
+```
+
+##### Adjusting child processes for PHP-FPM

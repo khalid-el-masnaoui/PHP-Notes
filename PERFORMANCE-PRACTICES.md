@@ -253,6 +253,10 @@ Database interactions are often a major source of performance issues in PHP appl
 
 - **Fetch data efficiently**: Limit the amount of data fetched from the database by using the `SELECT` clause to request only the necessary columns and applying `LIMIT` and `OFFSET` clauses for pagination.  Avoid `N+1 query problem`
 
+* **Opening/closing database connections** : Un-setting variables and closing database connections in your code will save precious memory. Also consider using singleton pattern for when trying to open/use a database connection
+
+###
+
 #### Concurrency with Asynchronous PHP
 
 

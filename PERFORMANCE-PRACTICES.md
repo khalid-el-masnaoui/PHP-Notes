@@ -395,12 +395,19 @@ foreach ($rowsGenerator as $row) {
 
 - **Un-buffered queries**:  Should be used only when a large result set is expected that will be processed sequentially. Unbuffered queries contain a number of pitfalls that makes it more difficult to use them, (e.g. the number of rows in the result set is unknown until the last row is fetched,  increase the load on the server.). Buffered queries are the easier and more flexible way to process result sets.
 
+
+**Example for handling large files upload in chunks** 
 ```php 
 
 //----------------------------------------------------
 
 // File upload in chunks using Plupload
 
+# you can fine examples here : 
+-- https://www.plupload.com/docs/v2/Chunking
+-- https://www.techbreeze.in/uploading-large-files-in-chunks-with-plupload-and-php/
+
+-- https://github.com/moxiecode/plupload-handler-php/blob/master/PluploadHandler.php
 ```
 ### String Operations Optimization
 

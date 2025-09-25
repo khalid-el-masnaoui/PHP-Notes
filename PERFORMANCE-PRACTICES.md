@@ -141,3 +141,15 @@ The PHP realpath cache is a mechanism within PHP that stores the resolved, canon
 realpath_cache_size = 4M # the maximum size of the realpath cache in bytes.
 realpath_cache_ttl = 300 #he time-to-live (TTL) for realpath cache entries in seconds. After this duration, an entry is considered expired and will be re-resolved on the next access.
 ```
+
+
+### Turn off MySQL statistics in `php.ini`
+
+Make sure on your production servers, both of these settings **`mysqlnd.collect_statistics`** and **`mysqlnd.collect_memory_statistics`** are disabled. It should always be disabled unless you have a specific reason to enable it.
+
+You can view MySQL run-time statistics using the MySQL command line (ex. `show status;`)
+
+```shell
+mysqlnd.collect_statistics = Off
+mysqlnd.collect_memory_statistics = Off
+```

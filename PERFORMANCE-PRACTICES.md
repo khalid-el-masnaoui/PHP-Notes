@@ -72,4 +72,43 @@ php cachetool.phar opcache:status --cli #cli
 | Misses               | 86                              |
 | Blacklist misses (%) | 0 (0%)                          |
 | Opcache hit rate     | 99.999963380407                 |
+### OPcache preloading
 
+OPcache preloading (`PHP +7.4`) loads selected files into shared memory, making their content (functions, classes) globally available for requests when the PHP engine starts. It also removes the need to include these files later. 
+
+* To enable preloading, add a variable that specifies a preload script in the `php.ini`:
+````shell
+opcache.preload=/path/to/your/preload.php
+````
+* Create a PHP script `preload.php` that explicitly lists and includes the files you want to preload. This script will be executed once when the PHP process starts.
+```php 
+<?php  
+// preload.php  
+opcache_compile_file(__DIR__ . '/path/to/your/important-file.php');  
+opcache_compile_file(__DIR__ . '/path/to/another/important-file.php');  
+// You can also use require_once or include_once for files  
+// require_once __DIR__ . '/vendor/autoload.php'; // Example for Composer autoload  
+
+
+## preload all php files in a specific directory
+# Define the directory to preload  
+$directoryToPreload = '/path/to/your/application/src'; // Replace with your target directory  
+  
+// Function to recursively find and preload PHP files  
+function preloadDirectory($directory) {  
+	$directoryIterator = new RecursiveDirectoryIterator($directory,   RecursiveDirectoryIterator::SKIP_DOTS)
+	$files = new RecursiveIteratorIterator($directoryIterator,
+RecursiveIteratorIterator::LEAVES_ONLY  
+);  
+  
+	foreach ($files as $file) {  
+		if ($file->isFile() && $file->getExtension() === 'php') {  
+			opcache_compile_file($file->getPathname());  
+		}  
+	}  
+}  
+  
+// Execute the preloading  
+preloadDirectory($directoryToPreload);
+
+```

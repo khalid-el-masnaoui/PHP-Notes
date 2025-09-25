@@ -290,6 +290,9 @@ composer dump-autoload -o
 
 ### Use a Content Delivery Network (CDN)
 
+A CDN is a network of servers that are distributed across different geographic locations. By storing static content on these servers, you can reduce the amount of time it takes for your content to be delivered to users, as well as reduce the load on your own server by offload static resources from your PHP application. Popular CDN services for PHP include `Cloudflare` and `Amazon CloudFront`.
+
+On top of caching static assets , you can minify them. It is recommended minifying the static scripts so that the processing time can be decreased. This can be achieved by using composer packages like `matthiasmullie/minify` 
 
 ## PHP Code Optimization
 

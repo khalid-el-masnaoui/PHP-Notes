@@ -170,3 +170,17 @@ output_buffering = 4096 # Enables buffering with a maximum size of 4096 bytes
 ```
 
 - Using `ob_start()` function: This function can be called within your PHP script to start output buffering at a specific point (even if it is not enabled in `php.ini`). It offers more granular control and allows for custom output handlers. (used with `ob_end_flush()`)
+
+### PHP Configuration Tuning
+
+There are several directives that can be tuned for performance like `memory_limit`,  `max_execution_time`, `upload_max_filesize`, and `post_max_size` should be configured according to the needs of your site.
+
+example configuration : 
+
+```shell
+memory_limit = 128M
+max_execution_time = 30
+max_input_time = 60
+post_max_size = 1.5M
+upload_max_filesize = 1.1M
+```

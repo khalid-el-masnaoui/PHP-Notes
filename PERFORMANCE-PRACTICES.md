@@ -277,6 +277,16 @@ curl --http3 -I https://example.com/
 For more nginx performance tuning, please check my repository  [Nginx-Notes](https://github.com/khalid-el-masnaoui/Nginx-Notes)
 ### Minimize External Dependencies
 
+External dependencies, such as third-party libraries, can impact performance if not properly optimized. Consider using only the necessary dependencies and optimizing them for your use case.
+
+```shell
+#detect composer un-used packages 
+composer-dependency-analyser
+composer-unused
+
+# optimize composer
+composer dump-autoload -o
+```
 
 ### Use a Content Delivery Network (CDN)
 

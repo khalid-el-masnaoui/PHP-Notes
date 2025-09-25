@@ -264,7 +264,17 @@ Modern PHP applications can benefit from asynchronous programming to handle mult
 
 ### Security as a Performance Factor
 
+Implementing SSL/TLS, adds a layer of encryption that, if not properly configured, can slow down the site. Tools like Let’s Encrypt with OCSP stapling can help in maintaining both security and performance.
 
+Optimize the performance of Nginx by supporting the latest TLS protocols (`TLS 1.2 & TLS 1.3`) and enabling `HTTP/2` and `HTTP/3 & QUIC`
+
+```shell
+#check http/2 and htpp/3 are enabled
+curl --http2 -I https://example.com/
+curl --http3 -I https://example.com/
+```
+
+For more nginx performance tuning, please check my repository  [Nginx-Notes](https://github.com/khalid-el-masnaoui/Nginx-Notes)
 ### Minimize External Dependencies
 
 

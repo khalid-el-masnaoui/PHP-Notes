@@ -5,6 +5,10 @@ This document revisits the essential optimized-performance practices for PHP & P
 By following the key recommendations outlined below, you can avoid common configuration errors while ensuring optimized performances.
 
 
+
+### What exactly is a good PHP performance?
+
+Performance and speed are not necessarily synonymous. Achieving optimal performance is often a balancing act that requires trade-offs between speed, accuracy, and scalability. For example, while building a web application, you may have to decide between prioritizing speed by writing a script that loads everything into memory up front or prioritizing scalability with a script that loads data in chunks.
 ### Get Latest PHP
 
 Newer PHP versions often offer performance improvements and better features, so as  the first step keeping PHP up to date is crucial.

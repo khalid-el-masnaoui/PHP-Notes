@@ -46,9 +46,9 @@ To enable and configure Opcache, follow these steps:
 php cachetool.phar opcache:status --fcgi=/var/run/php5-fpm.sock #php-fpm
 php cachetool.phar opcache:status --cli #cli
 ```
-+----------------------+---------------------------------+
+
 | Name                 | Value                           |
-+----------------------+---------------------------------+
+| -------------------- | ------------------------------- |
 | Enabled              | Yes                             |
 | Cache full           | No                              |
 | Restart pending      | No                              |
@@ -60,7 +60,6 @@ php cachetool.phar opcache:status --cli #cli
 | Strings memory used  | 503.22 KiB                      |
 | Strings memory free  | 47.51 MiB                       |
 | Number of strings    | 10569                           |
-+----------------------+---------------------------------+
 | Cached scripts       | 59                              |
 | Cached keys          | 63                              |
 | Max cached keys      | 32531                           |
@@ -73,4 +72,4 @@ php cachetool.phar opcache:status --cli #cli
 | Misses               | 86                              |
 | Blacklist misses (%) | 0 (0%)                          |
 | Opcache hit rate     | 99.999963380407                 |
-+----------------------+---------------------------------+
+

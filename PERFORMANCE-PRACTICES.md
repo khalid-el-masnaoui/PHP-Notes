@@ -96,9 +96,8 @@ $directoryToPreload = '/path/to/your/application/src'; // Replace with your targ
   
 // Function to recursively find and preload PHP files  
 function preloadDirectory($directory) {  
-	$directoryIterator = new RecursiveDirectoryIterator($directory,   RecursiveDirectoryIterator::SKIP_DOTS)
-	$files = new RecursiveIteratorIterator($directoryIterator,
-RecursiveIteratorIterator::LEAVES_ONLY  
+	$directoryIterator = new RecursiveDirectoryIterator($directory, RecursiveDirectoryIterator::SKIP_DOTS)
+	$files = new RecursiveIteratorIterator($directoryIterator, RecursiveIteratorIterator::LEAVES_ONLY  
 );  
   
 	foreach ($files as $file) {  
@@ -111,4 +110,18 @@ RecursiveIteratorIterator::LEAVES_ONLY
 // Execute the preloading  
 preloadDirectory($directoryToPreload);
 
+```
+
+### Enable Just-In-Time (JIT) Compilation
+
+**PHP 8** introduced the JIT compiler as a core feature, offering a new avenue for PHP tuning.
+
+* ***Upgrade to PHP 8**: Ensure your application is compatible with PHP 8 and take advantage of its new features, including the JIT compiler, improved syntax, and other performance optimizations.
+* **Configure JIT settings**: Fine-tune your JIT settings in the php.ini file to optimize performance.
+```shell
+# php.ini
+
+opcache.enable = 1 # opache must be enabled
+opcache.jit_buffer_size =  # determines the amount of memory allocated for storing compiled machine code
+opcache.jit = on  # default 'tracing/on' JIT compilation mode[check INTERNALS.md]
 ```

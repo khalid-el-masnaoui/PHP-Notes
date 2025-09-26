@@ -557,6 +557,86 @@ $intersection = $optimizer->arrayIntersectOptimized($array1, $array2);
 
 ### Error Handling and Logging
 
+Proper error handling and logging is essential for maintaining application stability:
+
+- Log file rotation to manage disk space (using Linux `log-rotate` is the recommended approach)
+- Different log levels for different types of errors
+- Stack trace logging for debugging
+- Administrator notification for critical errors
+- Proper formatting of error messages
+
+```php 
+class ErrorHandler {
+    private const MAX_LOG_SIZE = 10485760; // 10MB
+    private const MAX_LOG_FILES = 5;
+    private string $logPath;
+    private array $logLevels = [
+        'DEBUG' => 0,
+        'INFO' => 1,
+        'WARNING' => 2,
+        'ERROR' => 3,
+        'CRITICAL' => 4
+    ];
+
+    public function __construct(string $logPath) {
+        $this->logPath = $logPath;
+    }
+
+    public function handleError(Throwable $e, string $level = 'ERROR'): void {
+        // Check log file size
+        if (file_exists($this->logPath) && filesize($this->logPath) > self::MAX_LOG_SIZE) {
+            $this->rotateLogFile();
+        }
+
+        // Format error message
+        $message = sprintf(
+            "[%s] [%s] %s: %s in %s:%d\nStack trace:\n%s\n",
+            date('Y-m-d H:i:s'),
+            $level,
+            get_class($e),
+            $e->getMessage(),
+            $e->getFile(),
+            $e->getLine(),
+            $e->getTraceAsString()
+        );
+
+        // Write to log file
+        error_log($message, 3, $this->logPath);
+
+        // Handle critical errors
+        if ($this->logLevels[$level] >= $this->logLevels['ERROR']) {
+            // Notify administrators or monitoring service
+            $this->notifyAdministrators($message);
+        }
+    }
+
+    private function rotateLogFile(): void {
+        // Rotate log files
+        for ($i = self::MAX_LOG_FILES - 1; $i >= 0; $i--) {
+            $oldFile = $this->logPath . ($i > 0 ? '.' . $i : '');
+            $newFile = $this->logPath . '.' . ($i + 1);
+
+            if (file_exists($oldFile)) {
+                rename($oldFile, $newFile);
+            }
+        }
+    }
+
+    private function notifyAdministrators(string $message): void {
+        // Implementation depends on notification system
+        // Could be email, Slack, monitoring service, etc.
+    }
+}
+
+// Usage example
+$errorHandler = new ErrorHandler('/var/log/application.log');
+
+try {
+    // Some risky operation
+    throw new RuntimeException('Something went wrong');
+} catch (Throwable $e) {
+    $errorHandler->handleError($e, 'ERROR');
+```
 
 - Keep **JSON responses small** — only return what’s needed.
 

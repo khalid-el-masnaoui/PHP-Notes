@@ -482,6 +482,11 @@ $text = $optimizer->efficientStringReplacement('old text is bad', $replacements)
 
 ### Database Query Optimization
 
+Efficient database operations are crucial for application performance:
+- Prepared statement caching
+- Bulk inserts instead of multiple single inserts
+- Selective field retrieval
+
 ### Array Operations and Loop Optimization
 
 ### Error Handling and Logging

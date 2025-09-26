@@ -664,3 +664,26 @@ try {
 
 **Note 2** : Each of these optimizations contributes to creating a robust, performant PHP application. Remember to always measure and profile your application to identify areas where it can be optimized for better performance, then you can use techniques such as caching and code refactoring to improve performance.
 ## Monitoring, Profiling and Proactive Optimization
+
+After ensuring compatibility and making the initial optimizations, the next step is constant monitoring and proactive adjustment.
+
+Monitoring PHP performance and diagnosing bottlenecks is essential to ensure that your  applications are running smoothly and efficiently.
+
+
+#### Types of bottlenecks that affect PHP performance
+
+Tinkering with your scripts can certainly be beneficial. However, there are also issues that have nothing to do with code which can also hinder PHP performance. This is why developers need a thorough understanding of their server's subsystems to **identify and address bottlenecks**. Below are areas you should check if you're having performance issues.
+
+1. **The network** : One obvious source of bottlenecks are networks. Depending on your current network's capacity, it may lack the power to handle the amount of data being transmitted.
+
+2. **The CPU** : Transmitting plain HTML pages across a network doesn't drain your CPU, but PHP applications do. Depending on your requirements, you may at least a server with multiple processors to process your PHP code efficiently.
+
+3. **Shared memory** : A lack of shared memory can disrupt inter-process communication, which can lead to lagging performance.
+
+4. **The filesystem** :  Your filesystem can become fragmented over time. A file cache that uses RAM can speed up disk access so long as there is enough memory.
+
+5. **Process management** : Make sure your server isn't overburdened with unnecessary processes. Remove any unused networking protocols, mail servers ....
+
+6. **Other servers** : If your application depends on outside servers, a bottleneck on the other server can slow you down. There is not much you can do in such scenarios, but you can make alterations on your side to mitigate deficiencies on the other end.
+
+**Note** : I do address every one of these bottlenecks (nginx, mysql, server & network ....) on my repositories, so check them-out

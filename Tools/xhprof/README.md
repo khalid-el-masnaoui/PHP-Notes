@@ -1,3 +1,4 @@
+# XHProf
 
 XHProf is a hierarchical, function-level profiler for PHP applications that collects data on function calls, CPU time, and memory usage to help identify performance bottlenecks. It works as a PHP extension to provide raw data collection and includes a simple HTML-based user interface for visualizing results, making it easier to understand code structure and compare different runs.
 
@@ -8,7 +9,6 @@ XHProf is a hierarchical, function-level profiler for PHP applications that coll
  ██╔██╗ ██╔══██║██╔═══╝ ██╔══██╗██║   ██║██╔══╝  
 ██╔╝ ██╗██║  ██║██║     ██║  ██║╚██████╔╝██║     
 ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝     
-                                                 
 ```
 ## Key Features
 
@@ -35,3 +35,12 @@ The original XHProf extension `phacility/xhprof`has been forked to `longxinH/xhp
 
 
 ## XHProf Default UI
+
+Check the docker-compose in the `default-ui` folder, the profiling data is stored in `/profiles` inside the container, not persisted on the host (consider adding a volume for it if needed)
+The profiling data is displayed for each php script run
+
+<p float="left" align="middle">
+  <img src="./../../images/xhprof_ui_1.png" width = "40%" />
+  <img src="./../../images/xhprof_ui_2.png" width="40%" /> 
+</p>
+**Note** : For using this Graph we need install extension that calls: graphviz. (included in the docker-file)

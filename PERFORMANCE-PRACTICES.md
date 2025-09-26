@@ -660,5 +660,7 @@ try {
 	- Excessive use of global variables can negatively impact performance and make code harder to maintain. Opt for function parameters, class properties, or local variables whenever possible.
 9. Keep **JSON responses small** — only return what’s needed.
 
+**Note** : All these code optimizations are micro-optimization, do not be too obsessed with them, use then whenever possible, not whenever
 
+**Note 2** : Each of these optimizations contributes to creating a robust, performant PHP application. Remember to always measure and profile your application to identify areas where it can be optimized for better performance, then you can use techniques such as caching and code refactoring to improve performance.
 ## Monitoring, Profiling and Proactive Optimization

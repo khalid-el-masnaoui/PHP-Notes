@@ -701,4 +701,20 @@ Your application may be running fine at one minute, but a sudden barrage of traf
 
 There are several more sophisticated performance monitoring solutions available that are specifically designed for PHP. i personally prefers self-hosted options (mostly open-source as well)
 * **Nginx Amplify**:  Can collect many useful metrics, including slow queries. (not self-hosted & it uses server resources heavily compared to other solution!!)
-* **`NetData`** : Can monitor PHP by collecting metrics from PHP-FPM (Connections, Requests, max children reached, slow requests and Resource Usage..) => [self-hosted & open-source]
+* **`NetData`** : Can monitor PHP by collecting metrics from PHP-FPM (Connections, Requests, max children reached, slow requests and Resource Usage..), offering custom alerting => [self-hosted & open-source] (**check the setup-guide in the folder `Tools`**)
+
+In addition to monitoring, **profiling your PHP code** allows you to pinpoint performance issues and optimize your application. It involves analyzing your application's code during execution to identify performance issues, memory leaks, and other issues that might slow down your application. Some of the key benefits of profiling include:
+
+- **Identifying bottlenecks**: Helps you detect slow or resource-intensive parts of your code that might be affecting your application's overall performance.
+
+- **Optimizing memory usage**: Can reveal areas of your code where memory is inefficiently allocated or not released, leading to memory leaks.
+
+- **Evaluating code quality**: Can expose inefficient algorithms or poorly structured code, which can be refactored for better performance.
+
+- **Measuring improvements to track performance**: Allows you to monitor your application's performance before and after implementing optimizations, helping you gauge the effectiveness of your PHP performance optimizing efforts.
+
+Several PHP profiling tools are available to help you track errors, write code faster identify performance bottlenecks and optimize your code.
+
+* **Xdebug** :  Offers a profiling feature that measures the execution time and memory usage of your PHP scripts.
+- **Tideways** : A cloud-based application performance monitoring and profiling tool for PHP applications.
+- **`XHProf`**: Self-hosted and open-source PHP profiler (basically tideways but with manual setup) (**check the setup-guide in the folder `Tools`**)

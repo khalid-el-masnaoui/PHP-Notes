@@ -670,9 +670,11 @@ After ensuring compatibility and making the initial optimizations, the next step
 Monitoring PHP performance and diagnosing bottlenecks is essential to ensure that your  applications are running smoothly and efficiently.
 
 
-#### Types of bottlenecks that affect PHP performance
+### Types of bottlenecks that affect PHP performance
 
-Tinkering with your scripts can certainly be beneficial. However, there are also issues that have nothing to do with code which can also hinder PHP performance. This is why developers need a thorough understanding of their server's subsystems to **identify and address bottlenecks**. Below are areas you should check if you're having performance issues.
+Tinkering with your scripts can certainly be beneficial. However, most bottlenecks occur when your application must access resources.. This is why developers need a thorough understanding of their server's subsystems to **identify and address bottlenecks**. Below are areas you should check if you're having performance issues.
+
+
 
 1. **The network** : One obvious source of bottlenecks are networks. Depending on your current network's capacity, it may lack the power to handle the amount of data being transmitted.
 
@@ -687,3 +689,16 @@ Tinkering with your scripts can certainly be beneficial. However, there are also
 6. **Other servers** : If your application depends on outside servers, a bottleneck on the other server can slow you down. There is not much you can do in such scenarios, but you can make alterations on your side to mitigate deficiencies on the other end.
 
 **Note** : I do address every one of these bottlenecks (nginx, mysql, server & network ....) on my repositories, so check them-out
+
+
+### PHP Performance Monitoring & Profiling
+
+Your application may be running fine at one minute, but a sudden barrage of traffic can cause your application to crash if you're unprepared. Of course, making changes always requires time, effort and money, and it can be difficult to tell if the investment is worth it. The best way to make informed decisions is to **continually collect data**.
+
+**Note** : While data collection is important, you should turn off your monitoring system when you don't need it because an influx of logs can slow things down. Of course, such logs give you valuable information about how to improve performance, so you should periodically monitor during peak traffic periods.
+
+**Monitoring PHP performance** starts with enabling and configuring the right tools. It goes beyond the basic overview-type monitoring provided by command line tools such as `top`, `htop`, and `btop`.
+
+There are several more sophisticated performance monitoring solutions available that are specifically designed for PHP. i personally prefers self-hosted options (mostly open-source as well)
+* **Nginx Amplify**:  Can collect many useful metrics, including slow queries. (not self-hosted & it uses server resources heavily compared to other solution!!)
+* **`NetData`** : Can monitor PHP by collecting metrics from PHP-FPM (Connections, Requests, max children reached, slow requests and Resource Usage..) => [self-hosted & open-source]

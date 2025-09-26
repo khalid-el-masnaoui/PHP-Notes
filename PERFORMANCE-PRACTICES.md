@@ -265,6 +265,7 @@ Caching is a powerful technique that can drastically improve the performance of 
 
 * **Page caching**: Saving and reusing the output of entire HTML pages to minimize the need for server-side processing on subsequent requests.
 	* Using `HTTP-Caching` => check my repository [Nginx-Notes](https://github.com/khalid-el-masnaoui/Nginx-Notes)
+	* `Nginx FastCGI cache`:  is a caching solution that works with Nginx. Nginx FastCGI cache allows you to cache the response of a FastCGI application, such as a PHP, in memory, reducing the number of requests made to the application server as well as drastically reducing response times. (!!for content that is not highly personalized or frequently changing. & not relying on authentication !!)
 ### Concurrency with Asynchronous PHP
 
 Asynchronous operations allow your code to continue running while waiting for a response from an external resource, such as a database or API. This can improve performance by allowing your server to handle more requests at once.
@@ -701,7 +702,12 @@ Your application may be running fine at one minute, but a sudden barrage of traf
 
 There are several more sophisticated performance monitoring solutions available that are specifically designed for PHP. i personally prefers self-hosted options (mostly open-source as well)
 * **Nginx Amplify**:  Can collect many useful metrics, including slow queries. (not self-hosted & it uses server resources heavily compared to other solution!!)
-* **`NetData`** : Can monitor PHP by collecting metrics from PHP-FPM (Connections, Requests, max children reached, slow requests and Resource Usage..), offering custom alerting => [self-hosted & open-source] (**check the setup-guide in the folder `Tools`**)
+* **`NetData`** : Can monitor PHP by collecting metrics from PHP-FPM (Connections, Requests, max children reached, slow requests and Resource Usage..), offering custom alerting => [self-hosted & open-source] (**i cover this tool in more details in the `Linux server` and `Observabiloty : monitoring, logging and alerting` repositories)
+
+<p float="left" align="middle">
+  <img src="./images/netdata_1.png" width = "40%" />
+  <img src="./images/netdata_2.png" width="40%" /> 
+</p>
 
 In addition to monitoring, **profiling your PHP code** allows you to pinpoint performance issues and optimize your application. It involves analyzing your application's code during execution to identify performance issues, memory leaks, and other issues that might slow down your application. Some of the key benefits of profiling include:
 
@@ -718,3 +724,5 @@ Several PHP profiling tools are available to help you track errors, write code f
 * **Xdebug** :  Offers a profiling feature that measures the execution time and memory usage of your PHP scripts.
 - **Tideways** : A cloud-based application performance monitoring and profiling tool for PHP applications.
 - **`XHProf`**: Self-hosted and open-source PHP profiler (basically tideways but with manual setup) (**check the setup-guide in the folder `Tools`**)
+
+**Note** : Enable **slow requests log** and PHP-FPM  **/status page** 

@@ -413,6 +413,73 @@ foreach ($rowsGenerator as $row) {
 ```
 ### String Operations Optimization
 
+String operations in PHP can be memory-intensive: 
+- Using `implode()` instead of string concatenation
+- Output buffering for building large strings
+- Using `strtr()` for multiple replacements
+- Precompiling regex patterns
+- Using `sprintf()` for format strings
+- Single quotes over double quotes. Double quotes check for variables, which can drag down performance.
+
+```php
+class StringOptimizer {
+    public function efficientConcatenation(array $strings): string {
+        // Use implode instead of concatenation
+        return implode('', $strings);
+    }
+
+    public function buildLargeHtml(array $data): string {
+        // Use output buffering for large string building
+        ob_start();
+
+        echo '<div class="container">';
+        foreach ($data as $item) {
+            printf(
+                '<div class="item">%s</div>',
+                htmlspecialchars($item, ENT_QUOTES, 'UTF-8')
+            );
+        }
+        echo '</div>';
+
+        return ob_get_clean();
+    }
+
+    public function efficientStringReplacement(string $subject, array $replacements): string {
+        // Use strtr for multiple replacements instead of str_replace
+        return strtr($subject, $replacements);
+    }
+
+    public function processLargeText(string $text): string {
+        // Precompile regex patterns for better performance
+        static $pattern = '/\b\w+@\w+\.\w+\b/';
+
+        return preg_replace_callback(
+            $pattern,
+            fn($match) => $this->processEmail($match[0]),
+            $text
+        );
+    }
+}
+
+// Usage examples
+$optimizer = new StringOptimizer();
+
+// Efficient concatenation
+$parts = ['Hello', ' ', 'World', '!'];
+$result = $optimizer->efficientConcatenation($parts);
+
+// Building large HTML
+$data = ['item1', 'item2', 'item3'];
+$html = $optimizer->buildLargeHtml($data);
+
+// Efficient string replacement
+$replacements = [
+    'old' => 'new',
+    'bad' => 'good'
+];
+$text = $optimizer->efficientStringReplacement('old text is bad', $replacements);
+```
+
 ### Database Query Optimization
 
 ### Array Operations and Loop Optimization

@@ -47,3 +47,38 @@ The profiling data is displayed for each php script run
 **Note** : For using this Graph we need install extension that calls: graphviz. (included in the docker-file)
 
 ## XHGUI
+
+We can use XHGUI either by downloading the repository `perftools/xhgui` or using its docker image.
+
+Xhgui needs the data collector `perftools/php-profiler` && `perftools/xhgui-collector`
+
+**Note** : Be aware of the directive `open_basedir` when using xhgui for collecting data
+
+**Note 2** : the file `/var/www/xhgui/vendor/perftools/xhgui-collector/src/Xhgui/Saver/Pdo.php` can result on sql errors => replace `` "%s" => `%s` `` and the GET column name with `` `GET` ``
+
+<p float="left" align="middle">
+  <img src="./../../images/xhgui_pdo.png" width="80%" /> 
+</p>
+
+
+**Note 3** : Add indexes to the database to improve performance. (`results` table)
+
+```shell
+# consider adding index on the following columns
+
+# url
+# SERVER
+# main_wt, main_mu, main_cpu
+```
+
+
+<p float="left" align="middle">
+  <img src="./../../images/xhgui_1.png" width = "40%" />
+  <img src="./../../images/xhgui_2.png" width="40%" /> 
+</p>
+
+
+<p float="left" align="middle">
+  <img src="./../../images/xhgui_3.png" width = "40%" />
+  <img src="./../../images/xhgui_4.png" width="40%" /> 
+</p>

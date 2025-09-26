@@ -57,7 +57,7 @@ Xhgui needs the data collector `perftools/php-profiler` && `perftools/xhgui-coll
 **Note 2** : the file `/var/www/xhgui/vendor/perftools/xhgui-collector/src/Xhgui/Saver/Pdo.php` can result on sql errors => replace `` "%s" => `%s` `` and the GET column name with `` `GET` ``
 
 <p float="left" align="middle">
-  <img src="./../../images/xhgui_pdo.png" width="80%" /> 
+  <img src="./../../images/xhgui_pdo_1.png" width="80%" /> 
 </p>
 
 

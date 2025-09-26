@@ -638,7 +638,27 @@ try {
     $errorHandler->handleError($e, 'ERROR');
 ```
 
-- Keep **JSON responses small** — only return what’s needed.
+
+### General
+
+1. Take advantage of **native PHP functions** 
+	- PHP's built-in functions are generally faster and more memory-efficient than user-defined functions. Whenever possible, use native functions instead of your own functions when writing custom solutions.
+2. **Utilize `isset()`** 
+	- When checking if a variable is set and not null, use `isset()`, it is faster compared to `count()`, `strlen()`, and `sizeof()`,
+
+3. **`=== over ==`**
+	- When comparing values, use the strict comparison operator = instead of the loose comparison operator, ==, as it checks both value and type without performing type coercion, resulting in faster execution.
+4. **Leverage array functions**
+	- Make use of PHP's built-in array functions like `array_map()`, `array_filter()`, and `array_reduce(`) instead of writing custom loops. These functions are generally faster and result in cleaner code.
+5. **`echo over print`**
+	- When outputting data, use echo instead of print because it's slightly faster and consumes less memory.
+6. **SPL (Standard PHP Library)**
+	- The SPL provides a range of iterators, data structures, and interfaces that can help you write more efficient code. For example, using `SplFixedArray` instead of regular arrays can lead to lower memory usage and improved performance issues in specific cases.
+7. **Optimize loop performance issues**
+	- When iterating through arrays or objects, consider using `foreach` instead of `for` loops to avoid unnecessary overhead. Also, move any calculations or function calls that don't depend on the loop variable outside the loop to minimize processing time.
+8. **Minimize global variable usage**
+	- Excessive use of global variables can negatively impact performance and make code harder to maintain. Opt for function parameters, class properties, or local variables whenever possible.
+9. Keep **JSON responses small** — only return what’s needed.
 
 
 ## Monitoring, Profiling and Proactive Optimization

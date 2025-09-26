@@ -1,0 +1,46 @@
+version: '3.8'
+services:
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - ./src:/var/www/html
+      - xhgui:/var/www/xhgui
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/xhgui.conf:/etc/nginx/conf.d/xhgui.conf
+    depends_on:
+      - php 
+  
+  php:
+    build:
+      context: .
+      dockerfile: php.dockerfile
+    volumes:
+      - ./src:/var/www/html
+      - ./config:/var/www/xhgui/config
+      - xhgui:/var/www/xhgui
+    environment:
+      XHGUI_SAVE_HANDLER: "pdo"
+      XHGUI_PDO_DSN: "mysql:host=mysql;dbname=xhprof"
+      XHGUI_PDO_USER: "root"
+      XHGUI_PDO_PASS: "root-secret"
+    depends_on:
+      - mysql
+    
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root-secret"
+      MYSQL_DATABASE: "xhprof"
+      MYSQL_USER: "xhprof"
+      MYSQL_PASSWORD: "secret"
+    volumes:
+      - db_data:/var/lib/mysql # Persistent storage for MySQL data
+
+volumes:
+  db_data:
+  xhgui:

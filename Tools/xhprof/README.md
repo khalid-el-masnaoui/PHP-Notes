@@ -43,4 +43,7 @@ The profiling data is displayed for each php script run
   <img src="./../../images/xhprof_ui_1.png" width = "40%" />
   <img src="./../../images/xhprof_ui_2.png" width="40%" /> 
 </p>
+
 **Note** : For using this Graph we need install extension that calls: graphviz. (included in the docker-file)
+
+## XHGUI

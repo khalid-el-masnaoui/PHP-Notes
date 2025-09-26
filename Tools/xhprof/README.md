@@ -114,3 +114,36 @@ if($xhprof_on){
 
 
 #### XHGUI
+
+You may want to do change how frequently you profile the host application. The `profiler.enable` configuration option allows you to provide a callback function that specifies the requests that are profiled. By default, XHGui profiles 1 in 100 requests.
+
+The following example configures XHGui to only profile requests from a specific URL path:
+
+The following example configures XHGui to profile 1 in 100 requests, excluding requests with the `/malidkha URL path:
+
+
+```php 
+# config/config.php
+return array(
+    // Other config
+    /// ........
+    
+    #1 out of 100 is the default rate
+    'profiler.enable' => function() {
+        $url = $_SERVER['REQUEST_URI'];
+        if (strpos($url, '/malidkha') === 0) {
+            return false;
+        }
+        return rand(1, 100) === 1;
+    }
+    
+    //--------------------------------------------------------
+    
+    # for every request rate
+	'profiler.enable' => function() {
+        return true;
+    }
+```
+    
+);
+```

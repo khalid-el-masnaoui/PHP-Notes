@@ -18,8 +18,9 @@ XHProf is a hierarchical, function-level profiler for PHP applications that coll
     
 - **Key Metrics:**  XHProf collects information on:
     - **Call Counts:** The number of times a function is called. 
-    - **Wall Time (Inclusive/Exclusive):** The total time spent in a function (inclusive) and the time spent only in that function's code, excluding its children (exclusive). 
-    - **CPU Time:** The processor time used by the function. 
+    - **Wall Time (Inclusive/Exclusive):** The total time spent in a function (inclusive) and the time spent only in that function's code, excluding its children (exclusive)
+	    - = Elapsed time: if you perform a network call, that's the CPU time to call the service and parse the response, plus the time spent waiting for the I/O
+    - **CPU Time:** The processor time used by the function ( CPU time in both kernel and user space). 
     - **Memory Usage:** The memory consumed by the function. 
     
 - **Low Overhead:** Implemented as a C-based PHP extension, XHProf is designed for low overhead, minimizing its impact on application performance. 
@@ -50,7 +51,7 @@ The profiling data is displayed for each php script run
 
 We can use XHGUI either by downloading the repository `perftools/xhgui` or using its docker image.
 
-Xhgui needs the data collector `perftools/php-profiler` && `perftools/xhgui-collector`
+Xhgui needs the data collector `perftools/php-profiler` && `perftools/xhgui-collector` , you can generate the data for both `php-cli` and `php-fpm`
 
 **Note** : Be aware of the directive `open_basedir` when using xhgui for collecting data
 
@@ -82,3 +83,34 @@ Xhgui needs the data collector `perftools/php-profiler` && `perftools/xhgui-coll
   <img src="./../../images/xhgui_3.png" width = "40%" />
   <img src="./../../images/xhgui_4.png" width="40%" /> 
 </p>
+
+
+## Configure Profiling Rate
+
+#### XHProf
+ You can save a XHProf run every 100 runs instead of every run
+```php 
+
+# xhprof_header.php
+$xhprof_on = false; 
+if (mt_rand(1, 100) === 1) { 
+	$xhprof_on = true; 
+
+	if (extension_loaded('xhprof')) { 
+		xhprof_enable(XHPROF_FLAGS_CPU + XHPROF_FLAGS_MEMORY); } 
+	}
+}
+
+# xhprof_footer.php
+if($xhprof_on){
+	$data = xhprof_disable();
+	file_put_contents(
+      "/profiles/" . uniqid() . ".malidkha.xhprof",
+      serialize($data)
+	);
+}
+
+```
+
+
+#### XHGUI

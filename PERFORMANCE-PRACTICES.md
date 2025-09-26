@@ -489,6 +489,72 @@ Efficient database operations are crucial for application performance:
 
 ### Array Operations and Loop Optimization
 
+- Pre-allocating arrays when size is known
+- Processing in chunks for memory efficiency
+- Using proper array functions (array_key_exists, isset)
+- Implementing efficient search algorithms
+- Using array_flip for O(1) lookup operations
+```php
+class ArrayOptimizer {
+    public function processArray(array $data, callable $callback): array {
+        // Pre-allocate result array
+        $result = [];
+        $count = count($data);
+
+        // Reserve memory
+        $result = array_fill(0, $count, null);
+
+        // Process in chunks for memory efficiency
+        foreach (array_chunk($data, 1000) as $chunk) {
+            foreach ($chunk as $key => $item) {
+                $result[$key] = $callback($item);
+            }
+
+            // Free up memory
+            unset($chunk);
+        }
+
+        return $result;
+    }
+
+    public function efficientSearch(array $haystack, $needle): bool {
+        // Use isset for array keys
+        if (isset($haystack[$needle])) {
+            return true;
+        }
+
+        // Use in_array with strict comparison
+        return in_array($needle, $haystack, true);
+    }
+
+    public function arrayIntersectOptimized(array $array1, array $array2): array {
+        // Convert second array to hash map for O(1) lookup
+        $map = array_flip($array2);
+
+        return array_filter(
+            $array1,
+            fn($item) => isset($map[$item])
+        );
+    }
+}
+
+// Usage examples
+$optimizer = new ArrayOptimizer();
+
+// Process large array
+$data = range(1, 10000);
+$result = $optimizer->processArray($data, fn($item) => $item * 2);
+
+// Efficient search
+$haystack = range(1, 1000);
+$found = $optimizer->efficientSearch($haystack, 500);
+
+// Optimized array intersection
+$array1 = range(1, 1000);
+$array2 = range(500, 1500);
+$intersection = $optimizer->arrayIntersectOptimized($array1, $array2);
+```
+
 ### Error Handling and Logging
 
 

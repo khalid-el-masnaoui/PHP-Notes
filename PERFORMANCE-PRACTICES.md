@@ -1,9 +1,45 @@
+
+
 # PHP Performance Best Practices
+
+## Overview
 
 This document revisits the essential optimized-performance practices for PHP & PHP-FPM runtime from a practical perspective.
 
 By following the key recommendations outlined below, you can avoid common configuration errors while ensuring optimized performances.
 
+- **[[#What exactly is a good PHP performance?|What exactly is a good PHP performance?]]**
+- **[[#Get Latest PHP|Get Latest PHP]]**
+- **[[#Opcode Caching <`Opcache`>|Opcode Caching <`Opcache`>]]**
+- **[[#OPcache preloading|OPcache preloading]]**
+- **[[#Enable Just-In-Time (JIT) Compilation|Enable Just-In-Time (JIT) Compilation]]**
+- **[[#Enable Realpath Cache|Enable Realpath Cache]]**
+- **[[#Enable Realpath Cache#Turn off MySQL statistics in `php.ini`|Turn off MySQL statistics in `php.ini`]]**
+- **[[#Output Buffering|Output Buffering]]**
+- ****[[#Output Buffering#PHP Configuration Tuning|PHP Configuration Tuning]]****
+- **[[#PHP-FPM: Fine-Tuning for High Loads|PHP-FPM: Fine-Tuning for High Loads]]**
+	- **[[#PHP-FPM: Fine-Tuning for High Loads#General|General]]**
+	- **[[#PHP-FPM: Fine-Tuning for High Loads#Adjusting child processes for PHP-FPM|Adjusting child processes for PHP-FPM]]**
+		- **[[#Adjusting child processes for PHP-FPM#Calculate max_children|Calculate max_children]]**
+- **[[#PHP Performance General Tips|PHP Performance General Tips]]**
+	- **[[#PHP Performance General Tips#Database Interaction Efficiency|Database Interaction Efficiency]]**
+		- **[[#Database Interaction Efficiency#Common Database-Related Performance Issues|Common Database-Related Performance Issues]]**
+		- **[[#Common Database-Related Performance Issues#Techniques for Optimizing Database Queries and Interactions|Techniques for Optimizing Database Queries and Interactions]]**
+	- **[[#PHP Performance General Tips#Caching|Caching]]**
+	- **[[#PHP Performance General Tips#Concurrency with Asynchronous PHP|Concurrency with Asynchronous PHP]]**
+	- **[[#PHP Performance General Tips#Security as a Performance Factor|Security as a Performance Factor]]**
+	- **[[#PHP Performance General Tips#Minimize External Dependencies|Minimize External Dependencies]]**
+	- **[[#PHP Performance General Tips#Use a Content Delivery Network (CDN)|Use a Content Delivery Network (CDN)]]**
+- **[[#PHP Code Optimization|PHP Code Optimization]]**
+	- **[[#PHP Code Optimization#Memory Management and Resource Handling|Memory Management and Resource Handling]]**
+	- **[[#PHP Code Optimization#String Operations Optimization|String Operations Optimization]]**
+	- **[[#PHP Code Optimization#Database Query Optimization|Database Query Optimization]]**
+	- **[[#PHP Code Optimization#Array Operations and Loop Optimization|Array Operations and Loop Optimization]]**
+	- **[[#PHP Code Optimization#Error Handling and Logging|Error Handling and Logging]]**
+	- **[[#PHP Code Optimization#General|General]]**
+- **[[#Monitoring, Profiling and Proactive Optimization|Monitoring, Profiling and Proactive Optimization]]**
+	- **[[#Monitoring, Profiling and Proactive Optimization#Types of bottlenecks that affect PHP performance|Types of bottlenecks that affect PHP performance]]**
+	- **[[#Monitoring, Profiling and Proactive Optimization#PHP Performance Monitoring & Profiling|PHP Performance Monitoring & Profiling]]**
 
 
 ## What exactly is a good PHP performance?
@@ -144,7 +180,7 @@ realpath_cache_ttl = 300 #he time-to-live (TTL) for realpath cache entries in se
 ```
 
 
-### Turn off MySQL statistics in `php.ini`
+## Turn off MySQL statistics in `php.ini`
 
 Make sure on your production servers, both of these settings **`mysqlnd.collect_statistics`** and **`mysqlnd.collect_memory_statistics`** are disabled. It should always be disabled unless you have a specific reason to enable it.
 
@@ -172,7 +208,7 @@ output_buffering = 4096 # Enables buffering with a maximum size of 4096 bytes
 
 - Using `ob_start()` function: This function can be called within your PHP script to start output buffering at a specific point (even if it is not enabled in `php.ini`). It offers more granular control and allows for custom output handlers. (used with `ob_end_flush()`)
 
-### PHP Configuration Tuning
+## PHP Configuration Tuning
 
 There are several directives that can be tuned for performance like `memory_limit`,  `max_execution_time`, `upload_max_filesize`, and `post_max_size` should be configured according to the needs of your site.
 
@@ -243,7 +279,7 @@ Database interactions are often a major source of performance issues in PHP appl
 * **Excessive database connections**: Opening and closing numerous database connections can introduce latency and consume system resources.
 
 * **Inefficient data fetching**: Fetching large amounts of data, especially when only a small portion is needed, can slow down your application.
-##### Techniques for Optimizing Database Queries and Interactions
+#### Techniques for Optimizing Database Queries and Interactions
 
 * **Optimize SQL queries**: Analyze and optimize your SQL queries using tools like `EXPLAIN` or the `MySQL Query Analyzer`. Consider using  JOINs, subqueries, or temporary tables to improve query performance.
 

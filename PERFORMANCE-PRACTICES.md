@@ -8,38 +8,58 @@ This document revisits the essential optimized-performance practices for PHP & P
 
 By following the key recommendations outlined below, you can avoid common configuration errors while ensuring optimized performances.
 
-- **[[#What exactly is a good PHP performance?|What exactly is a good PHP performance?]]**
-- **[[#Get Latest PHP|Get Latest PHP]]**
-- **[[#Opcode Caching <`Opcache`>|Opcode Caching <`Opcache`>]]**
-- **[[#OPcache preloading|OPcache preloading]]**
-- **[[#Enable Just-In-Time (JIT) Compilation|Enable Just-In-Time (JIT) Compilation]]**
-- **[[#Enable Realpath Cache|Enable Realpath Cache]]**
-- **[[#Enable Realpath Cache#Turn off MySQL statistics in `php.ini`|Turn off MySQL statistics in `php.ini`]]**
-- **[[#Output Buffering|Output Buffering]]**
-- ****[[#Output Buffering#PHP Configuration Tuning|PHP Configuration Tuning]]****
-- **[[#PHP-FPM: Fine-Tuning for High Loads|PHP-FPM: Fine-Tuning for High Loads]]**
-	- **[[#PHP-FPM: Fine-Tuning for High Loads#General|General]]**
-	- **[[#PHP-FPM: Fine-Tuning for High Loads#Adjusting child processes for PHP-FPM|Adjusting child processes for PHP-FPM]]**
-		- **[[#Adjusting child processes for PHP-FPM#Calculate max_children|Calculate max_children]]**
-- **[[#PHP Performance General Tips|PHP Performance General Tips]]**
-	- **[[#PHP Performance General Tips#Database Interaction Efficiency|Database Interaction Efficiency]]**
-		- **[[#Database Interaction Efficiency#Common Database-Related Performance Issues|Common Database-Related Performance Issues]]**
-		- **[[#Common Database-Related Performance Issues#Techniques for Optimizing Database Queries and Interactions|Techniques for Optimizing Database Queries and Interactions]]**
-	- **[[#PHP Performance General Tips#Caching|Caching]]**
-	- **[[#PHP Performance General Tips#Concurrency with Asynchronous PHP|Concurrency with Asynchronous PHP]]**
-	- **[[#PHP Performance General Tips#Security as a Performance Factor|Security as a Performance Factor]]**
-	- **[[#PHP Performance General Tips#Minimize External Dependencies|Minimize External Dependencies]]**
-	- **[[#PHP Performance General Tips#Use a Content Delivery Network (CDN)|Use a Content Delivery Network (CDN)]]**
-- **[[#PHP Code Optimization|PHP Code Optimization]]**
-	- **[[#PHP Code Optimization#Memory Management and Resource Handling|Memory Management and Resource Handling]]**
-	- **[[#PHP Code Optimization#String Operations Optimization|String Operations Optimization]]**
-	- **[[#PHP Code Optimization#Database Query Optimization|Database Query Optimization]]**
-	- **[[#PHP Code Optimization#Array Operations and Loop Optimization|Array Operations and Loop Optimization]]**
-	- **[[#PHP Code Optimization#Error Handling and Logging|Error Handling and Logging]]**
-	- **[[#PHP Code Optimization#General|General]]**
-- **[[#Monitoring, Profiling and Proactive Optimization|Monitoring, Profiling and Proactive Optimization]]**
-	- **[[#Monitoring, Profiling and Proactive Optimization#Types of bottlenecks that affect PHP performance|Types of bottlenecks that affect PHP performance]]**
-	- **[[#Monitoring, Profiling and Proactive Optimization#PHP Performance Monitoring & Profiling|PHP Performance Monitoring & Profiling]]**
+```insta-toc
+---
+title:
+  name: Table of Contents
+  level: 1
+  center: false
+exclude: ""
+style:
+  listType: dash
+omit: []
+levels:
+  min: 1
+  max: 6
+---
+
+# Table of Contents
+
+- PHP Performance Best Practices
+    - Overview
+    - What exactly is a good PHP performance?
+    - Get Latest PHP
+    - Opcode Caching <Opcache>
+    - OPcache preloading
+    - Enable Just-In-Time (JIT) Compilation
+    - Enable Realpath Cache
+    - Turn off MySQL statistics in php.ini
+    - Output Buffering
+    - PHP Configuration Tuning
+    - PHP-FPM: Fine-Tuning for High Loads
+        - General
+        - Adjusting child processes for PHP-FPM
+            - Calculate maxchildren
+    - PHP Performance General Tips
+        - Database Interaction Efficiency
+            - Common Database-Related Performance Issues
+            - Techniques for Optimizing Database Queries and Interactions
+        - Caching
+        - Concurrency with Asynchronous PHP
+        - Security as a Performance Factor
+        - Minimize External Dependencies
+        - Use a Content Delivery Network (CDN)
+    - PHP Code Optimization
+        - Memory Management and Resource Handling
+        - String Operations Optimization
+        - Database Query Optimization
+        - Array Operations and Loop Optimization
+        - Error Handling and Logging
+        - General
+    - Monitoring, Profiling and Proactive Optimization
+        - Types of bottlenecks that affect PHP performance
+        - PHP Performance Monitoring & Profiling
+```
 
 
 ## What exactly is a good PHP performance?

@@ -1,1 +1,4 @@
 
+# PHP Coding Guidelines & Best Practices
+
+Coding Standards are an important factor for achieving a high code quality. A common visual style, naming conventions and other technical settings allow us to produce a homogenous code which is easy to read and maintain. However, not all important factors can be covered by rules and coding standards. Equally important is the style in which certain problems are solved programmatically - it’s the personality and experience of the individual developer which shines through and ultimately makes the difference between technically okay code or a well considered, mature solution.

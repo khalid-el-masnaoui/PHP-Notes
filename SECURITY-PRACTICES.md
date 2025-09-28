@@ -554,6 +554,11 @@ local-php-security-checker --path=/path/to/php/project/composer.lock
 
 local-php-security-checker --no-dev --format=json --path=/path/to/php/project/composer.lock
 ```
+
+
+**Note** :
+* Local PHP Security Checker is **archived** , use `composer audit` instead , it uses the same  [Security Advisories Database](https://github.com/FriendsOfPHP/security-advisories)
+
 #### Parse: A PHP Security Scanner
 
 The [_Parse_](https://github.com/psecio/parse) scanner is a static scanning tool to review your PHP code for potential security-related issues.

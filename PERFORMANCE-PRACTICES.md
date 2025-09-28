@@ -8,58 +8,40 @@ This document revisits the essential optimized-performance practices for PHP & P
 
 By following the key recommendations outlined below, you can avoid common configuration errors while ensuring optimized performances.
 
-```insta-toc
----
-title:
-  name: Table of Contents
-  level: 1
-  center: false
-exclude: ""
-style:
-  listType: dash
-omit: []
-levels:
-  min: 1
-  max: 6
----
+## Table of contents
 
-# Table of Contents
-
-- PHP Performance Best Practices
-    - Overview
-    - What exactly is a good PHP performance?
-    - Get Latest PHP
-    - Opcode Caching <Opcache>
-    - OPcache preloading
-    - Enable Just-In-Time (JIT) Compilation
-    - Enable Realpath Cache
-    - Turn off MySQL statistics in php.ini
-    - Output Buffering
-    - PHP Configuration Tuning
-    - PHP-FPM: Fine-Tuning for High Loads
-        - General
-        - Adjusting child processes for PHP-FPM
-            - Calculate maxchildren
-    - PHP Performance General Tips
-        - Database Interaction Efficiency
-            - Common Database-Related Performance Issues
-            - Techniques for Optimizing Database Queries and Interactions
-        - Caching
-        - Concurrency with Asynchronous PHP
-        - Security as a Performance Factor
-        - Minimize External Dependencies
-        - Use a Content Delivery Network (CDN)
-    - PHP Code Optimization
-        - Memory Management and Resource Handling
-        - String Operations Optimization
-        - Database Query Optimization
-        - Array Operations and Loop Optimization
-        - Error Handling and Logging
-        - General
-    - Monitoring, Profiling and Proactive Optimization
-        - Types of bottlenecks that affect PHP performance
-        - PHP Performance Monitoring & Profiling
-```
+* **[What exactly is a good PHP performance?](#what-exactly-is-a-good-php-performance)**
+* **[Get Latest PHP](#get-latest-php)**
+* **[Opcode Caching <`Opcache`>](#opcode-caching)**
+* **[OPcache preloading](#opcache-preloading)**
+* **[Enable Just-In-Time (JIT) Compilation](#enable-just-in-time-jit-compilation)**
+* **[Enable Realpath Cache](#enable-realpath-cache)**
+* **[Turn off MySQL statistics in `php.ini**`](#turn-off-mysql-statistics-in-phpini)
+* **[Output Buffering](#output-buffering)**
+* **[PHP Configuration Tuning](#php-configuration-tuning)**
+* **[PHP-FPM: Fine-Tuning for High Loads](#php-fpm-fine-tuning-for-high-loads)**
+  + **[General](#general)**
+  + **[Adjusting child processes for PHP-FPM](#adjusting-child-processes-for-php-fpm)**
+	 - **[Calculate max_children](#calculate-max_children)**
+* **[PHP Performance General Tips](#php-performance-general-tips)**
+  + **[Database Interaction Efficiency](#database-interaction-efficiency)**
+	 - **[Common Database-Related Performance Issues](#common-database-related-performance-issues)**
+	 - **[Techniques for Optimizing Database Queries and Interactions](#techniques-for-optimizing-database-queries-and-interactions)**
+  + **[Caching](#caching)**
+  + **[Concurrency with Asynchronous PHP](#concurrency-with-asynchronous-php)**
+  + **[Security as a Performance Factor](#security-as-a-performance-factor)**
+  + **[Minimize External Dependencies](#minimize-external-dependencies)**
+  + **[Use a Content Delivery Network (CDN)](#use-a-content-delivery-network-cdn)**
+* **[PHP Code Optimization](#php-code-optimization)**
+  + **[Memory Management and Resource Handling](#memory-management-and-resource-handling)**
+  + **[String Operations Optimization](#string-operations-optimization)**
+  + **[Database Query Optimization](#database-query-optimization)**
+  + **[Array Operations and Loop Optimization](#array-operations-and-loop-optimization)**
+  + **[Error Handling and Logging](#error-handling-and-logging)**
+  + **[General](#general-1)**
+* **[Monitoring, Profiling and Proactive Optimization](#monitoring-profiling-and-proactive-optimization)**
+  + **[Types of bottlenecks that affect PHP performance](#types-of-bottlenecks-that-affect-php-performance)**
+  + **[PHP Performance Monitoring & Profiling](#php-performance-monitoring-profiling)**
 
 
 ## What exactly is a good PHP performance?

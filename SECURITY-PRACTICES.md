@@ -6,54 +6,52 @@ This document revisits the essential security configurations for PHP & PHP-FPM r
 
 By following the key recommendations outlined below, you can avoid common configuration errors and prevent security vulnerabilities.
 
+## Table of contents
 
--  **[Security](#security)**
-	- **[Get Latest PHP](#get-latest-php)**
-    - **[Use Up to date code dependencies and third party components](#useup-to-date-code-dependencies-and-third-party-components-)**
-    - **[Secure your server](#secure-your-server)**
-    - **[Apply the principles of security through obscurity](#apply-the-principles-of-security-through-obscurity)**
-    - **[Configure error reports appropriately](#configure-error-reports-appropriately)**
-    - **[SQL Injection](#sql-injection)**
-    - **[XSS](#xss)**
-    - **[Session Hijacking and Session fixation](#session-hijacking-and-session-fixation)**
-    - **[Cross-Site Request Forgery XSRF/CSRF](#cross-site-request-forgery-xsrfcsrf)**
-    - **[Parameter Tempering](#parameter-tempering)**
-    - **[Command Injections](#command-injections)**
-    - **[Brute Force](#brute-force)**
-    - **[Broken Access-Control And Authentication](#broken-access-control-and-authentication)**
-	    - **[Broken Access Control](#broken-access-control)**
-	    - **[Broken Authentication](#broken-authentication)**
-    - **[Remote & Local File Inclusion RFI/LFI](#remote--local-file-inclusion-rfilfi)**
-    - **[File Upload](#file-upload)**
-    - **[Passwords](#passwords)**
-    - **[SSL Certificates For HTTPS](#ssl-certificates-for-https)**
-    - **[Other Techniques and Tools](#other-techniques-and-tools)**
-	    - **[ Add Rate limiting to costly calls and requests](#add-rate-limiting-to-costly-calls-and-requests)**
-	    - **[Security Configurations](#security-configurations)**
-	    - **[PHPCS-Security-Audit](#phpcs-security-audit)**
-	    - **[ Parse: A PHP Security Scanner](#parse-a-php-security-scanner)**
-	    - **[PHPMD](#phpmd)**
+- **[Get Latest PHP](#get-latest-php)**
+- **[Use Up to date code dependencies and third party components](#useup-to-date-code-dependencies-and-third-party-components-)**
+- **[Secure your server](#secure-your-server)**
+- **[Apply the principles of security through obscurity](#apply-the-principles-of-security-through-obscurity)**
+- **[Configure error reports appropriately](#configure-error-reports-appropriately)**
+- **[SQL Injection](#sql-injection)**
+- **[XSS](#xss)**
+- **[Session Hijacking and Session fixation](#session-hijacking-and-session-fixation)**
+- **[Cross-Site Request Forgery XSRF/CSRF](#cross-site-request-forgery-xsrfcsrf)**
+- **[Parameter Tempering](#parameter-tempering)**
+- **[Command Injections](#command-injections)**
+- **[Brute Force](#brute-force)**
+- **[Broken Access-Control And Authentication](#broken-access-control-and-authentication)**
+	- **[Broken Access Control](#broken-access-control)**
+	- **[Broken Authentication](#broken-authentication)**
+- **[Remote & Local File Inclusion RFI/LFI](#remote--local-file-inclusion-rfilfi)**
+- **[File Upload](#file-upload)**
+- **[Passwords](#passwords)**
+- **[SSL Certificates For HTTPS](#ssl-certificates-for-https)**
+- **[Other Techniques and Tools](#other-techniques-and-tools)**
+	- **[ Add Rate limiting to costly calls and requests](#add-rate-limiting-to-costly-calls-and-requests)**
+	- **[Security Configurations](#security-configurations)**
+	- **[PHPCS-Security-Audit](#phpcs-security-audit)**
+	- **[ Parse: A PHP Security Scanner](#parse-a-php-security-scanner)**
+	- **[PHPMD](#phpmd)**
 	    
 - **[Resources](#resources)**
 
 
-## Security 
-
-### Get Latest PHP
+## Get Latest PHP
 
 New versions of PHP are released regularly with security fixes and improvements. By using the latest version, you’ll have the benefit of these fixes and improvements as well as any new features that might be helpful for your application.
 
-### Use Up to date code dependencies and third party components
+## Use Up to date code dependencies and third party components
 
 In addition to using the latest version of PHP, you should also keep your code up to date. This includes any third-party libraries or frameworks that you’re using. Outdated software is often the target of attacks because hackers know that it is more likely to have vulnerabilities that can be exploited.
 
-### Secure your server
+## Secure your server
 
 Your web server should be configured properly to protect your website from attacks. This includes ensuring that all unnecessary services are disabled and that file permissions are set correctly. You should also use a firewall to block unwanted traffic and an intrusion detection/prevention system (IDS/IPS) to monitor for suspicious activity.
 
 **Note** : We discuss servers/network security in depth on my repository
 
-### Apply the principles of security through obscurity
+## Apply the principles of security through obscurity
 
 Although security through obscurity is not a complete strategy in itself, it can slow down attackers and make their task more difficult.
 
@@ -64,7 +62,7 @@ For example:
 
 These techniques do not replace fundamental security measures, but they do make it harder for attackers to gather exploitable information.
 
-### Configure error reports appropriately
+## Configure error reports appropriately
 
 Errors displayed are valuable for development. However, they can also expose sensitive information when visible in production. It is therefore essential to configure error reports appropriately.
 
@@ -77,7 +75,7 @@ error_log=/var/log/php/error.log
 ```
 
 
-### SQL Injection
+## SQL Injection
 
 An SQL injection is the most common attack a developer is bound to experience. A single query can compromise a whole application. In an SQL injection attack, the attacker tries to alter the data written to the database via malicious queries.
 
@@ -138,7 +136,7 @@ if (empty($email)) {
     }
 ```
 
-### XSS
+## XSS
 
 **Cross-site scripting is a type of malicious web attack in which an external script is injected into the website’s code or output.** The attacker can send infected code to the end-user while the browser can not identify it as a trusted script. This attack occurs mostly in the places where the user can input and submit data. The attack can access cookies, sessions and other sensitive information about the browser.
 
@@ -174,11 +172,11 @@ setcookie('user_session', $value, [
 
 ```
 
-### Session Hijacking and Session fixation
+## Session Hijacking and Session fixation
 
 It can be lethal if combined with an XSS attack, where cookies of users can be stolen.
 
-##### Session Fixation
+### Session Fixation
 
 There are three common methods used to obtain a valid session identifier:
 
@@ -189,7 +187,7 @@ There are three common methods used to obtain a valid session identifier:
 - Fixation Fixation is the simplest method of obtaining a valid session identifier. While it's not very difficult to defend against, if your session mechanism consists of nothing more than `session_start()`, you are vulnerable.
     
 
-##### Session Hijacking
+### Session Hijacking
 
 Session hijacking refers to all attacks that attempt to gain access to another user's session. Like session fixation, if your session mechanism consists of `session_start()` then your are vulnerable.
 
@@ -197,7 +195,7 @@ Session hijacking is a particular type of malicious web attack in which the atta
 
 :lock: **Remediation** :
 
-##### Configure PHP Setting
+### Configure PHP Setting
 
 1. **_Strong Session ID_**
 
@@ -253,7 +251,7 @@ It is a good practice to generate new session ID once user logs in/out (state ch
 session_regenerate_id(true)   // the argument tells PHP to delete the old session.
 ```
 
-### Cross-Site Request Forgery XSRF/CSRF
+## Cross-Site Request Forgery XSRF/CSRF
 
 This attack forces an end user to execute unwanted actions on a web application in which he/she is currently authenticated. A successful CSRF exploit can compromise end user data and operation in case of normal user. If the targeted end user is the administrator account, this can compromise the entire web application.
 
@@ -286,15 +284,15 @@ if (input::exists("post") && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpReques
 
 **Note** : You might as well generate a token for each session, instead of each request. (i prefer it with each request*)
 
-### Parameter Tempering
+## Parameter Tempering
 
 Hackers can manipulate data easily before sending to web server using hidden fields, URL or proxy softwares (eg. Burp). The application should not simply trust on user input value that can modify things like prices in web carts, session tokens and HTTP headers.
 
-##### Hidden Field Value Manipulation
+### Hidden Field Value Manipulation
 
 Hidden, drop down, pre-selected, check-box field values are easily manipulated by the user using proxy software or simply downloading page and modifying field values & re-loading the page in the browser.
 
-##### URL Manipulation
+### URL Manipulation
 
 URL Manipulation is more vulnerable than other type of vulnerability as it is easy to alter query string from URL address.
 
@@ -320,7 +318,7 @@ TO => http://www.malidkha.com/product?pid=12345&price=1
 5. Use cryptographic protection for sensitive parameter in a URL.
 6. Use proper validation of input received (sanitize data, cross check user input in database, use JOIN TABLE)
 
-### Command Injections
+## Command Injections
 
 Executing commands via PHP can be extremely powerful, but it also presents a high risk if precautions are not taken.
 
@@ -349,7 +347,7 @@ escapeshellcmd() #Escapes special characters in a command to prevent them from b
 escapeshellarg() #Escapes arguments passed to a command to treat them as literal strings. This prevents the injection of special characters or additional commands.
 ```
 
-### Brute Force 
+## Brute Force 
 
 A brute force attack can manifest itself in many different ways, but primarily consists in an attacker configuring predetermined values, making requests to a server using those values, and then analyzing the response.
 
@@ -371,11 +369,11 @@ BruteForceBlock::checkIP()
 > > Since Redis works as an in-memory database, it is a qualified candidate for creating a BruteForce Blocker.
 
 
-### Broken Access-Control And Authentication
+## Broken Access-Control And Authentication
 
 When designing an internal application, you must provide a form of access control through authentication and authorization. You use authentication to confirm whether users have the right to access your system by validating their usernames and passwords against their account values. On the other hand, authorization allows you to verify whether an authenticated user has the correct permission to access a particular resource. For instance, to delete or update a product.
 
-##### Broken Access Control
+### Broken Access Control
 > Access control weaknesses are common due to the lack of automated detection, and lack of effective functional testing by application developers.  
 > Access control detection is not typically amenable to automated static or dynamic testing. Manual testing is the best way to detect missing or ineffective access control, including HTTP method (GET vs PUT, etc), controller, direct object references, etc.
 
@@ -395,7 +393,7 @@ Some access control mechanisms are :
 2. Permission Based Access Control (PBAC) : Role based access control is giving access to a resource when the subject has a given permission
 3. Access Control Lists (ACL): specifies which subjects are granted access to a resource, as well as what operations are allowed on a given resource.
 
-##### Broken Authentication
+### Broken Authentication
 > When authentication is broken, it means there are loopholes in how users are authenticated, and web sessions are managed. Such loopholes can allow attackers to impersonate a user and perform unauthorized actions
 
 >Attackers can take advantage of poor authentication mechanisms to hijack a users’ account and access sensitive data. This is what happens in the case of broken authentication where weak authentication features result in security compromises.
@@ -417,7 +415,7 @@ Some access control mechanisms are :
 * Limit or increasingly delay failed login attempts. Log all failures and alert administrators when credential stuffing, brute force, or other attacks are detected.  
 * Use a server-side, secure, built-in session manager that generates a new random session ID with high entropy after login. Session IDs should not be in the URL, be securely stored and invalidated after logout, idle, and absolute timeouts.
 
-### Remote & Local File Inclusion RFI/LFI
+## Remote & Local File Inclusion RFI/LFI
 
 _**RFI**_ : Remote File Inclusion (RFI) vulnerabilities occur when the application allows a malicious user to include files from a remote server in the code executed by the application server.
 
@@ -442,7 +440,7 @@ allow_url_fopen = Off
 allow_url_include = Off
 ```
 
-### File Upload
+## File Upload
 
 It allows your visitor to place files (upload files) on your server. This can result in various security problems such as delete your files, delete a database, get user details and much more. You can disable file uploads using PHP or write secure code (like validating user input and only allow image file types such as png or gif).
 
@@ -462,7 +460,7 @@ php_flag engine off
 3. Other validations – like file size, file rename, and store uploaded files in private location – are also required to strengthen the security of the applications.
 
 
-### Passwords 
+## Passwords 
 
 Reversible encryption is harmful. It can easily be cracked and decrypted, making your data vulnerable to theft or exposure
 
@@ -483,13 +481,13 @@ password_hash($password, PASSWORD_DEFAULT); // default algo is BCRYPT
 password_verify($inputedPass, $db_password);
 ```
 
-### SSL Certificates For HTTPS
+## SSL Certificates For HTTPS
 
 All the modern browsers like Google Chrome, Opera, Firefox and others, recommend using HTTPS protocol for web applications. HTTPs provides a secured and encrypted accessing channel for untrusted sites. You must include HTTPS by installing an SSL certificate on your website. It also strengthens your web applications against XSS attacks and prevents hackers to read transported data using codes.
 
-### Other Techniques and Tools
+## Other Techniques and Tools
 
-##### Add Rate limiting to costly calls and requests
+### Add Rate limiting to costly calls and requests
 
 Rate limiting is a technology that puts a cap on the number of times a user can request a resource from a server. Many services implement rate limiting to prevent abuse to a service when a user may try to put too much load on a server
 
@@ -506,13 +504,13 @@ $rateLimiter->rateLimit(120, 1, "endpoint1");
 
 > Since Redis works as an in-memory database, it is a qualified candidate for creating a rate limiter, and it has been proven reliable for this purpose.
 
-##### Security Configurations
+### Security Configurations
 
 - `memory_limit`: limits the amount of memory a script can use.
 - `max_execution_time`: prevents scripts from running indefinitely.
 - `file_uploads` and `upload_max_filesize`: control file upload authorisations and limits.
 
-##### PHPCS-Security-Audit
+### PHPCS-Security-Audit
 
 [_phpcs-security-audit_](https://github.com/FloeDesignTechnologies/phpcs-security-audit) is a set of [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) rules that finds vulnerabilities and weaknesses related to security in PHP code.
 
@@ -541,13 +539,13 @@ FOUND 18 ERRORS AND 36 WARNINGS AFFECTING 44 LINES
 
 You can easily customize the rulesets.
 
-##### Parse: A PHP Security Scanner
+### Parse: A PHP Security Scanner
 
 The [_Parse_](https://github.com/psecio/parse) scanner is a static scanning tool to review your PHP code for potential security-related issues.
 
 For example, you really shouldn't be using [eval](http://php.net/eval) in your code anywhere if you can help it. When the scanner runs, it will parse down each of your files and look for any `eval()` calls. If it finds any, it adds that match to the file and reports it in the results.
 
-##### PHPMD
+### PHPMD
 
 What PHPMD does is: It takes a given PHP source code base and look for several potential problems within that source. These problems can be things like:
 

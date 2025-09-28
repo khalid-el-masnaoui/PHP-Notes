@@ -594,6 +594,8 @@ Key OWASP resources relevant to PHP security include:
     - **Input Validation Cheat Sheet**
     - **SQL Injection Prevention Cheat Sheet**
     - **[PHP Configuration Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/PHP_Configuration_Cheat_Sheet.html)** 
+
+OWASP contains many other resources for web security. By following the recommendations and utilizing the resources provided by OWASP, we can significantly improve the security posture of their applications. (our best-practices mentioned above cover most of that!)
 ## Resources
 
 - [resource 1](https://www.vaadata.com/blog/php-security-best-practices-vulnerabilities-and-attacks)

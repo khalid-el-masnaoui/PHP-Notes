@@ -32,7 +32,7 @@ By following the key recommendations outlined below, you can avoid common config
 	- **[Security Configurations](#security-configurations)**
 	- **[Tools](#tools)**
 		- **[PHPCS-Security-Audit](#phpcs-security-audit)**
-		- **[Local PHP Security Checker & Composer Audit](#local-php-security-checker---composer-audit)**
+		- **[Local PHP Security Checker & Composer Audit](#local-php-security-checker--composer-audit)**
 		- **[ Parse: A PHP Security Scanner](#parse-a-php-security-scanner)**
 		- **[PHPMD](#phpmd)**
 	    
@@ -544,6 +544,16 @@ You can easily customize the rulesets.
 
 #### Local PHP Security Checker & Composer Audit
 
+The Local PHP Security Checker is a command line tool that checks if your PHP application depends on PHP packages with known security vulnerabilities. It uses the [Security Advisories Database](https://github.com/FriendsOfPHP/security-advisories) behind the scenes
+
+```shell
+
+#can be used like this
+local-php-security-checker --path=/path/to/php/project/vendor
+local-php-security-checker --path=/path/to/php/project/composer.lock
+
+local-php-security-checker --no-dev --format=json --path=/path/to/php/project/composer.lock
+```
 #### Parse: A PHP Security Scanner
 
 The [_Parse_](https://github.com/psecio/parse) scanner is a static scanning tool to review your PHP code for potential security-related issues.

@@ -32,7 +32,7 @@ By following the key recommendations outlined below, you can avoid common config
 	- **[Security Configurations](#security-configurations)**
 	- **[Tools](#tools)**
 		- **[PHPCS-Security-Audit](#phpcs-security-audit)**
-		- **[Local PHP Security Checker & Composer Audit](#local-php-security-checker-&-composer-audit)
+		- **[Local PHP Security Checker & Composer Audit](#local-php-security-checker---composer-audit)**
 		- **[ Parse: A PHP Security Scanner](#parse-a-php-security-scanner)**
 		- **[PHPMD](#phpmd)**
 	    

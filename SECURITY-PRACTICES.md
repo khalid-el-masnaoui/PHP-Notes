@@ -576,7 +576,7 @@ What PHPMD does is: It takes a given PHP source code base and look for several p
 
 it can help us with avoiding some security bugs early-on,
 
-we will discuss such tool and other static analysis tools like `phpstan`, in the folder `Coding-Practices`.
+we will discuss such tool and other static analysis tools like `phpstan`, in the folder `Tools`
 
 
 ## Resources

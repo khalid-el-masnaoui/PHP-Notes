@@ -35,6 +35,7 @@ By following the key recommendations outlined below, you can avoid common config
 		- **[Local PHP Security Checker & Composer Audit](#local-php-security-checker--composer-audit)**
 		- **[ Parse: A PHP Security Scanner](#parse-a-php-security-scanner)**
 		- **[PHPMD](#phpmd)**
+	- **[OWASP](#owasp)**
 	    
 - **[Resources](#resources)**
 
@@ -577,6 +578,15 @@ What PHPMD does is: It takes a given PHP source code base and look for several p
 it can help us with avoiding some security bugs early-on,
 
 we will discuss such tool and other static analysis tools like `phpstan`, in the folder `Tools`
+
+###  OWASP
+
+The Open Web Application Security Project (OWASP) provides resources and guidance relevant to securing web applications. While OWASP does not have a specific "PHP OWASP" project, its general principles and projects are highly applicable to PHP development.
+
+Key OWASP resources relevant to PHP security include:
+
+- **OWASP Top 10:**  
+	- [This document](https://owasp.org/www-project-top-ten/) outlines the most critical security risks to web applications, providing a starting point for developers to address common vulnerabilities in PHP applications, such as Injection (SQL Injection, Command Injection), Broken Authentication, Cross-Site Scripting (XSS), and Insecure De-serialization (including PHP Object Injection).
 
 
 ## Resources

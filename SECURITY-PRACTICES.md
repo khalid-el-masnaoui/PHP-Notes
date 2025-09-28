@@ -596,6 +596,10 @@ Key OWASP resources relevant to PHP security include:
     - **[PHP Configuration Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/PHP_Configuration_Cheat_Sheet.html)** 
 
 OWASP contains many other resources for web security. By following the recommendations and utilizing the resources provided by OWASP, we can significantly improve the security posture of their applications. (our best-practices mentioned above cover most of that!)
+
+#### OWASP ZAP
+An open source tool from owasp for finding vulnerabilities in web applications and APIs by acting as a proxy between a browser and the application, intercepting and scanning traffic to identify flaws like SQL injection and cross-site scripting (XSS). It's used for both automated and manual penetration testing, allowing for the integration of security into the development lifecycle.  
+
 ## Resources
 
 - [resource 1](https://www.vaadata.com/blog/php-security-best-practices-vulnerabilities-and-attacks)

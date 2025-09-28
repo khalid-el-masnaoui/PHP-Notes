@@ -30,9 +30,11 @@ By following the key recommendations outlined below, you can avoid common config
 - **[Other Techniques and Tools](#other-techniques-and-tools)**
 	- **[ Add Rate limiting to costly calls and requests](#add-rate-limiting-to-costly-calls-and-requests)**
 	- **[Security Configurations](#security-configurations)**
-	- **[PHPCS-Security-Audit](#phpcs-security-audit)**
-	- **[ Parse: A PHP Security Scanner](#parse-a-php-security-scanner)**
-	- **[PHPMD](#phpmd)**
+	- **[Tools](#tools)**
+		- **[PHPCS-Security-Audit](#phpcs-security-audit)**
+		- **[Local PHP Security Checker & Composer Audit](#local-php-security-checker-&-composer-audit)
+		- **[ Parse: A PHP Security Scanner](#parse-a-php-security-scanner)**
+		- **[PHPMD](#phpmd)**
 	    
 - **[Resources](#resources)**
 
@@ -510,7 +512,8 @@ $rateLimiter->rateLimit(120, 1, "endpoint1");
 - `max_execution_time`: prevents scripts from running indefinitely.
 - `file_uploads` and `upload_max_filesize`: control file upload authorisations and limits.
 
-### PHPCS-Security-Audit
+### Tools
+#### PHPCS Security Audit
 
 [_phpcs-security-audit_](https://github.com/FloeDesignTechnologies/phpcs-security-audit) is a set of [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) rules that finds vulnerabilities and weaknesses related to security in PHP code.
 
@@ -539,13 +542,15 @@ FOUND 18 ERRORS AND 36 WARNINGS AFFECTING 44 LINES
 
 You can easily customize the rulesets.
 
-### Parse: A PHP Security Scanner
+#### Local PHP Security Checker & Composer Audit
+
+#### Parse: A PHP Security Scanner
 
 The [_Parse_](https://github.com/psecio/parse) scanner is a static scanning tool to review your PHP code for potential security-related issues.
 
 For example, you really shouldn't be using [eval](http://php.net/eval) in your code anywhere if you can help it. When the scanner runs, it will parse down each of your files and look for any `eval()` calls. If it finds any, it adds that match to the file and reports it in the results.
 
-### PHPMD
+#### PHPMD
 
 What PHPMD does is: It takes a given PHP source code base and look for several potential problems within that source. These problems can be things like:
 

@@ -588,7 +588,12 @@ Key OWASP resources relevant to PHP security include:
 - **OWASP Top 10:**  
 	- [This document](https://owasp.org/www-project-top-ten/) outlines the most critical security risks to web applications, providing a starting point for developers to address common vulnerabilities in PHP applications, such as Injection (SQL Injection, Command Injection), Broken Authentication, Cross-Site Scripting (XSS), and Insecure De-serialization (including PHP Object Injection).
 
-
+- **OWASP Cheat Sheet Series:** [These series](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) offers practical, actionable advice on various security topics, including:
+    - **Cross-Site Scripting Prevention Cheat Sheet**
+    - **Authentication Cheat Sheet**
+    - **Input Validation Cheat Sheet**
+    - **SQL Injection Prevention Cheat Sheet**
+    - **[PHP Configuration Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/PHP_Configuration_Cheat_Sheet.html)** 
 ## Resources
 
 - [resource 1](https://www.vaadata.com/blog/php-security-best-practices-vulnerabilities-and-attacks)

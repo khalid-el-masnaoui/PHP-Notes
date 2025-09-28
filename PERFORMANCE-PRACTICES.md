@@ -16,7 +16,7 @@ By following the key recommendations outlined below, you can avoid common config
 * **[OPcache preloading](#opcache-preloading)**
 * **[Enable Just-In-Time (JIT) Compilation](#enable-just-in-time-jit-compilation)**
 * **[Enable Realpath Cache](#enable-realpath-cache)**
-* **[Turn off MySQL statistics in `php.ini**`](#turn-off-mysql-statistics-in-phpini)
+* **[Turn off MySQL statistics in `php.ini`](#turn-off-mysql-statistics-in-phpini)**
 * **[Output Buffering](#output-buffering)**
 * **[PHP Configuration Tuning](#php-configuration-tuning)**
 * **[PHP-FPM: Fine-Tuning for High Loads](#php-fpm-fine-tuning-for-high-loads)**

@@ -18,7 +18,7 @@ Key principles:
 - Prioritize Security
 - Optimize Performance
 - Avoiding Technical Debt
-	**the more hours you save by doing things quick-and-dirty today, the more difficult product development will be in the future**. All the shortcuts are taken and all the savings on code or architecture quality, accumulate as a **metaphorical technical debt**.
+	**the more hours you save by doing things quick-and-dirty today, the more difficult product development will be in the future**. All the shortcuts are taken and all the savings on code or architecture quality, accumulate as a **metaphorical technical debt**. [](https://accesto.com/blog/technical-debt-the-number-one-reason-why-software-development-projects-get-derailed/)
 ### General considerations
 
 - **Follow the PSR standard**

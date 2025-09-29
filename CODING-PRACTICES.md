@@ -16,7 +16,6 @@ Key principles:
 - Minimize magic, maximize explicitness
 - Leverage PHP's type system
 - Optimize for **IDE** and static analyzer support
-
 ### General considerations
 
 - Follow the PSR standard
@@ -211,7 +210,29 @@ enum Suit
 ```
 
 
+### Strings
 
+**=> :** interpolation > `sprintf` > concatenation
+
+Prefer string interpolation above `sprintf` and the concatenation `.` operator whenever possible. Always wrap the variables in curly-braces `{}` when using interpolation.
+
+
+```php
+// GOOD
+$greeting = "Hi, I am {$name}.";
+
+// BAD (hard to distinguish the variable)
+$greeting = "Hi, I am $name.";
+// BAD (less readable)
+$greeting = 'Hi, I am '.$name.'.';
+$greeting = 'Hi, I am ' . $name . '.';
+```
+
+For more complex cases when there are a lot of variables to concat or when it’s not possible to use string interpolation, please use `sprintf` function:
+
+```php
+$debugInfo = sprintf('Current FQCN is %s. Method name is: %s', self::class, __METHOD__);
+```
 # Resources
 [Interactive Design Foundation(IxDF) Open Handbook](https://handbook.interaction-design.org/) <**has many great resources - check it out!**>
 [Interactive Design Foundation(IxDF) Coding Standard](https://github.com/InteractionDesignFoundation/coding-standard)

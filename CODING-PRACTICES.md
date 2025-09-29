@@ -443,6 +443,7 @@ Design patterns are typically categorized into three main types based on their i
 I will cover each of these principals and design patterns, in details with PHP examples in my repository `Principals & Design Patterns`
 ### PHP Clean Code
 
+You can check `CODING-CLEAN`as a reference for clean coding in PHP
 ### Testing
 
 Testing involves creating specific code and scenarios to automatically, deterministically, and repeatably verify the functionality and behavior of your PHP applications. This practice is crucial for maintaining code quality, identifying issues early in the development cycle, and ensuring the reliability of your software.

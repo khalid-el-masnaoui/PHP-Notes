@@ -136,7 +136,18 @@ protected function initialize(string $notificationFQCN): Notification
 
 Use `final` for classes and `private` for methods by default. This encourages **composition, dependency injection, and interface use over inheritance**. Consider the long-term maintainability, especially for public APIs.
 
+#### Class name resolution
 
+Use `ClassName::class` instead of hard-coded fully qualified class names.
+
+```php
+// GOOD
+use App\Modules\Payment\Models\Order;
+echo Order::class;
+
+// BAD
+echo 'App\Modules\Payment\Models\Order';
+```
 # Resources
 [PSR Standards Recommendations](https://www.php-fig.org/psr/) 
 [Interactive Design Foundation(IxDF) Coding Standard](https://github.com/InteractionDesignFoundation/coding-standard)

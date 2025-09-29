@@ -400,6 +400,43 @@ try {
 * Avoid logging and re-throwing the same exception: without adding new context; instead, consider chaining exceptions if more context is needed at a higher level.
 ### Principals & Design Patterns
 
+There are numerous ways to structure the code and project for your web application, and you can put as much or as little thought as you like into architecting. But it is usually a good idea to follow common patterns because it will make your code easier to manage and easier for others to understand.
+
+Coding principles and design patterns are essential for developing robust, scalable, and maintainable applications.
+
+Benefits of using principles and patterns:
+- **Improved Code Maintainability:** Easier to understand, modify, and extend.
+- **Enhanced Re-usability:** Solutions can be applied across different projects.
+- **Better Communication:** Provides a common vocabulary for developers.
+- **Increased Flexibility and Scalability:** Applications can adapt to changing requirements more easily.
+
+#### Coding Principles
+1. **SOLID**
+	- `Single Responsibility Principle (SRP)`
+	- `Open/Closed Principle (OCP)`
+	- `Liskov Substitution Principle (LSP)`
+	- `Interface Segregation Principle (ISP)`
+	- `Dependency Inversion Principle (DIP)`
+2. **DRY (Don't Repeat Yourself)**
+3. **YAGNI (You Aren't Gonna Need It)**
+
+#### Design patterns
+
+Design patterns are established, reusable solutions to commonly occurring problems in software design. They are not specific pieces of code that can be directly copied and pasted, but rather blueprints or templates that guide developers in structuring their code to achieve specific design goals.
+
+Design patterns are typically categorized into three main types based on their intent:
+
+- **Creational Patterns:**
+    Focus on object creation mechanisms, aiming to create objects in a way that decouples the client from the concrete classes being instantiated. Examples include Factory Method, Abstract Factory, Singleton, and Builder.
+    
+- **Structural Patterns:** 
+    Deal with the composition of objects and classes, simplifying the design by identifying relationships between entities. Examples include Adapter, Bridge, Composite, Decorator, Facade, and Proxy.
+    
+- **Behavioral Patterns:** 
+    Address the communication and interaction between objects, defining how objects collaborate to achieve a task. Examples include Chain of Responsibility, Command, Iterator, Mediator, Observer, Strategy, and State.
+
+
+I will cover each of these principals and design patterns, in details with PHP examples in my repository `Principals & Design Patterns`
 ### PHP Clean Code
 
 ### Testing

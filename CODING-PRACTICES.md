@@ -254,7 +254,17 @@ Use [Regex101](https://regex101.com/) for testing patterns.
 - Consider using `array_column()` for extracting specific columns from multidimensional arrays
 
 
+## Dependency Management
 
+- Use Composer for managing PHP dependencies
+- Keep `composer.json` and `composer.lock` in version control
+- Specify exact versions or version ranges for production dependencies
+- Use `composer update` sparingly in production environments
+- Regularly update dependencies and review `changelogs`
+- Leverage tools to check for unused and shadow dependencies (`composer-dependency-analyser` or `composer-unused` + `composer-require-checker`)
+- Consider using [`composer-normalize`](https://github.com/ergebnis/composer-normalize) for consistent `composer.json` formatting
+- Use private repositories or artifact repositories for internal packages
+- Implement a dependency security scanning tool in your CI pipeline (e.g., `Snyk`, `parse`; add `composer audit` to your CI pipeline)
 # Resources
 [Interactive Design Foundation(IxDF) Open Handbook](https://handbook.interaction-design.org/) <**has many great resources - check it out!**>
 [Interactive Design Foundation(IxDF) Coding Standard](https://github.com/InteractionDesignFoundation/coding-standard)

@@ -29,3 +29,17 @@ Key principles:
 - PSR-12, has a soft limit of ==120 characters== for line length, with a strong recommendation for lines to be 80 characters or less.
 - Lines end with a newline `Unix LF` with no trailing white-space.
 
+### Tools
+
+Should be using automated tools to check our code and enforce these guidelines (can be integrated in a CD/CI pipeline)
+
++ **PHP-CS-Fixer**
++ **PHPCS**
++ **Psalm**
++ **PHPStan**
++ **Rector**
++ **Deptrac**
++ **composer-dependency-analyser**
++ and more ...
+
+**I will cover all these tools in the `Tools` folder**

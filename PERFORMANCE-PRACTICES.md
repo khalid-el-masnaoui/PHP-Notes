@@ -326,6 +326,7 @@ Executing long-running tasks asynchronously in PHP is crucial for maintaining re
 	- _Examples:_ `Swoole`, `ReactPHP`, `Amp`.
 
 
+
 ### Security as a Performance Factor
 
 Implementing SSL/TLS, adds a layer of encryption that, if not properly configured, can slow down the site. Tools like Let’s Encrypt with OCSP stapling can help in maintaining both security and performance.

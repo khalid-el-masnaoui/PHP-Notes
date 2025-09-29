@@ -233,6 +233,13 @@ For more complex cases when there are a lot of variables to concat or when it’
 ```php
 $debugInfo = sprintf('Current FQCN is %s. Method name is: %s', self::class, __METHOD__);
 ```
+
+
+### Exception Naming
+
+Avoid the "Exception" suffix in exception class names. This encourages more descriptive naming.
+* `UserNotFoundException` : The suffix brings absolutely no value. Even worse, it makes the (perfectly valid) sentence more obscure: `UserNotFound` is everything we need.
+
 # Resources
 [Interactive Design Foundation(IxDF) Open Handbook](https://handbook.interaction-design.org/) <**has many great resources - check it out!**>
 [Interactive Design Foundation(IxDF) Coding Standard](https://github.com/InteractionDesignFoundation/coding-standard)

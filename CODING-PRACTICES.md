@@ -148,6 +148,25 @@ echo Order::class;
 // BAD
 echo 'App\Modules\Payment\Models\Order';
 ```
+
+#### Use `self` keyword
+
+Prefer `self` over the class name for return type hints and instantiation within the class.
+
+```php
+public static function createFromName(string $name): self
+{
+    return new self($name);
+}
+```
+
+
+
+
+
+
+
+
 # Resources
 [PSR Standards Recommendations](https://www.php-fig.org/psr/) 
 [Interactive Design Foundation(IxDF) Coding Standard](https://github.com/InteractionDesignFoundation/coding-standard)

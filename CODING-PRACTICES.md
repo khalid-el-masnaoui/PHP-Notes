@@ -43,3 +43,35 @@ Should be using automated tools to check our code and enforce these guidelines (
 + and more ...
 
 **I will cover all these tools in the `Tools` folder**
+
+
+## Coding Style
+### Types
+
+#### Strict types
+
+Use `declare(strict_types=1);` in all files. This catches type-related bugs early and promotes more thoughtful code, resulting in increased stability.
+
+#### Type declarations
+
+- Always specify property types (when possible)
+- Always specify parameter types (when possible)
+- Always use return types (when possible)
+    - Use `void` for methods that return nothing
+    - Use `never` for methods that always throw an exception
+
+#### Type-casting
+
+Prefer type-casting over dedicated methods for better performance:
+
+```php
+// GOOD
+$score = (int) '7';
+$hasMadeAnyProgress = (bool) $this->score;
+
+// BAD
+$score = intval('7');
+$hasMadeAnyProgress = boolval($this->score);
+```
+
+

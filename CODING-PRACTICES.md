@@ -5,7 +5,53 @@
 
 **Coding Standards** are an important factor for achieving a high code quality. A common visual style, naming conventions and other technical settings allow us to produce a homogenous code which is easy to read and maintain. However, not all important factors can be covered by rules and coding standards. Equally important is the style in which certain problems are solved programmatically.
 
+## Table Of Contents 
 
+
+* **[Introduction](#introduction)**
+  + **[General considerations](#general-conside**rations)**
+  + **[Tools](#tools)**
+* **[Coding Style](#coding-style)**
+  + **[Naming](#naming)**
+  + **[Types](#types)**
+	 - **[Strict types](#strict-types)**
+	 - **[Type declarations](#type-declarations)**
+	 - **[Type-casting](#type-casting)**
+  + **[Comments](#comments)**
+	 - **[Follow a convention](#follow-a-convention)**
+	 - **[Docblocks](#docblocks)**
+  + **[Inheritance and @inheritDoc](#inheritance-and-inheritdoc)**
+  + **[Traversable Types](#traversable-types)**
+  + **[Generic Types and Templates](#generic-types-and-templates)**
+  + **[OOP Practices](#oop-practices)**
+	 - **[Final by default](#final-by-default)**
+	 - **[Use Dependency Injection to Manage Object Creation and Lifetime](#use-dependency-injection-to-manage-object-creation-and-lifetime)**
+	 - **[Class name resolution](#class-name-resolution)**
+	 - **[Use `self` keyword](#use-self-keyword)**
+	 - **[Named constructors](#named-constructors)**
+	 - **[Domain-specific operations](#domain-specific-operations)**
+	 - **[Enums](#enums)**
+  + **[Strings](#strings)**
+  + **[Exception Naming](#exception-naming)**
+  + **[Regular Expressions](#regular-expressions)**
+  + **[SQL statements](#sql-statements)**
+  + **[Others](#others)**
+* **[Best Practices](#best-practices)**
+  + **[Error & Exception Handling](#error-exception-handling)**
+	 - **[Error Types ](#error-types)**
+	 - **[Basic Error Handling in PHP](#basic-error-handling-in-php)**
+	 - **[Advanced Error Handling Strategies](#advanced-error-handling-strategies)**
+	 - **[Best Practices](#best-practices-1)**
+  + **[Principles & Design Patterns](#principles-design-patterns)**
+	 - **[Coding Principles](#coding-principles)**
+	 - **[Design patterns](#design-patterns)**
+  + **[PHP Clean Code](#php-clean-code)**
+  + **[Testing](#testing)**
+	 - **[Testing Types](#testing-types)**
+	 - **[Popular PHP Testing Frameworks](#popular-php-testing-frameworks)**
+  + **[Dependency Management](#dependency-management)**
+* **[How to Structure a PHP Project](#how-to-structure-a-php-project)**
+- **[Resources](#resources)**
 ## Introduction
 
 PHP coding guidelines favor the approach: **less magic, more types**. Should prioritize explicit, strongly-typed code to enhance clarity, IDE support, and static analysis capabilities. Embrace consistent coding standards
@@ -405,7 +451,7 @@ try {
 - Do not use the error control operator (`@`): to suppress errors, as it can hide critical issues and make debugging difficult.
 * Do not ignore exceptions; always log or handle them appropriately.
 * Avoid logging and re-throwing the same exception: without adding new context; instead, consider chaining exceptions if more context is needed at a higher level.
-### Principals & Design Patterns
+### Principles & Design Patterns
 
 There are numerous ways to structure the code and project for your web application, and you can put as much or as little thought as you like into architecting. But it is usually a good idea to follow common patterns because it will make your code easier to manage and easier for others to understand.
 
@@ -554,7 +600,7 @@ Here is an example structure based on `layered architecture` using `MVC` (can be
 - **`.env`**: Environment variables for different deployment environments (e.g., development, production).
 
 
-# Resources
+## Resources
 [Interactive Design Foundation(IxDF) Open Handbook](https://handbook.interaction-design.org/) <**has many great resources - check it out!**>
 [PSR Standards Recommendations](https://www.php-fig.org/psr/) 
 [Flow Framework Coding Guidelines](https://flowframework.readthedocs.io/en/stable/TheDefinitiveGuide/PartV/CodingGuideLines/PHP.html)

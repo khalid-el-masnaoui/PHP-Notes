@@ -160,6 +160,10 @@ protected function initialize(string $notificationFQCN): Notification
 
 Use `final` for classes and `private` for methods by default. This encourages **composition, dependency injection, and interface use over inheritance**. Consider the long-term maintainability, especially for public APIs.
 
+#### Use Dependency Injection to Manage Object Creation and Lifetime
+
+Dependency Injection (DI) ensures loose coupling and makes it easier to unit test your classes by injecting dependencies rather than hard-coding them inside the class (composition over inheritance).
+
 #### Class name resolution
 
 Use `ClassName::class` instead of hard-coded fully qualified class names.
@@ -441,6 +445,40 @@ I will cover each of these principals and design patterns, in details with PHP e
 
 ### Testing
 
+Testing involves creating specific code and scenarios to automatically, deterministically, and repeatably verify the functionality and behavior of your PHP applications. This practice is crucial for maintaining code quality, identifying issues early in the development cycle, and ensuring the reliability of your software.
+
+#### Testing Types
+
+- **Unit Testing:** 
+    Focuses on testing individual units of code, such as functions, methods, or classes, in isolation. (no API, or Database calls)
+    
+- **Integration Testing:** 
+    Verifies the interactions between different components or modules of your application, ensuring they work together as expected.(with API and Database calls))
+    
+- **Functional Testing:** 
+    Tests broader aspects of your application, typically focusing on specific feature or user flows (according to the requirements). This can involve simulating user interactions and verifying the system's response.
+
+* **End-to-End (e2e) Testing:**
+	Validates the entire application flow from start to finish, simulating real user scenarios and interactions across multiple systems, components, and integrations (requires the test to setup the system components as they are in production).
+
+#### Popular PHP Testing Frameworks
+
+- **PHPUnit:** 
+    The de-facto standard for unit testing in PHP, offering a comprehensive set of features for writing and running tests (`Unit & Integration Testing`).
+    
+- **Codeception:** 
+    A full-stack testing framework that supports unit, functional, and acceptance testing, providing a more human-readable syntax for tests. (`All`)
+    
+- **Pest:** 
+    A modern, elegant testing framework built on top of PHPUnit, offering a more concise and expressive syntax for writing tests. (`All` : Pest-4 added support for Playwright)
+    
+- **Selenium & Playwright:** 
+    A tool primarily used for automated browser testing, allowing you to simulate user interactions with web applications.
+    
+- **Behat:** 
+    A behavior-driven development (BDD) framework for PHP, enabling you to describe application behavior in a human-readable language (Gherkin).
+
+I will cover `PHPUnit` & `Pest` in more details in the folder `Tools`.
 ### Dependency Management
 
 - Use Composer for managing PHP dependencies

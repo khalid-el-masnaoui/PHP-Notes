@@ -325,7 +325,14 @@ Executing long-running tasks asynchronously in PHP is crucial for maintaining re
 	- Offers true asynchronous execution within PHP, suitable for I/O-bound tasks like API calls, database queries, and file operations.
 	- _Examples:_ `Swoole`, `ReactPHP`, `Amp`.
 
+3. **Spawning Background Processes :**
+	- Using `exec()` or `proc_open()` to initiate a separate PHP script or a shell command in the background.
+	- Requires careful handling of output redirection (`> /dev/null 2>&1 &`) to prevent blocking and ensure the background process detaches properly. Lacks robust error handling and process management compared to queue systems.
 
+4. **Cron Jobs (for scheduled tasks) : **
+    - Schedule a PHP script to run periodically using the system's cron scheduler
+    - Ideal for recurring tasks like data cleanups, report generation, or batch processing that don't require immediate execution in response to a user request.
+	- Not suitable for truly asynchronous, on-demand tasks that need to be triggered by user actions.
 
 ### Security as a Performance Factor
 

@@ -195,7 +195,20 @@ public function setEmail(string $email): self;
 
 This approach promotes rich domain models and thin controllers/services
 
+#### Enums
 
+- Use singular names
+- Use PascalCase for case names
+
+```php
+enum Suit
+{
+    case Hearts;
+    case Diamonds;
+    case Clubs;
+    case Spades;
+}
+```
 
 
 

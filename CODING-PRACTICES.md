@@ -240,11 +240,19 @@ $debugInfo = sprintf('Current FQCN is %s. Method name is: %s', self::class, __ME
 Avoid the "Exception" suffix in exception class names. This encourages more descriptive naming.
 * `UserNotFoundException` : The suffix brings absolutely no value. Even worse, it makes the (perfectly valid) sentence more obscure: `UserNotFound` is everything we need.
 
-
 ### Regular Expressions
 
 Prioritize regex readability. For guidance, refer to [Writing better Regular Expressions in PHP](https://php.watch/articles/php-regex-readability).
 Use [Regex101](https://regex101.com/) for testing patterns.
+
+### Others
+
+- Prefer type-casting over type conversion functions (e.g., `(int)$value` instead of `intval($value)`)
+- Use `isset()` or `array_key_exists()` instead of `in_array()` for large arrays when checking for key existence
+- Leverage opcache for production environments
+- Use `stripos()` instead of `strpos()` with `strtolower()` for case-insensitive string searches
+- Consider using `array_column()` for extracting specific columns from multidimensional arrays
+
 
 
 # Resources

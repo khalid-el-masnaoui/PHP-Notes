@@ -245,6 +245,17 @@ Avoid the "Exception" suffix in exception class names. This encourages more desc
 Prioritize regex readability. For guidance, refer to [Writing better Regular Expressions in PHP](https://php.watch/articles/php-regex-readability).
 Use [Regex101](https://regex101.com/) for testing patterns.
 
+### SQL statements
+
+Use an upper case for SQL keywords and functions:
+
+```sql
+# GOOD
+SELECT MAX(sent_at) last_sent_at, notification_class FROM notification__notification_log GROUP BY notification_class
+
+# BAD
+select max(sent_at) last_sent_at, notification_class from notification__notification_log group by notification_class
+```
 ### Others
 
 - Prefer type-casting over type conversion functions (e.g., `(int)$value` instead of `intval($value)`)

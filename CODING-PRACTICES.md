@@ -75,3 +75,23 @@ $hasMadeAnyProgress = boolval($this->score);
 ```
 
 
+### Docblocks
+
+- Avoid docblocks for fully type-hinted methods/functions unless a description is necessary. (visual noise)
+- Use docblocks to reveal the contents of arrays and collections
+- Write docblocks on one line when possible
+- Always use fully qualified class names in docblocks
+
+php
+
+```php
+// GOOD
+final class Foo
+{
+    /** @var list<string> */
+    private array $urls;
+
+    /** @var \Illuminate\Support\Collection<int, \App\Models\User> */
+    private Collection $users;
+}
+```

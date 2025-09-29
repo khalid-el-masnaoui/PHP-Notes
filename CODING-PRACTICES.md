@@ -115,6 +115,21 @@ Use advanced PHPDoc syntax to describe traversable types:
 ```
 
 
+### Generic Types and Templates
+
+Use Psalm (or PHPstan) template annotations for generic types:
+
+```php
+/**
+ * @template T of \Illuminate\Notifications\Notification
+ * @param class-string<T> $notificationFQCN
+ * @return T
+ */
+protected function initialize(string $notificationFQCN): Notification
+{
+    // Implementation...
+}
+```
 
 # Resources
 [PSR Standards Recommendations](https://www.php-fig.org/psr/) 

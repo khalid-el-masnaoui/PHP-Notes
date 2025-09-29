@@ -17,6 +17,8 @@ Key principles:
 - Optimize for **IDE** and static analyzer support (extensions and rule-sets!)
 - Prioritize Security
 - Optimize Performance
+- Avoiding Technical Debt
+	**the more hours you save by doing things quick-and-dirty today, the more difficult product development will be in the future**. All the shortcuts are taken and all the savings on code or architecture quality, accumulate as a **metaphorical technical debt**.
 ### General considerations
 
 - **Follow the PSR standard**
@@ -293,6 +295,7 @@ select max(sent_at) last_sent_at, notification_class from notification__notifica
 - Consider using `array_column()` for extracting specific columns from multidimensional arrays
 
 ## Best Practices
+
 ### Error & Exception Handling
 
 #### Error Types 

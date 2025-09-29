@@ -507,7 +507,7 @@ Here is an example structure based on `layered architecture` using `MVC` (can be
 ├── public/                          # Publicly accessible files (Web root)
 │   └── index.php                    # Front controller
 │   └── .htaccess                    # URL rewriting and other settings (Apache)
-│ └── assets/                        # CSS, JS, images
+│   └── assets/                        # CSS, JS, images
 ├── src/                             # Application source code (MVC)
 │   └── Controllers/
 │   └── Models/
@@ -549,7 +549,7 @@ Here is an example structure based on `layered architecture` using `MVC` (can be
     - `database.php`: Database connection details.
     - `routes.php`: Application routes and maps URLs to controllers.
     
-- **`templates/`**: Contains view templates, often used with a templating engine like Twig or Latte.
+- **`templates/`**: Contains view templates, often used with a templating engine like **Twig** or **Latte**.
 
 - **`.env`**: Environment variables for different deployment environments (e.g., development, production).
 

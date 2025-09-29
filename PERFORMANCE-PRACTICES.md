@@ -320,6 +320,11 @@ Executing long-running tasks asynchronously in PHP is crucial for maintaining re
 	- Tasks are pushed onto a message queue (e.g., `Redis`, `RabbitMQ`, `Amazon SQS`), and separate worker processes consume and execute these tasks in the background.
 	- `Laravel Queues` (built on various queue drivers), `Symfony Messenger`, standalone queue libraries.
     
+2. **Asynchronous PHP Frameworks/Libraries :**
+	- These leverage event loops and co-routines to enable non-blocking I/O operations within a single process, allowing multiple tasks to be managed concurrently without waiting for each other to complete.
+	- Offers true asynchronous execution within PHP, suitable for I/O-bound tasks like API calls, database queries, and file operations.
+	- _Examples:_ `Swoole`, `ReactPHP`, `Amp`.
+
 
 ### Security as a Performance Factor
 

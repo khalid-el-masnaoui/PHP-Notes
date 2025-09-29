@@ -82,7 +82,6 @@ $hasMadeAnyProgress = boolval($this->score);
 - Write docblocks on one line when possible
 - Always use fully qualified class names in docblocks
 
-php
 
 ```php
 // GOOD
@@ -101,3 +100,22 @@ final class Foo
 
 - Use `@inheritDoc` for classes and methods to make inheritance explicit
 - For properties, copy the docblock from the parent class/interface instead of using `@inheritDoc`
+
+### Traversable Types
+
+Use advanced PHPDoc syntax to describe traversable types:
+
+
+
+``` php
+/** @return list<string> */
+/** @return array<int, Type> */
+/** @return Collection<TKey, TValue> */
+/** @return array{foo: string, optional?: int} */
+```
+
+
+
+# Resources
+[PSR Standards Recommendations](https://www.php-fig.org/psr/) 
+[Interactive Design Foundation(IxDF) Coding Standard](https://github.com/InteractionDesignFoundation/coding-standard)

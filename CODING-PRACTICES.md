@@ -131,6 +131,12 @@ protected function initialize(string $notificationFQCN): Notification
 }
 ```
 
+### OOP Practices
+#### Final by default
+
+Use `final` for classes and `private` for methods by default. This encourages **composition, dependency injection, and interface use over inheritance**. Consider the long-term maintainability, especially for public APIs.
+
+
 # Resources
 [PSR Standards Recommendations](https://www.php-fig.org/psr/) 
 [Interactive Design Foundation(IxDF) Coding Standard](https://github.com/InteractionDesignFoundation/coding-standard)

@@ -29,6 +29,7 @@ By following the key recommendations outlined below, you can avoid common config
 	 - **[Techniques for Optimizing Database Queries and Interactions](#techniques-for-optimizing-database-queries-and-interactions)**
   + **[Caching](#caching)**
   + **[Concurrency with Asynchronous PHP](#concurrency-with-asynchronous-php)**
+  + **[Long Running tasks asynchronously in PHP](#long-running-tasks-asynchronously-in-php)**
   + **[Security as a Performance Factor](#security-as-a-performance-factor)**
   + **[Minimize External Dependencies](#minimize-external-dependencies)**
   + **[Use a Content Delivery Network (CDN)](#use-a-content-delivery-network-cdn)**
@@ -309,6 +310,16 @@ Caching is a powerful technique that can drastically improve the performance of 
 Asynchronous operations allow your code to continue running while waiting for a response from an external resource, such as a database or API. This can improve performance by allowing your server to handle more requests at once.
 
 Modern PHP applications can benefit from asynchronous programming to handle multiple tasks concurrently. Libraries like `ReactPHP` or frameworks like `Swoole` can be used to write non-blocking code, which is particularly beneficial for APIs or applications that rely on network communication.
+
+### Long running tasks asynchronously in PHP
+
+Executing long-running tasks asynchronously in PHP is crucial for maintaining responsiveness in web applications and handling resource-intensive operations (e.g : logging, network calls...) without blocking the main process  Several approaches can be employed:
+
+1. **Queue-based Systems :** 
+	- Decouples the task execution from the web request, handles scaling easily, and provides reliability with retries and error handling.
+	- Tasks are pushed onto a message queue (e.g., `Redis`, `RabbitMQ`, `Amazon SQS`), and separate worker processes consume and execute these tasks in the background.
+	- `Laravel Queues` (built on various queue drivers), `Symfony Messenger`, standalone queue libraries.
+    
 
 ### Security as a Performance Factor
 

@@ -177,12 +177,29 @@ public static function createFromSignup(AlmostMember $almostMember): self
 
 Reason: have a robust API that does not allow developers to create objects with invalid state (e.g. missing parameter/dependency).
 
+#### Domain-specific operations
 
+Encapsulate domain logic in specific methods rather than using generic setters:
+
+```php
+// GOOD
+public function confirmEmailAwaitingConfirmation(): void
+{
+    $this->email = $this->email_awaiting_confirmation;
+    $this->email_awaiting_confirmation = null;
+}
+
+// BAD
+public function setEmail(string $email): self;
+```
+
+This approach promotes rich domain models and thin controllers/services
 
 
 
 
 
 # Resources
-[PSR Standards Recommendations](https://www.php-fig.org/psr/) 
+[Interactive Design Foundation(IxDF) Open Handbook](https://handbook.interaction-design.org/) <**has many great resources - check it out!**>
 [Interactive Design Foundation(IxDF) Coding Standard](https://github.com/InteractionDesignFoundation/coding-standard)
+[PSR Standards Recommendations](https://www.php-fig.org/psr/) 

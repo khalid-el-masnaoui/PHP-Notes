@@ -41,10 +41,20 @@ Should be using automated tools to check our code and enforce these guidelines (
 + **composer-dependency-analyser**
 + and more ...
 
-**I will cover all these tools in the `Tools` folder**
+**I will cover all these tools in the `Tools` folder with their rule-sets for enforcing these guides**
 
 
 ## Coding Style
+
+### Naming
+
+- **Classes:** Class names must be declared in `PascalCase` (also known as `StudlyCaps`).
+- **Properties & Methods:** Method names must be declared in `camelCase`.
+- **Constants:** Class constants must be declared in all uppercase with underscores separating words.
+-  **Files & Folders :**
+	- Lowercase, hypen-delimited names for general files and folders.
+	- Class files matching their respective `PascalCase` class names (for PSR-4 auto-loading).
+	- The folder structure must mirror the namespace structure, using subdirectories for each namespace level. (PSR-4)
 ### Types
 
 #### Strict types

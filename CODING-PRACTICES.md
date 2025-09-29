@@ -494,6 +494,66 @@ I will cover `PHPUnit` & `Pest` in more details in the folder `Tools`.
 - Consider using [`composer-normalize`](https://github.com/ergebnis/composer-normalize) for consistent `composer.json` formatting
 - Use private repositories or artifact repositories for internal packages
 - Implement a dependency security scanning tool in your CI pipeline (e.g., `Snyk`, `parse`; add `composer audit` to your CI pipeline)
+
+## How to Structure a PHP Project
+
+PHP project structure mainly depends on the chosen software architecture (e.g `MVC`) .A common and well-structured PHP application skeleton typically follows a pattern that separates concerns and promotes maintainability. 
+
+Here is an example structure based on `layered architecture` using `MVC` (can be either with `DataMapper` or `ActiveRecord`) (check my `Software Architectural Patterns` repository)
+
+```shell
+.
+├── bin/                             # CLI tools and scripts (executable)
+├── public/                          # Publicly accessible files (Web root)
+│   └── index.php                    # Front controller
+│   └── .htaccess                    # URL rewriting and other settings (Apache)
+│ └── assets/                        # CSS, JS, images
+├── src/                             # Application source code (MVC)
+│   └── Controllers/
+│   └── Models/
+│   └── Views/
+│   └── Services/
+│   ├── Repositories/
+│   ├── Middlewares/
+│   └── Utils/
+├── config/                          # Configuration files
+│   └── app.php
+│   └── database.php
+│   └── routes.php
+├── templates/                       # Templates or views
+│   └── layout.php
+│   └── home.php
+├── database/                        # Migrations, seeds, schema definition
+├── resources/                       # Other resource files	(uploads,cache, logs)
+├── translations/                    # Localization files
+├── tests/                           # Automated tests
+│   ├── Unit/               
+│   └── Integration/        
+├── vendor/                          # Composer dependencies
+├── .env                             # Environment variables
+├── composer.json
+├── composer.lock
+```
+
+- **`src/`**:This directory is often organized using a pattern like MVC (Model-View-Controller) or similar architectural styles.
+    - `Controllers/`: Handling user input, interacting with models, and selecting views. (= handling HTTP requests and responses.)
+    - `Models/`:  Data entities and/or business logic (activeRecord), interacting with the database (mostly using an `ORM`)
+    - `Views/`: Presenting data to the user (e.g., generating HTML).
+    - `Services/`:Business logic or operations that might be used across different controllers.
+	- `Repositories/`: Abstracting database queries, decoupling models from persistence (used in **DataMapper** pattern)
+	- `Middlewares/`: Managing cross-cutting concerns like authentication, logging...
+	- `Utils/` or `Helpers/`: Reusable utility classes or functions.
+	
+- **`config/`**: Stores application configuration settings (Using a `.env` file with a library like `vlucas/phpdotenv` is common for managing sensitive environment variables).
+    - `app.php`: General application settings.
+    - `database.php`: Database connection details.
+    - `routes.php`: Application routes and maps URLs to controllers.
+    
+- **`templates/`**: Contains view templates, often used with a templating engine like Twig or Latte.
+
+- **`.env`**: Environment variables for different deployment environments (e.g., development, production).
+
+
 # Resources
 [Interactive Design Foundation(IxDF) Open Handbook](https://handbook.interaction-design.org/) <**has many great resources - check it out!**>
 [PSR Standards Recommendations](https://www.php-fig.org/psr/) 

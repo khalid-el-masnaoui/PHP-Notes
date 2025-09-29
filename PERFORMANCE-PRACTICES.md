@@ -740,6 +740,7 @@ Your application may be running fine at one minute, but a sudden barrage of traf
 
 There are several more sophisticated performance monitoring solutions available that are specifically designed for PHP. i personally prefers self-hosted options (mostly open-source as well)
 * **Nginx Amplify**:  Can collect many useful metrics, including slow queries. (not self-hosted & it uses server resources heavily compared to other solution!!)
+* `New Relic` : A cloud-based observability platform that provides application performance monitoring (APM), infrastructure monitoring, Browser Monitoring and user experience monitoring.
 * **`NetData`** : Can monitor PHP by collecting metrics from PHP-FPM (Connections, Requests, max children reached, slow requests and Resource Usage..), offering custom alerting => [self-hosted & open-source] (**i cover this tool in more details in the `Linux server` and `Observabiloty : monitoring, logging and alerting` repositories**)
 
 <p float="left" align="middle">

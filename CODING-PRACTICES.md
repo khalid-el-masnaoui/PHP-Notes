@@ -161,6 +161,22 @@ public static function createFromName(string $name): self
 ```
 
 
+#### Named constructors
+
+Use named static constructors to create objects with valid state:
+
+```php
+public static function createFromSignup(AlmostMember $almostMember): self
+{
+    return new self(
+        $almostMember->company_name,
+        $almostMember->country
+    );
+}
+```
+
+Reason: have a robust API that does not allow developers to create objects with invalid state (e.g. missing parameter/dependency).
+
 
 
 

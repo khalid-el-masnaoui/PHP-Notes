@@ -285,12 +285,126 @@ select max(sent_at) last_sent_at, notification_class from notification__notifica
 
 - Prefer type-casting over type conversion functions (e.g., `(int)$value` instead of `intval($value)`)
 - Use `isset()` or `array_key_exists()` instead of `in_array()` for large arrays when checking for key existence
-- Leverage opcache for production environments
 - Use `stripos()` instead of `strpos()` with `strtolower()` for case-insensitive string searches
 - Consider using `array_column()` for extracting specific columns from multidimensional arrays
 
+## Best Practices
+### Error & Exception Handling
 
-## Dependency Management
+#### Error Types 
+- Parse Errors (Syntax Errors)
+- Fatal Errors (e.g undefined function)
+- Warning Errors
+- Notice Errors
+
+#### Basic Error Handling in PHP
+At a basic level, you can manage errors using functions such as `error_reporting()`, `trigger_error()`, and `set_error_handler()`.
+
+```php
+/**
+ * Custom error handler function.
+ *
+ * @param int    $errno   The level of the error raised.
+ * @param string $errstr  The error message.
+ * @param string $errfile The filename where the error was raised.
+ * @param int    $errline The line number where the error was raised.
+ *
+ * @return bool True if the error has been handled.
+ */
+function custom_error_handler($errno, $errstr, $errfile, $errline) {
+    echo "Error [$errno]: $errstr in $errfile on line $errline";
+    # error_log(...)
+    return true;
+}
+
+// Set custom error handler.
+set_error_handler('custom_error_handler');
+
+// Trigger an error.
+echo $undefined_variable;
+
+```
+
+for a long time (since around PHP5.3), errors and exceptions were quite different animals. However, since version 7.0, they've been brought closer together under the umbrella of the `Throwable` interface.
+
+While functions like `trigger_error` are kept in the language to maintain backward compatibility, Exceptions or `Error` objects should be preferred.
+#### Advanced Error Handling Strategies
+ Techniques such as **custom exception classes**, **unified error logging**, and **error propagation** across different layers of the application. These techniques help handle unexpected situations gracefully while providing clear diagnostics.
+
+There are basically two operations that can be done once an Exception is thrown:
+
+1. Handle it.
+2. Let it propagate.
+3. Throw it again.
+
+The basic answer to the question (**Do you handle or propagate exceptions?**) is that you should handle an exception at the point in the program where something useful can be done to recover from the problem.
+ 
+4. **Using Custom Exception Classes**
+```php
+/**
+ * Custom DatabaseException class.
+ */
+class DatabaseException extends Exception {
+    /**
+     * Custom error message for database errors.
+     *
+     * @return string Error message.
+     */
+    public function error_message() {
+        return "Database error on line {$this->getLine()} in {$this->getFile()}: {$this->getMessage()}";
+    }
+}
+
+try {
+    // Simulate a database error.
+    throw new DatabaseException( 'Unable to connect to the database.' );
+} catch ( DatabaseException $e ) {
+    echo $e->error_message();
+}
+```
+
+2. **Catching Multiple Exceptions**
+```php
+try {
+    // Some code that may throw different types of exceptions.
+} catch ( DatabaseException $e ) {
+    // Handle database-specific errors.
+} catch ( FileNotFoundException $e ) {
+    // Handle file-specific errors.
+} catch ( Exception $e ) {
+    // Handle generic errors.
+}
+```
+
+#### Best Practices
+
+1. **Do Not Display Errors in Production**
+	To prevent critical information from being exposed, display_errors should always be disabled in production situations.
+
+2. **Use Logging Extensively**
+	Unexpected exceptions and serious mistakes should always be recorded. You may use this to find problems in a production setting.
+
+3. **Use Exception Handling for Complex Errors**
+	To deal with failures in complicated systems, utilize exceptions. This results in improved control and more transparent error flows.
+
+4. **Fail Gracefully**
+	Provide user-friendly notifications or fallback behavior to ensure your program can handle problems gracefully without breaking the system as a whole.
+
+5. **Regularly Monitor and Review Logs**
+	Regular monitoring of error logs is necessary to make sure that no serious problems are overlooked.
+	Errors should be detected and raised immediately when they occur to avoid "swallowing" the root cause or leading to a more complex issue later on
+	
+6. **Avoid Bad Practices**
+- Do not use the error control operator (`@`): to suppress errors, as it can hide critical issues and make debugging difficult.
+* Do not ignore exceptions; always log or handle them appropriately.
+* Avoid logging and re-throwing the same exception: without adding new context; instead, consider chaining exceptions if more context is needed at a higher level.
+### Principals & Design Patterns
+
+### PHP Clean Code
+
+### Testing
+
+### Dependency Management
 
 - Use Composer for managing PHP dependencies
 - Keep `composer.json` and `composer.lock` in version control

@@ -84,11 +84,20 @@ $hasMadeAnyProgress = boolval($this->score);
 ```
 
 
-### Docblocks
+### Comments
+
+#### Follow a convention
+
+The convention of PHP is a simple one and quite a standard one:
+
+1. Use `/* */` for **documenting** code. Documenting means to describe the purpose of a file, a function, a class, a method and so on. 
+2. Use `//` for **explaining** code. Explaining here means to tell what a statement, or group of statements, does, and maybe even how it does it.
+3. Break long comments into multiple lines.
+4. Don't comment everything : **_less is more!_**
+#### Docblocks
 
 - Avoid docblocks for fully type-hinted methods/functions unless a description is necessary. (visual noise)
 - Use docblocks to reveal the contents of arrays and collections
-- Write docblocks on one line when possible
 - Always use fully qualified class names in docblocks
 
 
@@ -288,5 +297,6 @@ select max(sent_at) last_sent_at, notification_class from notification__notifica
 - Implement a dependency security scanning tool in your CI pipeline (e.g., `Snyk`, `parse`; add `composer audit` to your CI pipeline)
 # Resources
 [Interactive Design Foundation(IxDF) Open Handbook](https://handbook.interaction-design.org/) <**has many great resources - check it out!**>
-[Interactive Design Foundation(IxDF) Coding Standard](https://github.com/InteractionDesignFoundation/coding-standard)
 [PSR Standards Recommendations](https://www.php-fig.org/psr/) 
+[Flow Framework Coding Guidelines](https://flowframework.readthedocs.io/en/stable/TheDefinitiveGuide/PartV/CodingGuideLines/PHP.html)
+[Gist PHP Style Guide](https://gist.github.com/ryansechrest/8138375)

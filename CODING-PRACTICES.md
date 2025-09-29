@@ -95,3 +95,9 @@ final class Foo
     private Collection $users;
 }
 ```
+
+
+### Inheritance and @inheritDoc
+
+- Use `@inheritDoc` for classes and methods to make inheritance explicit
+- For properties, copy the docblock from the parent class/interface instead of using `@inheritDoc`

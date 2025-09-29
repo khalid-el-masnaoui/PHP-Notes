@@ -41,8 +41,8 @@ Check the docker-compose in the `default-ui` folder, the profiling data is store
 The profiling data is displayed for each php script run
 
 <p float="left" align="middle">
-  <img src="./../../images/xhprof_ui_1.png" width = "40%" />
-  <img src="./../../images/xhprof_ui_2.png" width="40%" /> 
+  <img src="./../../../images/xhprof_ui_1.png" width = "40%" />
+  <img src="./../../../images/xhprof_ui_2.png" width="40%" /> 
 </p>
 
 **Note** : For using this Graph we need install extension that calls: graphviz. (included in the docker-file)
@@ -74,14 +74,14 @@ Xhgui needs the data collector `perftools/php-profiler` && `perftools/xhgui-coll
 
 
 <p float="left" align="middle">
-  <img src="./../../images/xhgui_1.png" width = "40%" />
-  <img src="./../../images/xhgui_2.png" width="40%" /> 
+  <img src="./../../../images/xhgui_1.png" width = "40%" />
+  <img src="./../../../images/xhgui_2.png" width="40%" /> 
 </p>
 
 
 <p float="left" align="middle">
-  <img src="./../../images/xhgui_3.png" width = "40%" />
-  <img src="./../../images/xhgui_4.png" width="40%" /> 
+  <img src="./../../../images/xhgui_3.png" width = "40%" />
+  <img src="./../../../images/xhgui_4.png" width="40%" /> 
 </p>
 
 

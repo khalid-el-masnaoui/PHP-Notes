@@ -40,7 +40,7 @@ php cachetool.phar opcache:status --cli
 
 
 <p float="left" align="middle">
-  <img src="./../../images/cachetool.png" width = "80%" />
+  <img src="./../../../images/cachetool.png" width = "80%" />
 
 </p>
 

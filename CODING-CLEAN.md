@@ -752,3 +752,65 @@ class Employee
     // ...
 }
 ```
+
+### Prefer final classes
+
+The `final` should be used whenever possible:
+
+1. It prevents uncontrolled inheritance chain.
+2. It encourages **composition**
+3. It encourages the **Single Responsibility Pattern**
+4. It encourages developers to use your public methods instead of extending the class to get access on protected ones.
+5. It allows you to change your code without any break of applications that use your class.
+
+The only condition is that your class should implement an interface and no other public methods are defined (for the **composition**)
+
+
+```php 
+// BAD
+final class Car
+{
+    private $color;
+
+    public function __construct($color)
+    {
+        $this->color = $color;
+    }
+
+    /**
+     * @return string The color of the vehicle
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+}
+
+
+// GOOD
+interface Vehicle
+{
+    /**
+     * @return string The color of the vehicle
+     */
+    public function getColor();
+}
+
+final class Car implements Vehicle
+{
+    private $color;
+
+    public function __construct($color)
+    {
+        $this->color = $color;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+}
+```

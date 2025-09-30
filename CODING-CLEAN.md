@@ -57,3 +57,23 @@ if ($status == ACTIVE_STATUS) {
 }
 
 ```
+
+### Use explanatory variables
+
+```php
+$address = 'One Infinite Loop, Cupertino 95014';
+$cityZipCodeRegex = '/^[^,]+,\s*(.+?)\s*(\d{5})$/';
+preg_match($cityZipCodeRegex, $address, $matches);
+
+// BAD
+saveCityZipCode($matches[1], $matches[2]);
+
+// GOOD
+[, $city, $zipCode] = $matches; 
+saveCityZipCode($city, $zipCode);
+
+
+// BETTER
+// USE NAMED REGEX GROUPs
+saveCityZipCode($matches['city'], $matches['zipCode']);
+```

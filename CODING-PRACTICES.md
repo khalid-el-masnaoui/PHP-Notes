@@ -469,6 +469,42 @@ try {
 * Avoid fluent interfaces `=>` it breaks **encapsulation**
 * Avoid traits (static coupling!), re-use code to avoid (DRY or hidden coupling)
 * Ensure deep cloning
+	PHP **clone** keyword _**shallow**_ copy all of the object’s properties, which only copies the top-level properties and maintains references to nested objects, meaning changes to the nested objects in the clone would also affect the original.
+	`__clone()` magic method allows us to change this behavior, but it is hard to recursively traverse object's  properties and clones them and avoiding cloning the same object twice!. The [DeepCopy](https://github.com/myclabs/DeepCopy) library does that for us!
+
+
+**Note on shallow/deep copy on array :**
+A simple assignment or the spread operator) creates a shallow copy. This means that while the outer array is a new instance, any nested arrays or objects within it will still be references to the original. Modifying a nested element in the copy will also affect the original.
+
+You can Deep copy using serialization and unserialization 
+
+```php
+//shallow copy
+
+$originalArray = ['name' => 'John', 'details' => ['age' => 25]];
+
+// Shallow copy using assignment
+$shallowCopy1 = $originalArray;
+
+// Shallow copy using spread operator (PHP 7.4+)
+$shallowCopy2 = [...$originalArray];
+
+$shallowCopy1['details']['age'] = 30; // This will also change $originalArray['details']['age']
+```
+
+```php
+// Using serialization and unserialization for deep copy  
+$originalArray = ['name' => 'John', 'details' => ['age' => 25]];  
+  
+// Deep copy using serialization and unserialization  
+$deepCopy = unserialize(serialize($originalArray));  
+  
+// Modify the nested array in the copied structure  
+$deepCopy['details']['age'] = 30;  
+  
+// Changes do not affect the original array  
+var_dump($originalArray); // ['name' => 'John', 'details' => ['age' => 25]]
+```
 
 ### Principles & Design Patterns
 
@@ -625,3 +661,4 @@ Here is an example structure based on `layered architecture` using `MVC` (can be
 [PSR Standards Recommendations](https://www.php-fig.org/psr/) 
 [Flow Framework Coding Guidelines](https://flowframework.readthedocs.io/en/stable/TheDefinitiveGuide/PartV/CodingGuideLines/PHP.html)
 [Gist PHP Style Guide](https://gist.github.com/ryansechrest/8138375)
+[Extremely Defensive PHP](https://youtu.be/Gl9td0zGLhw?si=Topitu_-whwJSPVu)

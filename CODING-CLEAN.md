@@ -359,3 +359,63 @@ function createTempFile(string $name): void
     touch('./temp/'.$name);
 }
 ```
+
+### Avoid Side Effects
+
+A side effect could be writing to a file, modifying some global variable..etc. For example, a function that has a side effect as writing to a file, what you want to do is to centralize where you are doing this. Don't have several functions and classes that write to a particular file. Have one service that does it. One and only one.
+
+The main point is to avoid common pitfalls like sharing state between objects without any structure, using mutable data types that can be written to by anything, and not centralizing where your side effects occur. 
+
+```php
+// BAD
+// If we had another function that used this name, now it'd be an array and it could break it.
+$name = 'Ryan McDermott';
+
+function splitIntoFirstAndLastName(): void
+{
+    global $name;
+
+    $name = explode(' ', $name);
+}
+
+splitIntoFirstAndLastName();
+
+
+// GOOD
+function splitIntoFirstAndLastName(string $name): array
+{
+    return explode(' ', $name);
+}
+
+$name = 'Ryan McDermott';
+$newName = splitIntoFirstAndLastName($name);
+```
+
+### Names should describe side effects
+
+Names should describe everything that a function, variable, or class is or does. Don’t hide side effects with a name. Don’t use a simple verb to describe a function that does more than just that simple action.
+
+
+```php
+// BAD
+public function getProfile(): Profile
+{
+    if ($this->profile === null) {
+        $this->profile = new Profile($this);
+        $this->save();
+    }
+
+    return $this->profile;
+}
+
+// GOOD
+public function createOrReturnProfile(): Profile
+{
+    if ($this->profile === null) {
+        $this->profile = new Profile($this);
+        $this->save();
+    }
+
+    return $this->profile;
+}
+```

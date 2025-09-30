@@ -42,6 +42,10 @@
 	 - **[Basic Error Handling in PHP](#basic-error-handling-in-php)**
 	 - **[Advanced Error Handling Strategies](#advanced-error-handling-strategies)**
 	 - **[Best Practices](#best-practices-1)**
+ - **[Defensive PHP](#defensive-php)**
+ - **[Data Modeling](#data-modeling)**
+	- **[Data Entities](#data-entities)**
+	- **[Value Objects](#value-object)**
   + **[Principles & Design Patterns](#principles-design-patterns)**
 	 - **[Coding Principles](#coding-principles)**
 	 - **[Design patterns](#design-patterns)**
@@ -506,7 +510,7 @@ $deepCopy['details']['age'] = 30;
 var_dump($originalArray); // ['name' => 'John', 'details' => ['age' => 25]]
 ```
 
-### Data Entities and Value Objects
+### Data Modeling
 
 #### Data Entities :
 These are classes that represent real-world objects or concepts within your application's domain, often corresponding to tables in a database. They encapsulate data and behavior related to that specific entity.

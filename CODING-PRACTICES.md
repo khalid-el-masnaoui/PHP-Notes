@@ -522,6 +522,7 @@ These are classes that represent real-world objects or concepts within your appl
     - Often used with ORMs like Doctrine.
     - Used  for complex, unique things with a lifecycle and relationships.
     - Have unique identity and mutable
+    - All entities has a valid state!, use Value objects and DTOs before validating the state
 
 ```php
 class User
@@ -554,6 +555,9 @@ class User
     
 - **Encapsulation of behavior:** 
     Value objects can also encapsulate behavior related to their encapsulated data, such as formatting, conversion, or calculations.
+
+- **Usage:** 
+    Used to model fundamental concepts within the domain like `Money`, `EmailAddress`, `Coordinates`, where the value itself defines the object's identity and validity.
 
 ```php
 final class EmailAddress

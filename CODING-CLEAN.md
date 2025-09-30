@@ -19,7 +19,6 @@ $ymdstr = $moment->format('y-m-d');
 $currentDate = $moment->format('y-m-d');
 ```
 
-
 ### Use the same vocabulary for the same type of variable
 
 ```php 
@@ -31,4 +30,30 @@ getUserProfile();
 
 // GOOD
 getUser();
+```
+
+### Avoid Magic Numbers
+
+```php
+// BAD
+$result = $serializer->serialize($data, 448);
+
+// GOOD
+$json = $serializer->serialize($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
+```
+
+```php 
+// BAD 
+if ($status == 1) {  
+// Handle active status  
+}  
+  
+// GOOD  
+const ACTIVE_STATUS = 1;  
+  
+if ($status == ACTIVE_STATUS) {  
+// Handle active status  
+}
+
 ```

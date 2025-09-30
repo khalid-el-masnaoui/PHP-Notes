@@ -451,6 +451,25 @@ try {
 - Do not use the error control operator (`@`): to suppress errors, as it can hide critical issues and make debugging difficult.
 * Do not ignore exceptions; always log or handle them appropriately.
 * Avoid logging and re-throwing the same exception: without adding new context; instead, consider chaining exceptions if more context is needed at a higher level.
+
+### Defensive PHP
+
+* Make **`state immutable`**
+* Avoid **setters** --> making object mutable externally (object should be immutable after initialization)
+* No **uninitialized** properties after object creation
+* Get rid of **optional dependencies** (e.g an optional logger) `=>` object can change behavior/state after initialization! `=>` dependencies should be on the construction step and pass a fake dependency instead of null (and do nothing with it!)
+* Reduce public api (unnecessary public methods)
+* All state should be encapsulated (!setters) `=>` `spooky action at distance bug` `=> use `clone or immutable data 
+* External access includes sub-classes! (protected access modifier is a myth `=>` private by default)
+* Public method is a transaction for the state mutability! `=>` make the public methods of a single interaction private and add one public method to call the whole transaction!
+	* SIngle public API  wrapping around **state change**
+	* Handle state recovery, rolling back in case of failure issue of one sequence!
+* Dont assume **idompotency** on subsequent call! (cache it on a variable instead of calling each time)
+* No mixed parameters/return type `=>` use value objects , enums
+* Avoid fluent interfaces `=>` it breaks **encapsulation**
+* Avoid traits (static coupling!), re-use code to avoid (DRY or hidden coupling)
+* Ensure deep cloning
+
 ### Principles & Design Patterns
 
 There are numerous ways to structure the code and project for your web application, and you can put as much or as little thought as you like into architecting. But it is usually a good idea to follow common patterns because it will make your code easier to manage and easier for others to understand.
@@ -529,6 +548,7 @@ Testing involves creating specific code and scenarios to automatically, determin
     A behavior-driven development (BDD) framework for PHP, enabling you to describe application behavior in a human-readable language (Gherkin).
 
 I will cover `PHPUnit` & `Pest` in more details in the folder `Tools`.
+
 ### Dependency Management
 
 - Use Composer for managing PHP dependencies

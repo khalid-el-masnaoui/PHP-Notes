@@ -1060,3 +1060,8 @@ class Order {
     }
 }
 ```
+
+
+### Code should be well-documented
+
+While good code should be self-explanatory, comments and documentation are still important, especially for complex algorithms or important business logic. Comments should explain why something is done, not what is done. In addition to comments, PHPDoc blocks can be used to provide structured documentation for classes, methods, and variables.

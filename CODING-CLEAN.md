@@ -986,3 +986,23 @@ function sumArray($numbers) {
     return $total;
 }
 ```
+
+### Code should be efficient
+
+Efficient code is not only about speed and performance but also about how well your code utilizes resources. Writing efficient PHP code involves understanding the cost of operations, avoiding unnecessary calculations, and using the right data structures and algorithms for the job. Remember, **premature optimization is the root of all evil**. Don’t optimize until you have a proven bottleneck.
+
+```php
+// BAD
+function findElement($array, $element) {
+    for ($i = 0; $i < count($array); $i++) {
+        if ($array[$i] === $element) {
+            return true;
+        }
+    }
+    return false;
+
+// GOOD
+function findElement($array, $element) {
+    return in_array($element, $array);
+}
+```

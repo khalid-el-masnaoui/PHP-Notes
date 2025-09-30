@@ -175,3 +175,20 @@ class Car
 - **Consistency Across the Codebase:**  
     Consistent naming patterns reduce cognitive load. Decide on naming conventions as a team and document them in your style guide
 
+
+## Comparison
+
+### Use identical comparison
+
+```php 
+// BAD
+if ($a != $b || $c == $d) {
+    //...
+}
+
+// GOOD
+if ($a !== $b || $c === $d) {
+    //...
+}
+
+```

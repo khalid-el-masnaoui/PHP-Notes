@@ -419,3 +419,18 @@ public function createOrReturnProfile(): Profile
     return $this->profile;
 }
 ```
+
+### Encapsulate conditionals
+
+```php 
+// BAD
+if ($article->state === 'published') {
+    // ...
+}
+
+
+// GOOD
+if ($article->isPublished()) {
+    // ...
+}
+```

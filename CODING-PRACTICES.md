@@ -42,8 +42,8 @@
 	 - **[Basic Error Handling in PHP](#basic-error-handling-in-php)**
 	 - **[Advanced Error Handling Strategies](#advanced-error-handling-strategies)**
 	 - **[Best Practices](#best-practices-1)**
- - **[Defensive PHP](#defensive-php)**
- - **[Data Modeling](#data-modeling)**
+   - **[Defensive PHP](#defensive-php)**
+   - **[Data Modeling](#data-modeling)**
 	- **[Data Entities](#data-entities)**
 	- **[Value Objects](#value-object)**
   + **[Principles & Design Patterns](#principles-design-patterns)**

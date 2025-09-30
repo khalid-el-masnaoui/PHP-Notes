@@ -1079,3 +1079,7 @@ Maintainability focuses on code clarity, modularity, and ease of updates. Key ti
 - **Avoid hard-coding values:** Use configuration files or environment variables for settings.
 - **Handle errors gracefully:** Use proper error handling and logging to monitor issues without exposing details to users.
 
+
+## Resources
+[Interactive Design Foundation(IxDF) Clean Code](https://handbook.interaction-design.org/library/backend/clean-code-php.html) 
+[Clean Code in PHP: Best Practices and Principles](https://medium.com/@teal33t/clean-code-in-php-best-practices-and-principles-8ccf2f1673a7)

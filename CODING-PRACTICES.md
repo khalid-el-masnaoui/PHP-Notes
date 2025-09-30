@@ -506,6 +506,34 @@ $deepCopy['details']['age'] = 30;
 var_dump($originalArray); // ['name' => 'John', 'details' => ['age' => 25]]
 ```
 
+### Data Entities and Value Objects
+
+#### Data Entities :
+These are classes that represent real-world objects or concepts within your application's domain, often corresponding to tables in a database. They encapsulate data and behavior related to that specific entity.
+- **Purpose:** To provide an object-oriented representation of your data, making it easier to interact with and manipulate database records.
+- **Characteristics:**
+    - Typically contain properties that map to database table columns (e.g., `id`, `name`, `email`).
+    - May include methods for business logic relevant to the entity (e.g., `calculateAge()`, `markAsExpired()`).
+    - Often used with ORMs like Doctrine.
+    - Used  for complex, unique things with a lifecycle and relationships.
+    - Have unique identity and mutable
+
+```php
+class User
+{
+	private int $id;
+	private string $name;
+	private string $email;
+	private $address; // This can be an entity itself containing address details
+	
+	public function getFullName(): string
+	{
+		return $this->name;
+	}
+}
+```
+
+
 ### Principles & Design Patterns
 
 There are numerous ways to structure the code and project for your web application, and you can put as much or as little thought as you like into architecting. But it is usually a good idea to follow common patterns because it will make your code easier to manage and easier for others to understand.

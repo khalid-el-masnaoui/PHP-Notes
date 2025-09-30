@@ -192,3 +192,36 @@ if ($a !== $b || $c === $d) {
 }
 
 ```
+
+### Null coalescing & Ternary operators
+
+```php 
+// BAD
+if (isset($_GET['name'])) {
+    $name = $_GET['name'];
+} elseif (isset($_POST['name'])) {
+    $name = $_POST['name'];
+} else {
+    $name = 'nobody';
+}
+
+// GOOD 
+$name = $_GET['name'] ?? $_POST['name'] ?? 'nobody';
+```
+
+```php
+// BAD
+$value = "hello";
+if ($value) {
+    $result = $value;
+} else {
+    $result = "default";
+}
+
+// GOOD 
+$result = $value ? $value : "default";
+
+// BETTER
+$result = $value ?: "default";
+```
+

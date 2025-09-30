@@ -819,3 +819,75 @@ final class Car implements Vehicle
     }
 }
 ```
+
+
+### Avoiding Unnecessary Try-Catch Blocks in Private Methods
+
+While handling exceptions is essential, wrapping every private or helper method in try-catch blocks is usually unnecessary and leads to cluttered, harder-to-maintain code.
+
+**`Why Avoid Try-Catch in Private Methods?`**
+- **Private methods are internal implementation details.** Let exceptions bubble up to the public interface where they can be handled properly.
+- Adding try-catch everywhere clutters the code, making it harder to read and maintain.
+- Centralized error handling improves consistency and reduces duplication.
+- Catching exceptions prematurely often leads to **silent failures** or improper error handling.
+
+**`Best Practices`**
+- Avoid placing try-catch blocks inside **private or helper methods** unless you can handle exceptions meaningfully at that level.
+- Allow exceptions to **propagate to higher-level public methods** or centralized handlers.
+- Use try-catch blocks in **public API methods, controllers, or middleware** to provide consistent and user-friendly error handling.
+- Always **log exceptions** and avoid silently swallowing errors inside catch blocks.
+- This strategy results in **cleaner, more maintainable code** and better error management.
+
+```php
+// BAD
+class OrderProcessor
+{
+    // ❌ Wrong: try-catch inside private method - unnecessary and cluttered
+    private function validateOrder(array $order): bool
+    {
+        try {
+            if (empty($order['items'])) {
+                throw new InvalidArgumentException('Order must contain items');
+            }
+            return true;
+        } catch (InvalidArgumentException $e) {
+            // ❌ Catching here but not handling properly (just rethrowing)
+            throw $e;
+        }
+    }
+}
+
+
+// GOOD
+class OrderProcessor
+{
+    // ✅ Right: No try-catch here - let exception bubble up
+    private function validateOrder(array $order): bool
+    {
+        if (empty($order['items'])) {
+            throw new InvalidArgumentException('Order must contain items');
+        }
+        return true;
+    }
+
+    // ✅ Right: Handle exceptions in the public method instead
+    public function processOrder(array $order): bool
+    {
+        try {
+            $this->validateOrder($order);
+            // Additional order processing logic
+            return true;
+        } catch (InvalidArgumentException $e) {
+            // Handle validation error, log or notify accordingly
+            error_log($e->getMessage());
+            return false;
+        } catch (Exception $e) {
+            // Handle unexpected errors
+            error_log('Unexpected error: ' . $e->getMessage());
+            return false;
+        }
+    }
+}
+
+
+```

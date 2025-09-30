@@ -167,3 +167,11 @@ class Car
 }
 ```
 
+### Others
+- **Avoid Abbreviations and Acronyms:**  
+    Only use abbreviations that are widely understood. Avoid ambiguous short names like `$tmp` or `$val`.
+- **Use Nouns for Classes, Verbs for Methods:**  
+    Classes represent entities or concepts (nouns), while methods perform actions (verbs). For example, `UserRepository` (class) and `fetchUser()` (method).
+- **Consistency Across the Codebase:**  
+    Consistent naming patterns reduce cognitive load. Decide on naming conventions as a team and document them in your style guide
+

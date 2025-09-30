@@ -967,3 +967,22 @@ Design patterns are established, reusable solutions to commonly occurring proble
 Use **design patterns** where appropriate to simplify complex logic.
 
 I cover each of these principles and design patterns, in details with PHP examples in the folder `Principles & Design Patterns`
+
+
+## Best Practices
+
+### Code should be easy to read
+
+```php
+// BAD
+function x($a){$b=0;for($i=0;$i<count($a);$i++){$b+=$a[$i];}return $b;}
+
+// GOOD
+function sumArray($numbers) {
+    $total = 0;
+    for ($i = 0; $i < count($numbers); $i++) {
+        $total += $numbers[$i];
+    }
+    return $total;
+}
+```

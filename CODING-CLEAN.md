@@ -1,4 +1,4 @@
-## Overview
+****## Overview
 
 Writing clean code in PHP isn’t just about making it look good — it’s about making it **easier to read, maintain, and scale**, it is not a style guide. It's a guide to producing readable, reusable, and re-factorable software in PHP.  Clean code leads to fewer bugs, faster development, and a smoother experience overall.
 
@@ -7,6 +7,52 @@ Poorly written code can quickly become a nightmare to maintain, leading to bugs,
 It also helps automated tools — such as static analyzers, linters, and code quality tools — identify potential issues early, ensuring your project remains robust and reliable.
 
 Not every principle herein has to be strictly followed, and even fewer will be universally agreed upon. These are guidelines and nothing more.
+
+## Table Of Contents
+
+- **[Variables](#variables)**
+   * **[Use meaningful and pronounceable variable names](#use-meaningful-and-pronounceable-variable-names)**
+   * **[Use the same vocabulary for the same type of variable](#use-the-same-vocabulary-for-the-same-type-of-variable)**
+   * **[Avoid Magic Numbers](#avoid-magic-numbers)**
+   * **[Use explanatory variables](#use-explanatory-variables)**
+   * **[Avoid nesting too deeply](#avoid-nesting-too-deeply)**
+   * **[Avoid Mental Mapping](#avoid-mental-mapping)**
+   * **[Don't add unneeded context](#dont-add-unneeded-context)**
+   * **[Others](#others)**
+- **[Comparison](#comparison)**
+   * **[Use identical comparison](#use-identical-comparison)**
+   * **[Null coalescing & Ternary operators](#null-coalescing-ternary-operators)**
+- **[Functions](#functions)**
+   * **[Function arguments (3 or fewer ideally)](#function-arguments-3-or-fewer-ideally)**
+   * **[Function names should say what they do](#function-names-should-say-what-they-do)**
+   * **[Don't use flags as function parameters](#dont-use-flags-as-function-parameters)**
+   * **[Avoid Side Effects](#avoid-side-effects)**
+   * **[Names should describe side effects](#names-should-describe-side-effects)**
+   * **[Encapsulate conditionals](#encapsulate-conditionals)**
+   * **[Avoid negative conditionals](#avoid-negative-conditionals)**
+   * **[Avoid Conditionals (use Polymorphism)](#avoid-conditionals-use-polymorphism)**
+   * **[Avoid type-checking](#avoid-type-checking)**
+   * **[Remove dead code](#remove-dead-code)**
+- **[Classes and Objects](#classes-and-objects)**
+   * **[Use object encapsulation](#use-object-encapsulation)**
+   * **[Make objects have private/protected members](#make-objects-have-privateprotected-members)**
+   * **[Prefer composition over inheritance](#prefer-composition-over-inheritance)**
+   * **[Prefer final classes](#prefer-final-classes)**
+   * **[Avoiding Unnecessary Try-Catch Blocks in Private Methods](#avoiding-unnecessary-try-catch-blocks-in-private-methods)**
+- **[Tests](#tests)**
+   * **[Best Practices](#best-practices)**
+- **[Principles & Design Patterns](#principles-design-patterns)**
+  + **[Coding Principles](#coding-principles)**
+  + **[Design patterns](#design-patterns)**
+- **[Best Practices](#best-practices-1)**
+   * **[Code should be easy to read](#code-should-be-easy-to-read)**
+   * **[Code should be efficient](#code-should-be-efficient)**
+   * **[Code should be robust and handle errors gracefully](#code-should-be-robust-and-handle-errors-gracefully)**
+   * **[Code should be testable](#code-should-be-testable)**
+   * **[Code should be well-documented](#code-should-be-well-documented)**
+- **[Wrapping Up](#wrapping-up)**
+- **[Resources](#resources)**
+
 ## Variables
 
 ### Use meaningful and pronounceable variable names
@@ -939,7 +985,7 @@ function testAdditionWithNegativeNumbers() {
 }
 ```
 
-### Principles & Design Patterns
+## Principles & Design Patterns
 
 There are numerous ways to structure the code and project for your web application, and you can put as much or as little thought as you like into architecting. But it is usually a good idea to follow common patterns because it will make your code easier to manage and easier for others to understand.
 
@@ -1081,5 +1127,5 @@ Maintainability focuses on code clarity, modularity, and ease of updates. Key ti
 
 
 ## Resources
-[Interactive Design Foundation(IxDF) Clean Code](https://handbook.interaction-design.org/library/backend/clean-code-php.html) 
+[Interactive Design Foundation(IxDF) Clean Code](https://handbook.interaction-design.org/library/backend/clean-code-php.html)
 [Clean Code in PHP: Best Practices and Principles](https://medium.com/@teal33t/clean-code-in-php-best-practices-and-principles-8ccf2f1673a7)

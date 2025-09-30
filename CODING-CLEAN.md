@@ -1023,3 +1023,40 @@ function divide($num1, $num2) {
     return $num1 / $num2;
 }
 ```
+
+### Code should be testable
+
+> Any fool can write code that a computer can understand. Good programmers write code that humans can understand.— Martin Fowler
+
+Testability is another crucial aspect of clean code. Code should be designed in a way that makes it easy to test automatically using unit tests. This means creating functions and classes that have clear inputs and outputs, avoiding hidden dependencies, and making sure that each piece of code does one thing well.
+
+```php 
+// BAD
+class Order {
+    public function calculateTotal() {
+        $total = 0;
+        foreach ($this->items as $item) {
+            $total += $item->price;
+        }
+        $this->applyDiscount($total);
+        return $total;
+    }
+    private function applyDiscount(&$total) {
+        $total *= 0.9;
+    }
+}
+
+// GOOD
+class Order {
+    public function calculateTotal() {
+        $total = 0;
+        foreach ($this->items as $item) {
+            $total += $item->price;
+        }
+        return $this->applyDiscount($total);
+    }
+    private function applyDiscount($total) {
+        return $total * 0.9;
+    }
+}
+```

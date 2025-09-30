@@ -46,6 +46,7 @@
    - **[Data Modeling](#data-modeling)**
 	- **[Data Entities](#data-entities)**
 	- **[Value Objects](#value-object)**
+	- **[Data Transfer Object (DTO)](#data-transfer-object-dto)**
   + **[Principles & Design Patterns](#principles-design-patterns)**
 	 - **[Coding Principles](#coding-principles)**
 	 - **[Design patterns](#design-patterns)**
@@ -587,6 +588,19 @@ var_dump($email1->equals($email2)); // true
 var_dump($email1->equals($email3)); // false
 ```
 
+#### Data Transfer Object (DTO):
+
+- **Purpose:** 
+    Primarily designed for transferring data between different layers or boundaries of an application, or between different systems (e.g., API requests/responses).
+    
+- **Characteristics:**
+    - Focuses on plain data and its structure.
+    - Typically contains only properties and basic getters/setters, with minimal or no business logic.
+    - Does not inherently guarantee the validity or correctness of the data it holds. Validation often occurs before or after the DTO is populated.
+    - Its identity is not significant; two DTOs with the same data are not necessarily considered "the same object" in a domain sense.
+    
+- **Usage:** 
+    Used to represent incoming request data, outgoing response data, or data exchanged between services.
 ### Principles & Design Patterns
 
 There are numerous ways to structure the code and project for your web application, and you can put as much or as little thought as you like into architecting. But it is usually a good idea to follow common patterns because it will make your code easier to manage and easier for others to understand.

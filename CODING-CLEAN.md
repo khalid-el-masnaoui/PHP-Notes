@@ -539,3 +539,28 @@ function travelToTexas(Vehicle $vehicle): void
 }
 
 ```
+
+### Avoid type-checking
+
+If you are working with basic primitive values like strings, integers, and arrays, and you use PHP 7+ and you can't use polymorphism but you still feel the need to type-check, you should consider [type declaration](https://php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration) or strict mode.
+
+When working with basic primitive values like strings, integers, and arrays, polymorphism is not an option, instead you can use type-hinting and strict mode
+
+```php
+// BAD
+function combine($val1, $val2): int
+{
+    if (!is_numeric($val1) || !is_numeric($val2)) {
+        throw new \Exception('Must be of type Number');
+    }
+
+    return $val1 + $val2;
+}
+
+// GOOD
+function combine(int $val1, int $val2): int
+{
+    return $val1 + $val2;
+}
+```
+

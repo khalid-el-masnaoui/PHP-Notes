@@ -434,3 +434,27 @@ if ($article->isPublished()) {
     // ...
 }
 ```
+
+### Avoid negative conditionals
+
+```php
+function isDOMNodeNotPresent(\DOMNode $node): bool
+{
+    // ...
+}
+
+if (!isDOMNodeNotPresent($node))
+{
+    // ...
+}
+
+// GOOD
+function isDOMNodePresent(\DOMNode $node): bool
+{
+    // ...
+}
+
+if (isDOMNodePresent($node)) {
+    // ...
+}
+```

@@ -77,3 +77,44 @@ saveCityZipCode($city, $zipCode);
 // USE NAMED REGEX GROUPs
 saveCityZipCode($matches['city'], $matches['zipCode']);
 ```
+
+### Avoid nesting too deeply
+
+```php 
+// BAD
+function isShopOpen($day): bool
+{
+    if ($day) {
+        if (is_string($day)) {
+            $day = strtolower($day);
+            if ($day === 'friday') {
+                return true;
+            } elseif ($day === 'saturday') {
+                return true;
+            } elseif ($day === 'sunday') {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+
+// GOOD
+function isShopOpen(string $day): bool
+{
+    if (empty($day)) {
+        return false;
+    }
+
+    $openingDays = [
+        'friday', 'saturday', 'sunday'
+    ];
+
+    return in_array(strtolower($day), $openingDays, true);
+}
+```

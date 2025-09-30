@@ -118,3 +118,26 @@ function isShopOpen(string $day): bool
     return in_array(strtolower($day), $openingDays, true);
 }
 ```
+
+### Avoid Mental Mapping
+
+Don’t force the reader of your code to translate what the variable means. Explicit is better than implicit.
+
+
+```php 
+// BAD
+$l = ['Austin', 'New York', 'San Francisco'];
+
+for ($i = 0; $i < count($l); $i++) {
+    $li = $l[$i];
+    doStuff();
+}
+
+// GOOD
+$locations = ['Austin', 'New York', 'San Francisco'];
+
+foreach ($locations as $location) {
+    doStuff();
+}
+```
+

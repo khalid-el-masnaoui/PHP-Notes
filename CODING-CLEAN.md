@@ -1,3 +1,5 @@
+
+# PHP Clean Code
 ## Overview
 
 Writing clean code in PHP isn’t just about making it look good — it’s about making it **easier to read, maintain, and scale**, it is not a style guide. It's a guide to producing readable, reusable, and re-factorable software in PHP.  Clean code leads to fewer bugs, faster development, and a smoother experience overall.

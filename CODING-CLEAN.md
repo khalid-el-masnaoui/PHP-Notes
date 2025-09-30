@@ -141,3 +141,29 @@ foreach ($locations as $location) {
 }
 ```
 
+### Don't add unneeded context
+
+If your class/object name tells you something, don't repeat that in your variable name.
+
+```php 
+// BAD
+class Car
+{
+    public $carMake;
+    public $carModel;
+    public $carColor;
+
+    //...
+}
+
+// GOOD
+class Car
+{
+    public $make;
+    public $model;
+    public $color;
+
+    //...
+}
+```
+

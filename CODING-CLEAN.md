@@ -19,3 +19,16 @@ $ymdstr = $moment->format('y-m-d');
 $currentDate = $moment->format('y-m-d');
 ```
 
+
+### Use the same vocabulary for the same type of variable
+
+```php 
+//BAD
+getUserInfo();
+getUserData();
+getUserRecord();
+getUserProfile();
+
+// GOOD
+getUser();
+```

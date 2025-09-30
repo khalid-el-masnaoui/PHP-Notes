@@ -533,6 +533,55 @@ class User
 }
 ```
 
+#### Value Objects
+ Immutable objects that encapsulate data and are defined by their attributes rather than a unique identity. They represent descriptive aspects of a domain, such as an email address, a monetary amount, or a date range.
+- **Immutability:** 
+    Once created, the internal state of a value object cannot be changed. Any operation that would modify the value object returns a new instance with the updated value. This prevents unintended side effects and ensures data integrity.
+    
+- **Equality based on value:** 
+    Two value objects are considered equal if all their encapsulated attributes are identical, regardless of whether they are the same object in memory. Custom equality methods (e.g., `equals()`) are often implemented to facilitate this comparison.
+    
+- **Self-validation:** 
+    Value objects typically include validation logic within their constructor to ensure that only valid data can be used to create an instance. This prevents the creation of objects in an invalid state.
+    
+- **No conceptual identity:** 
+    Unlike entities, which have a unique identifier, value objects derive their identity solely from their encapsulated values.
+    
+- **Encapsulation of behavior:** 
+    Value objects can also encapsulate behavior related to their encapsulated data, such as formatting, conversion, or calculations.
+
+```php
+final class EmailAddress
+{
+    private string $email;
+
+    public function __construct(string $email)
+    {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            throw new InvalidArgumentException("Invalid email address: " . $email);
+        }
+        $this->email = $email;
+    }
+
+    public function toString(): string
+    {
+        return $this->email;
+    }
+
+    public function equals(EmailAddress $other): bool
+    {
+        return $this->email === $other->email;
+    }
+}
+
+// Usage
+$email1 = new EmailAddress("test@example.com");
+$email2 = new EmailAddress("test@example.com");
+$email3 = new EmailAddress("another@example.com");
+
+var_dump($email1->equals($email2)); // true
+var_dump($email1->equals($email3)); // false
+```
 
 ### Principles & Design Patterns
 

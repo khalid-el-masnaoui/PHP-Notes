@@ -564,3 +564,98 @@ function combine(int $val1, int $val2): int
 }
 ```
 
+
+### Remove dead code
+
+Dead code is just as bad as duplicate code. There's no reason to keep it in your codebase. If it's not being called, get rid of it! It will still be safe in your version history if you still need it.
+
+```php
+
+// BAD
+function oldRequestModule(string $url): void
+{
+    // ...
+}
+
+function newRequestModule(string $url): void
+{
+    // ...
+}
+
+$request = newRequestModule($requestUrl);
+inventoryTracker('apples', $request, 'www.inventory-awesome.io');
+
+
+// GOOD
+function requestModule(string $url): void
+{
+    // ...
+}
+
+$request = requestModule($requestUrl);
+inventoryTracker('apples', $request, 'www.inventory-awesome.io');
+```
+
+
+## Classes and Objects
+
+### Use object encapsulation
+
+- When you want to do more beyond getting an object property, you don't have to look up and change every accessor in your codebase.
+- Makes adding validation simple when doing a `set`.
+- Encapsulates the internal representation.
+- Easy to add logging and error handling when getting and setting.
+- Inheriting this class, you can override default functionality.
+- You can lazy load your object's properties, let's say getting it from a server.
+
+```php
+
+// BAD
+class BankAccount
+{
+    public $balance = 1000;
+}
+
+$bankAccount = new BankAccount();
+
+// Buy shoes...
+$bankAccount->balance -= 100;
+
+// GOOD
+class BankAccount
+{
+    private $balance;
+
+    public function __construct(int $balance = 1000)
+    {
+        $this->balance = $balance;
+    }
+
+    public function withdraw(int $amount): void
+    {
+        if ($amount > $this->balance) {
+            throw new \Exception('Amount greater than available balance.');
+        }
+
+        $this->balance -= $amount;
+    }
+
+    public function deposit(int $amount): void
+    {
+        $this->balance += $amount;
+    }
+
+    public function getBalance(): int
+    {
+        return $this->balance;
+    }
+}
+
+$bankAccount = new BankAccount();
+
+// Buy shoes...
+$bankAccount->withdraw($shoesPrice);
+
+// Get balance
+$balance = $bankAccount->getBalance();
+```

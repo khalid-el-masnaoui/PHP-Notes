@@ -305,3 +305,30 @@ class Contact
     // getters ...
 }
 ```
+
+### Function names should say what they do
+
+```php
+// BAD
+class Email
+{
+    //...
+
+    public function handle(): void
+    {
+        mail($this->to, $this->subject, $this->body);
+    }
+}
+
+// GOOD
+class Email
+{
+    //...
+
+    public function send(): void
+    {
+        mail($this->to, $this->subject, $this->body);
+    }
+}
+
+```

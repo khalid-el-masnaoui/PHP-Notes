@@ -1006,3 +1006,20 @@ function findElement($array, $element) {
     return in_array($element, $array);
 }
 ```
+
+### Code should be robust and handle errors gracefully
+
+```php
+// BAD
+function divide($num1, $num2) {
+    return $num1 / $num2;
+}
+
+// GOOD
+function divide($num1, $num2) {
+    if ($num2 == 0) {
+        throw new InvalidArgumentException("Cannot divide by zero.");
+    }
+    return $num1 / $num2;
+}
+```

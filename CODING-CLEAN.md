@@ -938,3 +938,32 @@ function testAdditionWithNegativeNumbers() {
     // Test logic for negative numbers
 }
 ```
+
+### Principles & Design Patterns
+
+There are numerous ways to structure the code and project for your web application, and you can put as much or as little thought as you like into architecting. But it is usually a good idea to follow common patterns because it will make your code easier to manage and easier for others to understand.
+
+Coding principles and design patterns are essential for developing robust, scalable, and maintainable applications.
+
+Benefits of using principles and patterns:
+- **Improved Code Maintainability:** Easier to understand, modify, and extend.
+- **Enhanced Re-usability:** Solutions can be applied across different projects.
+- **Better Communication:** Provides a common vocabulary for developers.
+- **Increased Flexibility and Scalability:** Applications can adapt to changing requirements more easily.
+
+#### Coding Principles
+1. **SOLID**
+	- `Single Responsibility Principle (SRP)`
+	- `Open/Closed Principle (OCP)`
+	- `Liskov Substitution Principle (LSP)`
+	- `Interface Segregation Principle (ISP)`
+	- `Dependency Inversion Principle (DIP)`
+2. **DRY (Don't Repeat Yourself)**
+3. **YAGNI (You Aren't Gonna Need It)**
+
+#### Design patterns
+
+Design patterns are established, reusable solutions to commonly occurring problems in software design. They are not specific pieces of code that can be directly copied and pasted, but rather blueprints or templates that guide developers in structuring their code to achieve specific design goals.
+Use **design patterns** where appropriate to simplify complex logic.
+
+I cover each of these principles and design patterns, in details with PHP examples in the folder `Principles & Design Patterns`

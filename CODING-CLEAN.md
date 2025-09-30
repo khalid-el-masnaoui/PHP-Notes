@@ -668,7 +668,12 @@ $balance = $bankAccount->getBalance();
 
 Therefore, use `private` by default and `public/protected` when you need to provide access for external classes.
 
-Use getters/setters if needed
+
+**Best Practices for Access Modifiers:**
+- Favor the most restrictive visibility (start with `private`).
+- Use `public` only for interface methods.
+- Avoid public properties; use getters/setters.
+- Use `protected` sparingly.
 
 
 ### Prefer composition over inheritance

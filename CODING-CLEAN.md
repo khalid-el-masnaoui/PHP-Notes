@@ -458,3 +458,84 @@ if (isDOMNodePresent($node)) {
     // ...
 }
 ```
+
+### Avoid Conditionals (use Polymorphism)
+
+```php
+// BAD
+class Airplane
+{
+    // ...
+
+    public function getCruisingAltitude(): int
+    {
+        switch ($this->type) {
+            case '777':
+                return $this->getMaxAltitude() - $this->getPassengerCount();
+            case 'Air Force One':
+                return $this->getMaxAltitude();
+            case 'Cessna':
+                return $this->getMaxAltitude() - $this->getFuelExpenditure();
+        }
+    }
+}
+
+// GOOD
+interface Airplane
+{
+    // ...
+
+    public function getCruisingAltitude(): int;
+}
+
+class Boeing777 implements Airplane
+{
+    // ...
+
+    public function getCruisingAltitude(): int
+    {
+        return $this->getMaxAltitude() - $this->getPassengerCount();
+    }
+}
+
+class AirForceOne implements Airplane
+{
+    // ...
+
+    public function getCruisingAltitude(): int
+    {
+        return $this->getMaxAltitude();
+    }
+}
+
+class Cessna implements Airplane
+{
+    // ...
+
+    public function getCruisingAltitude(): int
+    {
+        return $this->getMaxAltitude() - $this->getFuelExpenditure();
+    }
+}
+```
+
+Avoiding the object type checking 
+
+```php 
+// BAD
+function travelToTexas($vehicle): void
+{
+    if ($vehicle instanceof Bicycle) {
+        $vehicle->pedalTo(new Location('texas'));
+    } elseif ($vehicle instanceof Car) {
+        $vehicle->driveTo(new Location('texas'));
+    }
+}
+
+// GOOD
+function travelToTexas(Vehicle $vehicle): void
+{
+    $vehicle->travelTo(new Location('texas'));
+}
+
+```

@@ -65,6 +65,14 @@ With incremental improvements, **the system remains operational throughout the 
 From the perspective of developers themselves, business knowledge is also crucial. Once you know which modules of the system are most important from a business perspective, you can plan your refactoring process better. 
 
 Personally, **I like to start with the smallest and least important modules**. That way, you can get the hang of the system and the style of its code by working with the least essential parts of it. The probability of breaking the entire system and having to revert entirely to the old codebase shrinks.
+
+#### 3. Upgrade your PHP version
+
+One of the first things I do as part of refactoring is update my PHP version. Not only will it speed up the app, but will also make it easier to spot outdated code. This is extremely important, as some of the outdated pieces of your software might lead to security issues that may be exploited
+
+There are some handy tools that can assist you in upgrading your PHP version. [Rector](https://github.com/rectorphp/rector) is the standout there , it is covered in detail in the folder `Tools`
+
+Once PHP is updated, errors removed, obsolete functions rewritten, and other problematic pieces of code simplified, you can move to another stage of refactoring that has to do with libraries.
 ### Techniques for Refactoring PHP Code
 
 Several techniques can be applied to refactor PHP code. Some of the most common methods include:

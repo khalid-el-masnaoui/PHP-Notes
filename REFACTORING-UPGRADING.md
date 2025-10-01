@@ -18,6 +18,7 @@ Refactoring and Upgrading  are distinct but often **intertwined** processes aime
 	 - **[4. Update your libraries](#4-update-your-libraries)**
 	 - **[5. Try out the Strangler Fig Pattern](#5-try-out-the-strangler-fig-pattern)**
 		* **[How to use the Strangler Fig Pattern?](#how-to-use-the-strangler-fig-pattern)**
+	- **[6. Testing in Conjunction with Refactoring](#6-testing-in-conjunction-with-refactoring)**
   + **[Techniques for Refactoring PHP Code](#techniques-for-refactoring-php-code)**
 	 - **[1. Extracting Functions and Methods](#1-extracting-functions-and-methods)**
 	 - **[2. Replace Conditional Logic with Polymorphism](#2-replace-conditional-logic-with-polymorphism)**
@@ -128,7 +129,7 @@ Let's say we have an old CakePHP, CodeIgniter, Yii, or plain PHP project and you
 5. **Turn off the old code altogether when the time comes :**
     Once all the functionalities are moved to the new system, turn off or remove the old code.
 
-#### 7. Testing in Conjunction with Refactoring
+#### 6. Testing in Conjunction with Refactoring
 
 Tests, particularly unit tests, are crucial when refactoring. They act as a safety net, ensuring that the refactoring process does not introduce regressions or break existing functionality.
 

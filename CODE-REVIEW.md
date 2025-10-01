@@ -31,3 +31,11 @@ Think of a code review as the quality assurance process for your PHP project. To
 ### 10. Version Control and Collaboration
 
 You find detailed description of these principles [here](https://accesto.com/blog/best-php-code-review-practices/)
+
+
+## PHP Code Review Checklist
+
+A comprehensive PHP code review checklist addresses various aspects, including functionality, readability, security, performance, and adherence to coding standards.
+
+Check this [PHP code review checklist](https://redwerk.com/blog/php-code-review-checklist-tips-for-secure-scalable-code/)
+

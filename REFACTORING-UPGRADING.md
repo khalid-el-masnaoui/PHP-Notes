@@ -73,6 +73,14 @@ One of the first things I do as part of refactoring is update my PHP version. No
 There are some handy tools that can assist you in upgrading your PHP version. [Rector](https://github.com/rectorphp/rector) is the standout there , it is covered in detail in the folder `Tools`
 
 Once PHP is updated, errors removed, obsolete functions rewritten, and other problematic pieces of code simplified, you can move to another stage of refactoring that has to do with libraries.
+
+#### 4. Update your libraries
+
+When you are in the early stages of PHP refactoring, inspecting all of the libraries in your project is a must.
+
+> **If your system is large and old, chances are that some of your libraries are not only outdated but entirely abandoned by their authors.**
+
+Updating is quite straightforward. The composer tool detects outdated/abandoned ones. Such libraries often recommend how best to update or replace them. The difficult part is finding all the pieces of code affected by the libraries (you can use your IDE to assist in that).
 ### Techniques for Refactoring PHP Code
 
 Several techniques can be applied to refactor PHP code. Some of the most common methods include:

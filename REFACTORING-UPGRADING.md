@@ -181,3 +181,41 @@ $status = $user->status('pending');
 // AFTER
 $isUserPending = $user->isStatus('pending');
 ```
+
+
+#### 4. Return Early
+
+The concept of `early returns` refers to a practice where we try to avoid nesting by breaking a structure down to specific cases. In return, we will get a more linear code, which is much easier to read and grasp. Every case is separated and good to follow. Don't be afraid of using multiple return statements.
+
+```php
+// BEFORE
+public function calculateScore(User $user): int
+{
+    if ($user->inactive) {
+        $score = 0;
+    } else {
+        if ($user->hasBonus) {
+            $score = $user->score + $this->bonus;
+        } else {
+            $score = $user->score;
+        }
+    }
+
+    return $score;
+}
+
+// AFTER
+public function calculateScore(User $user): int
+{
+    if ($user->inactive) {
+        return 0;
+    }
+
+    if ($user->hasBonus) {
+        return $user->score + $this->bonus;
+    }
+
+    return $user->score;
+}
+
+```

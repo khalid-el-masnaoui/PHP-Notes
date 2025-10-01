@@ -105,3 +105,50 @@ protected function saveBackupIfAsked(Response $response): void
     }
 }
 ```
+
+
+#### 2. Replace Conditional Logic with Polymorphism
+
+Conditional logic can make your code difficult to understand and maintain. One way to refactor this kind of code is to use polymorphism, a concept in object-oriented programming that allows objects of different classes to be treated as objects of a common superclass. This can help you eliminate complex conditional logic and improve code readability.
+
+```php
+// old
+class Animal {
+    public function makeSound($animalType) {
+        if ($animalType === 'dog') {
+            return 'woof';
+        } elseif ($animalType === 'cat') {
+            return 'meow';
+        } elseif ($animalType === 'bird') {
+            return 'chirp';
+        }
+    }
+}
+```
+
+We can refactor this code using polymorphism as follows:
+
+```php
+// GOOD
+interface Animal {
+    public function makeSound();
+}
+
+class Dog implements Animal {
+    public function makeSound() {
+        return 'woof';
+    }
+}
+
+class Cat implements Animal {
+    public function makeSound() {
+        return 'meow';
+    }
+}
+
+class Bird implements Animal {
+    public function makeSound() {
+        return 'chirp';
+    }
+}
+```

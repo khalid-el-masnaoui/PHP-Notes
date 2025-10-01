@@ -33,6 +33,8 @@ Key aspects of PHP refactoring include:
 
 - **Improving Performance (Indirectly):** 
     While not the primary goal, refactoring can sometimes lead to performance improvements by optimizing algorithms or reducing unnecessary computations.
+
+
 ### Techniques for Refactoring PHP Code
 
 Several techniques can be applied to refactor PHP code. Some of the most common methods include:
@@ -44,6 +46,7 @@ One common problem in PHP code is long functions or methods that perform multipl
 For example, consider the following PHP code:
 
 ```php
+// BEFORE
 protected function handle()
 {
     $url = $this->option('url') ?: $this->ask('Please provide the URL for the import:');
@@ -79,6 +82,7 @@ protected function handle()
 This function does multiple tasks, making it difficult to understand and maintain. We can refactor it by extracting smaller functions for each task:
 
 ```php
+// AFTER
 protected function handle()
 {
     $url = $this->option('url') ?: $this->ask('Please provide the URL for the import:');
@@ -125,7 +129,7 @@ protected function saveBackupIfAsked(Response $response): void
 Conditional logic can make your code difficult to understand and maintain. One way to refactor this kind of code is to use polymorphism, a concept in object-oriented programming that allows objects of different classes to be treated as objects of a common superclass. This can help you eliminate complex conditional logic and improve code readability.
 
 ```php
-// old
+// BEFORE
 class Animal {
     public function makeSound($animalType) {
         if ($animalType === 'dog') {
@@ -142,7 +146,7 @@ class Animal {
 We can refactor this code using polymorphism as follows:
 
 ```php
-// GOOD
+// AFTER
 interface Animal {
     public function makeSound();
 }
@@ -164,4 +168,16 @@ class Bird implements Animal {
         return 'chirp';
     }
 }
+```
+
+#### 3. Be Expressive
+
+This might be an easy tip, but writing expressive code can improve it a lot. Always make your code self-explaining so that you, your future self or any other developers who stumble over your code knows what is going on
+
+```php
+// BEFORE
+$status = $user->status('pending');
+
+// AFTER
+$isUserPending = $user->isStatus('pending');
 ```

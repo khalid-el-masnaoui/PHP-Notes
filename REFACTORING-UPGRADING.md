@@ -45,9 +45,6 @@ A complete refactoring comes with its problems as well:
 
 A more balanced approach recognizes the value in both preserving what works and improving what doesn't. `=>` **Incremental Refactoring**
 
-**When a Rewrite Makes Sense :**
-	Despite favoring refactoring in most cases, complete rewrites can be justified when **the technology stack is truly obsolete** (e.g., PHP 5.3 or earlier), business requirements have fundamentally changed, the application needs to serve dramatically different purposes, or the current architecture simply cannot support essential new features. 
-
 For optimal results, refactoring efforts should be performed concurrently with producing business knowledge. You can analyze each and every area of a module individually over an extended period of time while shaping a **repeatable refactoring process for the whole app**.
 
 I will be discussing how we can reduce /eliminate such problems with some intuitive well known strategies that we can use to reshape our  **repeatable refactoring process** 
@@ -300,14 +297,18 @@ You should be able to apply and use the best practices and principles of clean c
 
 #### 7.Tools
 
-Using Artificial Intelligence!
-
 There are several tools available that can help you refactor PHP code more efficiently. Some of the most popular tools include:
 
 - **PhpStorm**: A popular IDE for PHP development that includes built-in refactoring tools and code analysis features.
 - **PHPStan**: A static analysis tool that can help you find bugs and unused code in your PHP code.
 - **PHP_CodeSniffer**: A tool that can detect violations of a defined coding standard and help you fix them (with its version compatibility checker).
 - **Rector**: A PHP refactoring tool that can automatically fix code issues and apply best practices.
+- `F2` key in `VsCode`: it renames all local variables, constants, functions, classes ... in the whole project
 - Using **AI** to assist you in the refactoring process
 
 These tools are covered in details in the folder `Tools`
+
+
+## Reminder
+
+Despite favoring refactoring in most cases, complete rewrites can be justified when **the technology stack is truly obsolete** (e.g., PHP 5.3 or earlier), business requirements have fundamentally changed, the application needs to serve dramatically different purposes, or the current architecture simply cannot support essential new features. 

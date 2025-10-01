@@ -292,3 +292,9 @@ public function calculateScore(User $user): int
 }
 
 ```
+
+#### 6. Coding best practices and clean code
+
+You should be able to apply and use the best practices and principles of clean coding in PHP in your refactoring process , refer to my two guides [Coding-Practices](https://github.com/khalid-el-masnaoui/PHP-Notes/blob/main/CODING-PRACTICES.md) and [Coding-Clean](https://github.com/khalid-el-masnaoui/PHP-Notes/blob/main/CODING-CLEAN.md)
+
+

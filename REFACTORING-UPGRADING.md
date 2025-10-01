@@ -60,6 +60,11 @@ The point is not to spend too much time on it. By making a couple of small posit
 
 With incremental improvements, **the system remains operational throughout the process**. Changes can be introduced gradually, allowing for course correction as you go. Developers gain deeper understanding of business logic while refactoring existing code.
 
+#### 2.Consider the importance of business
+
+From the perspective of developers themselves, business knowledge is also crucial. Once you know which modules of the system are most important from a business perspective, you can plan your refactoring process better. 
+
+Personally, **I like to start with the smallest and least important modules**. That way, you can get the hang of the system and the style of its code by working with the least essential parts of it. The probability of breaking the entire system and having to revert entirely to the old codebase shrinks.
 ### Techniques for Refactoring PHP Code
 
 Several techniques can be applied to refactor PHP code. Some of the most common methods include:

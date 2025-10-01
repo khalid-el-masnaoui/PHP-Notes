@@ -60,7 +60,7 @@ The point is not to spend too much time on it. By making a couple of small posit
 
 With incremental improvements, **the system remains operational throughout the process**. Changes can be introduced gradually, allowing for course correction as you go. Developers gain deeper understanding of business logic while refactoring existing code.
 
-#### 2.Consider the importance of business
+#### 2. Consider the importance of business
 
 From the perspective of developers themselves, business knowledge is also crucial. Once you know which modules of the system are most important from a business perspective, you can plan your refactoring process better. 
 
@@ -82,7 +82,7 @@ When you are in the early stages of PHP refactoring, inspecting all of the libra
 
 Updating is quite straightforward. The composer tool detects outdated/abandoned ones. Such libraries often recommend how best to update or replace them. The difficult part is finding all the pieces of code affected by the libraries (you can use your IDE to assist in that).
 
-#### 5.Try out the Strangler Fig Pattern
+#### 5. Try out the Strangler Fig Pattern
 
 What is the Strangler Fig Pattern? It is all about building a new system around the old one (strangling the old one with the new one) until the latter is not needed anymore
 
@@ -298,3 +298,16 @@ public function calculateScore(User $user): int
 You should be able to apply and use the best practices and principles of clean coding in PHP in your refactoring process , refer to my two guides [Coding-Practices](https://github.com/khalid-el-masnaoui/PHP-Notes/blob/main/CODING-PRACTICES.md) and [Coding-Clean](https://github.com/khalid-el-masnaoui/PHP-Notes/blob/main/CODING-CLEAN.md)
 
 
+#### 7.Tools
+
+Using Artificial Intelligence!
+
+There are several tools available that can help you refactor PHP code more efficiently. Some of the most popular tools include:
+
+- **PhpStorm**: A popular IDE for PHP development that includes built-in refactoring tools and code analysis features.
+- **PHPStan**: A static analysis tool that can help you find bugs and unused code in your PHP code.
+- **PHP_CodeSniffer**: A tool that can detect violations of a defined coding standard and help you fix them (with its version compatibility checker).
+- **Rector**: A PHP refactoring tool that can automatically fix code issues and apply best practices.
+- Using **AI** to assist you in the refactoring process
+
+These tools are covered in details in the folder `Tools`

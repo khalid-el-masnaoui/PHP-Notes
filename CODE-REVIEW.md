@@ -32,3 +32,18 @@ Inspect how the code handles all forms of input. Will it work with different use
 - **Test Quality**: Are the tests well-written and do they clearly assert the expected outcomes?
 
 When reviewing, imagine ways a user could deliberately (or accidentally) try to break the code. Can you feed it strange inputs, cause unusual sequences of events, or overload it? Resilient code should handle these scenarios gracefully. With a tool like Xdebug. It lets you pause code execution, step through it line-by-line, and closely examine the values of variables as things change. 
+
+
+### 3. Can You Understand It? Prioritizing Code Readability
+
+Readable code is essential for maintainability and collaboration. Let's focus on making your code easy for both humans and machines to parse. Start with strict adherence to coding standards like PSR-1 and PSR-12. These standards establish a common language for PHP code, defining rules for indentation, naming conventions, file organization, and more. By following standards, your code becomes predictable and consistent, reducing cognitive load for those reading it. Community standards like PSR minimize the learning curve for new developers joining a project and increase compatibility with different development tools.
+
+During a code review, carefully assess variable and function naming. Do the names clearly convey their purpose, avoiding single-letter variables, unnecessary abbreviations, or vague terms? Well-named elements contribute to self-documenting code, minimizing the need for explanatory comments. If comments are present, do they focus on explaining the 'why' behind logic or design choices, rather than simply repeating what the code does?
+
+If the code feels convoluted, suggest refactoring to the author. This could involve extracting methods, using more descriptive variable names, or restructuring code blocks for clarity. Emphasize the importance of long-term maintainability, even if it requires some additional effort in the present.
+
+Utilize linters (like `PHPCS`) and static analysis tools (like `PHPStan`) as part of the review process. These tools help enforce standards, catch potential problems, and promote consistent readability. Look for mismatches between the code and established standards as potential areas for improvement.
+
+If you find yourself struggling to understand a code flow during review, it's a strong indication that future maintainability will be a challenge. Don't hesitate to raise this with the author – collaborative discussion can often uncover better solutions or clarify the underlying logic.
+
+In addition to formatting and naming, adhere strictly to project or company-specific coding rules. These cover aspects like namespaces, code organization, and architectural patterns. While automated tools can catch many violations, stay vigilant during your review for potential issues that tools might miss. This ensures consistency across the entire codebase.

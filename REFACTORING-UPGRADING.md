@@ -34,6 +34,24 @@ Key aspects of PHP refactoring include:
 - **Improving Performance (Indirectly):** 
     While not the primary goal, refactoring can sometimes lead to performance improvements by optimizing algorithms or reducing unnecessary computations.
 
+### Starting With Refactoring Guideline
+
+The "rewrite everything" approach is tempting for several reasons. **Starting fresh means freedom from technical debt** and outdated design patterns
+
+However, rewrites **consistently take longer than initially estimated**, often by factors of 2-3x. **Critical business logic and edge cases** can be buried in the old code and easily overlooked. Users expect all existing functionality to work, including obscure features you may not even know exist. Fresh codebases introduce their own bugs, sometimes replacing old problems with new ones.
+
+A complete refactoring comes with its problems as well:
+> **The primary cause of refactoring problems is fragmentation or lack of proper project knowledge on the application’s business model and more.**
+
+A more balanced approach recognizes the value in both preserving what works and improving what doesn't. `=>` **Incremental Refactoring**
+
+**When a Rewrite Makes Sense :**
+	Despite favoring refactoring in most cases, complete rewrites can be justified when **the technology stack is truly obsolete** (e.g., PHP 5.3 or earlier), business requirements have fundamentally changed, the application needs to serve dramatically different purposes, or the current architecture simply cannot support essential new features. 
+
+For optimal results, refactoring efforts should be performed concurrently with producing business knowledge. You can analyze each and every area of a module individually over an extended period of time while shaping a **repeatable refactoring process for the whole app**.
+
+I will be discussing how we can reduce to eliminate such problems with some intuitive well known strategies 
+
 
 ### Techniques for Refactoring PHP Code
 

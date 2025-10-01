@@ -1,10 +1,32 @@
 
 # PHP Refactoring and Upgrading
 
+## Overview 
+
 As a software engineer, you should always look for ways to improve your code.Applications must be regularly updated and maintained.
 
 Refactoring and Upgrading  are distinct but often **intertwined** processes aimed at improving the quality, maintainability, and performance of a PHP application.
 
+## Table Of Contents
+
+* **[PHP Refactoring](#php-refactoring)**
+  + **[Introduction ](#introduction)**
+  + **[Starting With Refactoring Guideline](#starting-with-refactoring-guideline)**
+	 - **[1. Incremental Refactoring : The one-step-at-a-time approach ](#1-incremental-refactoring-the-one-step-at-a-time-approach)**
+	 - **[2. Consider the importance of business](#2-consider-the-importance-of-business)**
+	 - **[3. Upgrade your PHP version](#3-upgrade-your-php-version)**
+	 - **[4. Update your libraries](#4-update-your-libraries)**
+	 - **[5. Try out the Strangler Fig Pattern](#5-try-out-the-strangler-fig-pattern)**
+		* **[How to use the Strangler Fig Pattern?](#how-to-use-the-strangler-fig-pattern)**
+  + **[Techniques for Refactoring PHP Code](#techniques-for-refactoring-php-code)**
+	 - **[1. Extracting Functions and Methods](#1-extracting-functions-and-methods)**
+	 - **[2. Replace Conditional Logic with Polymorphism](#2-replace-conditional-logic-with-polymorphism)**
+	 - **[3. Be Expressive](#3-be-expressive)**
+	 - **[4. Return Early](#4-return-early)**
+	 - **[6. Coding best practices and clean code](#6-coding-best-practices-and-clean-code)**
+	 - **[7.Tools](#7tools)**
+* **[Reminder](#reminder)**
+* **[Resources](#resources)**
 
 ## PHP Refactoring
 

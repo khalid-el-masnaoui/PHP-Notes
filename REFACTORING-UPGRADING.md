@@ -81,6 +81,33 @@ When you are in the early stages of PHP refactoring, inspecting all of the libra
 > **If your system is large and old, chances are that some of your libraries are not only outdated but entirely abandoned by their authors.**
 
 Updating is quite straightforward. The composer tool detects outdated/abandoned ones. Such libraries often recommend how best to update or replace them. The difficult part is finding all the pieces of code affected by the libraries (you can use your IDE to assist in that).
+
+#### 5.Try out the Strangler Fig Pattern
+
+What is the Strangler Fig Pattern? It is all about building a new system around the old one (strangling the old one with the new one) until the latter is not needed anymore
+
+Let's say we have an old CakePHP, CodeIgniter, Yii, or plain PHP project and you want to upgrade to Symfony or Laravel. You start by isolating part of the project, e.g. invoicing, and wrap it with Symfony or Laravel controller.
+
+ - **The system always works :**
+	The new system in development shouldn’t collide with the existing one. As the new one matures, its individual modules can gradually replace the old system.
+- **Monitoring is easy :**
+	As the tasks are being transferred to the new system, it’s easy to monitor and compare their performance. You can gradually eliminate all the problems should they arise.
+
+##### **How to use the Strangler Fig Pattern?**
+ 1. **Define the interface of what you want to move :**
+	It’s an essential step because the interface includes directions on how the new code and modules are supposed to work.
+
+2. **Delegate tasks from the old system to the new one :**
+	If there is a piece of code in your new system that can replace a piece of code from the old system, make the switch as soon as possible. 
+	
+3. **Define a new single source of truth :**
+    A well-designed system has a single source of truth (SSOT). It should have all data required by your system’s modules. As you move to the new system, make sure not to compromise your SSOT.
+
+4. **Add all the new functionalities in the new system only :**
+    It should go without saying, but unfortunately, it doesn’t always happen. If you continue to expand your old codebase, you delay the moment when the new system takes over completely and risk having to write the same functionality twice.
+
+5. **Turn off the old code altogether when the time comes :**
+    Once all the functionalities are moved to the new system, turn off or remove the old code.
 ### Techniques for Refactoring PHP Code
 
 Several techniques can be applied to refactor PHP code. Some of the most common methods include:

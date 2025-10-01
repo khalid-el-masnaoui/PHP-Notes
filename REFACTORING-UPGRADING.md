@@ -50,8 +50,15 @@ A more balanced approach recognizes the value in both preserving what works and 
 
 For optimal results, refactoring efforts should be performed concurrently with producing business knowledge. You can analyze each and every area of a module individually over an extended period of time while shaping a **repeatable refactoring process for the whole app**.
 
-I will be discussing how we can reduce to eliminate such problems with some intuitive well known strategies 
+I will be discussing how we can reduce /eliminate such problems with some intuitive well known strategies that we can use to reshape our  **repeatable refactoring process** 
 
+#### 1. Incremental Refactoring : The one-step-at-a-time approach 
+
+Try to improve the code by making small changes.If you spot **poorly name variables** – correct them! If you find out that the **structure of a given class is incorrect** – change it! Are there **missing types** somewhere? Add them!
+
+The point is not to spend too much time on it. By making a couple of small positive changes at a time, you gradually improve the codebase. If you get your teammates to do the same thing, the result is even better. Over time, you can even refactor the whole app using the process.
+
+With incremental improvements, **the system remains operational throughout the process**. Changes can be introduced gradually, allowing for course correction as you go. Developers gain deeper understanding of business logic while refactoring existing code.
 
 ### Techniques for Refactoring PHP Code
 

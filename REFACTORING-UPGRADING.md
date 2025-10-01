@@ -127,6 +127,12 @@ Let's say we have an old CakePHP, CodeIgniter, Yii, or plain PHP project and you
 
 5. **Turn off the old code altogether when the time comes :**
     Once all the functionalities are moved to the new system, turn off or remove the old code.
+
+#### 7. Testing in Conjunction with Refactoring
+
+Tests, particularly unit tests, are crucial when refactoring. They act as a safety net, ensuring that the refactoring process does not introduce regressions or break existing functionality.
+
+We already mentioned that refactoring doesn't change the functionality of your code. This comes handy when running tests, because they should work after refactoring too. This is why I only start to refactor my code, when there are tests. They will assure that I don't unintentionally change the behaviour of my code. So don't forget to write tests or even go TDD.
 ### Techniques for Refactoring PHP Code
 
 Several techniques can be applied to refactor PHP code. Some of the most common methods include:

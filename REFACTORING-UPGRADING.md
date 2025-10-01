@@ -312,3 +312,9 @@ These tools are covered in details in the folder `Tools`
 ## Reminder
 
 Despite favoring refactoring in most cases, complete rewrites can be justified when **the technology stack is truly obsolete** (e.g., PHP 5.3 or earlier), business requirements have fundamentally changed, the application needs to serve dramatically different purposes, or the current architecture simply cannot support essential new features. 
+
+
+## Resources
+[Refactoring PHP](https://christoph-rumpel.com/category/php)
+[PHP Code Refactoring](https://tsh.io/blog/php-code-refactoring/)
+[Rewriting Vs Refactoring Legacy PHP](https://sensiolabs.com/blog/2025/rewriting-vs-refactoring-legacy-php)

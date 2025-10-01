@@ -14,7 +14,7 @@ Think of a code review as the quality assurance process for your PHP project. To
 
 ### 3. Can You Understand It? Prioritizing Code Readability
 
-### 4. Locking It Down: PHP Security Essentials
+### PHP Security Essentials
 
-
+### 5. PHP Performance Optimization
 

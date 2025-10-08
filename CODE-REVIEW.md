@@ -22,7 +22,7 @@ Think of a code review as the quality assurance process for your PHP project. To
 
 ### 6. Dependency Management
 
-### 7.Architectural Adherence
+### 7. Architectural Adherence
 
 ### 8. Database Interactions: Optimization and Security
 

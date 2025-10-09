@@ -1877,6 +1877,13 @@ It is important to know each major version specific features!
 - **Generators:** Allowed for easier iteration over large datasets without loading them entirely into memory.
 - **Improved error handling:** Introduced `try-catch` blocks for exceptions.
 - **Built-in JSON support:** Offered native functions for encoding and decoding JSON data.
+
+
+### PHP 7 (PHP 7.4):
+
+- **Significant performance improvements (PHPNG engine):** Made PHP applications considerably faster and more memory-efficient than PHP 5.
+
+
 ## Tools
 
 There are several tools available that can help you refactor PHP code more efficiently. Some of the most popular tools include:

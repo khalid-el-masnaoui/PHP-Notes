@@ -1889,6 +1889,11 @@ It is important to know each major version specific features!
 - **Null coalescing operator (`??`)**: Offered a concise way to check if a variable is set and not null, and provide a default value if it isn't.
 - **Spaceship operator (`<=>`)**: Simplified comparison logic for sorting and ordering.
 
+### PHP 8 (PHP 8.3):
+
+- **JIT (Just-In-Time) compiler:** Further enhanced performance for CPU-intensive operations.
+
+
 ## Tools
 
 There are several tools available that can help you refactor PHP code more efficiently. Some of the most popular tools include:

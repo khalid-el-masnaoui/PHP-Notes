@@ -1898,6 +1898,8 @@ It is important to know each major version specific features!
 - **Constructor property promotion:** Streamlined the creation of class properties and their assignment in the constructor.
 - **Match expression:** Offered a more powerful and concise alternative to `switch` statements.
 - **Nullsafe operator (`?->`)**: Simplified handling of potential null values in chained method calls.
+- **Readonly properties:** Allowed declaring properties as immutable after initialization.
+
 
 ## Tools
 

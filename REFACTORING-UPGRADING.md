@@ -1874,6 +1874,7 @@ It is important to know each major version specific features!
 
 - **Object-Oriented Programming (OOP) improvements:** Introduced features like `abstract classes`, `interfaces`, `final keywords`, and improved `object cloning`.
 - **Namespaces:** Provided a way to organize code and prevent naming conflicts.
+- **Generators:** Allowed for easier iteration over large datasets without loading them entirely into memory.
 
 ## Tools
 

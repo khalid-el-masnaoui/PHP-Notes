@@ -1897,7 +1897,7 @@ It is important to know each major version specific features!
 - **Attributes (Annotations):** Provided a structured way to add metadata to classes, methods, properties, and functions.
 - **Constructor property promotion:** Streamlined the creation of class properties and their assignment in the constructor.
 - **Match expression:** Offered a more powerful and concise alternative to `switch` statements.
-
+- **Nullsafe operator (`?->`)**: Simplified handling of potential null values in chained method calls.
 
 ## Tools
 

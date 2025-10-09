@@ -1885,6 +1885,7 @@ It is important to know each major version specific features!
 - **Scalar type declarations:** Allowed for type hinting of scalar types (`int, float, string, bool`) for function parameters and return values.
 - **Return type declarations:** Enabled specifying the expected return type of functions.
 - **Nullable types:** Introduced the ability to declare that a variable or return value can be `null` in addition to its declared type.
+- **Anonymous classes:** Provided a way to define and instantiate classes in a single expression.
 
 
 ## Tools

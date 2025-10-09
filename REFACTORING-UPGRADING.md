@@ -1893,6 +1893,7 @@ It is important to know each major version specific features!
 
 - **JIT (Just-In-Time) compiler:** Further enhanced performance for CPU-intensive operations.
 - **Named arguments:** Allowed passing arguments to functions based on their names, improving readability and flexibility.
+- **Union types:** Enabled declaring that a variable or parameter can accept multiple different types.
 
 
 ## Tools

@@ -1907,6 +1907,33 @@ In PHP, new features find their way into the language via proposals submitted as
 - **Trailing commas in parameter lists:** Improved code formatting and diff readability.
 - **Enums** : provide a way to define a fixed set of named values, offering improved type safety and code readability compared to using magic strings or constants.
 
+### PHP Versions Timeline
+
+| PHP Version | Release Date      | Support EOL       | Notes / Key Highlights                                                                         |
+| ----------- | ----------------- | ----------------- | ---------------------------------------------------------------------------------------------- |
+| 1.0         | June 8, 1995      | –                 | Initial release, basic scripting                                                               |
+| 2.0         | November 1, 1997  | –                 | Added new features for web forms                                                               |
+| 3.0         | June 6, 1998      | October 20, 2000  | Zend Engine introduced<br>Rewritten parser, and introduced object-oriented programming (OOP).  |
+| 4.0         | May 22, 2000      | June 23, 2001     | Improved performance, better error handling, session handling                                  |
+| 5.0         | July 13, 2004     | September 5, 2005 | Improved Object-oriented programming support,                                                  |
+| 5.1         | November 24, 2005 | August 24, 2006   | Improved database support (PDO)                                                                |
+| 5.2         | November 2, 2006  | January 6, 2011   | Security updates, JSON support                                                                 |
+| 5.3         | June 30, 2009     | August 14, 2014   | Namespaces, late static binding                                                                |
+| 5.4         | March 1, 2012     | September 3, 2015 | Traits, short array syntax                                                                     |
+| 5.5         | June 20, 2013     | July 10, 2016     | Generators, finally keyword                                                                    |
+| 5.6         | August 28, 2014   | December 31, 2018 | PHP 5.x → WordPress compatibility                                                              |
+| 7.0         | December 3, 2015  | December 3, 2018  | Performance improvements, scalar and return type hints                                         |
+| 7.1         | December 1, 2016  | December 1, 2019  | Nullable types, iterable pseudo-type                                                           |
+| 7.2         | November 30, 2017 | November 30, 2020 | Libsodium, improved security                                                                   |
+| 7.3         | November 28, 2019 | December 6, 2021  | Flexible Heredoc/Nowdoc syntax                                                                 |
+| 7.4         | August 28, 2019   | November 28, 2022 | Typed properties, arrow functions                                                              |
+| 8.0         | November 26, 2020 | November 26, 2023 | JIT compilation, union types,  Constructor Property Promotion, Match Syntax, Named Parameters, |
+| 8.1         | November 25, 2021 | November 25, 2024 | Fibers, enums, readonly properties, `never` return type, Intersection Types,                   |
+| 8.2         | November 24, 2022 | November 24, 2025 | Disjunctive normal form (DNF) types, deprecated features, readonly classes                     |
+| 8.3         | November 23, 2023 | November 23, 2026 | Latest stable PHP release, typed class constants, #[\Override] attribute                       |
+| 8.4         | November 21, 2024 | November 23, 2028 | Latest stable release, property hooks, asymmetric visibility, DOM/HTML5 support                |
+| 8.5         | November 20, 2025 | November 23, 2029 | Upcoming release, expected stability and new features                                          |
+
 ## Tools
 
 There are several tools available that can help you refactor PHP code more efficiently. Some of the most popular tools include:

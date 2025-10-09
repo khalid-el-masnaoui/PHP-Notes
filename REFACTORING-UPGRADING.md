@@ -1870,6 +1870,10 @@ PHP 5, PHP 7, and PHP 8 represent significant evolutionary steps in the PHP lang
 
 It is important to know each major version specific features!
 
+### PHP 5 (PHP 5.6):
+
+- **Object-Oriented Programming (OOP) improvements:** Introduced features like `abstract classes`, `interfaces`, `final keywords`, and improved `object cloning`.
+
 ## Tools
 
 There are several tools available that can help you refactor PHP code more efficiently. Some of the most popular tools include:

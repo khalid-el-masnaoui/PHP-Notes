@@ -1886,6 +1886,7 @@ It is important to know each major version specific features!
 - **Return type declarations:** Enabled specifying the expected return type of functions.
 - **Nullable types:** Introduced the ability to declare that a variable or return value can be `null` in addition to its declared type.
 - **Anonymous classes:** Provided a way to define and instantiate classes in a single expression.
+- **Null coalescing operator (`??`)**: Offered a concise way to check if a variable is set and not null, and provide a default value if it isn't.
 
 
 ## Tools

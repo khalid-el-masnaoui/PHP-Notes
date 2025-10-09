@@ -1905,6 +1905,7 @@ In PHP, new features find their way into the language via proposals submitted as
 - **Nullsafe operator (`?->`)**: Simplified handling of potential null values in chained method calls.
 - **Readonly properties:** Allowed declaring properties as immutable after initialization.
 - **Trailing commas in parameter lists:** Improved code formatting and diff readability.
+- **Enums** : provide a way to define a fixed set of named values, offering improved type safety and code readability compared to using magic strings or constants.
 
 ## Tools
 

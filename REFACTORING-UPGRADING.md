@@ -1804,6 +1804,42 @@ echo $payrollData;
 - It adds a layer of indirection without providing any meaningful abstraction or transformation of data or behavior.
 - Changes in the underlying delegated class often require changes in the Middle Man, creating an unnecessary dependency.
 
+**`Example`**
+
+Consider a scenario where an `OrderController` class directly calls a method on an `OrderService` class:
+
+```php
+class OrderService
+{
+    public function processOrder(array $data)
+    {
+        // Logic to process the order
+        echo "Order processed: " . json_encode($data) . "\n";
+    }
+}
+
+class OrderController
+{
+    private OrderService $orderService;
+
+    public function __construct(OrderService $orderService)
+    {
+        $this->orderService = $orderService;
+    }
+
+    public function handleOrderRequest(array $requestData)
+    {
+        // The OrderController simply delegates to OrderService
+        $this->orderService->processOrder($requestData);
+    }
+}
+
+// Usage
+$orderService = new OrderService();
+$orderController = new OrderController($orderService);
+$orderController->handleOrderRequest(['item' => 'Book', 'quantity' => 1]);
+```
+
 
 
 

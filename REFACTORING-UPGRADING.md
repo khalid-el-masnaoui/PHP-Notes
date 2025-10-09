@@ -1806,7 +1806,7 @@ echo $payrollData;
 
 **`Example`**
 
-Consider a scenario where an `OrderController` class directly calls a method on an `OrderService` class:
+- Consider a scenario where an `OrderController` class directly calls a method on an `OrderService` class:
 
 ```php
 class OrderService
@@ -1840,6 +1840,7 @@ $orderController = new OrderController($orderService);
 $orderController->handleOrderRequest(['item' => 'Book', 'quantity' => 1]);
 ```
 
+-  if `handleOrderRequest` in `OrderController` does nothing more than call `processOrder` on `OrderService`, then `OrderController` is acting as a Middle Man.
 
 
 

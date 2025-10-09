@@ -454,7 +454,7 @@ class Order {
 
 **Note** :  In many cases, splitting large classes into parts avoids duplication of code and functionality.
 
-## Primitive Obsession
+#### Primitive Obsession
 
 Primitive obsession is a code smell that occurs when a class or method relies excessively on primitive data types (like int, float, boolean, String, etc.) instead of creating custom data structures.
 

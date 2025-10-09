@@ -26,6 +26,41 @@ Refactoring and Upgrading  are distinct but often **intertwined** processes aime
 	 - **[3. Be Expressive](#3-be-expressive)**
 	 - **[4. Return Early](#4-return-early)**
 	 - **[6. Coding best practices and clean code](#6-coding-best-practices-and-clean-code)**
+* **[Code Smells](#code-smells)**
+  + **[Bloaters](#bloaters)**
+	 - **[Long Method](#long-method)**
+	 - **[Large Class](#large-class)**
+	 - **[Primitive Obsession](#primitive-obsession)**
+	 - **[Long Parameter List](#long-parameter-list)**
+	 - **[Data Clumps ](#data-clumps)**
+  + **[Object-Orientation Abusers](#object-orientation-abusers)**
+	 - **[Switch Statements](#switch-statements)**
+	 - **[Temporary Field](#temporary-field)**
+	 - **[Refused Bequest](#refused-bequest)**
+	 - **[Alternative Classes with Different Interfaces](#alternative-classes-with-different-interfaces)**
+  + **[Change Preventers](#change-preventers)**
+	 - **[Divergent Change](#divergent-change)**
+	 - **[Shotgun Surgery](#shotgun-surgery)**
+  + **[Parallel Inheritance Hierarchies](#parallel-inheritance-hierarchies)**
+  + **[Dispensables](#dispensables)**
+	 - **[Comments](#comments)**
+  + **[Duplicate Code](#duplicate-code)**
+  + **[Lazy Class](#lazy-class)**
+  + **[Data Class](#data-class)**
+  + **[Dead Code](#dead-code)**
+  + **[Speculative Generality](#speculative-generality)**
+  + **[Couplers](#couplers)**
+	 - **[Feature Envy](#feature-envy)**
+	 - **[Inappropriate Intimacy](#inappropriate-intimacy)**
+	 - **[Message Chains](#message-chains)**
+	 - **[Middle Man](#middle-man)**
+* **[PHP 5,  PHP 7, PHP 8 ](#php-5-php-7-php-8)**
+  + **[The PHP RFC Process](#the-php-rfc-process)**
+  + **[PHP 5 (PHP 5.6):](#php-5-php-56)**
+  + **[PHP 7 (PHP 7.4):](#php-7-php-74)**
+  + **[PHP 8 (PHP 8.3):](#php-8-php-83)**
+  + **[PHP Versions Timeline](#php-versions-timeline)**
+  + **[PHP Deprecated Features](#php-deprecated-features)**
 - **[Tools](#tools)**
 * **[Reminder](#reminder)**
 * **[Resources](#resources)**

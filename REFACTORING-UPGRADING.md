@@ -1863,6 +1863,13 @@ $orderService = new OrderService();
 $orderService->processOrder(['item' => 'Book', 'quantity' => 1]);
 ```
 
+
+## PHP 5,  PHP 7, PHP 8 
+
+PHP 5, PHP 7, and PHP 8 represent significant evolutionary steps in the PHP language, each introducing new features and performance improvements.
+
+It is important to know each major version specific features!
+
 ## Tools
 
 There are several tools available that can help you refactor PHP code more efficiently. Some of the most popular tools include:

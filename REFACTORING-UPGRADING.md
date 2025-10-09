@@ -1884,6 +1884,7 @@ It is important to know each major version specific features!
 - **Significant performance improvements (PHPNG engine):** Made PHP applications considerably faster and more memory-efficient than PHP 5.
 - **Scalar type declarations:** Allowed for type hinting of scalar types (`int, float, string, bool`) for function parameters and return values.
 - **Return type declarations:** Enabled specifying the expected return type of functions.
+- **Nullable types:** Introduced the ability to declare that a variable or return value can be `null` in addition to its declared type.
 
 
 ## Tools

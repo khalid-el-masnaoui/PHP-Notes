@@ -1934,6 +1934,10 @@ In PHP, new features find their way into the language via proposals submitted as
 | 8.4         | November 21, 2024 | November 23, 2028 | Latest stable release, property hooks, asymmetric visibility, DOM/HTML5 support                |
 | 8.5         | November 20, 2025 | November 23, 2029 | Upcoming release, expected stability and new features                                          |
 
+### PHP Deprecated Features
+
+Check this [summary](https://eusonlito.github.io/php-changes-cheatsheet/deprecated.html)
+
 ## Tools
 
 There are several tools available that can help you refactor PHP code more efficiently. Some of the most popular tools include:
@@ -1957,3 +1961,4 @@ Despite favoring refactoring in most cases, complete rewrites can be justified w
 [Refactoring PHP](https://christoph-rumpel.com/category/php)
 [PHP Code Refactoring](https://tsh.io/blog/php-code-refactoring/)
 [Rewriting Vs Refactoring Legacy PHP](https://sensiolabs.com/blog/2025/rewriting-vs-refactoring-legacy-php)
+[Refactoring Guru](https://refactoring.guru/)

@@ -1882,6 +1882,7 @@ It is important to know each major version specific features!
 ### PHP 7 (PHP 7.4):
 
 - **Significant performance improvements (PHPNG engine):** Made PHP applications considerably faster and more memory-efficient than PHP 5.
+- **Scalar type declarations:** Allowed for type hinting of scalar types (`int, float, string, bool`) for function parameters and return values.
 
 
 ## Tools

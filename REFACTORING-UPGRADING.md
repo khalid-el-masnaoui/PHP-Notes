@@ -1887,7 +1887,7 @@ It is important to know each major version specific features!
 - **Nullable types:** Introduced the ability to declare that a variable or return value can be `null` in addition to its declared type.
 - **Anonymous classes:** Provided a way to define and instantiate classes in a single expression.
 - **Null coalescing operator (`??`)**: Offered a concise way to check if a variable is set and not null, and provide a default value if it isn't.
-
+- **Spaceship operator (`<=>`)**: Simplified comparison logic for sorting and ordering.
 
 ## Tools
 

@@ -1843,7 +1843,25 @@ $orderController->handleOrderRequest(['item' => 'Book', 'quantity' => 1]);
 -  if `handleOrderRequest` in `OrderController` does nothing more than call `processOrder` on `OrderService`, then `OrderController` is acting as a Middle Man.
 
 
+**`Solution`**
 
+By removing the `OrderController` as a Middle Man, the code becomes more straightforward and easier to understand, as the client directly interacts with the service responsible for processing orders. This reduces indirection and improves the clarity of the code's intent.
+
+
+```php
+class OrderService
+{
+    public function processOrder(array $data)
+    {
+        // Logic to process the order
+        echo "Order processed: " . json_encode($data) . "\n";
+    }
+}
+
+// Client code directly uses OrderService
+$orderService = new OrderService();
+$orderService->processOrder(['item' => 'Book', 'quantity' => 1]);
+```
 
 ## Tools
 

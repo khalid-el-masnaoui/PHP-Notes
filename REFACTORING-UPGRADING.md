@@ -1877,6 +1877,7 @@ It is important to know each major version specific features!
 - **Generators:** Allowed for easier iteration over large datasets without loading them entirely into memory.
 - **Improved error handling:** Introduced `try-catch` blocks for exceptions.
 - **Built-in JSON support:** Offered native functions for encoding and decoding JSON data.
+- **PDO (PHP Data Objects)**: A new, unified database access layer provided a consistent interface for accessing multiple databases, enhancing security and flexibility.
 
 
 ### PHP 7 (PHP 7.4):

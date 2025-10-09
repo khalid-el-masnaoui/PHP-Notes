@@ -1796,9 +1796,13 @@ echo $payrollData;
 - **Introduce Parameter Object:**  If the chain is used to pass multiple related values, consider encapsulating them in a dedicated parameter object.
 
 
+#### Middle Man
 
+ Refers to a class that primarily serves as a delegate, passing calls to other objects without adding significant value or logic itself. This class acts as an unnecessary intermediary, increasing complexity and making the code harder to understand and maintain.
 
-
+- A class whose methods largely consist of simply calling methods on another object.
+- It adds a layer of indirection without providing any meaningful abstraction or transformation of data or behavior.
+- Changes in the underlying delegated class often require changes in the Middle Man, creating an unnecessary dependency.
 
 
 

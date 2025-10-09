@@ -1870,6 +1870,10 @@ PHP 5, PHP 7, and PHP 8 represent significant evolutionary steps in the PHP lang
 
 It is important to know each major version specific features!
 
+### The PHP RFC Process
+
+In PHP, new features find their way into the language via proposals submitted as "Requests for Comments," or RFCs. The RFC allows developers to submit suggestions for features, performance improvements, and other changes, then discuss them within the highly-involved PHP community.
+
 ### PHP 5 (PHP 5.6):
 
 - **Object-Oriented Programming (OOP) improvements:** Introduced features like `abstract classes`, `interfaces`, `final keywords`, and improved `object cloning`.

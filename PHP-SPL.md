@@ -584,8 +584,6 @@ foreach ($evenNumbers as $number) {
 ```
 
 
-### RegEx Iterator
-
 ##  Observers and Subjects
 
 The PHP Standard PHP Library (SPL) provides the `SplSubject` and `SplObserver` interfaces to facilitate the implementation of the **Observer design pattern**. This pattern allows objects (observers) to be notified of changes in the state of another object (the subject).
@@ -702,6 +700,45 @@ $subject->setState('Blah Blah Record'); // new state
 // Observer updated with state: Blah Blah Record
 ```
 
+**Use Case:** 
+- Real-time event handling in **eCommerce transactions, notifications, or logging systems**.
+
+```php
+class EventManager implements SplSubject {
+    private $observers;
+
+    public function __construct() {
+        $this->observers = new SplObjectStorage();
+    }
+
+    public function attach(SplObserver $observer) {
+        $this->observers->attach($observer);
+    }
+
+    public function detach(SplObserver $observer) {
+        $this->observers->detach($observer);
+    }
+
+    public function notify() {
+        foreach ($this->observers as $observer) {
+            $observer->update($this);
+        }
+    }
+}
+
+class Logger implements SplObserver {
+    public function update(SplSubject $subject) {
+        echo "Event triggered! Logging the action.\n";
+    }
+}
+
+// Usage
+$eventManager = new EventManager();
+$logger = new Logger();
+
+$eventManager->attach($logger);
+$eventManager->notify(); // Output: Event triggered! Logging the action.
+```
 
 
 
@@ -842,3 +879,7 @@ while (!$file->eof()) {
 
 // Close the file (implicitly handled by object destruction)
 ```
+
+- **Streams data** instead of loading the whole file into memory.
+- Prevents **out-of-memory errors** for large files.
+- Provides built-in methods for **CSV parsing and file iteration**.

@@ -558,6 +558,34 @@ try {
 ```
 
 
+### Filter Iterator
+
+The `SPL FilterIterator` is an abstract class that provides a way to filter elements from another iterator. It acts as a wrapper around an existing iterator, allowing you to define custom rules for which elements should be included in the iteration.
+
+- **Inheritance:** You extend the `FilterIterator` class in your custom filter.
+- **Constructor:** The constructor of your custom filter accepts an `Iterator` object as an argument, which is then passed to the parent `FilterIterator` constructor. This inner iterator is the source of the elements you want to filter.
+- `accept()` Method: The core of the `FilterIterator` is the `accept()` method, which you must implement in your custom class. This method is called for each element of the inner iterator. It should return `true` if the current element should be included in the filtered iteration, and `false` if it should be excluded.
+
+```php
+class MyEvenNumberFilter extends FilterIterator {
+    public function accept(): bool {
+        // Only accept even numbers
+        return $this->current() % 2 === 0;
+    }
+}
+
+$numbers = new ArrayIterator([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+$evenNumbers = new MyEvenNumberFilter($numbers);
+
+foreach ($evenNumbers as $number) {
+    echo $number . " "; // Output: 2 4 6 8 10
+}
+
+```
+
+
+### RegEx Iterator
+
 ##  Observers and Subjects
 
 The PHP Standard PHP Library (SPL) provides the `SplSubject` and `SplObserver` interfaces to facilitate the implementation of the **Observer design pattern**. This pattern allows objects (observers) to be notified of changes in the state of another object (the subject).

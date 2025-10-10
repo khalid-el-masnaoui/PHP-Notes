@@ -556,3 +556,131 @@ try {
     echo "Error: " . $e->getMessage() . "\n";
 }
 ```
+
+
+##  Observers and Subjects
+
+The PHP Standard PHP Library (SPL) provides the `SplSubject` and `SplObserver` interfaces to facilitate the implementation of the **Observer design pattern**. This pattern allows objects (observers) to be notified of changes in the state of another object (the subject).
+
+
+1. **`SplSubject` Interface**
+
+The `SplSubject` interface defines the methods that a subject object must implement:
+
+```php
+interface SplSubject {
+    public function attach(SplObserver $observer);
+    public function detach(SplObserver $observer);
+    public function notify();
+}
+```
+
+- `attach(SplObserver $observer)`: This method is used to add an observer to the subject's list of observers.
+- `detach(SplObserver $observer)`: This method is used to remove an observer from the subject's list.
+- `notify()`: This method is called by the subject when its state changes. It iterates through all attached observers and calls their `update()` method.
+
+2. **`SplObserver` Interface:*
+
+The `SplObserver` interface defines the method that an observer object must implement:
+
+
+```php
+interface SplObserver {
+    public function update(SplSubject $subject);
+}
+```
+
+- `update(SplSubject $subject)`: This method is called by the subject's `notify()` method when the subject's state changes. The observer receives the subject object as an argument, allowing it to query the subject's state if needed.
+
+
+
+3. **Implementing the Observer Pattern with SPL:**
+	- **Create a Subject Class**:  Implement the `SplSubject` interface in your subject class. Maintain a collection of `SplObserver` objects.
+	    
+	- **Create Observer Classes**:  Implement the `SplObserver` interface in your observer classes. Define the `update()` method to handle notifications from the subject.
+	    
+	- **Attach Observers**:  In your application, create instances of your observer classes and attach them to the subject using the `attach()` method.
+	    
+	- **Trigger Notifications**:  When the subject's state changes, call its `notify()` method to inform all attached observers.
+
+
+```php
+interface Observer {
+    public function update(Subject $subject);
+}
+
+interface Subject {
+    public function attach(Observer $observer);
+    public function detach(Observer $observer);
+    public function notify();
+}
+
+class ConcreteSubject implements Subject {
+    private $observers = [];
+    private $state;
+
+    public function attach(Observer $observer) {
+        $this->observers[] = $observer;
+    }
+
+    public function detach(Observer $observer) {
+        $this->observers = array_filter(
+            $this->observers,
+            function ($obs) use ($observer) {
+                return ($obs !== $observer);
+            }
+        );
+    }
+
+    public function notify() {
+        foreach ($this->observers as $observer) {
+            $observer->update($this);
+        }
+    }
+
+    public function setState($state) {
+        $this->state = $state;
+        $this->notify();
+    }
+
+    public function getState() {
+        return $this->state;
+    }
+}
+
+class ConcreteObserver implements Observer {
+    private $observerState;
+
+    public function update(Subject $subject) {
+        if ($subject instanceof ConcreteSubject) {
+            $this->observerState = $subject->getState();
+            echo "Observer updated with state: $this->observerState\n";
+        }
+    }
+}
+
+// Example usage:
+$subject = new ConcreteSubject();
+$observer1 = new ConcreteObserver();
+$observer2 = new ConcreteObserver();
+
+$subject->attach($observer1);
+$subject->attach($observer2);
+
+$subject->setState('Blah Blah Record'); // new state
+
+// output => 
+// Observer updated with state: Blah Blah Record
+// Observer updated with state: Blah Blah Record
+```
+
+
+
+
+## Others
+
+### Object Storage
+
+### Fixed Array
+
+### File Object

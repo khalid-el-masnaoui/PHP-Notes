@@ -429,6 +429,30 @@ foreach ($recursiveIterator as $key => $value) {
 
 ```
 
+
+### Recursive Iterator Iterator
+
+
+The `SPL RecursiveIteratorIterator` class provides a way to flatten a tree-like structure represented by a `RecursiveIterator` into a single, linear iteration. It acts as a decorator for `RecursiveIterator` instances, allowing you to traverse hierarchical data structures, such as nested arrays, directories, or XML documents, in a non-recursive manner.
+
+
+- **Flattening Recursive Structures:**  It takes a `RecursiveIterator` (or an `IteratorAggregate` that can provide one) and allows you to iterate over all elements in the entire structure, including children and their descendants, as if they were in a flat list.
+    
+- **Modes of Iteration:**     
+    - `RecursiveIteratorIterator::LEAVES_ONLY` (default): Iterates only over the leaf nodes of the structure.
+    - `RecursiveIteratorIterator::SELF_FIRST`: Iterates over parent nodes before their children.
+    - `RecursiveIteratorIterator::CHILD_FIRST`: Iterates over children before their parent nodes.
+    
+- **Depth Control:**
+    
+    - `setMaxDepth()`: Allows you to limit the depth of the recursion, preventing iteration beyond a certain level.
+    - `getDepth()`: Returns the current depth of the iteration.
+    
+- **Accessing Inner Iterators:**
+    
+    - `getInnerIterator()`: Retrieves the `RecursiveIterator` that the `RecursiveIteratorIterator` is currently operating on at the current level.
+    - `getSubIterator()`: Returns the current active sub-iterator, which is particularly useful when dealing with nested structures.
+
 ### Directory Iterator
 
 The `DirectoryIterator` class provides an object-oriented interface for iterating over the contents of a filesystem directory. It allows you to easily access information about files and subdirectories within a given path.

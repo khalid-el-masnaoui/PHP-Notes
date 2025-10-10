@@ -771,3 +771,46 @@ $phpArray = $fixedArray->toArray();
 print_r($phpArray);
 ```
 ### File Object
+
+The `SplFileObject` class provides an object-oriented interface for interacting with files, offering a more structured and feature-rich alternative to traditional file handling functions like `fopen()`, `fread()`, and `fwrite()`. It is part of the Standard PHP Library (SPL), which aims to provide solutions for common programming problems.
+
+- **Object-oriented approach:**  It encapsulates file operations within an object, promoting better code organization and readability.
+    
+- **Iterator implementation:**  `SplFileObject` implements the `Iterator` interface, allowing you to easily loop through file lines using `foreach`.
+    
+- **Enhanced functionality:**  It provides methods for various file operations, including reading, writing, seeking, locking, and parsing CSV data.
+    
+- **Error handling:**  It offers more robust error handling compared to traditional file functions.
+    
+- **Flexibility:**  It can be used with various file streams, including local files, URLs, and temporary files (via `SplTempFileObject`).
+
+- **Common methods:**
+	- `__construct(string $filename, string $open_mode = 'r')`: Creates a new file object.
+	- `current()`: Retrieves the current line of the file.
+	- `eof()`: Checks if the end of the file has been reached.
+	- `fgets()`: Gets a line from the file.
+	- `fgetcsv()`: Gets a line from the file and parses it as CSV fields.
+	- `fwrite(string $string)`: Writes a string to the file.
+	- `seek(int $offset)`: Seeks to a specific position in the file.
+
+```php
+// Open a file for reading
+$file = new SplFileObject('example.txt', 'r');
+
+// Iterate through each line of the file
+foreach ($file as $lineNumber => $line) {
+    echo "Line $lineNumber: " . trim($line) . "\n";
+}
+
+// Write to the file (requires 'w' or 'a' mode)
+$file = new SplFileObject('output.txt', 'w');
+$file->fwrite("This is a new line.\n");
+$file->fwrite("Another line.\n");
+
+// Iterating through the file and displaying its content
+while (!$file->eof()) {
+    echo $file->fgets();
+}
+
+// Close the file (implicitly handled by object destruction)
+```

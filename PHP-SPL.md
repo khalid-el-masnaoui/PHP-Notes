@@ -238,3 +238,11 @@ while (!$rankingHeap->isEmpty()) {
     echo "Team: " . $team->name . ", Score: " . $team->score . "\n";
 }
 ```
+
+## Iterators 
+
+Traditional PHP loops can get messy, especially when dealing with large datasets. SPL’s **Iterator classes** allow us to **traverse objects more elegantly and efficiently**.
+
+- **`Iterator` Interface** :  The fundamental interface that all custom iterators must implement. It defines five methods: `current()`, `key()`, `next()`, `rewind()`, and `valid()`.
+    
+- **`IteratorAggregate` Interface** :  Allows an object to provide an external iterator to traverse its internal data. The `getIterator()` method must return an object implementing the `Iterator` interface.

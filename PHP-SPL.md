@@ -5,6 +5,29 @@
 
 The **Standard PHP Library (SPL)** is a collection of built-in interfaces, classes, and functions that enhance PHP’s OOP capabilities.
 
+## Table Of Contents
+
+- **[Standard PHP Library (SPL)](#standard-php-library-spl)**
+   * **[Data Structures ](#data-structures)**
+      + **[Linked List](#linked-list)**
+      + **[Stack](#stack)**
+      + **[Queue](#queue)**
+      + **[Heap](#heap)**
+   * **[Iterators ](#iterators)**
+      + **[Array Iterator](#array-iterator)**
+      + **[Recursive Array Iterator](#recursive-array-iterator)**
+      + **[Recursive Iterator Iterator](#recursive-iterator-iterator)**
+      + **[Directory Iterator](#directory-iterator)**
+      + **[File System Iterator](#file-system-iterator)**
+      + **[Recursive Directory Iterator](#recursive-directory-iterator)**
+      + **[Filter Iterator](#filter-iterator)**
+   * **[Observers and Subjects](#observers-and-subjects)**
+   * **[Others](#others)**
+      + **[Object Storage](#object-storage)**
+      + **[Fixed Array](#fixed-array)**
+      + **[File Object](#file-object)**
+
+
 
 # Standard PHP Library (SPL)
 

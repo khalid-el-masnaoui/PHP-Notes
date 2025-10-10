@@ -329,4 +329,54 @@ Traditional PHP loops can get messy, especially when dealing with large datasets
 - **`IteratorAggregate` Interface** :  Allows an object to provide an external iterator to traverse its internal data. The `getIterator()` method must return an object implementing the `Iterator` interface.
 
 
-### ArrayIterator
+### Array Iterator
+
+The PHP `SPL ArrayIterator`provides a way to iterate over arrays and objects as if they were arrays. It implements the `Iterator` interface, allowing for consistent iteration behavior across different data structures.
+
+`OffsetGet`, `offsetSet` and `offsetUnset` methods are available.
+
+```php
+//iterate over an array
+$myArray = ['apple', 'banana', 'cherry'];  
+$arrayIterator = new ArrayIterator($myArray);  
+  
+foreach ($arrayIterator as $key => $value) {  
+	echo "Key: $key, Value: $value\n";  
+}
+
+//iterate over an object
+class MyObject {
+	public $prop1 = 'value1';
+	public $prop2 = 'value2';
+}
+
+$myObject = new MyObject();
+$objectIterator = new ArrayIterator($myObject);
+
+foreach ($objectIterator as $key => $value) {
+	echo "Key: $key, Value: $value\n";
+}
+
+//Modification
+$data = ['a' => 1, 'b' => 2, 'c' => 3];
+$iterator = new ArrayIterator($data);
+
+foreach ($iterator as $key => $value) {
+	if ($key === 'b') {
+		$iterator->offsetUnset($key); // Remove element
+	} else {
+		$iterator->offsetSet($key, $value * 10); // Modify value
+	}
+}
+
+// ARRAY_AS_PROPS
+$array = ['name' => 'John', 'age' => 30];
+$arrayObject = new ArrayObject($array, ArrayObject::ARRAY_AS_PROPS);
+
+// Accessing internal array elements as object properties
+echo $arrayObject->name; // Output: John
+
+// Setting a new internal array element as an object property
+$arrayObject->city = 'New York';
+echo $arrayObject['city']; // Output: New York
+```

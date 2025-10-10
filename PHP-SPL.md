@@ -733,4 +733,41 @@ echo $storage[$obj1]; // Outputs: Data for object 1
 
 ### Fixed Array
 
+The `SplFixedArray` class provides a specialized array-like object with a fixed size. It differs from a regular PHP array in several key aspects:
+
+- **Fixed Size:**  Unlike standard PHP arrays, which dynamically resize, an `SplFixedArray` has a size that must be set upon creation or explicitly changed using `setSize()`. If the new size is smaller, elements beyond the new size are discarded. If larger, the array is padded with `null` values.
+    
+- **Integer Keys Only:**  `SplFixedArray` only allows integer keys within the range of its defined size. Using string keys or integer keys outside this range will result in a `RuntimeException`.
+    
+- **Memory Efficiency:**  Due to its fixed size and type-restricted keys, `SplFixedArray` can potentially be more memory-efficient than a standard PHP array, especially for large arrays where the size is known in advance.
+    
+- **Performance:**  The fixed nature of `SplFixedArray` can lead to performance advantages in certain scenarios, as the underlying implementation can be optimized for a known size and key type.
+
+```php
+// Create a fixed array of size 5
+$fixedArray = new SplFixedArray(5);
+
+// Assign values to elements
+$fixedArray[0] = "Apple";
+$fixedArray[1] = "Banana";
+$fixedArray[2] = "Cherry";
+
+// Access elements
+echo $fixedArray[0] . "\n"; // Output: Apple
+
+// Attempting to use a string key will throw a RuntimeException
+// $fixedArray["fruit"] = "Grape";
+
+// Attempting to access an index outside the size will also throw a RuntimeException
+// echo $fixedArray[5];
+
+// Change the size of the array
+$fixedArray->setSize(3); 
+echo $fixedArray[2] . "\n"; // Output: Cherry (elements beyond new size are discarded)
+// echo $fixedArray[3]; // This would now throw a RuntimeException
+
+// Convert to a regular PHP array
+$phpArray = $fixedArray->toArray();
+print_r($phpArray);
+```
 ### File Object

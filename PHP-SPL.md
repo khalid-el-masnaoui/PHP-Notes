@@ -30,7 +30,7 @@ By embracing SPL, we can **write cleaner, faster, and more maintainable code**.
 
 ### Stack
 
-- **Concept:**  A linear data structure that follows the `Last-In, First-Out (LIFO)` principle. (extends `SplDoublyLinkedList`)
+- **Concept:**  A linear data structure that follows the `Last-In, First-Out (LIFO)` principle (extends `SplDoublyLinkedList`).
     
 - **Operations:** 
 	- `push(mixed $value)`: Adds an element to the top of the stack.
@@ -42,8 +42,6 @@ By embracing SPL, we can **write cleaner, faster, and more maintainable code**.
 	- **Iteration:** `SplStack` is iterable, and when iterated, it yields elements in LIFO order.
 	    
 - **Use Cases:**  Function call management (call stack), expression evaluation, undo/redo functionality, browsing history management ..
-    
-- **Memory:**  Typically used for static memory allocation, local variables, and function call frames. Fast and efficient due to contiguous memory allocation and simple management.
 
 
 ```php
@@ -96,4 +94,52 @@ echo $history->top(); // Outputs: Product C
 // Going back in browsing history
 $history->pop();
 echo $history->top(); // Outputs: Product B
+```
+
+
+### Queue
+
+- **Concept:**  A linear data structure that follows the `First-In, First-Out (FIFO)` principle  (extends `SplDoublyLinkedList`).
+    
+- **Operations:** 
+	- `enqueue` : add an element to the rear)
+	- `dequeue` : remove an element from the front
+	-  `bottom` : view the element at the front of the queue without removing it.
+	-  `isEmpty()` : check if the queue contains any elements
+	- `count()` :  returns the number of elements currently in the queue.
+	- **Iterator Mode:** The `SplQueue` can be iterated over in `FIFO` order
+    
+- **Use Cases:**  Task scheduling, breadth-first search algorithms, managing requests in a system.
+
+```php
+$queue = new SplQueue();
+$queue->enqueue("Task A");
+$queue->enqueue("Task B");
+
+$firstTask = $queue->dequeue(); // $firstTask will be "Task A"
+
+$nextTask = $queue->bottom(); // $nextTask will be "Task B"
+
+if ($queue->isEmpty()) {  
+	echo "Queue is empty.";  
+}
+
+$numberOfTasks = $queue->count(); // $numberOfTasks will be 1 after the dequeue operation above
+
+```
+
+
+**Task Management with `SplQueue`**
+
+```php
+// Using SplQueue to manage tasks
+$tasks = new SplQueue();
+
+// Adding tasks to the queue
+$tasks->enqueue('Process Order 101');
+$tasks->enqueue('Send Email to Customer');
+$tasks->enqueue('Restock Inventory');
+
+// Processing the first task
+echo $tasks->dequeue(); // Outputs: Process Order 101
 ```

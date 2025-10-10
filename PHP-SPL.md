@@ -333,7 +333,11 @@ Traditional PHP loops can get messy, especially when dealing with large datasets
 
 The PHP `SPL ArrayIterator`provides a way to iterate over arrays and objects as if they were arrays. It implements the `Iterator` interface, allowing for consistent iteration behavior across different data structures.
 
-`OffsetGet`, `offsetSet` and `offsetUnset` methods are available.
+- **Array-like Interface:**  Provides methods like `offsetExists()`, `offsetGet()`, `offsetSet()`, and `offsetUnset()`, which mirror the functionality of array access.
+    
+- **Sorting:**  It includes methods for sorting the underlying data, such as `asort()`, `ksort()`, `natsort()`, `natcasesort()`, `uasort()`, and `uksort()`.
+    
+- **Seeking:**  The `seek()` method allows you to move the internal pointer to a specific position within the iterator.
 
 ```php
 //iterate over an array
@@ -369,7 +373,7 @@ foreach ($iterator as $key => $value) {
 	}
 }
 
-// ARRAY_AS_PROPS
+//ArrayObject => ARRAY_AS_PROPS
 $array = ['name' => 'John', 'age' => 30];
 $arrayObject = new ArrayObject($array, ArrayObject::ARRAY_AS_PROPS);
 
@@ -380,3 +384,38 @@ echo $arrayObject->name; // Output: John
 $arrayObject->city = 'New York';
 echo $arrayObject['city']; // Output: New York
 ```
+
+### Directory Iterator
+
+The `DirectoryIterator` class provides an object-oriented interface for iterating over the contents of a filesystem directory. It allows you to easily access information about files and subdirectories within a given path.
+
+The `$fileInfo` object in the loop provides methods to retrieve various details about the current entry:
+- `$fileInfo->getFilename()`: Returns the name of the file or directory.
+- `$fileInfo->getPathname()`: Returns the full path to the file or directory.
+- `$fileInfo->isDir()`: Checks if the entry is a directory.
+- `$fileInfo->isFile()`: Checks if the entry is a file.
+- `$fileInfo->isDot()`: Checks if the entry is '.' or '..'. It's common practice to skip these entries.
+- `$fileInfo->getSize()`: Returns the size of the file in bytes.
+- `$fileInfo->getExtension()`: Returns the file extension.
+
+```php
+$directoryPath = __DIR__; // Current directory
+$iterator = new DirectoryIterator($directoryPath);
+
+echo "Contents of: " . $directoryPath . "\n";
+foreach ($iterator as $fileInfo) {
+	if ($fileInfo->isDot()) {
+		continue; // Skip '.' and '..'
+	}
+
+	if ($fileInfo->isDir()) {
+		echo "Directory: " . $fileInfo->getFilename() . "\n";
+	} elseif ($fileInfo->isFile()) {
+		echo "File: " . $fileInfo->getFilename() . " (Size: " . $fileInfo->getSize() . " bytes)\n";
+	}
+}
+
+```
+
+### File System Iterator
+

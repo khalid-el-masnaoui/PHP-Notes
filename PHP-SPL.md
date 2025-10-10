@@ -419,3 +419,36 @@ foreach ($iterator as $fileInfo) {
 
 ### File System Iterator
 
+`FilesystemIterator`: Extending `DirectoryIterator`, offers enhanced control over how directory contents are iterated. It allows for specifying flags that influence the behavior of the iterator, such as how keys are generated, what information is returned by `current()`, and whether dot entries (`.` and `..`) are skipped.
+
+- **Flags:** 
+    
+    `FilesystemIterator` provides several predefined flags to customize its behavior, such as:
+    - `FilesystemIterator::KEY_AS_PATHNAME`: Makes `key()` return the full path of the current item.
+    - `FilesystemIterator::KEY_AS_FILENAME`: Makes `key()` return only the filename of the current item.
+    - `FilesystemIterator::CURRENT_AS_FILEINFO`: Makes `current()` return an `SplFileInfo` object, providing detailed information about the current item.
+    - `FilesystemIterator::SKIP_DOTS`: Skips the special "." and ".." directory entries.
+
+- **Methods:** It provides methods like `current()`, `key()`, `next()`, `rewind()`, `valid()`, `getFlags()`, and `setFlags()` for programmatic control over the iteration process and flag management.
+
+```php
+
+$path = '/var/www/html'; // Replace with your desired path
+try {
+    $iterator = new FilesystemIterator(
+        $path,
+        FilesystemIterator::SKIP_DOTS | FilesystemIterator::CURRENT_AS_FILEINFO
+    );
+
+    foreach ($iterator as $item) {
+        if ($item->isFile()) {
+            echo "File: " . $item->getFilename() . " (Size: " . $item->getSize() . " bytes)\n";
+        } elseif ($item->isDir()) {
+            echo "Directory: " . $item->getFilename() . "\n";
+        }
+    }
+} catch (UnexpectedValueException $e) {
+    echo "Error: " . $e->getMessage() . "\n";
+}
+
+```

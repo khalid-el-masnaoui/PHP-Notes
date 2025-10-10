@@ -28,9 +28,85 @@ By embracing SPL, we can **write cleaner, faster, and more maintainable code**.
 
 ## Data Structures 
 
+### Linked List
+
+- **Concept:**  A linear collection of data elements (nodes) where each node contains data and a pointer (or reference) to the next node in the sequence.
+    
+- **Operations** : 
+	- **Doubly Linked:**  Each node in the list maintains pointers to both the previous and next nodes, enabling efficient traversal in both forward and backward directions.
+    
+	- **Efficient Operations:**  Adding or removing elements at either end of the list (`push`, `pop`, `unshift`, `shift`) typically has an `O(1)` time complexity, making it suitable for implementing stacks and queues.
+    
+	- **Iterator Support:**  The class implements the `Iterator` interface, allowing for easy iteration over the list elements using constructs like `foreach`.
+    
+	- **Iterator Modes:**  You can set the iteration mode using `setIteratorMode()` to control how the list is traversed (e.g., `LIFO` for stack-like behavior, `FIFO` for queue-like behavior).
+    
+	- **Array-like Access:**  It supports array-like access using `offsetGet()`, `offsetSet()`, `offsetExists()`, and `offsetUnset()` for accessing and manipulating elements by index, though this can be less efficient than operations at the ends of the list.
+
+```php
+// Create a new SplDoublyLinkedList instance
+$list = new SplDoublyLinkedList();
+
+// Add elements to the end of the list using push()
+$list->push("Apple");
+$list->push("Banana");
+$list->push("Cherry");
+
+echo "Original List (FIFO iteration):" . PHP_EOL;
+// Set iterator mode to FIFO (First In, First Out)
+$list->setIteratorMode(SplDoublyLinkedList::IT_MODE_FIFO);
+foreach ($list as $value) {
+    echo $value . PHP_EOL;
+}
+
+echo PHP_EOL . "Original List (LIFO iteration):" . PHP_EOL;
+// Set iterator mode to LIFO (Last In, First Out)
+$list->setIteratorMode(SplDoublyLinkedList::IT_MODE_LIFO);
+foreach ($list as $value) {
+    echo $value . PHP_EOL;
+}
+
+// Add an element to the beginning of the list using unshift()
+$list->unshift("Date");
+
+echo PHP_EOL . "List after unshift (FIFO iteration):" . PHP_EOL;
+$list->setIteratorMode(SplDoublyLinkedList::IT_MODE_FIFO);
+foreach ($list as $value) {
+    echo $value . PHP_EOL;
+}
+
+// Remove an element from the end of the list using pop()
+$removedEnd = $list->pop();
+echo PHP_EOL . "Removed from end: " . $removedEnd . PHP_EOL;
+
+// Remove an element from the beginning of the list using shift()
+$removedStart = $list->shift();
+echo "Removed from start: " . $removedStart . PHP_EOL;
+
+echo PHP_EOL . "List after pop and shift (FIFO iteration):" . PHP_EOL;
+$list->setIteratorMode(SplDoublyLinkedList::IT_MODE_FIFO);
+foreach ($list as $value) {
+    echo $value . PHP_EOL;
+}
+
+// Get the element at the top (last element in FIFO, first in LIFO)
+echo PHP_EOL . "Top element: " . $list->top() . PHP_EOL;
+
+// Get the element at the bottom (first element in FIFO, last in LIFO)
+echo "Bottom element: " . $list->bottom() . PHP_EOL;
+
+// Get the number of elements in the list
+echo "Number of elements: " . $list->count() . PHP_EOL;
+
+  
+// Accessing elements by index  
+echo "\nElement at index 0: " . $list->offsetGet(0) . "\n";
+
+```
+
 ### Stack
 
-- **Concept:**  A linear data structure that follows the `Last-In, First-Out (LIFO)` principle (extends `SplDoublyLinkedList`).
+- **Concept:**  A linear data structure that follows the `Last-In, First-Out (LIFO)` principle (extends `SplDoublyLinkedList` with `SplDoublyLinkedList::IT_MODE_LIFO | SplDoublyLinkedList::IT_MODE_KEEP`).
     
 - **Operations:** 
 	- `push(mixed $value)`: Adds an element to the top of the stack.
@@ -99,7 +175,7 @@ echo $history->top(); // Outputs: Product B
 
 ### Queue
 
-- **Concept:**  A linear data structure that follows the `First-In, First-Out (FIFO)` principle  (extends `SplDoublyLinkedList`).
+- **Concept:**  A linear data structure that follows the `First-In, First-Out (FIFO)` principle  (extends `SplDoublyLinkedList` with `SplDoublyLinkedList::IT_MODE_FIFO`).
     
 - **Operations:** 
 	- `enqueue` : add an element to the rear)
@@ -243,6 +319,14 @@ while (!$rankingHeap->isEmpty()) {
 
 Traditional PHP loops can get messy, especially when dealing with large datasets. SPL’s **Iterator classes** allow us to **traverse objects more elegantly and efficiently**.
 
-- **`Iterator` Interface** :  The fundamental interface that all custom iterators must implement. It defines five methods: `current()`, `key()`, `next()`, `rewind()`, and `valid()`.
+- **`Iterator` Interface** :  The fundamental interface that all custom iterators must implement. It defines five methods: 
+	- `current()`:  returns the current element (current value).
+	- `key()`: returns the key/index of the current element
+	- `next()`:moves the cursor forward to the next element
+	- `rewind()`:  rewinds the cursor to the first element of the iterator.
+	- `valid()`: checks have there is any element left. If so then return true otherwise return false.
     
 - **`IteratorAggregate` Interface** :  Allows an object to provide an external iterator to traverse its internal data. The `getIterator()` method must return an object implementing the `Iterator` interface.
+
+
+### ArrayIterator

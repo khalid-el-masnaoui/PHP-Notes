@@ -681,6 +681,56 @@ $subject->setState('Blah Blah Record'); // new state
 
 ### Object Storage
 
+The `SplObjectStorage` class provides a specialized way to store and manage objects. Its primary purpose is to act as a map from objects to data, or as a set of unique objects when data association is not needed.
+
+- **Object as Key:**  Unlike regular arrays where keys can be strings or integers, `SplObjectStorage` uses objects themselves as keys. When an object is added, `SplObjectStorage` internally generates a unique hash for that object, allowing it to efficiently check for object presence and retrieve associated data.
+    
+- **Associating Data with Objects:**  You can attach data to an object when adding it to the storage. This allows you to store specific information related to each individual object.
+
+- **Checking for Object Presence:** The `contains()` method can be used to efficiently determine if a particular object exists within the storage.
+
+- **Retrieving Associated Data:** If data was associated with an object, it can be retrieved using array-like access or the `getInfo()` method when iterating.
+
+- **Iteration:** `SplObjectStorage` is traversable, meaning you can iterate over it using a `foreach` loop to access the stored objects and their associated data.
+
+- **Object Uniqueness:** Even if you attach the same object multiple times, `SplObjectStorage` will only store it once, treating it as a unique key.
+
+```php
+$storage = new SplObjectStorage();
+$obj1 = new stdClass();
+$obj2 = new stdClass();
+
+$storage->attach($obj1, "Data for object 1");
+$storage->attach($obj2); // No data associated
+
+if ($storage->contains($obj1)) {
+	echo "obj1 is in storage.";
+}
+
+foreach ($storage as $object) {  
+	echo "Object: " . get_class($object) . ", Data: " . $storage->getInfo() . "\n";  
+}
+
+
+echo $storage[$obj1]; // Outputs: Data for object 1
+```
+
+**Use Cases**:
+
+- **Tracking Objects:**  Keeping track of which objects have been processed or are currently active.
+    
+- **Object-Specific Data Storage:**  Storing metadata or state information directly linked to individual object instances.
+    
+- **Managing Event Listeners:**  Attaching specific callbacks or handlers to different objects in an event system.
+    
+- **Implementing Object Pools:**  Managing a collection of reusable objects.
+
+
+**Note** : `SplObjectStorage` and `WeakMap` in PHP both allow associating data with objects, but they differ significantly in how they handle object lifetimes and garbage collection.
+- `SplObjectStorage` maintains a **strong reference** to the objects used as keys. This means that if an object is added as a key to `SplObjectStorage`, it will not be garbage collected as long as the `SplObjectStorage` instance itself exists and holds that reference, even if all other references to the object are removed.
+    
+- `WeakMap` uses **weak references** for its object keys. This means that an object used as a key in a `WeakMap` does not prevent the object from being garbage collected if no other strong references to it exist. When an object used as a key in a `WeakMap` is garbage collected, its corresponding entry (key-value pair) is automatically removed from the `WeakMap`
+
 ### Fixed Array
 
 ### File Object

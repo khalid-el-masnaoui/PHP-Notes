@@ -429,9 +429,7 @@ foreach ($recursiveIterator as $key => $value) {
 
 ```
 
-
 ### Recursive Iterator Iterator
-
 
 The `SPL RecursiveIteratorIterator` class provides a way to flatten a tree-like structure represented by a `RecursiveIterator` into a single, linear iteration. It acts as a decorator for `RecursiveIterator` instances, allowing you to traverse hierarchical data structures, such as nested arrays, directories, or XML documents, in a non-recursive manner.
 
@@ -519,4 +517,40 @@ try {
     echo "Error: " . $e->getMessage() . "\n";
 }
 
+```
+
+
+### Recursive Directory Iterator
+
+The `SPL RecursiveDirectoryIterator` class provides an interface for recursively iterating over filesystem directories. It simplifies the process of traversing directory structures, including subdirectories and their contents. 
+
+
+- **Recursive Traversal:**  Unlike `DirectoryIterator`, which only iterates over a single directory, `RecursiveDirectoryIterator` enables you to traverse an entire directory tree.
+    
+- Integration with `RecursiveIteratorIterator`:  To achieve true recursive iteration (tree traversal), `RecursiveDirectoryIterator` is typically used in conjunction with `RecursiveIteratorIterator`. `RecursiveIteratorIterator` handles the logic of descending into subdirectories and presenting the elements in a linear fashion.
+    
+- **Constructor:**  The constructor takes the path to the directory you want to iterate over and optional flags (e.g., `FilesystemIterator::SKIP_DOTS` to skip `.` and `..`, or `FilesystemIterator::FOLLOW_SYMLINKS` to follow symbolic links).
+    
+- **Methods:**  It provides methods like `getChildren()` to get an iterator for the current entry if it's a directory, `hasChildren()` to check if the current entry is a directory (and not `.` or `..`), `getSubPath()`, `getSubPathname()`, and standard iterator methods like `key()`, `next()`, and `rewind()`.
+    
+- **Filtering:**  You can use `RecursiveFilterIterator` in conjunction with `RecursiveDirectoryIterator` to filter files or directories based on specific criteria (e.g., file extension, directory name).
+
+
+```php
+$path = '/path/to/your/directory'; // Replace with the actual path
+
+try {
+    $directoryIterator = new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS);
+    $iterator = new RecursiveIteratorIterator($directoryIterator, RecursiveIteratorIterator::SELF_FIRST);
+
+    foreach ($iterator as $fileInfo) {
+        if ($fileInfo->isDir()) {
+            echo "Directory: " . $fileInfo->getPathname() . "\n";
+        } else {
+            echo "File: " . $fileInfo->getPathname() . "\n";
+        }
+    }
+} catch (UnexpectedValueException $e) {
+    echo "Error: " . $e->getMessage() . "\n";
+}
 ```

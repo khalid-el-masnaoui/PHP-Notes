@@ -143,3 +143,98 @@ $tasks->enqueue('Restock Inventory');
 // Processing the first task
 echo $tasks->dequeue(); // Outputs: Process Order 101
 ```
+
+### Heap
+
+- **Concept:**  
+	- A region of memory used for dynamic memory allocation, where data can be allocated and deallocated at runtime. It's less ordered than a `stack` or `queue`.
+	- Heaps are a type of specialized tree-based data structure that satisfies the heap property, which dictates a specific ordering between parent and child nodes.
+    
+- **Operations:**  
+	- **Abstract Base Class:**  `SplHeap` itself cannot be instantiated directly. Instead, concrete implementations like `SplMinHeap` and `SplMaxHeap` extend it, defining the specific ordering (minimum or maximum element at the top).
+	- **Heap Property:**  Ensures that the parent node's value is either greater than or equal to (in a max-heap) or less than or equal to (in a min-heap) the values of its children.    
+    - `insert($value)`: Adds an element to the heap, maintaining the heap property.
+    - `extract()`: Removes and returns the top element of the heap (the minimum in `SplMinHeap`, maximum in `SplMaxHeap`).
+    - `top()`: Returns the top element without removing it.
+    - `isEmpty()`: Checks if the heap is empty.
+    - `count()`: Returns the number of elements in the heap.
+    - `compare($value1, $value2)`: An abstract method that must be implemented by concrete heap classes to define the comparison logic for ordering elements.
+    -  **Iterator Interface:**  `SplHeap` implements the `Iterator` interface, allowing you to traverse the elements of the heap (though the order of iteration is not guaranteed to be sorted).
+	- **Corruption Handling:**  Includes methods like `isCorrupted()` and `recoverFromCorruption()` to manage potential issues arising from exceptions during the `compare()` method.
+    
+- **Use Cases:**  Storing objects whose lifetime is not tied to a specific function scope, large data structures, shared data between different parts of a program.
+
+```php
+$minHeap = new SplMinHeap();
+
+$minHeap->insert(10);
+$minHeap->insert(5);
+$minHeap->insert(20);
+$minHeap->insert(2);
+
+echo "Top element: " . $minHeap->top() . "\n"; // Output: Top element: 2
+
+echo "Elements in Min Heap (ascending order):\n";
+// Loop to display the elements, starting from the top and moving down
+for ($minHeap->top(); $minHeap->valid(); $minHeap->next()) {
+    echo $minHeap->current() . "\n";
+}
+
+// Accessing the top element without removing it
+echo "\nTop element of Min Heap: " . $minHeap->top() . "\n";
+
+// Extracting elements (removes and returns the top element)
+while (!$minHeap->isEmpty()) {
+    echo "Extracting: " . $minHeap->extract() . "\n";
+}
+// Output:
+// Extracting: 2
+// Extracting: 5
+// Extracting: 10
+// Extracting: 20
+```
+
+**Custom Heap Implementation**
+
+```php
+class Team
+{
+    public $name;
+    public $score;
+
+    public function __construct($name, $score)
+    {
+        $this->name = $name;
+        $this->score = $score;
+    }
+}
+
+class TeamRankingHeap extends SplMaxHeap
+{
+    /**
+     * Compare two elements to determine their order in the heap.
+     * For a Max Heap, return a positive value if $value1 is greater than $value2,
+     * a negative value if $value1 is less than $value2, and 0 if they are equal.
+     */
+    public function compare($value1, $value2)
+    {
+        // Sort by score in descending order
+        return $value1->score - $value2->score;
+    }
+}
+
+// Create a custom heap
+$rankingHeap = new TeamRankingHeap();
+
+// Insert Team objects
+$rankingHeap->insert(new Team("Team A", 100));
+$rankingHeap->insert(new Team("Team B", 150));
+$rankingHeap->insert(new Team("Team C", 80));
+$rankingHeap->insert(new Team("Team D", 120));
+
+echo "Team Rankings (highest score at top):\n";
+while (!$rankingHeap->isEmpty()) {
+    $team = $rankingHeap->extract();
+    echo "Team: " . $team->name . ", Score: " . $team->score . "\n";
+}
+```

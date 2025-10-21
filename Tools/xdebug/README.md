@@ -238,7 +238,7 @@ We will need two elements of the setup to be configured:
 - xdebug (inside of the docker container)
 
 ```ini
-# xdebug.ini
+# xdebug.ini in the root folder
 xdebug.mode=debug
 xdebug.client_host=host.docker.internal
 xdebug.client_port=9003
@@ -313,6 +313,26 @@ Let’s create a project-level tasks file, alongside `launch.json` . It’s re
 
 Two tasks: the first modifies `xdebug.ini` to enable the debugging and starts the compose setup, the second does the opposite, switches everything off.
 
+```json
+// launch.json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Listen for Xdebug",
+      "type": "php",
+      "request": "launch",
+      "preLaunchTask": "Start with XDebug",
+      "postDebugTask": "Stop with XDebug",
+      "port": 9003,
+      "cwd": "${workspaceRoot}/src",
+      "pathMappings": {
+        "/var/www/html": "${workspaceRoot}/src"
+      }
+    }
+  ]
+}
+```
 # Resources
 
 [Article-1](https://medium.com/@nikitades/debug-php-in-vscode-like-a-pro-2659576021b9)

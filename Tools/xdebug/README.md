@@ -344,3 +344,5 @@ ssh -R 9003:localhost:9003 <username>@<remote_host> -p <port>
 [Article-1](https://medium.com/@nikitades/debug-php-in-vscode-like-a-pro-2659576021b9)
 
 [Article-2](https://dev.to/phpcontrols/debugging-php-with-vscode-and-xdebug-a-step-by-step-guide-4296)
+
+[Article-3](https://medium.com/@nikitades/debugging-php-in-vscode-like-a-pro-part-2-vscode-php-in-docker-66ca75cf8b33)

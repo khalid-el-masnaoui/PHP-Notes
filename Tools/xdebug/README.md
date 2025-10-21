@@ -333,6 +333,12 @@ Two tasks: the first modifies `xdebug.ini` to enable the debugging and starts 
   ]
 }
 ```
+
+**Note** : The same approach would work with the code launched remotely at some server. This would let you debug the code at other environments than your local one using an SSH tunnel (reverse port forwarding)
+
+```shell
+ssh -R 9003:localhost:9003 <username>@<remote_host> -p <port>
+```
 # Resources
 
 [Article-1](https://medium.com/@nikitades/debug-php-in-vscode-like-a-pro-2659576021b9)

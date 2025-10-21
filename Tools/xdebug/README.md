@@ -246,6 +246,29 @@ xdebug.client_port=9003
 
 Please notice this line: `xdebug.client_host=host.docker.internal`.  This makes XDebug report not to localhost but to the address of the host machine.
 
+#### Creating the docker compose setup
+
+Two services are fairly enough for the test. Please, create the following file in the root of the project:
+
+```yml
+version: "3.9"  
+  
+services:  
+  fpm:  
+    build: . #going to use the dockerfile we'  
+    volumes:    
+      - ./src:/var/www/html #mapping actual files into the image  
+      - ./xdebug.ini:/usr/local/etc/php/conf.d/99-xdebug.ini #enable xdebug debugging, load in the end  
+    extra_hosts:  
+      - host.docker.internal:host-gateway #attach the host machine as the internal DNS addres  
+  nginx:  
+    image: nginx:latest  
+    volumes:  
+      - ./src:/var/www/html #again map the whole file structure  
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf #sample nginx config  
+    ports:  
+      - 8080:80     
+```        
 # Resources
 
 [Article-1](https://medium.com/@nikitades/debug-php-in-vscode-like-a-pro-2659576021b9)

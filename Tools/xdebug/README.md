@@ -230,6 +230,19 @@ FROM base AS runner
 
 Since this is a dev-only Docker image, we don’t actually copy files. Instead, we’ll map whole directories inside. This is a non-production approach, however it might be really helpful at the development time.
 
+#### Creating configuration files
+
+We will need two elements of the setup to be configured:
+
+- nginx
+- xdebug (inside of the docker container)
+
+```ini
+# xdebug.ini
+xdebug.mode=debug
+xdebug.client_host=host.docker.internal
+xdebug.client_port=9003
+```
 # Resources
 
 [Article-1](https://medium.com/@nikitades/debug-php-in-vscode-like-a-pro-2659576021b9)

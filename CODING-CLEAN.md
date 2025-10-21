@@ -1014,7 +1014,7 @@ Benefits of using principles and patterns:
 Design patterns are established, reusable solutions to commonly occurring problems in software design. They are not specific pieces of code that can be directly copied and pasted, but rather blueprints or templates that guide developers in structuring their code to achieve specific design goals.
 Use **design patterns** where appropriate to simplify complex logic.
 
-I cover each of these principles and design patterns, in details with PHP examples in the folder `Principles & Design Patterns`
+I cover each of these principles and design patterns, in details with PHP examples in my repository [`OOP Principles & Design Patterns`](https://github.com/khalid-el-masnaoui/OOP-Principles-and-Design-Patterns-Notes)
 
 
 ## Best Practices

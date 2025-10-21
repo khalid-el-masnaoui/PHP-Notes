@@ -643,7 +643,7 @@ Design patterns are typically categorized into three main types based on their i
     Address the communication and interaction between objects, defining how objects collaborate to achieve a task. Examples include Chain of Responsibility, Command, Iterator, Mediator, Observer, Strategy, and State.
 
 
-I cover each of these principles and design patterns, in details with PHP examples in the folder `Principles & Design Patterns`
+I cover each of these principles and design patterns, in details with PHP examples in my repository [`OOP Principles & Design Patterns`](https://github.com/khalid-el-masnaoui/OOP-Principles-and-Design-Patterns-Notes)`
 ### PHP Clean Code
 
 You can check `CODING-CLEAN`as a reference for clean coding in PHP

@@ -268,7 +268,51 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf #sample nginx config  
     ports:  
       - 8080:80     
-```        
+```
+
+### Wiring everything together with VSCode tasks
+
+Let’s create a project-level tasks file, alongside `launch.json` . It’s required to call it `tasks.json` .
+
+```json
+// tasks.json
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start with XDebug",
+      "type": "shell",
+      "command": [
+        "echo 'xdebug.start_with_request=yes' >> ${workspaceRoot}/xdebug.ini",
+        "&&",
+        "docker compose up -d"
+      ],
+      "presentation": {
+        "reveal": "never",
+        "clear": true,
+        "close": true
+      }
+    },
+    {
+      "label": "Stop with XDebug",
+      "type": "shell",
+      "command": [
+        "sed -i.bu '/xdebug.start_with_request=yes/d' ${workspaceRoot}/xdebug.ini",
+        "&&",
+        "docker compose down"
+      ],
+      "presentation": {
+        "reveal": "never",
+        "clear": true,
+        "close": true
+      }
+    }
+  ]
+}
+```
+
+Two tasks: the first modifies `xdebug.ini` to enable the debugging and starts the compose setup, the second does the opposite, switches everything off.
+
 # Resources
 
 [Article-1](https://medium.com/@nikitades/debug-php-in-vscode-like-a-pro-2659576021b9)

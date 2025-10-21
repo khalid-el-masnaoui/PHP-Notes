@@ -189,6 +189,27 @@ export PHP_CONF_D=/etc/php/$PHP_VER_SHORT/cli/conf.d
 	- Helps trace errors in deeply nested functions.
 	- Click on any function in the stack to inspect its execution.
 
+## Xdebug Docker
+
+Starting from 20.10 version, Docker Engine supports talking to the host machine via the special flag:
+
+```shell
+--add-host=host.docker.internal:host-gateway
+```
+
+The same thing is valid for Docker Compose system with `extra_hosts` directive:
+
+```yaml
+version: '3.9'  
+  
+services:  
+  some-service:  
+    image: awesome-service:latest  
+    extra_hosts:  
+      - "host.docker.internal:host-gateway"
+```
+
+ With this feature, we can now make our apps talk to the host system’s XDebug modules. Happily, such module is shipped with VSCode’s `xdebug.php-debug` extension. All together, this enables us for creating a dev-only PHP docker image.
 
 # Resources
 

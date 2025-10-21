@@ -243,6 +243,9 @@ xdebug.mode=debug
 xdebug.client_host=host.docker.internal
 xdebug.client_port=9003
 ```
+
+Please notice this line: `xdebug.client_host=host.docker.internal`.  This makes XDebug report not to localhost but to the address of the host machine.
+
 # Resources
 
 [Article-1](https://medium.com/@nikitades/debug-php-in-vscode-like-a-pro-2659576021b9)

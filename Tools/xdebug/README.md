@@ -5,6 +5,22 @@
 Debugging is an essential part of PHP development, and using Visual Studio Code with XDebug can greatly enhance your workflow. This guide will walk you through setting up XDebug, enabling breakpoints, stepping through code, using stack traces, and troubleshooting common issues.
 
 
+## Table Of Contents
+
+- [PHP Xdebug](#php-xdebug)
+   * [Xdebug ](#xdebug)
+      + [Overview](#overview)
+      + [Key Features](#key-features)
+      + [Installation & Set-Up](#installation-set-up)
+         - [Installation and Configuration](#installation-and-configuration)
+      + [Setting Up VSCode for XDebug](#setting-up-vscode-for-xdebug)
+   * [Xdebug Docker](#xdebug-docker)
+      + [Dev-Only PHP Docker Image With Xdebug](#dev-only-php-docker-image-with-xdebug)
+         - [Building the image](#building-the-image)
+         - [Creating configuration files](#creating-configuration-files)
+         - [Creating the docker compose setup](#creating-the-docker-compose-setup)
+      + [Wiring everything together with VSCode tasks](#wiring-everything-together-with-vscode-tasks)
+- [Resources](#resources)
 
 ## Xdebug 
 

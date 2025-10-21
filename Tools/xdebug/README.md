@@ -211,7 +211,27 @@ services:
 
  With this feature, we can now make our apps talk to the host system’s XDebug modules. Happily, such module is shipped with VSCode’s `xdebug.php-debug` extension. All together, this enables us for creating a dev-only PHP docker image.
 
+### Dev-Only PHP Docker Image With Xdebug
+
+#### Building the image
+Create the following file (Dockerfile) under the root of the project:
+
+```yaml
+#Taking the core image as base
+FROM php:8.2-fpm AS base
+
+#Install and enable xdebug extension
+RUN pecl install xdebug
+RUN docker-php-ext-enable xdebug
+
+#Tag the image for the future conveniency
+FROM base AS runner
+```
+
+Since this is a dev-only Docker image, we don’t actually copy files. Instead, we’ll map whole directories inside. This is a non-production approach, however it might be really helpful at the development time.
+
 # Resources
 
 [Article-1](https://medium.com/@nikitades/debug-php-in-vscode-like-a-pro-2659576021b9)
+
 [Article-2](https://dev.to/phpcontrols/debugging-php-with-vscode-and-xdebug-a-step-by-step-guide-4296)

@@ -61,3 +61,9 @@ sudo apt install kcachegrind
   <img src="./images/KCachegrind_2.png" width = "30%" />
 <img src="./images/KCachegrind_3.png" width = "30%" />
 </p>
+
+
+### VSCode
+
+You can use VSCode to visualize and analyze the Xdebug profiling data all from within the IDE
+- **PHP Profiler (DEVSENSE.profiler-php-vscode):** This extension is recommended for analyzing Xdebug profiler data directly within VS Code.

@@ -30,8 +30,7 @@ xdebug.profiler_output_name = cachegrind.out.%R.%t
 
 ### KCachegrind
 
-KCachegrind is a powerful visualization tool used to analyze profiling data, particularly helpful for optimizing PHP applications when combined with Xdebug.
-
+`KCachegrind` is a powerful visualization tool used to analyze profiling data, particularly helpful for optimizing PHP applications when combined with Xdebug.
 
 - **KCachegrind Visualization:** KCachegrind then loads these `cachegrind.out` files. It provides various graphical and tabular views to help identify performance bottlenecks:
     - **Call Graph:** A visual representation of function calls, showing the relationships and the time spent in each function. Thicker arrows often indicate more time-consuming calls.
@@ -39,7 +38,15 @@ KCachegrind is a powerful visualization tool used to analyze profiling data, par
     - **Source Code View:** Displays the source code of functions with execution times annotated on each line, allowing for precise identification of slow code sections.
     - **Treemap:** A hierarchical visualization where the size of rectangles represents the time spent in functions or files.
 
-Key metrics in KCachegrind:
-
+Key metrics in `KCachegrind`:
 - **Inclusive Time (Incl.):**  The total time spent in a function, including the time spent in any functions it calls.
 - **Self Time (Self):**  The time spent directly within a function, excluding the time spent in functions it calls.
+
+
+1. install `KCachegrind`
+
+```shell
+sudo apt install kcachegrind
+```
+
+

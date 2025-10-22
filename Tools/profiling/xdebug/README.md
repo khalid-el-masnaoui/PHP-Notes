@@ -49,4 +49,9 @@ Key metrics in `KCachegrind`:
 sudo apt install kcachegrind
 ```
 
+2. Open KCachegrind
+	- Launch KCachegrind from your application menu or by typing kcachegrind in the terminal. 
+
+3. Load the profile:
+	-  In KCachegrind, go to File > Open and select the profile file you generated in the previous step.
 

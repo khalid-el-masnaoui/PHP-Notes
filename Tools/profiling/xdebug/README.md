@@ -67,3 +67,10 @@ sudo apt install kcachegrind
 
 You can use VSCode to visualize and analyze the Xdebug profiling data all from within the IDE
 - **PHP Profiler (DEVSENSE.profiler-php-vscode):** This extension is recommended for analyzing Xdebug profiler data directly within VS Code.
+
+
+Open the generated `cachegrind.out.*.gz` file directly in VS Code 
+- by dragging and dropping it
+- or by using the command palette (`Open Profile File (Xdebug Profiling Output)`)
+ 
+This extension provides a visual representation of call times, self-times, and call graphs, allowing you to identify performance bottlenecks.

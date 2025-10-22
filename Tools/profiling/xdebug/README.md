@@ -59,7 +59,7 @@ sudo apt install kcachegrind
 <p float="left" align="middle">
   <img src="./images/KCachegrind_1.png" width = "30%" />
   <img src="./images/KCachegrind_2.png" width = "30%" />
-<img src="./images/KCachegrind_3.png" width = "30%" />
+  <img src="./images/KCachegrind_3.png" width = "30%" />
 </p>
 
 
@@ -74,3 +74,5 @@ Open the generated `cachegrind.out.*.gz` file directly in VS Code
 - or by using the command palette (`Open Profile File (Xdebug Profiling Output)`)
  
 This extension provides a visual representation of call times, self-times, and call graphs, allowing you to identify performance bottlenecks.
+
+- **Inspecting Call Times** : lists all the functions with the number of calls (_Calls_), time spent by the function body (_Self Time_), and time including nested calls (_Time_).

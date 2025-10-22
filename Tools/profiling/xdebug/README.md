@@ -39,3 +39,7 @@ KCachegrind is a powerful visualization tool used to analyze profiling data, par
     - **Source Code View:** Displays the source code of functions with execution times annotated on each line, allowing for precise identification of slow code sections.
     - **Treemap:** A hierarchical visualization where the size of rectangles represents the time spent in functions or files.
 
+Key metrics in KCachegrind:
+
+- **Inclusive Time (Incl.):**  The total time spent in a function, including the time spent in any functions it calls.
+- **Self Time (Self):**  The time spent directly within a function, excluding the time spent in functions it calls.

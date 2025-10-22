@@ -76,3 +76,6 @@ Open the generated `cachegrind.out.*.gz` file directly in VS Code
 This extension provides a visual representation of call times, self-times, and call graphs, allowing you to identify performance bottlenecks.
 
 - **Inspecting Call Times** : lists all the functions with the number of calls (_Calls_), time spent by the function body (_Self Time_), and time including nested calls (_Time_).
+
+- **Inspecting Callers/Callees** : The **Function Details** view is focused on a single function; and displays all the calling functions and all the called functions, including the time information.
+

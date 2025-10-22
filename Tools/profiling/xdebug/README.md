@@ -86,3 +86,14 @@ This extension provides a visual representation of call times, self-times, and c
   <img src="./images/vscode_2.png" width = "30%" />
   <img src="./images/vscode_3.png" width = "30%" />
 </p>
+
+### Interpreting Results
+
+These tools present the profiling data in a user-friendly format, typically including:
+
+- **Call Graph:** A visual representation of function calls and their execution times.
+- **Function List:** A table showing functions, their invocation counts, total execution time (inclusive and self), and memory usage.
+- **Hot Path:** Identifies the sequence of function calls that consume the most time.
+- **Source Code View:** Allows inspection of execution times per line of code within a function.
+
+ By analyzing the profiling data, you can identify functions or code sections that consume excessive time or memory. This information guides optimization efforts, such as refactoring inefficient code, optimizing database queries, or reducing redundant operations.

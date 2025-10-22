@@ -4,6 +4,15 @@
 Profiling is the first step when optimizing any application. Profiling tools record important details like the time it takes for statements and functions to execute, the number of times they are called, and so on. The output can be analyzed to understand where the bottlenecks are.
 
 
+## Table Of Contents
+
+- **[PHP Xdebug Profiler](#php-xdebug-profiler)**
+   * **[Xdebig Profiler ](#xdebig-profiler)**
+      + **[Configurations](#configurations)**
+   * **[Visualizing and Analyzing Profiling Data](#visualizing-and-analyzing-profiling-data)**
+      + **[KCachegrind](#kcachegrind)**
+      + **[VSCode](#vscode)**
+      + **[Interpreting Results](#interpreting-results)**
 
 
 ## Xdebig Profiler 

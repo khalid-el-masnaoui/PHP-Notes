@@ -80,3 +80,9 @@ This extension provides a visual representation of call times, self-times, and c
 - **Inspecting Callers/Callees** : The **Function Details** view is focused on a single function; and displays all the calling functions and all the called functions, including the time information.
 
 - **Highlighting Hot Paths** : The loaded profiling result file is analyzed, and hot paths are highlighted directly in the source code. Highlighting can be turned off in the profiling result view. 
+
+<p float="left" align="middle">
+  <img src="./images/vscode_1.png" width = "30%" />
+  <img src="./images/vscode_2.png" width = "30%" />
+  <img src="./images/vscode_3.png" width = "30%" />
+</p>

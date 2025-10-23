@@ -67,3 +67,9 @@ There is sometimes a confusion between integration tests and functional tests as
 - **Purpose:**  To confirm that the system or a specific feature delivers the expected output for given inputs, as defined in requirements or use cases.
     
 - **Characteristics:**  Often performed by QA engineers, can be manual or automated, and typically uses black-box testing techniques (without knowledge of internal code structure). This category includes tests like smoke tests and regression tests.
+
+### End-to-end testing
+
+End-to-end testing replicates a user behavior with the software in a complete application environment. It verifies that various user flows work as expected and can be as simple as loading a web page or logging in or much more complex scenarios verifying email notifications, online payments, etc...
+
+End-to-end tests are very useful, but they're expensive to perform and can be hard to maintain when they're automated. It is recommended to have a few key end-to-end tests and rely more on lower level types of testing (unit and integration tests) to be able to quickly identify breaking changes.

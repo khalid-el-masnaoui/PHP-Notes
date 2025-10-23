@@ -88,3 +88,7 @@ End-to-end tests are very useful, but they're expensive to perform and can be ha
 - **Requires a production-like environment:**  To accurately simulate real-world conditions, E2E tests should be executed in a testing environment that closely resembles the production environment. 
     
 - **Is a form of system testing:**  E2E testing is a type of system testing that targets the entire application, but it differs in its focus on a specific user or business workflow perspective.
+
+### Acceptance testing
+
+Acceptance testing is the final stage of testing a product, especially software, to determine if it meets the specified requirements and is ready for delivery. It involves a formal evaluation, often by the customer or end-user, to ensure the product fulfills user needs and business requirements, and is functionally sound. Acceptance testing verifies the system as a whole against the original contract or specifications

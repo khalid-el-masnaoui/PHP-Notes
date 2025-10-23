@@ -73,3 +73,18 @@ There is sometimes a confusion between integration tests and functional tests as
 End-to-end testing replicates a user behavior with the software in a complete application environment. It verifies that various user flows work as expected and can be as simple as loading a web page or logging in or much more complex scenarios verifying email notifications, online payments, etc...
 
 End-to-end tests are very useful, but they're expensive to perform and can be hard to maintain when they're automated. It is recommended to have a few key end-to-end tests and rely more on lower level types of testing (unit and integration tests) to be able to quickly identify breaking changes.
+
+
+**Characteristics of End-to-end Tests:**
+
+- **Simulates real-world scenarios:**  E2E tests mimic how actual users interact with an application, from navigating the front-end to triggering back-end processes and verifying outcomes. For example, an e-commerce test might involve a user searching for a product, adding it to the cart, checking out, and receiving a confirmation email. 
+    
+- **Tests the complete workflow:**  Unlike other tests that focus on isolated components, E2E tests validate the entire system from the initial user entry point to the final outcome. 
+    
+- **Validates all integrated components:**  The tests ensure all parts of the application—including the user interface, business logic, APIs, databases, and third-party services—work together correctly and that data flows properly between them. 
+    
+- **Focuses on end-user perspective:**  The primary goal is to verify that the entire system functions as expected from the user's point of view, ensuring the application meets business requirements. 
+    
+- **Requires a production-like environment:**  To accurately simulate real-world conditions, E2E tests should be executed in a testing environment that closely resembles the production environment. 
+    
+- **Is a form of system testing:**  E2E testing is a type of system testing that targets the entire application, but it differs in its focus on a specific user or business workflow perspective.

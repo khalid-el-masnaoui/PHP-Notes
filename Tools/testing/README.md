@@ -36,3 +36,8 @@ Unit tests focus on testing individual units or components of code in isolation.
 
 Component tests, also known as module tests, sit between unit tests and integration tests in terms of scope. While unit tests focus on individual units of code, component tests validate the interactions and integration between multiple units or components within a module or subsystem.
 
+**Characteristics of Component Tests:**
+
+1. **Scope**: Component tests verify the behavior of a module or subsystem by testing interactions between its constituent units.
+2. **Mocking**: External dependencies may be mocked or stubbed to isolate the component under test.
+3. **Coverage**: They provide broader coverage compared to unit tests by testing interactions between units.

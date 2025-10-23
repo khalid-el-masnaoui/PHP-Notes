@@ -117,3 +117,15 @@ For instance, a performance test can observe response times when executing a hig
 - **Measure performance metrics**: Analyze key indicators like response time, throughput, and resource utilization. 
 - **Determine scalability**: Understand how well the application handles an increasing number of users or transactions. 
 - **Prevent issues**: Identify potential problems like memory leaks or crashes before they impact end-users
+
+**Common types of performance testing:**
+
+- **`Load testing:`** Tests the system's behavior under a normal, expected workload to see how it handles a specific number of concurrent users.
+
+- **`Stress testing:`** Pushes the system beyond its normal operating limits to find its breaking point and understand how it fails and recovers.
+
+- **`Spike testing:`** Evaluates the system's response to sudden, massive increases in load, like during a flash sale.
+
+- **`Endurance testing (Soak testing):`** Checks the system's stability and performance over a prolonged period to detect issues like memory leaks that appear over time.
+
+- **`Scalability testing:`** Measures the application's ability to "scale up" or "scale out" to handle increasing workloads. 

@@ -41,3 +41,8 @@ Component tests, also known as module tests, sit between unit tests and integrat
 1. **Scope**: Component tests verify the behavior of a module or subsystem by testing interactions between its constituent units.
 2. **Mocking**: External dependencies may be mocked or stubbed to isolate the component under test.
 3. **Coverage**: They provide broader coverage compared to unit tests by testing interactions between units.
+
+
+### Integration Tests
+
+Integration tests evaluate the interaction and integration of multiple modules or subsystems to ensure that they function correctly when combined. Unlike unit tests and component tests, which focus on isolated parts of the system, integration tests validate the behavior of the system as a whole.

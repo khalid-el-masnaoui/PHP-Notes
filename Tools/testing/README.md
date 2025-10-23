@@ -31,3 +31,8 @@ Unit tests focus on testing individual units or components of code in isolation.
 1. **Isolation**: Unit tests are independent and isolated from external dependencies such as databases, network calls, or other components.
 2. **Granularity**: They target specific units of code, allowing for fine-grained testing of functionality.
 3. **Speed**: Unit tests are fast to execute since they do not rely on external resources or interactions
+
+### Component Tests
+
+Component tests, also known as module tests, sit between unit tests and integration tests in terms of scope. While unit tests focus on individual units of code, component tests validate the interactions and integration between multiple units or components within a module or subsystem.
+

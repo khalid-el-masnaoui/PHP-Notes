@@ -21,3 +21,7 @@ Software testing is a crucial process within the software development lifecycle 
 
 Software testing can be broken out into two different types: **functional** and **non-functional** testing. Different aspects of a software application require different testing types, such as **performance** testing, **scalability** testing, **integration** testing, **unit** testing, and many more.
 Each of these software testing types offers excellent visibility into your application, from code to user experience.
+
+### Unit Testing
+
+Unit tests focus on testing individual units or components of code in isolation. These units can be functions, methods, or classes, typically representing the smallest testable parts of an application. The key principle of unit testing is to isolate each unit from the rest of the codebase and verify its behavior independently.

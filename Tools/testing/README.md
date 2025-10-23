@@ -2,7 +2,19 @@
 
 Software testing is a crucial process within the software development lifecycle that involves evaluating a software application to identify bugs, errors, and missing requirements. Its primary goal is to ensure the software functions correctly, securely, and efficiently according to its specifications and user expectations.
 
+## Table Of Contents
 
+- **[Software Testing](#software-testing-1)**
+   * **[Key Aspects](#key-aspects)**
+   * **[Testing Types](#testing-types)**
+      + **[Unit Testing](#unit-testing)**
+      + **[Component Tests](#component-tests)**
+      + **[Integration Tests](#integration-tests)**
+      + **[Functional testing](#functional-testing)**
+      + **[End-to-end testing](#end-to-end-testing)**
+      + **[Smoke testing](#smoke-testing)**
+      + **[Acceptance testing](#acceptance-testing)**
+      + **[Performance testing](#performance-testing)**
 
 # Software Testing
 

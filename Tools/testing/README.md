@@ -105,3 +105,7 @@ Acceptance testing is the final stage of testing a product, especially software
     
 - **Beta Testing:** A form of acceptance testing that involves real users in their actual environments, but before the final release to the general public.
 
+### Performance testing
+
+Performance tests evaluate how a system performs under a particular workload. These tests help to measure the reliability, speed, scalability, and responsiveness of an application. 
+For instance, a performance test can observe response times when executing a high number of requests, or determine how a system behaves with a significant amount of data. It can determine if an application meets performance requirements, locate bottlenecks, measure stability during peak traffic, and more.

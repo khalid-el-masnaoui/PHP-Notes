@@ -109,3 +109,11 @@ Acceptance testing is the final stage of testing a product, especially software
 
 Performance tests evaluate how a system performs under a particular workload. These tests help to measure the reliability, speed, scalability, and responsiveness of an application. 
 For instance, a performance test can observe response times when executing a high number of requests, or determine how a system behaves with a significant amount of data. It can determine if an application meets performance requirements, locate bottlenecks, measure stability during peak traffic, and more.
+
+**Key goals**
+
+- **Ensure reliability**: Guarantee the application functions correctly under various conditions. 
+- **Identify bottlenecks**: Find points of weakness in the system that slow down performance. 
+- **Measure performance metrics**: Analyze key indicators like response time, throughput, and resource utilization. 
+- **Determine scalability**: Understand how well the application handles an increasing number of users or transactions. 
+- **Prevent issues**: Identify potential problems like memory leaks or crashes before they impact end-users

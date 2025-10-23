@@ -52,3 +52,10 @@ Integration tests evaluate the interaction and integration of multiple modules o
 1. :**End-to-End Testing:**: Integration tests simulate real-world scenarios by testing the entire application stack, including databases, APIs, and external services.
 2. :**Dependencies:**: They may involve real external dependencies, such as databases or network services, to validate interactions between different parts of the system.
 3. :**Complexity:**: Integration tests are more complex and may take longer to execute due to their broader scope and reliance on external resources.
+
+
+### Functional testing
+
+Functional tests focus on the business requirements of an application. They only verify the output of an action and do not check the intermediate states of the system when performing that action.
+
+There is sometimes a confusion between integration tests and functional tests as they both require multiple components to interact with each other. The difference is that an integration test may simply verify that you can query the database while a functional test would expect to get a specific value from the database as defined by the product requirements.

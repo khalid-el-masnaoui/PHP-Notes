@@ -59,3 +59,11 @@ Integration tests evaluate the interaction and integration of multiple modules o
 Functional tests focus on the business requirements of an application. They only verify the output of an action and do not check the intermediate states of the system when performing that action.
 
 There is sometimes a confusion between integration tests and functional tests as they both require multiple components to interact with each other. The difference is that an integration test may simply verify that you can query the database while a functional test would expect to get a specific value from the database as defined by the product requirements.
+
+**Characteristics of Functional Tests:**
+
+- **Scope:**  Validates the software's behavior against specified functional requirements from an end-user perspective.
+    
+- **Purpose:**  To confirm that the system or a specific feature delivers the expected output for given inputs, as defined in requirements or use cases.
+    
+- **Characteristics:**  Often performed by QA engineers, can be manual or automated, and typically uses black-box testing techniques (without knowledge of internal code structure). This category includes tests like smoke tests and regression tests.

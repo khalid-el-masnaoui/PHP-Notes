@@ -94,6 +94,25 @@ End-to-end tests are very useful, but they're expensive to perform and can be ha
 Smoke tests are basic tests that check the basic functionality of an application. They are meant to be quick to execute, and their goal is to give you the assurance that the major features of your system are working as expected.
 
 Smoke tests can be useful right after a new build is made to decide whether or not you can run more expensive tests, or right after a deployment to make sure that they application is running properly in the newly deployed environment.
+
+**Origin of the term**
+- The term originated in hardware testing, where a new circuit board is powered on, and if you see smoke, it indicates a major problem and the power should be shut off immediately.
+
+**Key characteristics**
+
+- **Scope:**  It covers the most critical, high-priority features, not every single function. 
+
+- **Purpose:**  To identify and fix showstopper bugs early, preventing time from being wasted on deep testing of a broken system. 
+
+ - **A quick health check:**  It acts as a first pass or "sanity check" to ensure the core functions are working correctly, similar to checking if a car starts before a road trip. 
+    
+- **A build verification test:**  It is run immediately after a new build is deployed to see if the most important features are working as expected. 
+
+- **A "go/no-go" decision:**  If a build passes a smoke test, it is deemed stable enough to proceed with more rigorous testing; if it fails, it is rejected. 
+
+- **Execution:** It is typically fast, often automated, and performed after each new code deployment.
+
+
 ### Acceptance testing
 
 Acceptance testing is the final stage of testing a product, especially software, to determine if it meets the specified requirements and is ready for delivery. It involves a formal evaluation, often by the customer or end-user, to ensure the product fulfills user needs and business requirements, and is functionally sound. Acceptance testing verifies the system as a whole against the original contract or specifications

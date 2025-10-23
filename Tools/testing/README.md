@@ -46,3 +46,9 @@ Component tests, also known as module tests, sit between unit tests and integrat
 ### Integration Tests
 
 Integration tests evaluate the interaction and integration of multiple modules or subsystems to ensure that they function correctly when combined. Unlike unit tests and component tests, which focus on isolated parts of the system, integration tests validate the behavior of the system as a whole.
+
+**Characteristics of Integration Tests:**
+
+1. :**End-to-End Testing:**: Integration tests simulate real-world scenarios by testing the entire application stack, including databases, APIs, and external services.
+2. :**Dependencies:**: They may involve real external dependencies, such as databases or network services, to validate interactions between different parts of the system.
+3. :**Complexity:**: Integration tests are more complex and may take longer to execute due to their broader scope and reliance on external resources.

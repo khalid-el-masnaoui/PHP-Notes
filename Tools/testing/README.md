@@ -25,3 +25,9 @@ Each of these software testing types offers excellent visibility into your appli
 ### Unit Testing
 
 Unit tests focus on testing individual units or components of code in isolation. These units can be functions, methods, or classes, typically representing the smallest testable parts of an application. The key principle of unit testing is to isolate each unit from the rest of the codebase and verify its behavior independently.
+
+ **Characteristics of Unit Tests:**
+ 
+1. **Isolation**: Unit tests are independent and isolated from external dependencies such as databases, network calls, or other components.
+2. **Granularity**: They target specific units of code, allowing for fine-grained testing of functionality.
+3. **Speed**: Unit tests are fast to execute since they do not rely on external resources or interactions

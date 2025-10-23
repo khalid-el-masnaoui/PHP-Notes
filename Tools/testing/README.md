@@ -89,6 +89,11 @@ End-to-end tests are very useful, but they're expensive to perform and can be ha
     
 - **Is a form of system testing:**  E2E testing is a type of system testing that targets the entire application, but it differs in its focus on a specific user or business workflow perspective.
 
+### Smoke testing
+
+Smoke tests are basic tests that check the basic functionality of an application. They are meant to be quick to execute, and their goal is to give you the assurance that the major features of your system are working as expected.
+
+Smoke tests can be useful right after a new build is made to decide whether or not you can run more expensive tests, or right after a deployment to make sure that they application is running properly in the newly deployed environment.
 ### Acceptance testing
 
 Acceptance testing is the final stage of testing a product, especially software, to determine if it meets the specified requirements and is ready for delivery. It involves a formal evaluation, often by the customer or end-user, to ensure the product fulfills user needs and business requirements, and is functionally sound. Acceptance testing verifies the system as a whole against the original contract or specifications

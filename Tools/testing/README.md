@@ -92,3 +92,16 @@ End-to-end tests are very useful, but they're expensive to perform and can be ha
 ### Acceptance testing
 
 Acceptance testing is the final stage of testing a product, especially software, to determine if it meets the specified requirements and is ready for delivery. It involves a formal evaluation, often by the customer or end-user, to ensure the product fulfills user needs and business requirements, and is functionally sound. Acceptance testing verifies the system as a whole against the original contract or specifications
+
+**Types of acceptance testing**
+
+- **User Acceptance Testing (UAT):**  The most common type, performed by the end-user to validate the software meets their needs. 
+    
+- **Operational Acceptance Testing (OAT):** Checks if the system is ready to operate and can be maintained in the production environment. This includes testing things like backup and restore procedures, and disaster recovery. 
+    
+- **Regulation Acceptance Testing (RAT):**  Verifies that the product complies with all relevant government rules and regulations. 
+    
+- **Alpha Testing:** An internal test of the software by a dedicated testing team or a small group of actual users, before it is released to the public. 
+    
+- **Beta Testing:** A form of acceptance testing that involves real users in their actual environments, but before the final release to the general public.
+

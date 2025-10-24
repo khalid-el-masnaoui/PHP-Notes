@@ -53,6 +53,14 @@ Unit tests focus on testing individual units or components of code in isolation.
 - **Ease of Maintenance:** In large projects, unit testing in PHP simplifies tracing the exact location of faults or failures.
 - **Documentation:** Tests serve as documentation, showcasing expected uses and outcomes of code sections, which is beneficial for new developers.
 
+**Disadvantages**
+
+- **Limited Scope:** PHP unit testing examples only check the functionality of individual units, potentially missing broader issues.
+- **Time Consumption:** Writing comprehensive unit tests in PHP requires significant time.
+- **Incomplete Coverage:** Some problems cannot be effectively tested through unit testing alone, leaving gaps in error detection.
+
+
+
 ### Component Tests
 
 Component tests, also known as module tests, sit between unit tests and integration tests in terms of scope. While unit tests focus on individual units of code, component tests validate the interactions and integration between multiple units or components within a module or subsystem.

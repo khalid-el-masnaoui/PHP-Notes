@@ -236,3 +236,82 @@ self::atMost(100) //method should at most 100 times
 - The real object is too slow (for example, a database).
 - The real object involves external APIs.
 - The real object has unpredictable behavior (for example, random data or system time).
+
+### Exceptions test
+
+Before method that throwing exceptions add expectations
+
+```php
+$this->expectException(Exceprion::class); //Expected exception class
+$this->expectExceptionMessage('Exceprions message'); //expected excepion message
+$this->expectExceptionMessageMatches('/Expression.*/i');
+$this->expectExceptionCode(1221); //expected exception code (integer)
+```
+
+### Test Fixtures 
+
+Test fixtures establish the necessary environment and state for a test or a group of tests. This includes setting up objects, database connections, files, or any other resources required for the test to run correctly.
+
+Fixtures are typically managed using methods like `setUp()` and `tearDown()` within a test class. 
+- `setUp()`:  This method is called before each individual test method within a test class. It is used to initialize resources or set up the environment required for a specific test.
+    
+- `tearDown()`:  This method is called after each individual test method within a test class. It is used to clean up resources or revert changes made during a specific test, ensuring isolation between tests.
+
+```php
+class MyTest extends \PHPUnit\Framework\TestCase
+{
+    protected $someResource;
+
+    protected function setUp(): void
+    {
+        // Initialize a resource before each test
+        $this->someResource = new SomeResource();
+    }
+
+    protected function tearDown(): void
+    {
+        // Clean up the resource after each test
+        unset($this->someResource);
+    }
+
+    public function testSomething(): void
+    {
+        // ... use $this->someResource ...
+    }
+
+    public function testAnotherThing(): void
+    {
+        // ... use $this->someResource ...
+    }
+}
+```
+
+
+- `setUpBeforeClass()`:  This static method is called once before the first test method in a test class is executed. It is ideal for setting up resources that can be shared across all tests in that class, such as a database connection or a shared object.
+    
+- `tearDownAfterClass()`:  This static method is called once after the last test method in a test class has finished executing. It is used to clean up resources that were set up in `setUpBeforeClass()`.
+
+```php
+class MyClassWideTest extends \PHPUnit\Framework\TestCase
+{
+    protected static $dbConnection;
+
+    public static function setUpBeforeClass(): void
+    {
+        // Establish a database connection once for all tests in this class
+        self::$dbConnection = new PDO('sqlite::memory:');
+    }
+
+    public static function tearDownAfterClass(): void
+    {
+        // Close the database connection after all tests in this class are done
+        self::$dbConnection = null;
+    }
+
+    public function testDatabaseInteraction(): void
+    {
+        // ... use self::$dbConnection ...
+    }
+}
+```
+

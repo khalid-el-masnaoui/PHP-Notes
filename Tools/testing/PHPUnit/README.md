@@ -82,3 +82,43 @@ public function testSimpleAssert(): void
     Assert::assertEquals(1, 1, 'Number "one" not aquals to number "one"');
 }
 ```
+
+## Asserts
+
+```php
+//Asserts that two variables have the same type and value. Used on objects, it asserts that two variables reference the same object.
+assertSame($expected, $actual, string $message = '')
+
+//Asserts that two variables do not have the same type and value. Used on objects, it asserts that two variables do not reference the same object.
+assertNotSame($expected, $actual, string $message = '')
+
+// Asserts that two variables are equal.
+assertEquals($expected, $actual, string $message = ''): void
+
+// Asserts that two variables are not equal.
+assertNotEquals($expected, $actual, string $message = ''): void
+
+// Asserts that a variable is null.
+public static function assertNull($actual, string $message = ''): void
+
+// Asserts that a variable is not null.
+assertNotNull($actual, string $message = ''): void
+
+// Asserts that a variable is of a given type.
+assertInstanceOf(string $expected, $actual, string $message = ''): void
+
+// Asserts that a condition is true.
+assertTrue($condition, string $message = ''): void
+
+// Asserts that a condition is false.
+assertFalse($condition, string $message = ''): void
+
+// Asserts the number of elements of an array, Countable or Traversable.
+assertCount(int $expectedCount, $haystack, string $message = ''): void
+
+// Asserts that an array has a specified key.
+ssertArrayHasKey($key, $array, string $message = ''): void
+
+// Asserts that a haystack contains a needle.
+assertContains($needle, iterable $haystack, string $message = ''): void
+```

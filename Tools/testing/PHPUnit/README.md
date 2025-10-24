@@ -188,3 +188,51 @@ PHPUnit provides mechanisms to create various types of test doubles, primarily *
 
     // Now, when your SUT calls someMethod on the stub, it will return 'expected_value'
 ```
+
+#### Mocks
+
+A mock object is a simulated object that mimics the behavior of a real object in a **controlled way**. It is a placeholder that stands in for the actual object being tested, providing a simplified and predictable version of its behavior.
+
+- **Purpose:**  Mocks are used for behavior-based testing. They not only provide pre-programmed responses like stubs but also allow you to define and verify expectations about how the object under test interacts with its dependencies.
+    
+- **Functionality:**     
+    - If a specific method was called.
+    - How many times a method was called.
+    - The order in which methods were called.
+    - The arguments passed to a method.
+    
+- **Example:**  If your code under test is expected to call a `save` method on a repository object, a mock for the repository would allow you to assert that the `save` method was indeed called, and potentially with the correct data, during the test.
+
+Mock objects are often used in unit testing to isolate and test specific parts of a system without having to rely on the functionality of other, external components. By creating a mock object, developers can simulate the behavior of a real object and ensure that their code is working as intended without having to deal with the complexities of the real object.
+
+Recommended to mock only services not a value objects (object used as arguments for method calling).
+
+```php
+$mockMethodResult = ResultClass::create(10);
+$mockObject = $this->createMock(ClassOrInterface::class);
+$mockObject
+		->expects(self::once()) // Expect method will be calling ones during test case
+		->method('objectMethod') // Mock method calling objectMethod()
+		->with('argument', ['a1' => 100], 'lastArgument') // With arguments
+		->willReturn($mockMethodResult) // Will return $mockMethodResult object
+;
+```
+
+Method calling expectations can be:
+
+```php
+self::any() //method should calls any times
+self::never() //method should not call 
+self::atLeast(10) //method should calls at least 10 times
+self::atLeastOnce() //method should calls at least one time
+self::once() //method should call one time
+self::exacly(10) //method should call 10 times
+self::atMost(100) //method should at most 100 times
+```
+
+
+**When to Use Test Doubles:**
+
+- The real object is too slow (for example, a database).
+- The real object involves external APIs.
+- The real object has unpredictable behavior (for example, random data or system time).

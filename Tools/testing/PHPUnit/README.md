@@ -315,3 +315,74 @@ class MyClassWideTest extends \PHPUnit\Framework\TestCase
 }
 ```
 
+
+### Code Coverage
+
+
+Code coverage is the percentage of code executed during test runs. It provides insights into untested parts of an application, helping teams enhance test quality and maintainability. The key coverage metrics include:
+
+- **Line Coverage**
+
+> The _Line Coverage_ software metric measures whether each executable line was executed.
+
+- **Branch Coverage**
+
+> The _Branch Coverage_ software metric measures whether the boolean expression of each control structure evaluated to both `true` and `false` while running the test suite.
+
+- **Path Coverage**
+
+> The _Path Coverage_ software metric measures whether each of the possible execution paths in a function or method has been followed while running the test suite. An execution path is a unique sequence of branches from the entry of the function or method to its exit.
+
+- **Function and Method Coverage**
+
+> The _Function and Method Coverage_ software metric measures whether each function or method has been invoked. php-code-coverage only considers a function or method as covered when all of its executable lines are covered.
+
+- **Class and Trait Coverage**
+
+> The _Class and Trait Coverage_ software metric measures whether each method of a class or trait is covered. php-code-coverage only considers a class or trait as covered when all of its methods are covered.
+
+- **Change Risk Anti-Patterns (CRAP) Index**
+
+> The _Change Risk Anti-Patterns (CRAP) Index_ is calculated based on the **cyclomatic complexity** and code coverage of a unit of code. Code that is not too complex and has an adequate test coverage will have a low CRAP index. The CRAP index can be lowered by writing tests and by refactoring the code to lower its complexity.
+
+**Cyclomatic complexity** indicates how complex the code is, so as much as the complexity increases, the test coverage should increase as well. Otherwise the **CRAP** index increases and the code becomes hard or even impossible to refactor in the future.
+- Represents the number of linearly independent paths through the code.
+-  It is calculated by counting the number of decision points in the code, such as `if` statements, loops, and `case` statements
+
+1. Installation 
+```shell
+composer require --dev phpunit/php-code-coverage
+```
+
+
+2. Configuration - phpunit.xml
+
+```xml
+    <coverage>
+        <report>
+            <html outputDirectory="tests/coverageReports" lowUpperBound="50" highLowerBound="90"/>    
+        </report>
+    </coverage>
+```
+
+3. Generating code coverage report
+
+```shell
+./vendor/bin/phpunit --coverage-html
+```
+
+
+<p float="left" align="middle">
+  <img src="./images/code_coverage_1.png" width = "30%" />
+  <img src="./images/code_coverage_2.png" width = "30%" />
+  <img src="./images/code_coverage_3.png" width = "30%" />
+</p>
+
+<p float="left" align="middle">
+  <img src="./images/code_coverage_4.png" width = "40%" />
+  <img src="./images/code_coverage_5.png" width = "40%" />
+</p>
+
+# Resources 
+
+[PHPUnit Docs](https://docs.phpunit.de/en/11.5/index.html)

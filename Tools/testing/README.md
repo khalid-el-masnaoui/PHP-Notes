@@ -15,8 +15,8 @@ Software testing is a crucial process within the software development lifecycle 
       + **[Component Testing](#component-testing)**
       + **[Integration Testing](#integration-testing)**
       + **[Functional Testing](#functional-testing)**
-      + **[End-to-end Testing](#end-to-end-testing)**
       + **[Smoke Testing](#smoke-testing)**
+      + **[End-to-end Testing](#end-to-end-testing)**
       + **[Acceptance Testing](#acceptance-testing)**
       + **[Performance Testing](#performance-testing)**
 
@@ -231,27 +231,6 @@ There is sometimes a confusion between integration tests and functional tests as
     
 - **Characteristics:**  Often performed by QA engineers, can be manual or automated, and typically uses black-box testing techniques (without knowledge of internal code structure). This category includes tests like smoke tests and regression tests.
 
-### End-to-end Testing
-
-End-to-end testing replicates a user behavior with the software in a complete application environment. It verifies that various user flows work as expected and can be as simple as loading a web page or logging in or much more complex scenarios verifying email notifications, online payments, etc...
-
-End-to-end tests are very useful, but they're expensive to perform and can be hard to maintain when they're automated. It is recommended to have a few key end-to-end tests and rely more on lower level types of testing (unit and integration tests) to be able to quickly identify breaking changes.
-
-
-**Characteristics of End-to-end Tests:**
-
-- **Simulates real-world scenarios:**  E2E tests mimic how actual users interact with an application, from navigating the front-end to triggering back-end processes and verifying outcomes. For example, an e-commerce test might involve a user searching for a product, adding it to the cart, checking out, and receiving a confirmation email. 
-    
-- **Tests the complete workflow:**  Unlike other tests that focus on isolated components, E2E tests validate the entire system from the initial user entry point to the final outcome. 
-    
-- **Validates all integrated components:**  The tests ensure all parts of the application—including the user interface, business logic, APIs, databases, and third-party services—work together correctly and that data flows properly between them. 
-    
-- **Focuses on end-user perspective:**  The primary goal is to verify that the entire system functions as expected from the user's point of view, ensuring the application meets business requirements. 
-    
-- **Requires a production-like environment:**  To accurately simulate real-world conditions, E2E tests should be executed in a testing environment that closely resembles the production environment. 
-    
-- **Is a form of system testing:**  E2E testing is a type of system testing that targets the entire application, but it differs in its focus on a specific user or business workflow perspective.
-
 ### Smoke Testing
 
 Smoke tests are basic tests that check the basic functionality of an application. They are meant to be quick to execute, and their goal is to give you the assurance that the major features of your system are working as expected.
@@ -274,6 +253,27 @@ Smoke tests can be useful right after a new build is made to decide whether or n
 - **A "go/no-go" decision:**  If a build passes a smoke test, it is deemed stable enough to proceed with more rigorous testing; if it fails, it is rejected. 
 
 - **Execution:** It is typically fast, often automated, and performed after each new code deployment.
+
+### End-to-end Testing
+
+End-to-end testing replicates a user behavior with the software in a complete application environment. It verifies that various user flows work as expected and can be as simple as loading a web page or logging in or much more complex scenarios verifying email notifications, online payments, etc...
+
+End-to-end tests are very useful, but they're expensive to perform and can be hard to maintain when they're automated. It is recommended to have a few key end-to-end tests and rely more on lower level types of testing (unit and integration tests) to be able to quickly identify breaking changes.
+
+
+**Characteristics of End-to-end Tests:**
+
+- **Simulates real-world scenarios:**  E2E tests mimic how actual users interact with an application, from navigating the front-end to triggering back-end processes and verifying outcomes. For example, an e-commerce test might involve a user searching for a product, adding it to the cart, checking out, and receiving a confirmation email. 
+    
+- **Tests the complete workflow:**  Unlike other tests that focus on isolated components, E2E tests validate the entire system from the initial user entry point to the final outcome. 
+    
+- **Validates all integrated components:**  The tests ensure all parts of the application—including the user interface, business logic, APIs, databases, and third-party services—work together correctly and that data flows properly between them. 
+    
+- **Focuses on end-user perspective:**  The primary goal is to verify that the entire system functions as expected from the user's point of view, ensuring the application meets business requirements. 
+    
+- **Requires a production-like environment:**  To accurately simulate real-world conditions, E2E tests should be executed in a testing environment that closely resembles the production environment. 
+    
+- **Is a form of system testing:**  E2E testing is a type of system testing that targets the entire application, but it differs in its focus on a specific user or business workflow perspective.
 
 
 ### Acceptance Testing

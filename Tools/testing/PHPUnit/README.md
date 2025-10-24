@@ -2,7 +2,23 @@
 
 PHPUnit is a robust and widely used testing framework designed specifically for PHP. It allows developers to perform unit testing by providing a structured and efficient way to test individual code units. As an implementation of the xUnit architecture, PHPUnit is tailored to suit the needs of PHP developers, making it straightforward to set up and begin testing.
 
+## Table Of Contents
 
+- **[PHPUnit](#phpunit-1)**
+   * **[Key features](#key-features)**
+   * **[Setting Up](#setting-up)**
+   * **[Tests writing](#tests-writing)**
+      + **[Definitions, naming, conventions](#definitions-naming-conventions)**
+	   * **[Asserts](#asserts)**
+      + **[Tips](#tips)**
+      + **[Data providers](#data-providers)**
+      + **[Tests doubles](#tests-doubles)**
+         - **[Stubs](#stubs)**
+         - **[Mocks](#mocks)**
+      + **[Exceptions test](#exceptions-test)**
+      + **[Test Fixtures](#test-fixtures)**
+      + **[Code Coverage](#code-coverage)**
+- **[Resources](#resources)**
 
 # PHPUnit
 
@@ -83,7 +99,7 @@ public function testSimpleAssert(): void
 }
 ```
 
-## Asserts
+### Asserts
 
 ```php
 //Asserts that two variables have the same type and value. Used on objects, it asserts that two variables reference the same object.

@@ -66,7 +66,15 @@ In general, we can split up our tests in three parts: **arrange, act, assert**.
 > - **Details:** This is where the assertions are made to verify the behavior is correct. It checks for the observable consequences of the "When" action. 
 > - **Example:** Then the item is added to the user's cart, and the cart icon updates.
 
+### Key differences and relationship
 
+- **Similar purpose**:  Both patterns break a test into three phases to make it easy to understand, but the phases have different names. 
+    
+- **Different emphasis**:  **GWT** emphasizes the "why" (behavioral outcome), while **AAA** emphasizes the "how" (technical implementation). 
+    
+- **Interchangeable**: The two patterns are logically equivalent. You can think of "Given" as the same as "Arrange," "When" as the same as "Act," and "Then" as the same as "Assert". 
+    
+- **Common usage**:  **AAA** is often preferred for lower-level **unit tests**, while **GWT** is common in **acceptance tests** and is the basis for the Gherkin language used in **BDD**.
 
 ## Testing Types
 

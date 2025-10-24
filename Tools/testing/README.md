@@ -36,6 +36,8 @@ Each of these software testing types offers excellent visibility into your appli
 
 ### Unit Testing
 
+#### Introduction
+
 Unit tests focus on testing individual units or components of code in isolation. These units can be functions, methods, or classes, typically representing the smallest testable parts of an application. The key principle of unit testing is to isolate each unit from the rest of the codebase and verify its behavior independently.
 
  **Characteristics of Unit Tests:**
@@ -73,6 +75,38 @@ In general, we can split up our tests in three parts: **arrange, act, assert**.
 
 3. **Assert**
 > After we run the code that we want to test, we of course need to check that the code did what we want to do. So we `assert` that it did what we expected it to do. Here we’ll check either the output of the method test, or check for the side effects that the method caused.
+
+
+#### Example With PHPUnit
+
+```php
+use PHPUnit\Framework\TestCase;
+
+class CalculatorTest extends TestCase
+{
+    public function testAddition(): void
+    {
+        $calculator = new Calculator();
+        $result = $calculator->add(2, 3);
+        $this->assertEquals(5, $result);
+    }
+
+    public function testSubtraction(): void
+    {
+        $calculator = new Calculator();
+        $result = $calculator->subtract(5, 2);
+        $this->assertEquals(3, $result);
+    }
+
+    public function testSubtractionWithNegativeResult(): void
+    {
+        $calculator = new Calculator();
+        $result = $calculator->subtract(2, 5);
+        $this->assertEquals(-3, $result);
+    }
+}
+```
+
 ### Component Tests
 
 Component tests, also known as module tests, sit between unit tests and integration tests in terms of scope. While unit tests focus on individual units of code, component tests validate the interactions and integration between multiple units or components within a module or subsystem.

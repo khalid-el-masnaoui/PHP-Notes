@@ -45,6 +45,27 @@ In general, we can split up our tests in three parts: **arrange, act, assert**.
 3. **Assert**
 > After we run the code that we want to test, we of course need to check that the code did what we want to do. So we `assert` that it did what we expected it to do. Here we’ll check either the output of the method test, or check for the side effects that the method caused.
 
+### Given, When, Then
+
+**Given, when, then** is a testing framework, particularly from **Behavior-Driven Development (BDD)**, that structures acceptance criteria into three parts: Given (the initial context/preconditions), When (the action or event), and Then (the expected outcome or observable consequence). This format improves communication and test readability by providing a clear, story-like structure for software tests.  
+
+-  **Encourages a focus on behavior**: rather than internal implementation details, making tests more aligned with business requirements.
+
+1. **Given**
+> - **Purpose:** Sets up the initial state or context for the test. 
+> - **Details:** It's the "precondition" for the test, describing the world before the action takes place. 
+> - **Example:** Given the user is on the product page of an in-stock item. 
+
+2. **When**
+> - **Purpose:** Describes the action or behavior being tested. 
+> - **Details:** This is the event that triggers the test. A test should focus on one clear "when" action. 
+> - **Example:** When the user clicks the "Add to Cart" button. 
+
+3. **Then**
+> - **Purpose:** Specifies the expected outcome or result. 
+> - **Details:** This is where the assertions are made to verify the behavior is correct. It checks for the observable consequences of the "When" action. 
+> - **Example:** Then the item is added to the user's cart, and the cart icon updates.
+
 
 
 ## Testing Types

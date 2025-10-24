@@ -140,3 +140,28 @@ PHPUnit have other “mark” methods:
 $this->markTestSkipped();
 $this->markAsRisky();
 ```
+
+### Data providers
+
+We can run test case many times with some arguments:
+
+1. Add annotation @dataprovide dataProviderMethod or attribute
+#[DataProvider(’dataProviderMethod’)] for our test case.
+
+```php
+/** @dataProvider dataProviderMethod */
+public function testSimpleAssert($arg1, $arg2): void
+{
+    Assert::assertEquals($arg1, $arg2);
+}
+```
+
+2. Create dataProvideMethod
+
+```php
+public function dataProviderMethod(): \Generator
+{
+    yield 'argument descriptions' => ['val1', 'val2'];
+    yield 'yet another argument descriptions' => ['val_1', 'val_2'];
+}
+```

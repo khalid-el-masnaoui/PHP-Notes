@@ -12,13 +12,13 @@ Software testing is a crucial process within the software development lifecycle 
       + **[Key differences and relationship](#key-differences-and-relationship)**
    * **[Testing Types](#testing-types)**
       + **[Unit Testing](#unit-testing)**
-      + **[Component Tests](#component-tests)**
-      + **[Integration Tests](#integration-tests)**
-      + **[Functional testing](#functional-testing)**
-      + **[End-to-end testing](#end-to-end-testing)**
-      + **[Smoke testing](#smoke-testing)**
-      + **[Acceptance testing](#acceptance-testing)**
-      + **[Performance testing](#performance-testing)**
+      + **[Component Testing](#component-testing)**
+      + **[Integration Testing](#integration-testing)**
+      + **[Functional Testing](#functional-testing)**
+      + **[End-to-end Testing](#end-to-end-testing)**
+      + **[Smoke Testing](#smoke-testing)**
+      + **[Acceptance Testing](#acceptance-testing)**
+      + **[Performance Testing](#performance-testing)**
 
 # Software Testing
 
@@ -141,7 +141,7 @@ class CalculatorTest extends TestCase
 }
 ```
 
-### Component Tests
+### Component Testing
 
 Component tests, also known as module tests, sit between unit tests and integration tests in terms of scope. While unit tests focus on individual units of code, component tests validate the interactions and integration between multiple units or components within a module or subsystem.
 
@@ -152,7 +152,7 @@ Component tests, also known as module tests, sit between unit tests and integrat
 3. **Coverage**: They provide broader coverage compared to unit tests by testing interactions between units.
 
 
-### Integration Tests
+### Integration Testing
 
 Integration tests evaluate the interaction and integration of multiple modules or subsystems to ensure that they function correctly when combined. Unlike unit tests and component tests, which focus on isolated parts of the system, integration tests validate the behavior of the system as a whole.
 
@@ -217,7 +217,7 @@ class PaymentIntegrationTest extends TestCase
 
 
 
-### Functional testing
+### Functional Testing
 
 Functional tests focus on the business requirements of an application. They only verify the output of an action and do not check the intermediate states of the system when performing that action.
 
@@ -231,7 +231,7 @@ There is sometimes a confusion between integration tests and functional tests as
     
 - **Characteristics:**  Often performed by QA engineers, can be manual or automated, and typically uses black-box testing techniques (without knowledge of internal code structure). This category includes tests like smoke tests and regression tests.
 
-### End-to-end testing
+### End-to-end Testing
 
 End-to-end testing replicates a user behavior with the software in a complete application environment. It verifies that various user flows work as expected and can be as simple as loading a web page or logging in or much more complex scenarios verifying email notifications, online payments, etc...
 
@@ -252,7 +252,7 @@ End-to-end tests are very useful, but they're expensive to perform and can be ha
     
 - **Is a form of system testing:**  E2E testing is a type of system testing that targets the entire application, but it differs in its focus on a specific user or business workflow perspective.
 
-### Smoke testing
+### Smoke Testing
 
 Smoke tests are basic tests that check the basic functionality of an application. They are meant to be quick to execute, and their goal is to give you the assurance that the major features of your system are working as expected.
 
@@ -276,7 +276,7 @@ Smoke tests can be useful right after a new build is made to decide whether or n
 - **Execution:** It is typically fast, often automated, and performed after each new code deployment.
 
 
-### Acceptance testing
+### Acceptance Testing
 
 Acceptance testing is the final stage of testing a product, especially software, to determine if it meets the specified requirements and is ready for delivery. It involves a formal evaluation, often by the customer or end-user, to ensure the product fulfills user needs and business requirements, and is functionally sound. Acceptance testing verifies the system as a whole against the original contract or specifications
 
@@ -292,7 +292,7 @@ Acceptance testing is the final stage of testing a product, especially software
     
 - **Beta Testing:** A form of acceptance testing that involves real users in their actual environments, but before the final release to the general public.
 
-### Performance testing
+### Performance Testing
 
 Performance tests evaluate how a system performs under a particular workload. These tests help to measure the reliability, speed, scalability, and responsiveness of an application. 
 For instance, a performance test can observe response times when executing a high number of requests, or determine how a system behaves with a significant amount of data. It can determine if an application meets performance requirements, locate bottlenecks, measure stability during peak traffic, and more.

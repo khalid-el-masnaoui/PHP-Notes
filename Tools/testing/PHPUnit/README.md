@@ -66,3 +66,19 @@ composer require --dev phpunit/phpunit
 ./vendor/bin/phpunit
 ```
 
+
+## Tests writing
+
+### Definitions, naming, conventions
+
+1. Test class — PHP class that contain tests for some functionality. Test class name must have “Test” postfix. Mostly uses one test class for one class, and named test class as original class name plus “Test” postfix.
+2. Every test class mostly extends `PHPUnit\Framework\TestCase.`
+3. Test method — it is a methods in test classes that contain functionality test. Test method name should have “test” prefix or must be marked with @test annotation or #[Test] attribute. Methods must be public.
+4. For better convenience, the structure of the test directories should follow the structure of our class directories.
+
+```php
+public function testSimpleAssert(): void
+{
+    Assert::assertEquals(1, 1, 'Number "one" not aquals to number "one"');
+}
+```

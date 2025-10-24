@@ -165,3 +165,26 @@ public function dataProviderMethod(): \Generator
     yield 'yet another argument descriptions' => ['val_1', 'val_2'];
 }
 ```
+
+### Tests doubles
+
+PHPUnit test doubles are objects that stand in for real dependencies during unit testing, allowing for isolated testing of a specific component (System Under Test, SUT) without relying on or triggering the behavior of its external dependencies. This helps to speed up tests and ensure that the SUT's behavior is correctly assessed.
+
+PHPUnit provides mechanisms to create various types of test doubles, primarily **stubs** and **mocks**
+
+#### Stubs
+
+**Stubs:** Stubs are simplified test doubles that provide predefined responses to method calls. They are used when the test needs to control the return values of a dependency's methods, but doesn't need to verify interactions with that dependency. PHPUnit's `createStub()` method is used to create stubs.
+
+- **Purpose:** Stubs are primarily used for state-based testing. Their main goal is to provide specific, pre-programmed responses to method calls, allowing the tested code to proceed without interacting with the real dependency. They simulate predictable outcomes.
+    
+- **Functionality:**  Stubs typically focus on defining return values for specific method calls. They do not track interactions or verify if certain methods were called.
+    
+- **Example:** If your code under test depends on a database connection to fetch data, a stub for the database connection would simply return a predefined dataset when a `fetch` method is called, without actually connecting to a database.
+
+```php
+    $stub = $this->createStub(DependencyClass::class);
+    $stub->method('someMethod')->willReturn('expected_value');
+
+    // Now, when your SUT calls someMethod on the stub, it will return 'expected_value'
+```

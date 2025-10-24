@@ -28,6 +28,24 @@ Software testing is a crucial process within the software development lifecycle 
     
 - **Risk Mitigation:**  By identifying and addressing issues early, testing helps minimize the risks of software failure and negative user experiences.
 
+## Testing Approaches and Patterns 
+
+### AAA: The three steps to every unit test
+
+In general, we can split up our tests in three parts: **arrange, act, assert**.
+- **Encourages a focus on the technical steps**: of a test, which is often a better fit for unit tests focused on internal logic
+
+1. **Arrange**
+> In the arrange phase we do all the set up to make sure that we can run the code that is needed.
+> We may need to set up some mocks, set up the environment or do other things.
+
+2. **Act**
+> In the act phase we run the actual code that we want to execute. In unit testing this is usually just one line of code, where we run the code.
+
+3. **Assert**
+> After we run the code that we want to test, we of course need to check that the code did what we want to do. So we `assert` that it did what we expected it to do. Here we’ll check either the output of the method test, or check for the side effects that the method caused.
+
+
 
 ## Testing Types
 
@@ -35,8 +53,6 @@ Software testing can be broken out into two different types: **functional** and 
 Each of these software testing types offers excellent visibility into your application, from code to user experience.
 
 ### Unit Testing
-
-#### Introduction
 
 Unit tests focus on testing individual units or components of code in isolation. These units can be functions, methods, or classes, typically representing the smallest testable parts of an application. The key principle of unit testing is to isolate each unit from the rest of the codebase and verify its behavior independently.
 
@@ -62,22 +78,7 @@ Unit tests focus on testing individual units or components of code in isolation.
 - **Incomplete Coverage:** Some problems cannot be effectively tested through unit testing alone, leaving gaps in error detection.
 
 
-#### AAA: The three steps to every unit test
-
-In general, we can split up our tests in three parts: **arrange, act, assert**.
-
-1. **Arrange**
-> In the arrange phase we do all the set up to make sure that we can run the code that is needed.
-> We may need to set up some mocks, set up the environment or do other things.
-
-2. **Act**
-> In the act phase we run the actual code that we want to execute. In unit testing this is usually just one line of code, where we run the code.
-
-3. **Assert**
-> After we run the code that we want to test, we of course need to check that the code did what we want to do. So we `assert` that it did what we expected it to do. Here we’ll check either the output of the method test, or check for the side effects that the method caused.
-
-
-#### Example With PHPUnit
+**Example With PHPUnit**
 
 ```php
 use PHPUnit\Framework\TestCase;

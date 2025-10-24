@@ -6,6 +6,10 @@ Software testing is a crucial process within the software development lifecycle 
 
 - **[Software Testing](#software-testing-1)**
    * **[Key Aspects](#key-aspects)**
+   * **[Testing Approaches and Patterns ](#testing-approaches-and-patterns)**
+      + **[AAA: The three steps to every unit test](#aaa-the-three-steps-to-every-unit-test)**
+      + **[Given, When, Then](#given-when-then)**
+      + **[Key differences and relationship](#key-differences-and-relationship)**
    * **[Testing Types](#testing-types)**
       + **[Unit Testing](#unit-testing)**
       + **[Component Tests](#component-tests)**

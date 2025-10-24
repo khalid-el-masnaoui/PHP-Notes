@@ -60,7 +60,19 @@ Unit tests focus on testing individual units or components of code in isolation.
 - **Incomplete Coverage:** Some problems cannot be effectively tested through unit testing alone, leaving gaps in error detection.
 
 
+#### AAA: The three steps to every unit test
 
+In general, we can split up our tests in three parts: **arrange, act, assert**.
+
+1. **Arrange**
+> In the arrange phase we do all the set up to make sure that we can run the code that is needed.
+> We may need to set up some mocks, set up the environment or do other things.
+
+2. **Act**
+> In the act phase we run the actual code that we want to execute. In unit testing this is usually just one line of code, where we run the code.
+
+3. **Assert**
+> After we run the code that we want to test, we of course need to check that the code did what we want to do. So we `assert` that it did what we expected it to do. Here we’ll check either the output of the method test, or check for the side effects that the method caused.
 ### Component Tests
 
 Component tests, also known as module tests, sit between unit tests and integration tests in terms of scope. While unit tests focus on individual units of code, component tests validate the interactions and integration between multiple units or components within a module or subsystem.

@@ -122,3 +122,21 @@ ssertArrayHasKey($key, $array, string $message = ''): void
 // Asserts that a haystack contains a needle.
 assertContains($needle, iterable $haystack, string $message = ''): void
 ```
+
+### Tips
+
+If we don’t want to write test body with some assertions we can use mark test as incomplete.
+
+```php
+public function testSomeFunctionality(): void
+{
+	$this->markTestIncomplete();
+}
+```
+
+PHPUnit have other “mark” methods:
+
+```php
+$this->markTestSkipped();
+$this->markAsRisky();
+```

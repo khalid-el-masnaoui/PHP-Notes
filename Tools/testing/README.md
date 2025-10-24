@@ -159,6 +159,60 @@ Integration tests evaluate the interaction and integration of multiple modules o
 3. :**Complexity:**: Integration tests are more complex and may take longer to execute due to their broader scope and reliance on external resources.
 
 
+
+**Example With PHPUnit**
+
+```php
+namespace Tests\Integration;
+
+use App\Service\DiscountService;
+use App\Service\TaxService;
+use App\PaymentProcessor;
+use PHPUnit\Framework\TestCase;
+
+class PaymentIntegrationTest extends TestCase
+{
+    private PaymentProcessor $processor;
+
+    protected function setUp(): void
+    {
+        // Integration: use real instances of both services
+        $discountService = new DiscountService();
+        $taxService = new TaxService();
+        $this->processor = new PaymentProcessor($discountService, $taxService);
+    }
+
+    public function testPaymentWithCoupon()
+    {
+        $result = $this->processor->processPayment(100, 'US', 'SAVE10');
+
+        $this->assertEquals(10.0, $result['discount']); // 10% off
+        $this->assertEquals(6.3, $result['tax']);       // tax after discount
+        $this->assertEquals(96.3, $result['total']);
+    }
+
+    public function testPaymentWithLargeOrderDiscount()
+    {
+        $result = $this->processor->processPayment(300, 'UK');
+
+        $this->assertEquals(15.0, $result['discount']); // 5% off
+        $this->assertEquals(57.0, $result['tax']);      // 20% VAT
+        $this->assertEquals(342.0, $result['total']);
+    }
+
+    public function testPaymentWithoutDiscount()
+    {
+        $result = $this->processor->processPayment(50, 'FR');
+
+        $this->assertEquals(0.0, $result['discount']);
+        $this->assertEquals(7.5, $result['tax']);
+        $this->assertEquals(57.5, $result['total']);
+    }
+}
+```
+
+
+
 ### Functional testing
 
 Functional tests focus on the business requirements of an application. They only verify the output of an action and do not check the intermediate states of the system when performing that action.

@@ -20,3 +20,49 @@ PHPUnit is a robust and widely used testing framework designed specifically for 
     
 - **Integration testing:** While primarily known for unit testing, can also be utilized for integration testing in PHP applications. Integration testing, in contrast to unit testing, focuses on verifying the interactions and communication between different components or modules of a system, or between the system and external dependencies like databases or APIs.
 	- **Simulate Real Interactions:**  Instead of mocking all dependencies, integration tests aim to use real dependencies where possible to truly test the integration. For example, if testing a database interaction, the test would connect to the actual test database.
+
+## Setting Up
+
+1. Installation 
+
+```shell
+composer require --dev phpunit/phpunit
+```
+
+2. Using PSR-4 for autoloading
+
+```json
+{
+    "require": {
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Malidkha\\Tests\\": "tests/"
+        }
+    }
+}
+```
+
+3. Configuring PHPUnit - phpunit.xml
+
+```xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit colors="true">
+    <testsuites>
+        <testsuite name="Application Unit Test Suite">
+            <directory>./tests/Unit/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
+```
+
+4. Running the tests
+
+```shell
+./vendor/bin/phpunit
+```
+

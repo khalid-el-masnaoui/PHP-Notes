@@ -217,3 +217,49 @@ class UserRepository
     }
 }
 ```
+
+3. **`UserServiceTest` Class**
+
+```php
+
+use App\Repository\UserRepository;
+use App\Service\UserService;
+use PHPUnit\Framework\TestCase;
+
+class UserIntegrationTest extends TestCase
+{
+    private PDO $pdo;
+    private UserRepository $repository;
+    private UserService $service;
+
+    protected function setUp(): void
+    {
+        // Use in-memory SQLite database for integration tests
+        $this->pdo = new PDO('sqlite::memory:');
+        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $this->repository = new UserRepository($this->pdo);
+        $this->repository->createTable();
+        $this->repository->seedData();
+
+        $this->service = new UserService($this->repository);
+    }
+
+    public function testFindUserByEmailIntegration()
+    {
+        $user = $this->service->findUserByEmail('alice@example.com');
+
+        $this->assertNotNull($user);
+        $this->assertEquals('Alice', $user['name']);
+    }
+
+    public function testGetActiveUsersIntegration()
+    {
+        $activeUsers = $this->service->getActiveUsers();
+
+        $this->assertCount(2, $activeUsers);
+        $this->assertEquals(['Alice', 'Charlie'], array_column($activeUsers, 'name'));
+    }
+}
+```
+

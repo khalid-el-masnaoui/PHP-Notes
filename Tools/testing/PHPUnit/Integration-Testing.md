@@ -372,3 +372,30 @@ class UserRepositoryTest extends TestCase
 ```
 
 
+### Example-4 : Currency Converter Service with fake API
+
+1. **`CurrencyConverterService` class**
+
+```php
+namespace App\Service;
+
+class CurrencyConverterService
+{
+    private ExchangeRateClient $client;
+
+    public function __construct(ExchangeRateClient $client)
+    {
+        $this->client = $client;
+    }
+
+    public function convert(float $amount, string $from, string $to): float
+    {
+        $rate = $this->client->getRate($from, $to);
+        if ($rate <= 0) {
+            throw new InvalidArgumentException("Invalid exchange rate");
+        }
+
+        return round($amount * $rate, 2);
+    }
+}
+```

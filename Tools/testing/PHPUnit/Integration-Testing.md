@@ -440,3 +440,50 @@ if ($_GET['from'] === 'USD' && $_GET['to'] === 'EUR') {
     echo json_encode(['rate' => 0]);
 }
 ```
+
+4. **`CurrencyConverterIntegrationTest` Class**
+
+```php
+namespace Tests\Integration\Service;
+
+use App\Service\ExchangeRateClient;
+use App\Service\CurrencyConverterService;
+use PHPUnit\Framework\TestCase;
+
+class CurrencyConverterIntegrationTest extends TestCase
+{
+    private CurrencyConverterService $service;
+
+    protected function setUp(): void
+    {
+        // Simulate API endpoint using the stub file
+        $stubUrl = 'http://localhost/tests/Integration/Services/ExchangeRateStub.php';
+
+        // In a real project, you might start a test server or use Guzzle + MockHandler
+        $client = new ExchangeRateClient($stubUrl);
+        $this->service = new CurrencyConverterService($client);
+    }
+
+    public function testUsdToEurConversion()
+    {
+        // Suppose rate = 0.92 from the stub
+        $result = $this->service->convert(100, 'USD', 'EUR');
+        $this->assertEquals(92.00, $result);
+    }
+
+    public function testEurToUsdConversion()
+    {
+        // Suppose rate = 1.09 from the stub
+        $result = $this->service->convert(100, 'EUR', 'USD');
+        $this->assertEquals(109.00, $result);
+    }
+
+    public function testInvalidCurrencyReturnsError()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->service->convert(100, 'ABC', 'XYZ');
+    }
+}
+```
+
+

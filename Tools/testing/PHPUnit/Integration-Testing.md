@@ -548,3 +548,53 @@ class WeatherApiClient
     }
 }
 ```
+
+3. **`WeatherRepository` dependency class**
+
+```php
+namespace App\Repository;
+
+class WeatherRepository
+{
+    private PDO $pdo;
+
+    public function __construct(PDO $pdo)
+    {
+        $this->pdo = $pdo;
+    }
+
+    public function createTable(): void
+    {
+        $this->pdo->exec("
+            CREATE TABLE weather (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                city TEXT,
+                temperature REAL,
+                updated_at TEXT
+            )
+        ");
+    }
+
+    public function save(array $weatherData): void
+    {
+        $stmt = $this->pdo->prepare("
+            INSERT INTO weather (city, temperature, updated_at)
+            VALUES (:city, :temperature, :updated_at)
+        ");
+        $stmt->execute([
+            ':city' => $weatherData['city'],
+            ':temperature' => $weatherData['temperature'],
+            ':updated_at' => date('Y-m-d H:i:s'),
+        ]);
+    }
+
+    public function findByCity(string $city): ?array
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM weather WHERE city = :city LIMIT 1");
+        $stmt->execute([':city' => $city]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result ?: null;
+    }
+}
+```

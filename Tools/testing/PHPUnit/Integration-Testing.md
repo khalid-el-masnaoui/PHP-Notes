@@ -399,3 +399,32 @@ class CurrencyConverterService
     }
 }
 ```
+
+1. **`ExchangeRateClient` dependency class**
+
+```php
+namespace App\Service;
+
+class ExchangeRateClient
+{
+    private string $apiBase;
+
+    public function __construct(string $apiBase)
+    {
+        $this->apiBase = rtrim($apiBase, '/');
+    }
+
+    public function getRate(string $from, string $to): float
+    {
+        $url = "{$this->apiBase}/rate?from={$from}&to={$to}";
+        $response = file_get_contents($url);
+
+        if ($response === false) {
+            throw new RuntimeException("Failed to fetch exchange rate");
+        }
+
+        $data = json_decode($response, true);
+        return $data['rate'] ?? 0.0;
+    }
+}
+```

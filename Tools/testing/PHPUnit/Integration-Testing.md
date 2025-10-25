@@ -263,3 +263,37 @@ class UserIntegrationTest extends TestCase
 }
 ```
 
+### Example-3 : User Repository class with in-memory database with SQL fixtures 
+
+
+1. **`UserRepository` class**
+
+```php
+namespace App\Repository;
+
+use PDO;
+
+class UserRepository
+{
+    private PDO $pdo;
+
+    public function __construct(PDO $pdo)
+    {
+        $this->pdo = $pdo;
+    }
+
+    public function findAll(): array
+    {
+        $stmt = $this->pdo->query('SELECT id, name, email FROM users');
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function findByEmail(string $email): ?array
+    {
+        $stmt = $this->pdo->prepare('SELECT id, name, email FROM users WHERE email = :email');
+        $stmt->execute(['email' => $email]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $user ?: null;
+    }
+}
+```

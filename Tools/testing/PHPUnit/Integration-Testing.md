@@ -314,3 +314,61 @@ INSERT INTO users (name, email) VALUES
 ('Bob', 'bob@example.com');
 
 ```
+
+3. **`UserRepositoryTest` Class**
+
+```php
+namespace Tests\Integration\Repository;
+
+use PHPUnit\Framework\TestCase;
+use App\Repository\UserRepository;
+
+class UserRepositoryTest extends TestCase
+{
+    private PDO $pdo;
+    private UserRepository $repository;
+
+    protected function setUp(): void
+    {
+        // Create in-memory SQLite DB for isolation
+        $this->pdo = new PDO('sqlite::memory:');
+        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Load SQL fixture
+        $fixture = file_get_contents(__DIR__ . '/fixtures/usersFixture.sql');
+        $this->pdo->exec($fixture);
+
+        $this->repository = new UserRepository($this->pdo);
+    }
+
+    public function testFindAllReturnsAllUsers(): void
+    {
+        $users = $this->repository->findAll();
+
+        $this->assertCount(2, $users);
+        $this->assertEquals('Alice', $users[0]['name']);
+    }
+
+    public function testFindByEmailReturnsCorrectUser(): void
+    {
+        $user = $this->repository->findByEmail('bob@example.com');
+
+        $this->assertNotNull($user);
+        $this->assertEquals('Bob', $user['name']);
+    }
+
+    public function testFindByEmailReturnsNullWhenNotFound(): void
+    {
+        $user = $this->repository->findByEmail('notfound@example.com');
+
+        $this->assertNull($user);
+    }
+
+    protected function tearDown(): void
+    {
+        $this->pdo = null; // close connection
+    }
+}
+```
+
+

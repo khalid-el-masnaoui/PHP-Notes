@@ -428,3 +428,15 @@ class ExchangeRateClient
     }
 }
 ```
+
+3. Fake API service `ExchangeRateStub.php`
+
+```php
+if ($_GET['from'] === 'USD' && $_GET['to'] === 'EUR') {
+    echo json_encode(['rate' => 0.92]);
+} elseif ($_GET['from'] === 'EUR' && $_GET['to'] === 'USD') {
+    echo json_encode(['rate' => 1.09]);
+} else {
+    echo json_encode(['rate' => 0]);
+}
+```

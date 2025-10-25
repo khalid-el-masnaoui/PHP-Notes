@@ -2,6 +2,16 @@
 
 PHPUnit, while primarily known for unit testing, can also be utilized for integration testing in PHP applications. Integration testing, in contrast to unit testing, focuses on verifying the interactions and communication between different components or modules of a system, or between the system and external dependencies like databases or APIs.
 
+## Table Of Contents
+
+- **[PHPUnit Integration Testing](#phpunit-integration-testing)**
+   * **[Examples](#examples)**
+      + **[Example-1 : Payment Processor class with two dependencies classes](#example-1-payment-processor-class-with-two-dependencies-classes)**
+      + **[Example-2 : User Service class with in-memory database ](#example-2-user-service-class-with-in-memory-database)**
+      + **[Example-3 : User Repository class with in-memory database with SQL fixtures ](#example-3-user-repository-class-with-in-memory-database-with-sql-fixtures)**
+      + **[Example-4 : Currency Converter Service with fake API](#example-4-currency-converter-service-with-fake-api)**
+      + **[Example-5 : Weather Sync Service class with fake API and in-memory database](#example-5-weather-sync-service-class-with-fake-api-and-in-memory-database)**
+      + **[Example-6 : Weather Sync Service class self-contained version](#example-6-weather-sync-service-class-self-contained-version)**
 ## Examples
 
 ### Example-1 : Payment Processor class with two dependencies classes

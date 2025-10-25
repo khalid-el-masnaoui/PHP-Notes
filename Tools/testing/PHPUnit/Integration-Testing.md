@@ -487,3 +487,31 @@ class CurrencyConverterIntegrationTest extends TestCase
 ```
 
 
+### Example-5 : Weather Sync Service class with fake API and in-memory database
+
+1. **`WeatherSyncService` Class**
+
+```php
+
+namespace App\Service;
+
+use App\Repository\WeatherRepository;
+
+class WeatherSyncService
+{
+    private WeatherApiClient $client;
+    private WeatherRepository $repository;
+
+    public function __construct(WeatherApiClient $client, WeatherRepository $repository)
+    {
+        $this->client = $client;
+        $this->repository = $repository;
+    }
+
+    public function sync(string $city): void
+    {
+        $weatherData = $this->client->fetchWeather($city);
+        $this->repository->save($weatherData);
+    }
+}
+```

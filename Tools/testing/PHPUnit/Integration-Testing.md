@@ -614,3 +614,64 @@ $fakeData = [
 
 echo json_encode($fakeData[$city] ?? ['city' => $city, 'temperature' => 0]);
 ```
+
+5. **`WeatherIntegrationTest` Class**
+
+```php
+namespace Tests\Integration\Service;
+
+use PHPUnit\Framework\TestCase;
+
+use App\Service\ExchangeRateClient;
+use App\Repository\WeatherRepository;
+use App\Service\CurrencyConverterService;
+use PHPUnit\Framework\TestCase;
+
+class WeatherIntegrationTest extends TestCase
+{
+    private PDO $pdo;
+    private WeatherRepository $repository;
+    private WeatherSyncService $service;
+
+    protected function setUp(): void
+    {
+        // 1. Setup SQLite in-memory database
+        $this->pdo = new PDO('sqlite::memory:');
+        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // 2. Create repository and table
+        $this->repository = new WeatherRepository($this->pdo);
+        $this->repository->createTable();
+
+        // 3. Create API client pointing to stub (simulating API)
+        $stubUrl = 'http://localhost/tests/Integration/WeatherApiStub.php';
+        $client = new WeatherApiClient($stubUrl);
+
+        // 4. Create service
+        $this->service = new WeatherSyncService($client, $this->repository);
+    }
+
+    public function testSyncFetchesAndStoresWeatherData()
+    {
+        // Act
+        $this->service->sync('Paris');
+
+        // Assert
+        $data = $this->repository->findByCity('Paris');
+
+        $this->assertNotNull($data);
+        $this->assertEquals('Paris', $data['city']);
+        $this->assertEquals(18.5, (float)$data['temperature']);
+    }
+
+    public function testSyncForUnknownCityStoresZeroTemperature()
+    {
+        $this->service->sync('Tokyo');
+
+        $data = $this->repository->findByCity('Tokyo');
+        $this->assertEquals(0, (float)$data['temperature']);
+    }
+}
+```
+
+

@@ -137,3 +137,32 @@ class PaymentIntegrationTest extends TestCase
 }
 ```
 
+### Example-2 : User Service class with in-memory database 
+
+1. **`UserService` Class**
+
+```php
+namespace App\Service;
+
+use App\Repository\UserRepository;
+
+class UserService
+{
+    private UserRepository $repository;
+
+    public function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
+    public function findUserByEmail(string $email): ?array
+    {
+        return $this->repository->findByEmail($email);
+    }
+
+    public function getActiveUsers(): array
+    {
+        return $this->repository->getActiveUsers();
+    }
+}
+```

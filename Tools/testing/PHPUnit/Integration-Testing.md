@@ -5,3 +5,40 @@ PHPUnit, while primarily known for unit testing, can also be utilized for integr
 ## Examples
 
 ### Example-1 : Payment Processor class with two dependencies classes
+
+1. **`PaymentProcessor` Class**
+
+```php
+namespace App;
+
+use App\Service\DiscountService;
+use App\Service\TaxService;
+
+class PaymentProcessor
+{
+    private DiscountService $discountService;
+    private TaxService $taxService;
+
+    public function __construct(DiscountService $discountService, TaxService $taxService)
+    {
+        $this->discountService = $discountService;
+        $this->taxService = $taxService;
+    }
+
+    public function processPayment(float $amount, string $country, ?string $coupon = null): array
+    {
+        $discount = $this->discountService->calculateDiscount($amount, $coupon);
+        $afterDiscount = $amount - $discount;
+
+        $tax = $this->taxService->calculateTax($afterDiscount, $country);
+        $total = $afterDiscount + $tax;
+
+        return [
+            'original' => $amount,
+            'discount' => round($discount, 2),
+            'tax' => round($tax, 2),
+            'total' => round($total, 2),
+        ];
+    }
+}
+```

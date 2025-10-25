@@ -675,3 +675,128 @@ class WeatherIntegrationTest extends TestCase
 ```
 
 
+### Example-6 : Weather Sync Service class self-contained version
+
+self-contained version means **no external HTTP server**, no `localhost`, no PHP web server required
+
+We’ll simulate the “API call” **entirely in memory** using a **custom stream wrapper** so that `file_get_contents()` still works — but reads from our fake data source.
+
+> API responses come from an **in-memory stub**, not a live endpoint.
+
+This pattern is **CI/CD–friendly**, **fast**, and **fully deterministic**.
+
+
+4. In-Memory Stream Stub (`InMemoryWeatherApiStream.php`)
+
+Instead of the Fake API `WeatherApiStub.php` we will use In-Memory Stream Stub (`InMemoryWeatherApiStream.php`)
+
+This class will **pretend to be an HTTP server**, by registering the scheme `mockapi://`.  
+When `file_get_contents("mockapi://...")` is called, this class returns fake JSON instead.
+
+```php
+namespace Tests\Integration\Service;
+
+class InMemoryWeatherApiStream
+{
+    private $position;
+    private $content;
+
+    public static function register(array $fakeData): void
+    {
+        stream_wrapper_unregister('mockapi');
+        stream_wrapper_register('mockapi', self::class);
+        self::$fakeResponses = $fakeData;
+    }
+
+    private static array $fakeResponses = [];
+
+    public function stream_open($path, $mode, $options, &$opened_path): bool
+    {
+        // Parse city from query string (e.g. mockapi://weather?city=Paris)
+        $url = parse_url($path);
+        parse_str($url['query'] ?? '', $params);
+        $city = $params['city'] ?? '';
+
+        $data = self::$fakeResponses[$city] ?? ['city' => $city, 'temperature' => 0];
+        $this->content = json_encode($data);
+        $this->position = 0;
+
+        return true;
+    }
+
+    public function stream_read($count): string
+    {
+        $chunk = substr($this->content, $this->position, $count);
+        $this->position += strlen($chunk);
+        return $chunk;
+    }
+
+    public function stream_eof(): bool
+    {
+        return $this->position >= strlen($this->content);
+    }
+
+    public function stream_stat()
+    {
+        return [];
+    }
+}
+```
+
+5. **`WeatherIntegrationTest` Class**
+
+```php
+namespace Tests\Integration\Service;
+
+use PHPUnit\Framework\TestCase;
+
+use App\Service\ExchangeRateClient;
+use App\Repository\WeatherRepository;
+use App\Service\CurrencyConverterService;
+use PHPUnit\Framework\TestCase;
+
+class WeatherIntegrationTest extends TestCase
+{
+    private PDO $pdo;
+    private WeatherRepository $repository;
+    private WeatherSyncService $service;
+
+    protected function setUp(): void
+    {
+        // 1️⃣ Register the in-memory API stub
+        InMemoryWeatherApiStream::register([
+            'Paris' => ['city' => 'Paris', 'temperature' => 18.5],
+            'London' => ['city' => 'London', 'temperature' => 15.2],
+        ]);
+
+        // 2️⃣ Set up SQLite in-memory DB
+        $this->pdo = new PDO('sqlite::memory:');
+        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $this->repository = new WeatherRepository($this->pdo);
+        $this->repository->createTable();
+
+        // 3️⃣ Use mockapi:// as fake API base
+        $client = new WeatherApiClient('mockapi://');
+        $this->service = new WeatherSyncService($client, $this->repository);
+    }
+
+    public function testSyncFetchesAndStoresWeatherData()
+    {
+        $this->service->sync('Paris');
+
+        $data = $this->repository->findByCity('Paris');
+        $this->assertNotNull($data);
+        $this->assertEquals('Paris', $data['city']);
+        $this->assertEquals(18.5, (float)$data['temperature']);
+    }
+
+    public function testUnknownCityStoresZeroTemperature()
+    {
+        $this->service->sync('Tokyo');
+
+        $data = $this->repository->findByCity('Tokyo');
+        $this->assertEquals(0, (float)$data['temperature']);
+    }
+}
+```

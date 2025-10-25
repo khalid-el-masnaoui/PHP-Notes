@@ -515,3 +515,36 @@ class WeatherSyncService
     }
 }
 ```
+
+2. **`WeatherApiClient` dependency class**
+
+```php
+namespace App\Service;
+
+class WeatherApiClient
+{
+    private string $baseUrl;
+
+    public function __construct(string $baseUrl)
+    {
+        $this->baseUrl = rtrim($baseUrl, '/');
+    }
+
+    public function fetchWeather(string $city): array
+    {
+        $url = "{$this->baseUrl}/weather?city=" . urlencode($city);
+        $response = file_get_contents($url);
+
+        if ($response === false) {
+            throw new RuntimeException("Failed to fetch weather data");
+        }
+
+        $data = json_decode($response, true);
+        if (!isset($data['city']) || !isset($data['temperature'])) {
+            throw new RuntimeException("Invalid API response");
+        }
+
+        return $data;
+    }
+}
+```

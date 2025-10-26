@@ -227,3 +227,50 @@ return [
 ];
 ```
 
+
+3. **`UserServiceTest` Class**
+
+```php
+namespace Tests;
+
+use App\Service\UserService;
+use PHPUnit\Framework\TestCase;
+
+final class UserServiceTest extends TestCase
+{
+    private array $fixtures;
+    private UserService $userService;
+
+    protected function setUp(): void
+    {
+        // Load fixture data
+        $this->fixtures = require __DIR__ . '/fixtures/usersFixture.php';
+
+        // Initialize service with fixture data
+        $this->userService = new UserService($this->fixtures);
+    }
+
+    public function testFindUserByEmail()
+    {
+        $user = $this->userService->findUserByEmail('alice@example.com');
+
+        $this->assertNotNull($user);
+        $this->assertEquals('Alice', $user['name']);
+    }
+
+    public function testFindUserByEmailReturnsNullForUnknownEmail()
+    {
+        $user = $this->userService->findUserByEmail('unknown@example.com');
+        $this->assertNull($user);
+    }
+
+    public function testGetActiveUsers()
+    {
+        $activeUsers = $this->userService->getActiveUsers();
+
+        $this->assertCount(2, $activeUsers);
+        $this->assertEquals(['Alice', 'Charlie'], array_column($activeUsers, 'name'));
+    }
+}
+```
+

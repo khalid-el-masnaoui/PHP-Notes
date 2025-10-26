@@ -126,3 +126,58 @@ final class Calculator
 }
 
 ```
+
+2. **`CalculatorTest` Class**
+
+```php
+namespace Tests;
+
+use App\Calculator;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
+
+final class CalculatorTest extends TestCase
+{
+    /**
+     * @return array<array<int>>
+     */
+    public static function provideAddCases(): array
+    {
+        return [
+            'positive numbers' => [2, 3, 5],
+            'zero with positive' => [0, 5, 5],
+            'negative numbers' => [-2, -3, -5],
+            'positive and negative' => [5, -2, 3],
+        ];
+    }
+
+    #[DataProvider('provideAddCases')]
+    public function testItAdds(int $num1, int $num2, int $expected): void
+    {
+        $calculator = new Calculator();
+        $this->assertSame($expected, $calculator->add($num1, $num2));
+    }
+
+    /**
+     * @return array<array<int>>
+     */
+    public static function provideSubtractCases(): array
+    {
+        return [
+            'positive numbers' => [5, 2, 3],
+            'zero with positive' => [5, 0, 5],
+            'negative numbers' => [-5, -2, -3],
+            'positive and negative' => [2, -5, 7],
+        ];
+    }
+
+    #[DataProvider('provideSubtractCases')]
+    public function testItSubtracts(int $num1, int $num2, int $expected): void
+    {
+        $calculator = new Calculator();
+        $this->assertSame($expected, $calculator->subtract($num1, $num2));
+    }
+}
+```
+
+

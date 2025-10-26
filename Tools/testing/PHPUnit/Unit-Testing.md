@@ -181,3 +181,36 @@ final class CalculatorTest extends TestCase
 ```
 
 
+### Example-3 : User Service class with data fixtures
+
+1. **`UserService`Class**
+
+```php
+namespace App\Service;
+
+final class UserService
+{
+    private array $users;
+
+    public function __construct(array $users)
+    {
+        $this->users = $users;
+    }
+
+    public function findUserByEmail(string $email): ?array
+    {
+        foreach ($this->users as $user) {
+            if ($user['email'] === $email) {
+                return $user;
+            }
+        }
+        return null;
+    }
+
+    public function getActiveUsers(): array
+    {
+        return array_filter($this->users, fn($u) => $u['active']);
+    }
+}
+```
+

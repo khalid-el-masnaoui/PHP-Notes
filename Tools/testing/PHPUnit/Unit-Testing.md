@@ -274,3 +274,38 @@ final class UserServiceTest extends TestCase
 }
 ```
 
+### Example-4 : User Service class with mocked dependency 
+
+1. **`UserService` Class**
+
+```php
+
+namespace App\Service;
+
+use App\Repository\UserRepository;
+
+class UserService
+{
+    private $userRepository;
+
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
+    public function getUserById(int $id): ?array
+    {
+        return $this->userRepository->find($id);
+    }
+
+    public function createUser(string $name, string $email): array
+    {
+        // Imagine some validation or business logic here
+        $userData = [
+            'name' => $name,
+            'email' => $email,
+        ];
+        return $this->userRepository->save($userData);
+    }
+}
+```

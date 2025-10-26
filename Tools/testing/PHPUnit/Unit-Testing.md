@@ -105,3 +105,24 @@ final class UserTest extends TestCase
 - **testAddFavoriteMovie()**: Tests if adding a movie correctly updates the favorite movies list.
 - **testRemoveFavoriteMovie()**: Validates that removing a movie updates the list and handles errors correctly.
 
+### Example-2 : Calculator class with data providers
+
+1. **`Calculator` Class**
+
+```php
+namespace App;
+
+final class Calculator
+{
+    public function add(int $a, int $b): int
+    {
+        return $a + $b;
+    }
+
+    public function subtract(int $a, int $b): int
+    {
+        return $a - $b;
+    }
+}
+
+```

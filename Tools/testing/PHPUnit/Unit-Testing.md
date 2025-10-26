@@ -309,3 +309,30 @@ class UserService
     }
 }
 ```
+
+2. **`UserRepository` dependency class**
+
+```php
+namespace App\Repository;
+
+class UserRepository
+{
+    public function find(int $id): ?array
+    {
+        // In a real application, this would interact with a database
+        // For this example, we'll return a dummy user
+        if ($id === 1) {
+            return ['id' => 1, 'name' => 'John Doe', 'email' => 'john.doe@example.com'];
+        }
+        return null;
+    }
+
+    public function save(array $userData): array
+    {
+        // In a real application, this would persist data to a database
+        // For this example, we'll simulate saving and returning the data
+        $userData['id'] = rand(100, 999); // Assign a dummy ID
+        return $userData;
+    }
+}
+```

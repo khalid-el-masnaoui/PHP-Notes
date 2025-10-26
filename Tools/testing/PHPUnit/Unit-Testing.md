@@ -336,3 +336,97 @@ class UserRepository
     }
 }
 ```
+
+3. **`UserServiceTest` Class**
+
+```php
+namespace Tests\Service;
+
+use App\Repository\UserRepository;
+use App\Service\UserService;
+use PHPUnit\Framework\TestCase;
+
+class UserServiceTest extends TestCase
+{
+    public function testGetUserById()
+    {
+        // Create a mock for the UserRepository dependency
+        $userRepositoryMock = $this->createMock(UserRepository::class);
+
+        // Configure the mock to return a specific value when 'find' is called with argument 1
+        $userRepositoryMock->method('find')
+            ->with(1)
+            ->willReturn(['id' => 1, 'name' => 'Mocked User', 'email' => 'mock@example.com']);
+
+        // Instantiate the UserService with the mocked UserRepository
+        $userService = new UserService($userRepositoryMock);
+
+        // Call the method under test
+        $user = $userService->getUserById(1);
+
+        // Assert the expected result, which comes from the mock
+        $this->assertNotNull($user);
+        $this->assertEquals('Mocked User', $user['name']);
+        $this->assertEquals('mock@example.com', $user['email']);
+    }
+
+    public function testCreateUser()
+    {
+        $userRepositoryMock = $this->createMock(UserRepository::class);
+
+        // Configure the mock to expect 'save' to be called once with specific arguments
+        // and to return a specific value
+        $userRepositoryMock->expects($this->once())
+            ->method('save')
+            ->with(['name' => 'Jane Doe', 'email' => 'jane.doe@example.com'])
+            ->willReturn(['id' => 200, 'name' => 'Jane Doe', 'email' => 'jane.doe@example.com']);
+
+        $userService = new UserService($userRepositoryMock);
+
+        $newUser = $userService->createUser('Jane Doe', 'jane.doe@example.com');
+
+        $this->assertNotNull($newUser);
+        $this->assertEquals(200, $newUser['id']);
+        $this->assertEquals('Jane Doe', $newUser['name']);
+    }
+}
+```
+
+### Example-5 : Database Service class mock
+
+1. **`DatabaseServiceTest`Class**
+
+```php
+namespace Tests;
+
+use App\Service\DatabaseService;
+use PHPUnit\Framework\TestCase;
+use PHPUnit\DbUnit\DataSet\MockDataSet;
+
+class DatabaseServiceTest extends TestCase
+{
+    public function testGetUserById()
+    {
+        // Create a mock dataset
+        $data = [
+            'users' => [
+                ['id' => 1, 'name' => 'John Doe', 'email' => 'john@example.com'],
+                ['id' => 2, 'name' => 'Jane Smith', 'email' => 'jane@example.com'],
+            ]
+        ];
+        $mockDataSet = new MockDataSet($data);
+        // Create a mock database connection
+        $mockConnection = $this->getMockBuilder(\PDO::class)
+                              ->disableOriginalConstructor()
+                              ->getMock();
+        $mockConnection->method('query')
+                       ->willReturn($mockDataSet->getTable('users'));
+        // Inject the mock connection into the database service
+        $databaseService = new DatabaseService($mockConnection);
+        // Test retrieving a user by ID
+        $user = $databaseService->getUserById(1);
+        $this->assertEquals('John Doe', $user['name']);
+        $this->assertEquals('john@example.com', $user['email']);
+    }
+}
+```

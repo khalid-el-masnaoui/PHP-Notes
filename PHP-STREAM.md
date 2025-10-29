@@ -183,3 +183,13 @@ if ($result !== false) {
 }
 ```
 
+##### file_get_contents vs stream_get_contents
+
+- `file_get_contents(string $filename, ...)`: 
+    
+    This function is designed to read the entire contents of a specified file or URL directly into a string. It handles opening, reading, and closing the resource internally. It is often preferred for its simplicity and performance when you need to read the whole content of a file or a remote resource in one go.
+    
+- `stream_get_contents(resource $handle, ...)`: 
+    
+    This function operates on an already open stream resource (e.g., a file handle opened with `fopen()`, a socket connection, or a stream filter). It reads the remaining contents of that stream into a string, optionally up to a specified `length` and starting from a given `offset`. This function is suitable when you need more control over the stream, such as reading only a portion of it, or when working with non-file-based streams.
+

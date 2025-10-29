@@ -19,3 +19,20 @@ The default wrapper is `file://` which means we use a stream every time we acc
     - `ftp://` for FTP connections.
     - `compress.zlib://` for compressed data.
     
+
+PHP includes many built-in wrappers, and you can also register custom wrappers.
+
+- **Filters:**  Stream filters allow you to process data as it flows through a stream. You can apply filters to modify data during reading or writing, such as converting text to uppercase or performing encryption/decryption. Filters can be stacked, allowing for multiple transformations.
+    
+- **Contexts:**  Stream contexts provide a way to configure the behavior of streams and wrappers. You can set options for timeouts, HTTP headers, authentication credentials, and other parameters specific to the wrapper being used.
+    
+- **Efficiency:**  Streams are particularly beneficial when dealing with large files or real-time data transfers, as they enable incremental processing of data rather than loading everything into memory at once. This helps optimize memory usage and performance.
+
+PHP provides [some built-in wrappers](https://www.php.net/manual/en/wrappers.php), protocols, and filters. To know which wrappers are installed on our machine we can use:
+
+```php
+print_r(stream_get_transports());
+print_r(stream_get_wrappers());
+print_r(stream_get_filters());
+```
+

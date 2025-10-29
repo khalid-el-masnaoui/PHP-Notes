@@ -115,3 +115,15 @@ if ($configFile) {
 ```
 
 
+#### HTTP Files
+
+##### stream_get_contents
+
+```php
+  $handle = fopen('https://example.com/api/data', 'r');
+    if ($handle) {
+        $contents = stream_get_contents($handle);
+        fclose($handle);
+        echo $contents;
+    }
+```

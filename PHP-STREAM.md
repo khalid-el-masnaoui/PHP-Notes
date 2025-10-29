@@ -36,3 +36,11 @@ print_r(stream_get_wrappers());
 print_r(stream_get_filters());
 ```
 
+## PHP Streams API
+
+The PHP Streams API provides a set of functions that can be used to open, read, write, and close streams. Some of the most commonly used functions in the PHP Streams API are:
+
+- **fopen()**: Opens a file or URL and returns a stream resource.
+- **fread()**: Reads a specified number of bytes from a stream.
+- **fwrite()**: Writes a string to a stream.
+- **fclose()**: Closes an open stream

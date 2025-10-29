@@ -193,3 +193,28 @@ if ($result !== false) {
     
     This function operates on an already open stream resource (e.g., a file handle opened with `fopen()`, a socket connection, or a stream filter). It reads the remaining contents of that stream into a string, optionally up to a specified `length` and starting from a given `offset`. This function is suitable when you need more control over the stream, such as reading only a portion of it, or when working with non-file-based streams.
 
+#### Compressed Files
+
+PHP provides several mechanisms for working with compressed files using streams, enabling both reading from and writing to compressed data. These mechanisms include compression wrappers and stream filters.
+
+##### Compression Wrappers
+
+PHP offers built-in stream wrappers that allow direct interaction with compressed files as if they were regular files. The `compress.zlib://` wrapper is recommended for gzip-compressed files.
+
+1. Example-1
+
+- This example writes to a gzip-compressed file using the `compress.zlib` wrapper, a practical approach for storing logs or data efficiently. The file `data.gz` is opened in binary write mode (`"wb"`), compressing data as it's written.
+
+- If the stream opens, `fwrite` adds a string, which is automatically compressed, and `fclose` finalizes the file. The result is a smaller file than plain text, ideal for backups or transfers. This leverages streams for built-in compression without external tools.
+
+```php
+$archive = fopen("compress.zlib://data.gz", "wb");
+
+if ($archive) {
+    fwrite($archive, "Sensitive data: User IDs and emails\n");
+    fclose($archive);
+    echo "Data compressed and saved.\n";
+} else {
+    echo "Failed to open compressed stream.\n";
+}
+```

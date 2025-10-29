@@ -236,3 +236,23 @@ fclose($fp_read);
 echo $decompressed_data; // Outputs: This is some data to be compressed
 ```
 
+##### Compression Filters
+
+Stream filters provide a more flexible way to apply compression or decompression to any stream resource, including network streams. The `zlib.inflate` and `zlib.deflate` filters are used for gzip compression and decompression.
+
+```php
+// Decompressing a gzipped stream (e.g., from a network request)
+$stream = fopen('https://example.com/path/to/file.gz', 'rb');
+stream_filter_append($stream, 'zlib.inflate', STREAM_FILTER_READ);
+
+$decompressed_content = stream_get_contents($stream);
+fclose($stream);
+
+// Compressing data and writing to a file
+$stream = fopen('output_filtered.gz', 'wb');
+stream_filter_append($stream, 'zlib.deflate', STREAM_FILTER_WRITE, ['level' => 9]); // Max compression
+fwrite($stream, 'This data will be compressed by the filter.');
+fclose($stream);
+```
+
+

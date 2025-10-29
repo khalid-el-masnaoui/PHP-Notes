@@ -218,3 +218,21 @@ if ($archive) {
     echo "Failed to open compressed stream.\n";
 }
 ```
+
+2. Example-2
+
+```php
+// Writing to a compressed file
+$data = 'This is some data to be compressed.';
+$fp_write = fopen('compress.zlib://output.gz', 'wb');
+fwrite($fp_write, $data);
+fclose($fp_write);
+
+// Reading from a compressed file
+$fp_read = fopen('compress.zlib://output.gz', 'rb');
+$decompressed_data = stream_get_contents($fp_read);
+fclose($fp_read);
+
+echo $decompressed_data; // Outputs: This is some data to be compressed
+```
+

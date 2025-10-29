@@ -68,3 +68,20 @@ Streams can be classified into four types based on the source of the data:
 | **w+** | **Open a file for read/write**. Erases the contents of the file or creates a new file if it doesn't exist. File pointer starts at the beginning of the file      |
 | **a+** | **Open a file for read/write**. The existing data in file is preserved. File pointer starts at the end of the file. Creates a new file if the file doesn't exist |
 | **x+** | **Creates a new file for read/write**. Returns FALSE and an error if file already exists                                                                         |
+#### Local Files
+
+1. Writing to file streams
+
+```php
+$logFile = fopen("app_logs.txt", "a");
+
+if ($logFile) {
+
+    $timestamp = date("Y-m-d H:i:s");
+    fwrite($logFile, "[$timestamp] User logged in\n");
+    fclose($logFile);
+    echo "Log entry added.\n";
+} else {
+    echo "Failed to open log file.\n";
+}
+```

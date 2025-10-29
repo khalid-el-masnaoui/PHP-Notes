@@ -161,3 +161,25 @@ you can customize the HTTP request by providing a stream context created with `
     $handle = fopen('https://example.com/api/submit', 'r', false, $context);
     // ... process response ...
 ```
+
+2. Example-2
+
+```php
+$data = array('key1' => 'value1', 'key2' => 'value2');
+$options = array(
+    'http' => array(
+        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+        'method'  => 'POST',
+        'content' => http_build_query($data)
+    )
+);
+$context  = stream_context_create($options);
+$result = file_get_contents('https://example.com/api/post_data', false, $context);
+
+if ($result !== false) {
+    echo $result;
+} else {
+    echo "Error sending POST request.";
+}
+```
+

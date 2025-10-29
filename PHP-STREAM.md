@@ -140,3 +140,24 @@ if ($urlContent !== false) {
 }
 ```
 
+##### Context Streams for Advanced HTTP Requests
+
+you can customize the HTTP request by providing a stream context created with `stream_context_create()`. This allows setting options like:
+
+- `http` wrapper options: `method` (GET, POST, etc.), `header` (custom headers), `content` (request body for POST/PUT), `timeout`, `proxy`, and more.
+
+1. Example-1
+
+```php
+    $options = [
+        'http' => [
+            'method' => 'POST',
+            'header' => 'Content-type: application/json',
+            'content' => json_encode(['key' => 'value']),
+            'timeout' => 5, // seconds
+        ],
+    ];
+    $context = stream_context_create($options);
+    $handle = fopen('https://example.com/api/submit', 'r', false, $context);
+    // ... process response ...
+```

@@ -85,3 +85,33 @@ if ($logFile) {
     echo "Failed to open log file.\n";
 }
 ```
+
+
+2. Reading from file streams
+
+```php
+
+$configFile = fopen("config.ini", "r");
+
+if ($configFile) {
+
+    $settings = [];
+
+    while (($line = fgets($configFile)) !== false) {
+
+        $trimmed = trim($line);
+
+        if ($trimmed && strpos($trimmed, "=") !== false) {
+            [$key, $value] = explode("=", $trimmed, 2);
+            $settings[$key] = $value;
+        }
+    }
+
+    fclose($configFile);
+    print_r($settings);
+} else {
+    echo "Failed to open config file.\n";
+}
+```
+
+

@@ -44,3 +44,12 @@ The PHP Streams API provides a set of functions that can be used to open, read, 
 - **fread()**: Reads a specified number of bytes from a stream.
 - **fwrite()**: Writes a string to a stream.
 - **fclose()**: Closes an open stream
+
+## Stream Types
+
+Streams can be classified into four types based on the source of the data:
+
+- **File Streams**: Streams that read and write data to files.
+- **Memory Streams**: Streams that read and write data to memory.
+- **Socket Streams**: Streams that read and write data over network sockets.
+- **HTTP Streams**: Streams that read and write data from HTTP requests and responses.

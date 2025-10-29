@@ -127,3 +127,16 @@ if ($configFile) {
         echo $contents;
     }
 ```
+
+##### file_get_contents
+
+```php
+// Ensure allow_url_fopen is enabled in php.ini for this to work
+$urlContent = file_get_contents('https://example.com/api/data');
+if ($urlContent !== false) {
+    echo $urlContent;
+} else {
+    echo "Error fetching URL content. Check allow_url_fopen in php.ini.";
+}
+```
+

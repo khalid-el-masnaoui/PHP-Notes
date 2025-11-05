@@ -399,3 +399,30 @@ if ($_GET['from'] === 'USD' && $_GET['to'] === 'EUR') {
     echo json_encode(['rate' => 0]);
 }
 ```
+
+
+4. `tests/Integration/CurrencyConverterTest.php`
+
+```php
+use App\Service\ExchangeRateClient;
+use App\Service\CurrencyConverterService;
+
+beforeEach(function () {
+    $stubUrl = 'http://localhost/tests/Integration/ExchangeRateStub.php';
+    $client = new ExchangeRateClient($stubUrl);
+    $this->service = new CurrencyConverterService($client);
+});
+
+it('converts USD to EUR', function () {
+    expect($this->service->convert(100, 'USD', 'EUR'))->toBe(92.00);
+});
+
+it('converts EUR to USD', function () {
+    expect($this->service->convert(100, 'EUR', 'USD'))->toBe(109.00);
+});
+
+it('throws exception for invalid currency', function () {
+    expect(fn() => $this->service->convert(100, 'ABC', 'XYZ'))
+        ->toThrow(InvalidArgumentException::class);
+});
+```

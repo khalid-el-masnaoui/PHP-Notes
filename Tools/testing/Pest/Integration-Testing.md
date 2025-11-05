@@ -88,7 +88,8 @@ class TaxService
 }
 ```
 
-3.  `tests/Integration/PaymentProcessorTest.php`
+4. `tests/Integration/PaymentProcessorTest.php`
+
 ```php
 
 use App\Service\DiscountService;
@@ -354,6 +355,35 @@ class CurrencyConverterService
         }
 
         return round($amount * $rate, 2);
+    }
+}
+```
+
+2. **`ExchangeRateClient` dependency class**
+
+```php
+namespace App\Service;
+
+class ExchangeRateClient
+{
+    private string $apiBase;
+
+    public function __construct(string $apiBase)
+    {
+        $this->apiBase = rtrim($apiBase, '/');
+    }
+
+    public function getRate(string $from, string $to): float
+    {
+        $url = "{$this->apiBase}/rate?from={$from}&to={$to}";
+        $response = file_get_contents($url);
+
+        if ($response === false) {
+            throw new RuntimeException("Failed to fetch exchange rate");
+        }
+
+        $data = json_decode($response, true);
+        return $data['rate'] ?? 0.0;
     }
 }
 ```

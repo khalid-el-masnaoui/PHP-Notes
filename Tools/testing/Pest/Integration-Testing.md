@@ -537,3 +537,19 @@ class WeatherRepository
     }
 }
 ```
+
+4. Fake API `WeatherApiStub.php`
+
+```php
+header('Content-Type: application/json');
+
+$city = $_GET['city'] ?? '';
+
+$fakeData = [
+    'Paris' => ['city' => 'Paris', 'temperature' => 18.5],
+    'London' => ['city' => 'London', 'temperature' => 15.2],
+    'New York' => ['city' => 'New York', 'temperature' => 21.0],
+];
+
+echo json_encode($fakeData[$city] ?? ['city' => $city, 'temperature' => 0]);
+```

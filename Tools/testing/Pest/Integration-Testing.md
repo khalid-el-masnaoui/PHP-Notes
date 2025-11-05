@@ -606,3 +606,53 @@ Instead of the Fake API `WeatherApiStub.php` we will use In-Memory Stream Stub
 
 This class will **pretend to be an HTTP server**, by registering the scheme `mockapi://`.  
 When `file_get_contents("mockapi://...")` is called, this class returns fake JSON instead.
+
+```php
+namespace Tests\Integration\Service;
+
+class InMemoryWeatherApiStream
+{
+    private $position;
+    private $content;
+
+    public static function register(array $fakeData): void
+    {
+        stream_wrapper_unregister('mockapi');
+        stream_wrapper_register('mockapi', self::class);
+        self::$fakeResponses = $fakeData;
+    }
+
+    private static array $fakeResponses = [];
+
+    public function stream_open($path, $mode, $options, &$opened_path): bool
+    {
+        // Parse city from query string (e.g. mockapi://weather?city=Paris)
+        $url = parse_url($path);
+        parse_str($url['query'] ?? '', $params);
+        $city = $params['city'] ?? '';
+
+        $data = self::$fakeResponses[$city] ?? ['city' => $city, 'temperature' => 0];
+        $this->content = json_encode($data);
+        $this->position = 0;
+
+        return true;
+    }
+
+    public function stream_read($count): string
+    {
+        $chunk = substr($this->content, $this->position, $count);
+        $this->position += strlen($chunk);
+        return $chunk;
+    }
+
+    public function stream_eof(): bool
+    {
+        return $this->position >= strlen($this->content);
+    }
+
+    public function stream_stat()
+    {
+        return [];
+    }
+}
+```

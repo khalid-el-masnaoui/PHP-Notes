@@ -292,3 +292,68 @@ INSERT INTO users (name, email) VALUES
 ('Alice', 'alice@example.com'),
 ('Bob', 'bob@example.com');
 ```
+
+3.  `tests/Integration/UserRepositoryTest.php`
+
+```php
+use App\Repository\UserRepository;
+
+beforeEach(function () {
+    $this->pdo = new PDO('sqlite::memory:');
+    $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $fixture = file_get_contents(__DIR__ . '/fixtures/usersFixture.sql');
+    $this->pdo->exec($fixture);
+
+    $this->repository = new UserRepository($this->pdo);
+});
+
+it('returns all users', function () {
+    $users = $this->repository->findAll();
+
+    expect($users)->toHaveCount(2);
+    expect($users[0]['name'])->toBe('Alice');
+});
+
+it('finds user by email', function () {
+    $user = $this->repository->findByEmail('bob@example.com');
+
+    expect($user)->not->toBeNull();
+    expect($user['name'])->toBe('Bob');
+});
+
+it('returns null if user not found', function () {
+    $user = $this->repository->findByEmail('none@example.com');
+
+    expect($user)->toBeNull();
+});
+```
+
+
+## Example 4 — Currency Converter + Fake API Stub
+
+1. **`CurrencyConverterService` class**
+
+```php
+namespace App\Service;
+
+class CurrencyConverterService
+{
+    private ExchangeRateClient $client;
+
+    public function __construct(ExchangeRateClient $client)
+    {
+        $this->client = $client;
+    }
+
+    public function convert(float $amount, string $from, string $to): float
+    {
+        $rate = $this->client->getRate($from, $to);
+        if ($rate <= 0) {
+            throw new InvalidArgumentException("Invalid exchange rate");
+        }
+
+        return round($amount * $rate, 2);
+    }
+}
+```

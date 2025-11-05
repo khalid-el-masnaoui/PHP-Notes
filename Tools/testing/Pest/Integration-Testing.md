@@ -208,3 +208,36 @@ class UserRepository
     }
 }
 ```
+
+3.  `tests/Integration/UserServiceTest.php`
+
+```php
+
+use App\Repository\UserRepository;
+use App\Service\UserService;
+
+beforeEach(function () {
+    $this->pdo = new PDO('sqlite::memory:');
+    $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $this->repository = new UserRepository($this->pdo);
+    $this->repository->createTable();
+    $this->repository->seedData();
+
+    $this->service = new UserService($this->repository);
+});
+
+it('finds user by email', function () {
+    $user = $this->service->findUserByEmail('alice@example.com');
+
+    expect($user)->not->toBeNull();
+    expect($user['name'])->toBe('Alice');
+});
+
+it('gets only active users', function () {
+    $active = $this->service->getActiveUsers();
+
+    expect($active)->toHaveCount(2);
+    expect(array_column($active, 'name'))->toContain('Alice', 'Charlie');
+});
+```

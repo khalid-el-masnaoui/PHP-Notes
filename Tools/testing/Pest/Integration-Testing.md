@@ -553,3 +553,38 @@ $fakeData = [
 
 echo json_encode($fakeData[$city] ?? ['city' => $city, 'temperature' => 0]);
 ```
+
+5. `tests/Integration/WeatherSyncTest.php`
+
+```php
+use App\Repository\WeatherRepository;
+use App\Service\WeatherApiClient;
+use App\Service\WeatherSyncService;
+
+beforeEach(function () {
+    $this->pdo = new PDO('sqlite::memory:');
+    $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $this->repository = new WeatherRepository($this->pdo);
+    $this->repository->createTable();
+
+    $stubUrl = 'http://localhost/tests/Integration/WeatherApiStub.php';
+    $client = new WeatherApiClient($stubUrl);
+
+    $this->service = new WeatherSyncService($client, $this->repository);
+});
+
+it('syncs Paris weather', function () {
+    $this->service->sync('Paris');
+
+    $data = $this->repository->findByCity('Paris');
+    expect($data['temperature'])->toBe(18.5);
+});
+
+it('stores 0 temp for unknown city', function () {
+    $this->service->sync('Tokyo');
+
+    $data = $this->repository->findByCity('Tokyo');
+    expect((float) $data['temperature'])->toBe(0.0);
+});
+```

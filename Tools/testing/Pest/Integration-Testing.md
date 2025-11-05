@@ -157,3 +157,54 @@ class UserService
     }
 }
 ```
+
+2. **`UserRepository` dependency class**
+
+```php
+namespace App\Repository;
+
+class UserRepository
+{
+    private PDO $pdo;
+
+    public function __construct(PDO $pdo)
+    {
+        $this->pdo = $pdo;
+    }
+
+    public function createTable(): void
+    {
+        $this->pdo->exec("
+            CREATE TABLE users (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT,
+                email TEXT,
+                active INTEGER
+            )
+        ");
+    }
+
+    public function seedData(): void
+    {
+        $stmt = $this->pdo->prepare("INSERT INTO users (name, email, active) VALUES (?, ?, ?)");
+        $stmt->execute(['Alice', 'alice@example.com', 1]);
+        $stmt->execute(['Bob', 'bob@example.com', 0]);
+        $stmt->execute(['Charlie', 'charlie@example.com', 1]);
+    }
+
+    public function findByEmail(string $email): ?array
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt->execute([$email]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $user ?: null;
+    }
+
+    public function getActiveUsers(): array
+    {
+        $stmt = $this->pdo->query("SELECT * FROM users WHERE active = 1");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+}
+```

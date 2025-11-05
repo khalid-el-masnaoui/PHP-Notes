@@ -44,3 +44,25 @@ class PaymentProcessor
     }
 }
 ```
+
+2. **`DiscountService` dependency class**
+
+```php
+namespace App\Service;
+
+class DiscountService
+{
+    public function calculateDiscount(float $amount, string $couponCode = null): float
+    {
+        if ($couponCode === 'SAVE10') {
+            return $amount * 0.10; // 10% discount
+        }
+
+        if ($amount > 200) {
+            return $amount * 0.05; // 5% discount for large orders
+        }
+
+        return 0.0;
+    }
+}
+```

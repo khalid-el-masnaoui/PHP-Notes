@@ -426,3 +426,31 @@ it('throws exception for invalid currency', function () {
         ->toThrow(InvalidArgumentException::class);
 });
 ```
+
+## Example 5 — Weather Sync + Fake API + SQLite
+
+1. **`WeatherSyncService` Class**
+
+```php
+namespace App\Service;
+
+use App\Repository\WeatherRepository;
+
+class WeatherSyncService
+{
+    private WeatherApiClient $client;
+    private WeatherRepository $repository;
+
+    public function __construct(WeatherApiClient $client, WeatherRepository $repository)
+    {
+        $this->client = $client;
+        $this->repository = $repository;
+    }
+
+    public function sync(string $city): void
+    {
+        $weatherData = $this->client->fetchWeather($city);
+        $this->repository->save($weatherData);
+    }
+}
+```

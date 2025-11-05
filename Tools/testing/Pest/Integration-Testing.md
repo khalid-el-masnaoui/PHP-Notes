@@ -588,3 +588,21 @@ it('stores 0 temp for unknown city', function () {
     expect((float) $data['temperature'])->toBe(0.0);
 });
 ```
+
+
+## Example 6 — Fully Self-Contained Fake API (`mockapi://`)
+
+self-contained version means **no external HTTP server**, no `localhost`, no PHP web server required
+
+We’ll simulate the “API call” **entirely in memory** using a **custom stream wrapper** so that `file_get_contents()` still works — but reads from our fake data source.
+
+> API responses come from an **in-memory stub**, not a live endpoint.
+
+This pattern is **CI/CD–friendly**, **fast**, and **fully deterministic**.
+
+4. In-Memory Stream Stub (`InMemoryWeatherApiStream.php`)
+
+Instead of the Fake API `WeatherApiStub.php` we will use In-Memory Stream Stub (`InMemoryWeatherApiStream.php`)
+
+This class will **pretend to be an HTTP server**, by registering the scheme `mockapi://`.  
+When `file_get_contents("mockapi://...")` is called, this class returns fake JSON instead.

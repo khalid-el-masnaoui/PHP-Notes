@@ -125,3 +125,35 @@ it('processes payment without discount', function () {
     expect($result['total'])->toBe(57.5);
 });
 ```
+
+
+## Example 2 — User Service + In-Memory SQLite DB
+
+
+1. **`UserService` Class**
+
+```php
+namespace App\Service;
+
+use App\Repository\UserRepository;
+
+class UserService
+{
+    private UserRepository $repository;
+
+    public function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
+    public function findUserByEmail(string $email): ?array
+    {
+        return $this->repository->findByEmail($email);
+    }
+
+    public function getActiveUsers(): array
+    {
+        return $this->repository->getActiveUsers();
+    }
+}
+```

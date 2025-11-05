@@ -5,6 +5,15 @@
 
 Integration tests verify **real interactions between services**, or between the application and external systems (database, API, filesystem, etc.).
 
+## Table of Contents
+
+- **[Pest Integration Testing](#pest-integration-testing)**
+   * **[Example 1 — Payment Processor (real services)](#example-1-payment-processor-real-services)**
+   * **[Example 2 — User Service + In-Memory SQLite DB](#example-2-user-service-in-memory-sqlite-db)**
+   * **[Example 3 — Repository + SQL Fixture](#example-3-repository-sql-fixture)**
+   * **[Example 4 — Currency Converter + Fake API Stub](#example-4-currency-converter-fake-api-stub)**
+   * **[Example 5 — Weather Sync + Fake API + SQLite](#example-5-weather-sync-fake-api-sqlite)**
+   * **[Example 6 — Fully Self-Contained Fake API (`mockapi://`)](#example-6-fully-self-contained-fake-api-mockapi)**
 
 ##  Example 1 — Payment Processor (real services)
 

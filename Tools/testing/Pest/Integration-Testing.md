@@ -87,3 +87,41 @@ class TaxService
     }
 }
 ```
+
+3.  `tests/Integration/PaymentProcessorTest.php`
+```php
+
+use App\Service\DiscountService;
+use App\Service\TaxService;
+use App\PaymentProcessor;
+
+beforeEach(function () {
+    $discountService = new DiscountService();
+    $taxService = new TaxService();
+    $this->processor = new PaymentProcessor($discountService, $taxService);
+});
+
+it('processes payment with coupon', function () {
+    $result = $this->processor->processPayment(100, 'US', 'SAVE10');
+
+    expect($result['discount'])->toBe(10.0);
+    expect($result['tax'])->toBe(6.3);
+    expect($result['total'])->toBe(96.3);
+});
+
+it('processes payment with large order discount', function () {
+    $result = $this->processor->processPayment(300, 'UK');
+
+    expect($result['discount'])->toBe(15.0);
+    expect($result['tax'])->toBe(57.0);
+    expect($result['total'])->toBe(342.0);
+});
+
+it('processes payment without discount', function () {
+    $result = $this->processor->processPayment(50, 'FR');
+
+    expect($result['discount'])->toBe(0.0);
+    expect($result['tax'])->toBe(7.5);
+    expect($result['total'])->toBe(57.5);
+});
+```

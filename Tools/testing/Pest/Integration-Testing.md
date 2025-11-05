@@ -66,3 +66,24 @@ class DiscountService
     }
 }
 ```
+
+3. **`TaxService` dependency class**
+
+```php
+namespace App\Service;
+
+class TaxService
+{
+    public function calculateTax(float $amount, string $country): float
+    {
+        $rates = [
+            'US' => 0.07,
+            'UK' => 0.20,
+            'FR' => 0.15,
+        ];
+
+        $rate = $rates[$country] ?? 0.10;
+        return $amount * $rate;
+    }
+}
+```

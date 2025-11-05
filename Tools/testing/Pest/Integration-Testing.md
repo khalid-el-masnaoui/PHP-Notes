@@ -656,3 +656,43 @@ class InMemoryWeatherApiStream
     }
 }
 ```
+
+5. `tests/Integration/WeatherSyncTest.php`
+
+```php
+use App\Repository\WeatherRepository;
+use App\Service\WeatherApiClient;
+use App\Service\WeatherSyncService;
+use Tests\Integration\Service\InMemoryWeatherApiStream;
+
+beforeEach(function () {
+    InMemoryWeatherApiStream::register([
+        'Paris' => ['city' => 'Paris', 'temperature' => 18.5],
+        'London' => ['city' => 'London', 'temperature' => 15.2],
+    ]);
+
+    $this->pdo = new PDO('sqlite::memory:');
+    $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $this->repository = new WeatherRepository($this->pdo);
+    $this->repository->createTable();
+
+    $client = new WeatherApiClient('mockapi://');
+    $this->service = new WeatherSyncService($client, $this->repository);
+});
+
+it('syncs weather from in-memory stub', function () {
+    $this->service->sync('Paris');
+    $data = $this->repository->findByCity('Paris');
+
+    expect($data['temperature'])->toBe(18.5);
+});
+
+it('stores 0 for unknown city in fake stream', function () {
+    $this->service->sync('Tokyo');
+    $data = $this->repository->findByCity('Tokyo');
+
+    expect((float) $data['temperature'])->toBe(0.0);
+});
+
+```

@@ -771,6 +771,7 @@ There are several more sophisticated performance monitoring solutions available 
   <img src="./images/netdata_1.png" width = "40%" />
   <img src="./images/netdata_2.png" width="40%" /> 
 </p>
+
 **Note : I cover `NetData` & `NewRelic` in more details in the `Observabiloty : monitoring, logging and alerting` repository**
 
 In addition to monitoring, **profiling your PHP code** allows you to pinpoint performance issues and optimize your application. It involves analyzing your application's code during execution to identify performance issues, memory leaks, and other issues that might slow down your application. Some of the key benefits of profiling include:

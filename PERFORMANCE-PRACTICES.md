@@ -789,5 +789,6 @@ Several PHP profiling tools are available to help you track errors, write code f
 * **Xdebug** :  Offers a profiling feature that measures the execution time and memory usage of your PHP scripts.
 - **Tideways** : A cloud-based application performance monitoring and profiling tool for PHP applications.
 - **`XHProf`**: Self-hosted and open-source PHP profiler (basically tideways but with manual setup) (**check the setup-guide in the folder `Tools`**)
+- **`PHP-SPX`** Self-hosted and open-source PHP performance profiling extension for PHP.
 
 **Note** : Enable **slow requests log** and PHP-FPM  **/status page** 

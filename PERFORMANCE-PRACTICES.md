@@ -791,4 +791,7 @@ Several PHP profiling tools are available to help you track errors, write code f
 - **`XHProf`**: Self-hosted and open-source PHP profiler (basically tideways but with manual setup) (**check the setup-guide in the folder `Tools`**)
 - **`PHP-SPX`** Self-hosted and open-source PHP performance profiling extension for PHP.
 
-**Note** : Enable **slow requests log** and PHP-FPM  **/status page** 
+**Note** : Enable **slow requests log** and PHP-FPM  **/status page** for more insights!
+
+Finding Bottlenecks through profiling:
+- Record every function call: Possibly quite expensive and distorting, but the full picture!

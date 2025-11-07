@@ -803,5 +803,6 @@ Using PHP profilers in **production** requires balancing **data collection** wit
 Key considerations include managing high CPU overhead, ensuring data privacy/security, and implementing sampling to minimize the performance impact on end-users.
 
 - **Monitor Impact**: Baseline your application's performance before turning on the profiler.
+- **Performance Overhead:** Extensive profiling can exhaust memory and CPU, causing a denial of service. Use lightweight tools and implement **sampling** (e.g., profiling only 1% of requests) rather than 100% tracing.
 
 

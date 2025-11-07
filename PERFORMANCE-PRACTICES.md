@@ -804,5 +804,4 @@ Key considerations include managing high CPU overhead, ensuring data privacy/sec
 
 - **Monitor Impact**: Baseline your application's performance before turning on the profiler.
 - **Performance Overhead:** Extensive profiling can exhaust memory and CPU, causing a denial of service. Use lightweight tools and implement **sampling** (e.g., profiling only 1% of requests) rather than 100% tracing.
-
-
+- **Use Low-Impact Tools:** For production, prefer asynchronous or low-impact tools like Tideways or XHProf, avoiding debugging extensions like Xdebug which are heavy and insecure for live environments.

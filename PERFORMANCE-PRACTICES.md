@@ -797,7 +797,11 @@ Finding Bottlenecks through profiling:
 - **Record every function call:** Possibly quite expensive and distorting, but the full picture!
 - **Sampling:** Recording only one in every 100 or 1000 times, to reduce performance overhead.
 
-#### Important Considerations:
+#### Important Considerations & Best Practices For Profiling
 
 Using PHP profilers in **production** requires balancing **data collection** with **performance impact**, prioritizing **sampling profilers** (like Tideways, XHProf or PHP-SPX) over intensive instrumenting profilers (like Xdebug) to avoid slowing down user requests. 
 Key considerations include managing high CPU overhead, ensuring data privacy/security, and implementing sampling to minimize the performance impact on end-users.
+
+- **Monitor Impact**: Baseline your application's performance before turning on the profiler.
+
+

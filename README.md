@@ -20,3 +20,9 @@ This repository contains a complete set of **_PHP NOTES_** organized as follow:
 - **[PHP Security Practices](SECURITY-PRACTICES.md)**
 - **[PHP Coding Practices](CODING-PRACTICES.md)**
 - **[PHP Coding Clean](CODING-CLEAN.md)**
+- **[PHP Code Review](CODE-REVIEW.md)**
+- **[PHP Refactoring & Upgrading](REFACTORING-UPGRADING.md)**
+- **[PHP OOP](PHP-OOP.md)**
+- **[PHP Stream](PHP-STREAM.md)**
+- **[PHP SPL](PHP-SPL.md)**
+- **[PHP OOP](PHP-OOP.md)**

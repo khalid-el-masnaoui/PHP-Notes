@@ -26,3 +26,13 @@ This repository contains a complete set of **_PHP NOTES_** organized as follow:
 - **[PHP Stream](PHP-STREAM.md)**
 - **[PHP SPL](PHP-SPL.md)**
 - **[PHP OOP](PHP-OOP.md)**
+- TOOLS
+	- **[PROFILING](Tools/profiling)**
+		- **[XHProf](Tools/profiling/xhprof/README.md)**
+		- **[PHP-SPX](Tools/profiling/php-spx/README.md)**
+		- **[Xdebug](Tools/profiling/xdebug/README.md)**
+		- **[Cachetool](Tools/profiling/cachetool/README.md)**
+	- **[TESTING](Tools/testing/README.md)**
+		- **[PHP-UNIT](Tools/testing/PHPUnit/README.md)**
+		- **[PEST](Tools/testing/pest/README.md)**
+	- **[Xdebug](/Tools/xdebug/README.md)**

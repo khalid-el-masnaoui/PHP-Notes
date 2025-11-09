@@ -32,3 +32,8 @@ SPX is a profiling extension for PHP that allows you to profile your PHP scripts
 	- **Resource Tracking:** Tracks Zend Engine memory allocations, free counts, I/O operations (reads/writes), and garbage collector activity.
 	- **Context Preservation:** Unlike Xhprof, PHPSPX collects data without losing context, allowing for accurate Flamegraphs, rather than just aggregating by caller/callee.
     
+4. Compatibility and Flexibility
+	- **Environment Support:** Works with both PHP-FPM (web) and CLI scripts.
+	- **Low Overhead:** Designed to have minimal impact on performance.
+	- **Production Safety:** While primarily used in development, it can be used for debugging production, provided that access to the web UI is secured via its built-in IP whitelist/key mechanism.
+	- **AI Integration:** A new [MCP Server](https://packagist.org/packages/codemonkey/spx-mcp-server) allows using AI to analyze SPX profiles to automatically find slow functions, memory leaks, and N+1 queries.

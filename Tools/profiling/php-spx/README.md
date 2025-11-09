@@ -22,3 +22,8 @@ SPX is a profiling extension for PHP that allows you to profile your PHP scripts
 	- **Easy Activation:** Can be activated via environment variables (CLI) or a simple toggle in the built-in web UI.
 	- **Self-Hosted:** Keeps all profiling data within your own infrastructure, ensuring no sensitive data leaks.
 	
+2. Powerful Built-in Web UI 
+	- **Interactive Visualizations:** Provides a comprehensive UI with support for **Flamegraphs**, **Timelines**, and **Flat Profiles** to identify bottlenecks.
+	- **Timeline Analysis:** Allows visualizing call stacks over time, handling up to millions of function calls.
+	- **Live Profiling:** Supports live profiling for CLI scripts.
+	

@@ -27,3 +27,8 @@ SPX is a profiling extension for PHP that allows you to profile your PHP scripts
 	- **Timeline Analysis:** Allows visualizing call stacks over time, handling up to millions of function calls.
 	- **Live Profiling:** Supports live profiling for CLI scripts.
 	
+3. Detailed Performance Metrics
+	- **Multi-Metric Support:** Collects 22+ metrics, including Wall Time, CPU Time, and memory usage.
+	- **Resource Tracking:** Tracks Zend Engine memory allocations, free counts, I/O operations (reads/writes), and garbage collector activity.
+	- **Context Preservation:** Unlike Xhprof, PHPSPX collects data without losing context, allowing for accurate Flamegraphs, rather than just aggregating by caller/callee.
+    

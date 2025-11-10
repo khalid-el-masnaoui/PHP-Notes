@@ -119,3 +119,14 @@ spx_profiler_stop();
     spx_profiler_start();
     register_shutdown_function('spx_profiler_stop');
     ```
+
+#### Global and Automatic Activation
+
+Instead of modifying your script code, you can enable SPX through environment variables or configuration files, which is often easier for debugging entire requests.
+
+- **Command Line (CLI)**: Prefix your command with the `SPX_ENABLED` environment variable:
+
+    ```bash
+    SPX_ENABLED=1 php your_script.php
+    ```
+    

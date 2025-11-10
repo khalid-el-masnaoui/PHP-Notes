@@ -75,3 +75,16 @@ You can also analyze CLI requests, by setting **SPX_ENABLED=1**, and optionally
 ```php
 SPX_ENABLED=1 SPX_FP_LIVE=1 php your_script.php
 ```
+
+**Note** : You can use **`SPX_FP_URI`** with **SPX_FP_LIVE** for setting the URL to profile.
+
+<p float="left" align="middle">
+  <img src="./../../../images/spx4.png" width = "40%" />
+</p>
+
+By setting **SPX_REPORT=full**, the report will appear in the web UI and can be analyzed in detail:
+
+```php
+SPX_ENABLED=1 **SPX_REPORT=full php your_script.php
+```
+

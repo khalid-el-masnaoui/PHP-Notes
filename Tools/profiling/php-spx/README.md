@@ -67,3 +67,11 @@ At the top, you get the timeline sequence of all method calls, at the bottom lef
 <p float="left" align="middle">
   <img src="./../../../images/spx3.png" width = "40%" />
 </p>
+
+## Creating and analyzing profiles in CLI
+
+You can also analyze CLI requests, by setting **SPX_ENABLED=1**, and optionally, for a live-refreshing mode, set additionally **SPX_FP_LIVE=1**. Then, after the CLI execution, you directly get a profile printed:
+
+```php
+SPX_ENABLED=1 SPX_FP_LIVE=1 php your_script.php
+```

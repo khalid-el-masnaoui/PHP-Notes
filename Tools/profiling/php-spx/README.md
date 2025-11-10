@@ -95,3 +95,20 @@ SPX_ENABLED=1 **SPX_REPORT=full php your_script.php
 ### Enable PHP-SPX Profiling 
 
 To enable PHP SPX within your code scripts, you can use built-in functions to manually control the profiling range or configure it globally through settings. 
+
+#### Manual Profiling in PHP Scripts
+
+If you want to profile only a specific section of your code, use the following functions:
+
+
+
+```php
+// Start profiling manually
+spx_profiler_start();
+
+// Your code to profile goes here
+perform_heavy_task();
+
+// Stop profiling manually
+spx_profiler_stop();
+```

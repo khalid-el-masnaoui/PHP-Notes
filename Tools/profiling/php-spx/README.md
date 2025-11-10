@@ -55,3 +55,9 @@ Now, you can enable profiling for your browser session by switching the "Enabled
 
 After you have executed the web requests you want to profile in your application, you see the list at the bottom of the Profiler UI.
 
+
+### The Profile Analyzer
+
+When you select one request flow, you get the profile Analyzer UI which looks like the following screenshot.
+
+At the top, you get the timeline sequence of all method calls, at the bottom left a summary table sorted by metrics, and at the bottom right a flame graph for the selected time frame.

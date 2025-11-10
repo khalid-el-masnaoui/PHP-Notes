@@ -112,3 +112,10 @@ perform_heavy_task();
 // Stop profiling manually
 spx_profiler_stop();
 ```
+
+- **Automatic Shut-down**: You can also ensure profiling stops when the script finishes by using a [shutdown function](https://github.com/Automattic/wpenv-with-spx):
+    
+    ```php
+    spx_profiler_start();
+    register_shutdown_function('spx_profiler_stop');
+    ```

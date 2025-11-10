@@ -52,3 +52,6 @@ Now, you can enable profiling for your browser session by switching the "Enabled
 <p float="left" align="middle">
   <img src="./../../../images/spx2.png" width = "40%" />
 </p>
+
+After you have executed the web requests you want to profile in your application, you see the list at the bottom of the Profiler UI.
+

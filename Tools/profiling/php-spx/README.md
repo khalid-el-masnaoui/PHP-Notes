@@ -130,3 +130,6 @@ Instead of modifying your script code, you can enable SPX through environment va
     SPX_ENABLED=1 php your_script.php
     ```
     
+- **Web Request**: Access your application with the SPX Web UI parameters to enable profiling for that specific browser session:  
+    `http://localhost/?SPX_KEY=dev&SPX_UI_URI=/`  
+    Once the control panel opens, you can toggle **"Enabled"** and **"Automatic start"** to profile subsequent page reloads.

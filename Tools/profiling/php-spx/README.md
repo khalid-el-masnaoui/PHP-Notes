@@ -37,3 +37,12 @@ SPX is a profiling extension for PHP that allows you to profile your PHP scripts
 	- **Low Overhead:** Designed to have minimal impact on performance.
 	- **Production Safety:** While primarily used in development, it can be used for debugging production, provided that access to the web UI is secured via its built-in IP whitelist/key mechanism.
 	- **AI Integration:** A new [MCP Server](https://packagist.org/packages/codemonkey/spx-mcp-server) allows using AI to analyze SPX profiles to automatically find slow functions, memory leaks, and N+1 queries.
+
+## Creating and analyzing profiles in web context
+
+ You can use any PHP server (such as the built-in one, or Nginx, or ...) to start the PHP-SPX UI. Simply go to http://your-server-url/?SPX_KEY=dev&SPY_UI_URI=/ to open the web UI:
+
+<p float="left" align="middle">
+  <img src="./../../../images/spx1.png" width = "40%" />
+</p>
+

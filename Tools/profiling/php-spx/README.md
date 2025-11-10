@@ -88,3 +88,10 @@ By setting **SPX_REPORT=full**, the report will appear in the web UI and can be
 SPX_ENABLED=1 **SPX_REPORT=full php your_script.php
 ```
 
+
+
+## Configurations
+
+### Enable PHP-SPX Profiling 
+
+To enable PHP SPX within your code scripts, you can use built-in functions to manually control the profiling range or configure it globally through settings. 

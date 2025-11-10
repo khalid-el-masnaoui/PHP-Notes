@@ -61,3 +61,9 @@ After you have executed the web requests you want to profile in your application
 When you select one request flow, you get the profile Analyzer UI which looks like the following screenshot.
 
 At the top, you get the timeline sequence of all method calls, at the bottom left a summary table sorted by metrics, and at the bottom right a flame graph for the selected time frame.
+
+**Note:** Make sure to get acquainted with the Analyzer UI, as it is really powerful.
+
+<p float="left" align="middle">
+  <img src="./../../../images/spx3.png" width = "40%" />
+</p>

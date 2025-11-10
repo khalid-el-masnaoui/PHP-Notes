@@ -46,3 +46,9 @@ SPX is a profiling extension for PHP that allows you to profile your PHP scripts
   <img src="./../../../images/spx1.png" width = "40%" />
 </p>
 
+Now, you can enable profiling for your browser session by switching the "Enabled" toggle (and you can configure lots of other things as well):
+
+
+<p float="left" align="middle">
+  <img src="./../../../images/spx2.png" width = "40%" />
+</p>

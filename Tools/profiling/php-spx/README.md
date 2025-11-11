@@ -140,3 +140,13 @@ Instead of modifying your script code, you can enable SPX through environment va
     ```
     
 **Note:** Use this cautiously on high-traffic environments as it can quickly fill up storage with report data.
+### Configure the Sampling Period (Profiling Rate)
+
+The sampling period is controlled by the `SPX_SAMPLING_PERIOD` parameter. You can set this via the [PHP `putenv()` function](https://www.php.net/manual/en/function.putenv.php) or by setting it in your web server/shell environment.
+
+Common sampling period values (in microseconds):
+
+- **`500`** (500us): A balanced default for many scripts.
+- **`1000`** (1ms): Lower overhead for very long-running processes.
+- **`2000`** (2ms) or higher for massive datasets.
+    

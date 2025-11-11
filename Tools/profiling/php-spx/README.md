@@ -150,3 +150,27 @@ Common sampling period values (in microseconds):
 - **`1000`** (1ms): Lower overhead for very long-running processes.
 - **`2000`** (2ms) or higher for massive datasets.
     
+
+If you want to profile a specific part of your code (like a loop in a daemon) with sampling enabled, use `spx_profiler_start()` and `spx_profiler_stop()`.
+
+
+```php
+// 1. Configure sampling parameters via environment variables
+putenv("SPX_ENABLED=1");
+putenv("SPX_REPORT=full");
+putenv("SPX_SAMPLING_PERIOD=500"); // Set sampling to 500 microseconds
+putenv("SPX_AUTO_START=0");        // Disable auto-start to control via code
+
+// 2. Instrument the specific code block
+spx_profiler_start();
+
+try {
+    // Your intensive code here
+    for ($i = 0; $i < 100000; $i++) {
+        compute_something();
+    }
+} finally {
+    // 3. Stop profiling and generate the report
+    spx_profiler_stop();
+}
+```

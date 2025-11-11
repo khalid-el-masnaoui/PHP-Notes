@@ -182,3 +182,6 @@ When configuring through code via `putenv()` or `ini_set()`, keep these setti
 
 - **`SPX_SAMPLING_PERIOD`**: The interval (in microseconds) at which the call stack is captured. Setting this to `0` disables sampling and uses standard tracing.
 - **`SPX_AUTO_START`**: Set to `0` if you want to use `spx_profiler_start()` to precisely target a code segment.
+- **`SPX_REPORT`**: Usually set to `full` to ensure a detailed report is saved to the data directory for the PHP-SPX Web UI.
+- -**`SPX_REPORT_DIR`** (Default: `/tmp`): Defines the directory where SPX will store generated report files.
+

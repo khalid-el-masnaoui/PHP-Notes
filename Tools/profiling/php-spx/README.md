@@ -174,3 +174,10 @@ try {
     spx_profiler_stop();
 }
 ```
+
+
+Key Parameters for Sampling:
+
+When configuring through code via `putenv()` or `ini_set()`, keep these settings in mind:
+
+- **`SPX_SAMPLING_PERIOD`**: The interval (in microseconds) at which the call stack is captured. Setting this to `0` disables sampling and uses standard tracing.

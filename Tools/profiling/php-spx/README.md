@@ -185,3 +185,6 @@ When configuring through code via `putenv()` or `ini_set()`, keep these setti
 - **`SPX_REPORT`**: Usually set to `full` to ensure a detailed report is saved to the data directory for the PHP-SPX Web UI.
 - -**`SPX_REPORT_DIR`** (Default: `/tmp`): Defines the directory where SPX will store generated report files.
 
+
+## Profiling ONLY Specific Routes
+

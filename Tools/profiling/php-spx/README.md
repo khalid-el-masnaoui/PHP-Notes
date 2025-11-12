@@ -201,3 +201,24 @@ Then trigger profiling only when needed:
 ```bash
 http://localhost:8080/api/users?SPX_KEY=dev&SPX_PROFILE=1
 ```
+
+
+### Route-based logic in PHP
+
+Inside `index.php` (or your front controller):  SPX activates automatically for selected routes.
+
+```php
+$profileRoutes = [
+	'/api/users',
+	'/api/orders'
+];
+
+$requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+if (in_array($requestUri, $profileRoutes)) 
+{
+    $_GET['SPX_KEY'] = 'dev';
+    $_GET['SPX_PROFILE'] = 1;
+}
+```
+

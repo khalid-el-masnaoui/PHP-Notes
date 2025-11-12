@@ -244,3 +244,9 @@ if ($enableProfiling)
 	$_GET['SPX_PROFILE'] = 1;
 }
 ```
+
+### Trigger with curl:
+
+```bash
+curl -H "X-Profile: 1" http://localhost:8080/api/users
+```

@@ -222,3 +222,25 @@ if (in_array($requestUri, $profileRoutes))
 }
 ```
 
+
+### Header-based profiling
+
+This avoids polluting URLs and works great with APIs.
+
+### Update PHP logic:
+
+```php
+$profileRoutes = [
+	'/api/users',
+	'/api/orders'
+];
+
+$requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$enableProfiling = in_array($requestUri, $profileRoutes) && isset($_SERVER['HTTP_X_PROFILE']) && $_SERVER['HTTP_X_PROFILE'] === '1';
+
+if ($enableProfiling) 
+{
+	$_GET['SPX_KEY'] = 'dev';
+	$_GET['SPX_PROFILE'] = 1;
+}
+```

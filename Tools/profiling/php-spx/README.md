@@ -188,3 +188,16 @@ When configuring through code via `putenv()` or `ini_set()`, keep these setti
 
 ## Profiling ONLY Specific Routes
 
+### Query-based
+
+Disable auto profiling:
+
+```ini
+spx.auto_start=0
+```
+
+Then trigger profiling only when needed:
+
+```bash
+http://localhost:8080/api/users?SPX_KEY=dev&SPX_PROFILE=1
+```

@@ -250,3 +250,15 @@ if ($enableProfiling)
 ```bash
 curl -H "X-Profile: 1" http://localhost:8080/api/users
 ```
+
+
+### Helper Scripts
+
+Create a `scripts/` folder:
+
+```bash
+scripts/
+├── profile.sh
+├── open-spx.sh
+```
+

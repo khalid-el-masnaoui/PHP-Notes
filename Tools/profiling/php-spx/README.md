@@ -292,3 +292,43 @@ echo "http://localhost:8080/?SPX_KEY=dev&SPX_UI=1"
 xdg-open "http://localhost:8080/?SPX_KEY=dev&SPX_UI=1" 2>/dev/null || \
 open "http://localhost:8080/?SPX_KEY=dev&SPX_UI=1"
 ```
+
+**Note**: You can pair it with other http benchmarking tools like **wrk** to profile realistic traffic
+
+```bash
+wrk -H "X-Profile: 1" http://localhost:8080/api/users
+```
+
+### k6 + SPX Setup
+
+This is the `k6/script.js`
+
+```js
+import http from 'k6/http';
+import { sleep } from 'k6';
+
+export let options = {
+  vus: 10,
+  duration: '20s',
+};
+
+const enableProfiling = __ENV.PROFILE === "1";
+
+export default function () {
+
+  // Normal traffic (no profiling)
+  http.get('http://localhost:8080/api/users');
+
+  // Sampled profiling traffic (only 1%)
+if (enableProfiling && Math.random() < 0.01) {
+    http.get('http://localhost:8080/api/users', {
+      headers: {
+        'X-Profile': '1'
+      }
+    });
+  }
+
+  sleep(1);
+}
+```
+

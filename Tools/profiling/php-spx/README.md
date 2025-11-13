@@ -332,3 +332,13 @@ if (enableProfiling && Math.random() < 0.01) {
 }
 ```
 
+k6 run k6/script.js
+
+```bash
+k6 run --env PROFILE=1 k6/script.js
+```
+
+- 99% requests → fast, no overhead
+- 1% requests → profiled
+- You get **real-world flame graphs under load**
+

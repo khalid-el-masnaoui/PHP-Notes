@@ -262,3 +262,23 @@ scripts/
 ├── open-spx.sh
 ```
 
+
+1. `scripts/profile.sh`
+
+```bash
+#!/bin/bash
+
+ROUTE=$1
+
+if [ -z "$ROUTE" ]; then
+  echo "Usage: ./scripts/profile.sh /api/users"
+  exit 1
+fi
+
+echo "Profiling route: $ROUTE"
+
+curl -H "X-Profile: 1" "http://localhost:8080$ROUTE" > /dev/null
+
+echo "Done. Open SPX UI:"
+echo "http://localhost:8080/?SPX_KEY=dev&SPX_UI=1"
+```

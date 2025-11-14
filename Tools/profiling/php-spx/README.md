@@ -414,3 +414,43 @@ if ($durationMs > 200 && $shouldSample) {
 	$_GET['SPX_PROFILE'] = 1;  
 }
 ```
+
+
+## Makefile (Automation)
+
+Create `Makefile` in root:
+
+```bash
+.PHONY: up down build logs shell profile spx
+
+up:
+	docker-compose up -d
+
+build:
+	docker-compose up --build -d
+
+down:
+	docker-compose down
+
+logs:
+	docker-compose logs -f
+
+shell:
+	docker exec -it php sh
+
+profile:
+	@if [ -z "$(route)" ]; then \
+		echo "Usage: make profile route=/api/users"; \
+	else \
+		./scripts/profile.sh $(route); \
+	fi
+
+spx:
+	./scripts/open-spx.sh
+	
+k6:  
+	k6 run k6/script.js  
+  
+k6-profile:  
+	k6 run --env PROFILE=1 k6/script.js
+```

@@ -342,3 +342,9 @@ k6 run --env PROFILE=1 k6/script.js
 - 1% requests → profiled
 - You get **real-world flame graphs under load**
 
+
+## Profile ONLY Slow Requests (> X ms)
+
+1. Measure request time
+2. If it exceeds threshold → trigger SPX
+3. Restart request with profiling enabled

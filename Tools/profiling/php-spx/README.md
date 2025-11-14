@@ -401,3 +401,16 @@ if ($durationMs > $thresholdMs && empty($_SERVER['HTTP_X_PROFILE'])) {
 ```
 
 Paired with the above header logic activates SPX.
+
+### Profile ONLY Slow + Sampled
+
+Combine both strategies:
+
+```php
+$shouldSample = mt_rand(1, 100) === 1; // 1%  
+  
+if ($durationMs > 200 && $shouldSample) {  
+	$_GET['SPX_KEY'] = 'dev';  
+	$_GET['SPX_PROFILE'] = 1;  
+}
+```

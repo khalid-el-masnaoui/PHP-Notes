@@ -469,3 +469,25 @@ make up
 ```bash
 make profile route=/api/users
 ```
+
+3. Open SPX UI
+
+```bash
+make spx
+```
+
+
+**Recommended:** 
+
+Disable auto start:
+
+```
+spx.auto_start=0
+```
+
+And use:
+
+- Header trigger
+- Sampling
+- Slow detection
+

@@ -454,3 +454,12 @@ k6:
 k6-profile:  
 	k6 run --env PROFILE=1 k6/script.js
 ```
+
+
+ Usage Examples
+
+1. Start stack
+
+```bash
+make up
+```

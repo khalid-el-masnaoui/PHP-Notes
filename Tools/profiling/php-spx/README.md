@@ -381,3 +381,9 @@ register_shutdown_function(function () use ($start, $thresholdMs) {
     }
 });
 ```
+
+ Important Notes
+ 
+- First request → normal
+- If slow → redirected → profiled
+- Adds 1 extra request only for slow endpoints

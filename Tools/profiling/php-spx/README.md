@@ -387,3 +387,17 @@ register_shutdown_function(function () use ($start, $thresholdMs) {
 - First request → normal
 - If slow → redirected → profiled
 - Adds 1 extra request only for slow endpoints
+
+### Header-based retry
+
+Avoid URL pollution:
+
+```php
+if ($durationMs > $thresholdMs && empty($_SERVER['HTTP_X_PROFILE'])) {
+
+    header('Location: ' . $_SERVER['REQUEST_URI']);
+    header('X-Profile: 1');
+}
+```
+
+Paired with the above header logic activates SPX.

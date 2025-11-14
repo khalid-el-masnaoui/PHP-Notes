@@ -463,3 +463,9 @@ k6-profile:
 ```bash
 make up
 ```
+
+2. Profile a route
+
+```bash
+make profile route=/api/users
+```

@@ -348,3 +348,36 @@ k6 run --env PROFILE=1 k6/script.js
 1. Measure request time
 2. If it exceeds threshold → trigger SPX
 3. Restart request with profiling enabled
+
+### Implementation (Front Controller)
+
+```php
+
+$thresholdMs = 200; // profile if > 200ms
+$start = microtime(true);
+
+// ---- your app bootstrap ----
+// require 'vendor/autoload.php';
+// run framework / router here
+
+register_shutdown_function(function () use ($start, $thresholdMs) {
+
+    $durationMs = (microtime(true) - $start) * 1000;
+	
+    if ($durationMs > $thresholdMs && !isset($_GET['SPX_PROFILE'])) {
+
+        // Avoid infinite loop
+        if (isset($_SERVER['HTTP_X_SPX_RETRY'])) {
+            return;
+        }
+
+        $url = $_SERVER['REQUEST_URI'];
+        $separator = strpos($url, '?') !== false ? '&' : '?';
+
+        $redirectUrl = $url . $separator . 'SPX_KEY=dev&SPX_PROFILE=1';
+
+        header('X-SPX-Retry: 1');
+        header('Location: ' . $redirectUrl);
+    }
+});
+```

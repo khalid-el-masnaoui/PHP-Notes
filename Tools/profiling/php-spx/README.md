@@ -517,3 +517,59 @@ The metrics we record in `k6/script.js` are :
 - **p95 latency**
 - **Error rate**
 - **Throughput (RPS)**
+
+```js
+import http from 'k6/http';
+import { sleep } from 'k6';
+import { Trend, Rate, Counter } from 'k6/metrics';
+
+const endpoints = [
+  '/api/users',
+  '/api/orders',
+  '/api/products'
+];
+
+// Custom metrics
+let trends = {};
+let errorRates = {};
+let requestCounts = {};
+
+endpoints.forEach(e => {
+  const key = e.replace(/\//g, '_');
+
+  trends[e] = new Trend(`trend_${key}`);
+  errorRates[e] = new Rate(`error_${key}`);
+  requestCounts[e] = new Counter(`count_${key}`);
+});
+
+export let options = {
+  vus: 10,
+  duration: '20s',
+};
+
+export default function () {
+
+  endpoints.forEach((endpoint) => {
+    const res = http.get(`http://localhost:8080${endpoint}`);
+
+    const key = endpoint.replace(/\//g, '_');
+
+    trends[endpoint].add(res.timings.duration);
+
+    // error = non-2xx/3xx
+    const isError = !(res.status >= 200 && res.status < 400);
+    errorRates[endpoint].add(isError);
+
+    requestCounts[endpoint].add(1);
+
+    // profiling sampling
+    if (__ENV.PROFILE === "1" && Math.random() < 0.01) {
+      http.get(`http://localhost:8080${endpoint}`, {
+        headers: { 'X-Profile': '1' }
+      });
+    }
+  });
+
+  sleep(1);
+}
+```

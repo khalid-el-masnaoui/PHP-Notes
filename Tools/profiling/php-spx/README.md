@@ -500,3 +500,12 @@ We will :
 - Produces a **report (p95, avg, errors)**
 - Optionally **fails** if thresholds are exceeded
 -  Correlates with SPX profiling
+
+After running **k6**, we’ll get:
+
+```
+reports/
+├── summary.json
+├── slow_endpoints.txt
+└── report.md
+```

@@ -491,3 +491,12 @@ And use:
 - Sampling
 - Slow detection
 
+
+### Automatic Slow Endpoint Detection
+
+We will :
+- Runs load tests
+- Detects slow endpoints automatically
+- Produces a **report (p95, avg, errors)**
+- Optionally **fails** if thresholds are exceeded
+-  Correlates with SPX profiling

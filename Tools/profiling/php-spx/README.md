@@ -573,3 +573,11 @@ export default function () {
   sleep(1);
 }
 ```
+
+**Export Results (JSON)**
+
+Run k6 with:
+
+```bash
+k6 run --summary-export=reports/summary.json k6/script.js
+```

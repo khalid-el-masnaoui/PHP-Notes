@@ -509,3 +509,11 @@ reports/
 ├── slow_endpoints.txt
 └── report.md
 ```
+
+#### k6 Script with Metrics per Endpoint
+
+The metrics we record in `k6/script.js` are : 
+- **p99 latency**
+- **p95 latency**
+- **Error rate**
+- **Throughput (RPS)**

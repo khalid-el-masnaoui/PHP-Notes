@@ -819,3 +819,9 @@ axios.post(webhook, {
 slack:	
 	SLACK_WEBHOOK=$(SLACK_WEBHOOK) node scripts/slack.js
 ```
+
+4. Usage
+
+```
+SLACK_WEBHOOK=https://hooks.slack.com/services/... make slack
+```

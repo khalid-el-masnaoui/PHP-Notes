@@ -703,3 +703,41 @@ reports/
 ├── current.json
 ├── baseline.json
 ```
+
+`scripts/compare.js`
+
+```js
+const fs = require('fs');
+
+const current = JSON.parse(fs.readFileSync('reports/metrics.json'));
+const baseline = JSON.parse(fs.readFileSync('reports/baseline.json'));
+
+const REGRESSION_THRESHOLD = 1.2; // +20%
+
+let regressions = [];
+
+current.forEach(curr => {
+
+  const base = baseline.find(b => b.endpoint === curr.endpoint);
+  if (!base) return;
+
+  const p95Ratio = curr.p95 / base.p95;
+  const p99Ratio = curr.p99 / base.p99;
+
+  if (p95Ratio > REGRESSION_THRESHOLD) {
+    regressions.push(`${curr.endpoint} p95 regression +${((p95Ratio-1)*100).toFixed(1)}%`);
+  }
+
+  if (p99Ratio > REGRESSION_THRESHOLD) {
+    regressions.push(`${curr.endpoint} p99 regression +${((p99Ratio-1)*100).toFixed(1)}%`);
+  }
+});
+
+if (regressions.length > 0) {
+  console.error('❌ Regressions detected:');
+  regressions.forEach(r => console.error(r));
+  process.exit(1);
+} else {
+  console.log('✅ No regressions');
+}
+```

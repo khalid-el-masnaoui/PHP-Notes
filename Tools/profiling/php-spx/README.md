@@ -825,3 +825,12 @@ slack:
 ```
 SLACK_WEBHOOK=https://hooks.slack.com/services/... make slack
 ```
+
+5. Example Slack Message
+
+```
+🚨 Regression detected
+Endpoint: /api/users
+p95: 320ms (was 210ms)
+Increase: +52%
+```

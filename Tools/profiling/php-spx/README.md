@@ -581,3 +581,113 @@ Run k6 with:
 ```bash
 k6 run --summary-export=reports/summary.json k6/script.js
 ```
+
+#### Slow Endpoint Detection Script
+
+`scripts/analyze.js`
+
+```js
+const fs = require('fs');
+
+const data = JSON.parse(fs.readFileSync('reports/summary.json', 'utf-8'));
+
+
+const THRESHOLD_P95 = 200;
+const THRESHOLD_P99 = 400;
+const ERROR_RATE_THRESHOLD = 0.01; // 1%
+const rps = data.metrics.http_reqs.values.rate;
+
+let results = [];
+let slowEndpoints = [];
+
+function extractEndpoint(name) {
+  return name.replace(/^(trend|error|count)_/, '').replace(/_/g, '/');
+}
+
+const metrics = data.metrics;
+
+Object.keys(metrics).forEach(name => {
+
+  if (!name.startsWith('trend_')) return;
+
+  const endpoint = extractEndpoint(name);
+
+  const trend = metrics[name];
+  const error = metrics[`error_${endpoint.replace(/\//g, '_')}`];
+  const count = metrics[`count_${endpoint.replace(/\//g, '_')}`];
+
+  const p95 = trend.values['p(95)'];
+  const p99 = trend.values['p(99)'];
+  const errorRate = error ? error.values.rate : 0;
+  const totalRequests = count ? count.values.count : 0;
+
+  results.push({
+    endpoint,
+    p95,
+    p99,
+    errorRate,
+    totalRequests
+  });
+});
+
+// Save enriched report
+fs.writeFileSync('reports/metrics.json', JSON.stringify(results, null, 2));
+
+// Detect problems
+let issues = [];
+
+results.forEach(r => {
+  if (r.p95 > THRESHOLD_P95) {
+	  issues.push(`${r.endpoint} p95=${r.p95.toFixed(1)}ms`);
+	  slowEndpoints.push({  
+		name: metricName.replace('trend_', '').replace(/_/g, '/'), p95  
+	  });
+  }
+  if (r.p99 > THRESHOLD_P99) issues.push(`${r.endpoint} p99=${r.p99.toFixed(1)}ms`);
+  if (r.errorRate > ERROR_RATE_THRESHOLD) issues.push(`${r.endpoint} errors=${(r.errorRate*100).toFixed(2)}%`);
+});
+
+// Markdown report
+let md = `# Performance Report
+
+## Thresholds
+- p95 > ${THRESHOLD_P95}ms
+- p99 > ${THRESHOLD_P99}ms
+- error rate > ${ERROR_RATE_THRESHOLD * 100}%
+
+## Results
+
+`;
+
+results.forEach(r => {
+  md += `### ${r.endpoint}
+- p95: ${r.p95.toFixed(1)} ms
+- p99: ${r.p99.toFixed(1)} ms
+- error rate: ${(r.errorRate * 100).toFixed(2)} %
+- requests: ${r.totalRequests}
+
+`;
+});
+
+if (issues.length > 0) {
+  md += `## 🚨 Issues\n\n`;
+  issues.forEach(i => md += `- ${i}\n`);
+} else {
+  md += `✅ No issues detected\n`;
+}
+md += `\n## Throughput\n- RPS: ${rps.toFixed(2)}\n`;
+
+fs.writeFileSync('reports/report.md', md);
+
+//slow enspoint
+fs.writeFileSync(  
+	'reports/slow_endpoints.txt',  
+	slowEndpoints.map(e => `${e.name} -> p95=${e.p95.toFixed(2)}ms`).join('\n')  
+);
+
+// Exit for CI
+if (issues.length > 0) {
+  console.error('❌ Performance issues detected');
+  process.exit(1);
+}
+```

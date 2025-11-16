@@ -691,3 +691,15 @@ if (issues.length > 0) {
   process.exit(1);
 }
 ```
+
+### Regression tracking
+
+#### Historical Comparison
+
+- fail on +20% slowdown
+
+```
+reports/
+├── current.json
+├── baseline.json
+```

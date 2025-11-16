@@ -755,3 +755,60 @@ In **Slack**:
 ```
 https://hooks.slack.com/services/XXX/YYY/ZZZ
 ```
+
+2. `scripts/slack.js`
+
+```js
+const fs = require('fs');
+const axios = require('axios');
+
+const webhook = process.env.SLACK_WEBHOOK;
+
+if (!webhook) {
+  console.error('Missing SLACK_WEBHOOK');
+  process.exit(1);
+}
+
+const current = JSON.parse(fs.readFileSync('reports/metrics.json'));
+const baseline = JSON.parse(fs.readFileSync('reports/baseline.json'));
+
+const THRESHOLD = 1.2;
+
+let blocks = [];
+
+current.forEach(curr => {
+
+  const base = baseline.find(b => b.endpoint === curr.endpoint);
+  if (!base) return;
+
+  const ratio = curr.p95 / base.p95;
+
+  if (ratio > THRESHOLD) {
+
+    blocks.push({
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text:
+`🚨 *Regression detected*
+Endpoint: \`${curr.endpoint}\`
+p95: ${curr.p95.toFixed(1)}ms (was ${base.p95.toFixed(1)}ms)
+Increase: +${((ratio - 1) * 100).toFixed(1)}%`
+      }
+    });
+
+  }
+});
+
+if (blocks.length === 0) {
+  console.log('No regressions → no Slack alert');
+  process.exit(0);
+}
+
+axios.post(webhook, {
+  text: "Performance Regression Alert",
+  blocks
+})
+.then(() => console.log('✅ Slack alert sent'))
+.catch(err => console.error(err));
+```

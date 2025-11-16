@@ -834,3 +834,29 @@ Endpoint: /api/users
 p95: 320ms (was 210ms)
 Increase: +52%
 ```
+
+### Makefile Integration
+
+We can extend the above Makefile:
+
+```bash
+.PHONY: perf analyze report
+
+perf:
+	mkdir -p reports
+	k6 run --summary-export=reports/summary.json k6/script.js
+
+analyze:
+	node scripts/analyze.js
+	
+baseline:  
+	cp reports/metrics.json reports/baseline.json
+
+report: perf analyze
+	@echo "Report generated in reports/"
+	
+full: report compare
+
+slack:	
+	SLACK_WEBHOOK=$(SLACK_WEBHOOK) node scripts/slack.js
+```

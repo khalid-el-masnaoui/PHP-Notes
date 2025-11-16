@@ -741,3 +741,17 @@ if (regressions.length > 0) {
   console.log('✅ No regressions');
 }
 ```
+
+#### Slack Alerts on Regression
+
+1. Create Incoming Webhook
+
+In **Slack**:
+
+- Go to: _Apps → Incoming Webhooks_
+- Create webhook
+- Copy URL like:
+
+```
+https://hooks.slack.com/services/XXX/YYY/ZZZ
+```

@@ -812,3 +812,10 @@ axios.post(webhook, {
 .then(() => console.log('✅ Slack alert sent'))
 .catch(err => console.error(err));
 ```
+
+3. Add to Makefile
+
+```
+slack:	
+	SLACK_WEBHOOK=$(SLACK_WEBHOOK) node scripts/slack.js
+```

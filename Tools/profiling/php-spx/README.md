@@ -911,3 +911,42 @@ node scripts/compare.js
 
 make: *** [compare] Error 1
 ```
+
+ - `reports/report.md`
+ 
+```markdown
+# Performance Report
+
+## Thresholds
+- p95 > 200ms
+- p99 > 400ms
+- error rate > 1%
+
+## Results
+
+### /api/users
+- p95: 320.4 ms
+- p99: 610.2 ms
+- error rate: 0.00 %
+- requests: 400
+
+### /api/orders
+- p95: 150.1 ms
+- p99: 220.5 ms
+- error rate: 0.00 %
+- requests: 400
+
+### /api/products
+- p95: 120.3 ms
+- p99: 180.7 ms
+- error rate: 0.00 %
+- requests: 400
+
+## Throughput
+- RPS: 60.00
+
+## 🚨 Issues
+
+- /api/users p95=320.4ms
+- /api/users p99=610.2ms
+```

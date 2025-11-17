@@ -875,3 +875,39 @@ make baseline
 ```bash
 make full
 ```
+
+3. Output example
+
+	- **Terminal:**
+
+```bash
+
+mkdir -p reports
+k6 run --summary-export=reports/summary.json k6/script.js
+
+     execution: local
+        script: k6/script.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 10 max VUs, 20s max duration
+
+     ✓ status is 200
+
+     checks.........................: 100.00% ✓ 1200 ✗ 0
+     http_reqs......................: 1200   60.00/s
+     http_req_duration..............: avg=145ms p(95)=280ms p(99)=520ms
+
+running (20.0s), 00/10 VUs, 1200 complete
+
+node scripts/analyze.js
+
+❌ Performance issues detected
+
+node scripts/compare.js
+
+❌ Regressions detected:
+/api/users p95 regression +35.2%
+/api/users p99 regression +48.7%
+
+make: *** [compare] Error 1
+```

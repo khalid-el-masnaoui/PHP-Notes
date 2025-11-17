@@ -869,3 +869,9 @@ slack:
 make report
 make baseline
 ```
+
+2. Next runs (detect regressions)
+
+```bash
+make full
+```

@@ -860,3 +860,12 @@ full: report compare
 slack:	
 	SLACK_WEBHOOK=$(SLACK_WEBHOOK) node scripts/slack.js
 ```
+
+**Usage**
+
+1. First Run (create baseline)
+
+```bash
+make report
+make baseline
+```

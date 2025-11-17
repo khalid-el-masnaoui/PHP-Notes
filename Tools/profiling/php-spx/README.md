@@ -950,3 +950,16 @@ make: *** [compare] Error 1
 - /api/users p95=320.4ms
 - /api/users p99=610.2ms
 ```
+
+- `reports/metrics.json`
+
+```json
+  {
+    "endpoint": "/api/users",
+    "p95": 320.4,
+    "p99": 610.2,
+    "errorRate": 0,
+    "totalRequests": 400
+  }
+]
+```

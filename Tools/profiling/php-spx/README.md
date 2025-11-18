@@ -1037,3 +1037,11 @@ new Chart(document.getElementById('errorChart'), {
 fs.writeFileSync('reports/dashboard.html', html);
 console.log('✅ Dashboard generated: reports/dashboard.html');
 ```
+
+
+2. Add to makefile
+```bash
+dashboard:
+	node scripts/generate-dashboard.js
+```
+

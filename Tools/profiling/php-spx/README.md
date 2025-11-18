@@ -963,3 +963,77 @@ make: *** [compare] Error 1
   }
 ]
 ```
+
+### HTML Dashboard
+
+We generate a static dashboard using **Chart.js**
+
+1. `scripts/generate-dashboard.js`
+```js
+const fs = require('fs');
+
+const metrics = JSON.parse(fs.readFileSync('reports/metrics.json'));
+const timestamp = new Date().toISOString();
+
+const html = `
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Performance Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .card { margin-bottom: 30px; }
+  </style>
+</head>
+<body>
+
+<h1>🚀 Performance Dashboard</h1>
+<p>Generated at: ${timestamp}</p>
+
+<div class="card">
+  <canvas id="latencyChart"></canvas>
+</div>
+
+<div class="card">
+  <canvas id="errorChart"></canvas>
+</div>
+
+<script>
+const data = ${JSON.stringify(metrics)};
+
+const labels = data.map(d => d.endpoint);
+
+const p95 = data.map(d => d.p95);
+const p99 = data.map(d => d.p99);
+const errors = data.map(d => d.errorRate * 100);
+
+new Chart(document.getElementById('latencyChart'), {
+  type: 'bar',
+  data: {
+    labels,
+    datasets: [
+      { label: 'p95 (ms)', data: p95 },
+      { label: 'p99 (ms)', data: p99 }
+    ]
+  }
+});
+
+new Chart(document.getElementById('errorChart'), {
+  type: 'bar',
+  data: {
+    labels,
+    datasets: [
+      { label: 'Error %', data: errors }
+    ]
+  }
+});
+</script>
+
+</body>
+</html>
+`;
+
+fs.writeFileSync('reports/dashboard.html', html);
+console.log('✅ Dashboard generated: reports/dashboard.html');
+```

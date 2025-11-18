@@ -670,7 +670,7 @@ results.forEach(r => {
 });
 
 if (issues.length > 0) {
-  md += `## 🚨 Issues\n\n`;
+  md += `## ❌ Issues\n\n`;
   issues.forEach(i => md += `- ${i}\n`);
 } else {
   md += `✅ No issues detected\n`;
@@ -790,7 +790,7 @@ current.forEach(curr => {
       text: {
         type: "mrkdwn",
         text:
-`🚨 *Regression detected*
+`❌ *Regression detected*
 Endpoint: \`${curr.endpoint}\`
 p95: ${curr.p95.toFixed(1)}ms (was ${base.p95.toFixed(1)}ms)
 Increase: +${((ratio - 1) * 100).toFixed(1)}%`
@@ -829,7 +829,7 @@ SLACK_WEBHOOK=https://hooks.slack.com/services/... make slack
 5. Example Slack Message
 
 ```
-🚨 Regression detected
+❌ Regression detected
 Endpoint: /api/users
 p95: 320ms (was 210ms)
 Increase: +52%
@@ -945,7 +945,7 @@ make: *** [compare] Error 1
 ## Throughput
 - RPS: 60.00
 
-## 🚨 Issues
+## ❌ Issues
 
 - /api/users p95=320.4ms
 - /api/users p99=610.2ms
@@ -1045,3 +1045,41 @@ dashboard:
 	node scripts/generate-dashboard.js
 ```
 
+
+### Auto-Link SPX Profiling
+
+#### Full Triggering on slow endpoints 
+
+We connect this with SPX For each slow endpoint, re-profile it automatically
+
+1. `scripts/profile-slow.sh`
+
+```bash
+#!/bin/bash
+
+FILE="reports/slow_endpoints.txt"
+
+if [ ! -f "$FILE" ]; then
+  echo "No slow endpoints file found"
+  exit 1
+fi
+
+while read -r line; do
+  route=$(echo $line | cut -d ' ' -f1)
+
+  echo "Profiling $route..."
+
+  curl -H "X-Profile: 1" "http://localhost:8080$route" > /dev/null
+
+done < "$FILE"
+
+echo "Open SPX UI:"
+echo "http://localhost:8080/?SPX_KEY=dev&SPX_UI=1"
+```
+
+2. Add to Makefile:
+
+```bash
+profile-slow:	
+	./scripts/profile-slow.sh
+```

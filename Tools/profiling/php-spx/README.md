@@ -1123,3 +1123,5 @@ current.forEach(curr => {
 });
 EOF
 ```
+
+2. Pipe it into curl `scripts/profile-regressions.sh`

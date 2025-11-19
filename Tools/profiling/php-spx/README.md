@@ -1087,3 +1087,39 @@ profile-slow:
 #### Auto-trigger SPX ONLY for Regressed Endpoints
 
 We connect this with SPX For only the regressed slow endpoint, re-profile it automatically
+
+1. `scripts/get-regressions.sh`
+
+```bash
+#!/bin/bash
+
+FILE="reports/metrics.json"
+BASE="reports/baseline.json"
+
+if [ ! -f "$FILE" ] || [ ! -f "$BASE" ]; then
+  echo "Missing metrics or baseline"
+  exit 1
+fi
+
+echo "🔍 Profiling regressed endpoints..."
+
+node <<EOF
+const fs = require('fs');
+
+const current = JSON.parse(fs.readFileSync('$FILE'));
+const baseline = JSON.parse(fs.readFileSync('$BASE'));
+
+const THRESHOLD = 1.2;
+
+current.forEach(curr => {
+  const base = baseline.find(b => b.endpoint === curr.endpoint);
+  if (!base) return;
+
+  const ratio = curr.p95 / base.p95;
+
+  if (ratio > THRESHOLD) {
+    console.log(curr.endpoint);
+  }
+});
+EOF
+```

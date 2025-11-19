@@ -1137,3 +1137,11 @@ done
 echo "👉 Open SPX UI:"
 echo "http://localhost:8080/?SPX_KEY=dev&SPX_UI=1"
 ```
+
+3. Add to makefile
+
+```bash
+profile-regressions:
+	./scripts/profile-regressions.sh
+```
+

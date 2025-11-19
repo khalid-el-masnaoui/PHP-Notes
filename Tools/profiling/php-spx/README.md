@@ -1076,3 +1076,12 @@ done < "$FILE"
 echo "Open SPX UI:"
 echo "http://localhost:8080/?SPX_KEY=dev&SPX_UI=1"
 ```
+
+2. Add to Makefile:
+
+```bash
+profile-slow:	
+	./scripts/profile-slow.sh
+```
+
+#### Auto-trigger SPX ONLY for Regressed Endpoints

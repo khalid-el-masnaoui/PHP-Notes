@@ -1047,3 +1047,7 @@ dashboard:
 
 
 ### Auto-Link SPX Profiling
+
+#### Full Triggering on slow endpoints 
+
+We connect this with SPX For each slow endpoint, re-profile it automatically

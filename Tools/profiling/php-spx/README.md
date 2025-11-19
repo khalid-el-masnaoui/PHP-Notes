@@ -1047,39 +1047,3 @@ dashboard:
 
 
 ### Auto-Link SPX Profiling
-
-#### Full Triggering on slow endpoints 
-
-We connect this with SPX For each slow endpoint, re-profile it automatically
-
-1. `scripts/profile-slow.sh`
-
-```bash
-#!/bin/bash
-
-FILE="reports/slow_endpoints.txt"
-
-if [ ! -f "$FILE" ]; then
-  echo "No slow endpoints file found"
-  exit 1
-fi
-
-while read -r line; do
-  route=$(echo $line | cut -d ' ' -f1)
-
-  echo "Profiling $route..."
-
-  curl -H "X-Profile: 1" "http://localhost:8080$route" > /dev/null
-
-done < "$FILE"
-
-echo "Open SPX UI:"
-echo "http://localhost:8080/?SPX_KEY=dev&SPX_UI=1"
-```
-
-2. Add to Makefile:
-
-```bash
-profile-slow:	
-	./scripts/profile-slow.sh
-```

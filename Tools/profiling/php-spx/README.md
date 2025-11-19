@@ -1125,3 +1125,15 @@ EOF
 ```
 
 2. Pipe it into curl `scripts/profile-regressions.sh`
+
+```bash
+#!/bin/bash
+
+for route in $(node scripts/get-regressions.js); do
+  echo "Profiling $route"
+  curl -H "X-Profile: 1" "http://localhost:8080$route" > /dev/null
+done
+
+echo "👉 Open SPX UI:"
+echo "http://localhost:8080/?SPX_KEY=dev&SPX_UI=1"
+```

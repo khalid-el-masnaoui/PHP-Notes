@@ -1085,3 +1085,5 @@ profile-slow:
 ```
 
 #### Auto-trigger SPX ONLY for Regressed Endpoints
+
+We connect this with SPX For only the regressed slow endpoint, re-profile it automatically

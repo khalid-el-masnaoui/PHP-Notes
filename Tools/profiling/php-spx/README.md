@@ -1180,3 +1180,44 @@ scrape_configs:
     static_configs:
       - targets: ['php:9500']
 ```
+
+4. Expose Metrics from PHP (promphp/prometheus_client_php)
+
+```php
+use Prometheus\CollectorRegistry;
+use Prometheus\Storage\InMemory;
+
+$registry = new CollectorRegistry(new InMemory());
+
+$histogram = $registry->getOrRegisterHistogram(
+    'app',
+    'request_duration_seconds',
+    'Request duration',
+    ['endpoint']
+);
+
+$counter = $registry->getOrRegisterCounter(
+    'app',
+    'requests_total',
+    'Total requests',
+    ['endpoint', 'status']
+);
+
+$start = microtime(true);
+
+// handle request...
+
+$duration = microtime(true) - $start;
+
+$endpoint = $_SERVER['REQUEST_URI'];
+$status = http_response_code();
+
+$histogram->observe($duration, [$endpoint]);
+$counter->inc([$endpoint, $status]);
+```
+
+5. Expose `/metrics`
+```php 
+header('Content-Type: text/plain');
+echo $registry->getMetricFamilySamples();
+```

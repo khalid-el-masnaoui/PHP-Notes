@@ -1147,3 +1147,9 @@ profile-regressions:
 
 
 ## Prometheus + Grafana (Live Dashboards)
+
+1. Architecture
+
+```
+PHP app → Prometheus exporter → Prometheus → Grafana
+```

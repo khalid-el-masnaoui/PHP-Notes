@@ -1169,3 +1169,14 @@ grafana:
   ports:
     - "3000:3000"
 ```
+
+3. `monitoring/prometheus.yml`
+```yaml 
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: 'php-app'
+    static_configs:
+      - targets: ['php:9500']
+```

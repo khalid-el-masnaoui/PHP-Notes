@@ -1153,3 +1153,19 @@ profile-regressions:
 ```
 PHP app → Prometheus exporter → Prometheus → Grafana
 ```
+
+2. docker-compose (add services)
+
+```yaml
+prometheus:
+  image: prom/prometheus
+  ports:
+    - "9090:9090"
+  volumes:
+    - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+
+grafana:
+  image: grafana/grafana
+  ports:
+    - "3000:3000"
+```

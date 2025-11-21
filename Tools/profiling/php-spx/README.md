@@ -1253,3 +1253,21 @@ sum(rate(app_requests_total{status!~"2.."}[1m])) /sum(rate(app_requests_total[1m
 ```promql
 sum(rate(app_requests_total[1m]))
 ```
+
+
+ 6. Auto-trigger SPX from Live Metrics
+
+ Use Prometheus alerting
+
+-  Alert rule
+
+```yaml
+groups:
+- name: performance
+  rules:
+  - alert: HighLatency
+    expr: histogram_quantile(0.95, sum(rate(app_request_duration_seconds_bucket[1m])) by (le, endpoint)) > 0.3
+    for: 1m
+    labels:
+      severity: warning
+```

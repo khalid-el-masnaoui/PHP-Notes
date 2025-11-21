@@ -1271,3 +1271,11 @@ groups:
     labels:
       severity: warning
 ```
+
+- Webhook → SPX trigger
+
+Create a small webhook service: When alert fires → automatically profile endpoint
+
+```
+curl -H "X-Profile: 1" http://php/api/users
+```

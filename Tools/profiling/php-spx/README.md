@@ -1228,3 +1228,16 @@ Open:
 
 - Grafana: http://localhost:3000
 - Prometheus: http://localhost:9090
+
+Add panels:
+
+🔹 Latency (p95 / p99)
+
+```promql
+histogram_quantile(0.95, sum(rate(app_request_duration_seconds_bucket[1m])) by (le, endpoint))
+```
+
+```promql
+histogram_quantile(0.99, sum(rate(app_request_duration_seconds_bucket[1m])) by (le, endpoint))
+```
+

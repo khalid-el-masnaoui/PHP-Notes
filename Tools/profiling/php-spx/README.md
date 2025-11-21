@@ -1246,3 +1246,10 @@ histogram_quantile(0.99, sum(rate(app_request_duration_seconds_bucket[1m])) by (
 ```promql
 sum(rate(app_requests_total{status!~"2.."}[1m])) /sum(rate(app_requests_total[1m]))
 ```
+
+
+🔹 Throughput (RPS)
+
+```promql
+sum(rate(app_requests_total[1m]))
+```

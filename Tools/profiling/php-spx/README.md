@@ -1221,3 +1221,10 @@ $counter->inc([$endpoint, $status]);
 header('Content-Type: text/plain');
 echo $registry->getMetricFamilySamples();
 ```
+
+ 5. Grafana Dashboards
+
+Open:
+
+- Grafana: http://localhost:3000
+- Prometheus: http://localhost:9090

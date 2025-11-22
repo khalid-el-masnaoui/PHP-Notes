@@ -1300,3 +1300,4 @@ What we have built/mentioned above :
 3. Smart profiling
 
 	- Only slow endpoints
+	- Only regressed endpoints

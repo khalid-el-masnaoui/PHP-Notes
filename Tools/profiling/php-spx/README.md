@@ -1294,3 +1294,4 @@ What we have built/mentioned above :
 2. Live (Prometheus + Grafana)
 
 	- Real-time p95/p99
+	- Error rate

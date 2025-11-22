@@ -1295,3 +1295,4 @@ What we have built/mentioned above :
 
 	- Real-time p95/p99
 	- Error rate
+	- Throughput

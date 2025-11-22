@@ -1289,3 +1289,4 @@ What we have built/mentioned above :
 	- Detect regressions
 	- Compare history
 	- Trigger SPX
+	- Slack alerting

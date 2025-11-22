@@ -1280,10 +1280,11 @@ Create a small webhook service: When alert fires → automatically profile endpo
 curl -H "X-Profile: 1" http://php/api/users
 ```
 
-## Conclusion
+## Conclusion/Recap
 
 What we have built/mentioned above :
 
 1. Offline (k6)
 
 	- Detect regressions
+	- Compare history

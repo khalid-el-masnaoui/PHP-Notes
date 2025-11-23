@@ -26,6 +26,23 @@ SPX is a profiling extension for PHP that allows you to profile your PHP scripts
       + **[Manual Profiling in PHP Scripts](#manual-profiling-in-php-scripts)**
       + **[Global and Automatic Activation](#global-and-automatic-activation)**
    * **[Configure the Sampling Period (Profiling Rate)](#configure-the-sampling-period-profiling-rate)**
+- **[Profiling ONLY Specific Routes](#profiling-only-specific-routes)**
+   * **[Query-based](#query-based)**
+   * **[Route-based logic in PHP](#route-based-logic-in-php)**
+   * **[Header-based profiling](#header-based-profiling)**
+	   * **[Update PHP logic:](#update-php-logic)**
+	   * **[Trigger with curl:](#trigger-with-curl)**
+   * **[Helper Scripts](#helper-scripts)**
+   * **[k6 + SPX Setup](#k6-spx-setup)**
+- **[Profile ONLY Slow Requests (> X ms)](#profile-only-slow-requests-x-ms)**
+   * **[Implementation (Front Controller)](#implementation-front-controller)**
+   * **[Header-based retry](#header-based-retry)**
+   * **[Profile ONLY Slow + Sampled](#profile-only-slow-sampled)**
+- **[Makefile (Automation)](#makefile-automation)**
+   * **[Automatic Slow Endpoint Detection](#automatic-slow-endpoint-detection)**
+      + **[k6 Script with Metrics per Endpoint](#k6-script-with-metrics-per-endpoint)**
+      + **[Slow Endpoint Detection Script](#slow-endpoint-detection-script)**
+   * **[Regression tracking](#regression-tracking)**
 
 ## Key Features
 

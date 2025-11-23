@@ -20,8 +20,12 @@ SPX is a profiling extension for PHP that allows you to profile your PHP scripts
 - **[Key Features](#key-features)**
 - **[Creating and analyzing profiles in web context](#creating-and-analyzing-profiles-in-web-context)**
    * **[The Profile Analyzer](#the-profile-analyzer)**
-
-
+- **[Creating and analyzing profiles in CLI](#creating-and-analyzing-profiles-in-cli)**
+- **[Configurations](#configurations)**
+   * **[Enable PHP-SPX Profiling ](#enable-php-spx-profiling)**
+      + **[Manual Profiling in PHP Scripts](#manual-profiling-in-php-scripts)**
+      + **[Global and Automatic Activation](#global-and-automatic-activation)**
+   * **[Configure the Sampling Period (Profiling Rate)](#configure-the-sampling-period-profiling-rate)**
 
 ## Key Features
 

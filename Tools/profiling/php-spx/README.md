@@ -15,6 +15,14 @@ SPX is a profiling extension for PHP that allows you to profile your PHP scripts
 ```
 
 
+## Table Of Contents
+
+- **[Key Features](#key-features)**
+- **[Creating and analyzing profiles in web context](#creating-and-analyzing-profiles-in-web-context)**
+   * **[The Profile Analyzer](#the-profile-analyzer)**
+
+
+
 ## Key Features
 
 1. Simple, Self-Hosted Profiling
@@ -227,7 +235,7 @@ if (in_array($requestUri, $profileRoutes))
 
 This avoids polluting URLs and works great with APIs.
 
-### Update PHP logic:
+#### Update PHP logic:
 
 ```php
 $profileRoutes = [
@@ -245,7 +253,7 @@ if ($enableProfiling)
 }
 ```
 
-### Trigger with curl:
+#### Trigger with curl:
 
 ```bash
 curl -H "X-Profile: 1" http://localhost:8080/api/users

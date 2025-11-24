@@ -1341,3 +1341,9 @@ What we have built/mentioned above :
 	- Only slow endpoints
 	- Only regressed endpoints
 	- Only sampled traffic
+
+## Demo
+
+You can find a demos  using PHP-SPX, download and play with it:
+
+- **web-ui** : Docker based demo, using the default PHP-SPX web ui

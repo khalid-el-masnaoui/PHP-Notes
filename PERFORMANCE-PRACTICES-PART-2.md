@@ -170,3 +170,20 @@ gc_collect_cycles();
 |Streaming file reads|`fgets()` / `SplFileObject` — never `file_get_contents()` on large files|
 |Typed properties|Enable engine optimizations and reduce memory|
 |`memory_get_peak_usage(true)`|Track high-water mark during profiling|
+### Loops
+
+```php
+// Cache count outside loop
+$len = count($items);
+for ($i = 0; $i < $len; $i++) { }
+
+// foreach is idiomatic for arrays — use it
+foreach ($items as $key => $value) { }
+
+// Unset reference after foreach by-reference
+foreach ($items as &$item) { $item = transform($item); }
+unset($item);  // CRITICAL — prevents bugs from lingering reference
+
+// array_map for simple transforms
+$names = array_map(fn($u) => $u->name, $users);
+```

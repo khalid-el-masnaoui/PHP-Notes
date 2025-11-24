@@ -15,7 +15,7 @@ This repository contains a complete set of **_PHP NOTES_** organized as follow:
 - **[Internals](INTERNALS.md)**
 - **[Benchmarking](BENCHMARKING.md)**
 - **[Configurations](CONFIGURATIONS.md)**
-- **[PHP Performance Practices](PERFORMANCE-PRACTICES.md)**
+- **[PHP Performance Practices](PERFORMANCE-PRACTICES-PART-1.md)**
 - **[PHP Security Practices](SECURITY-PRACTICES.md)**
 - **[PHP Coding Practices](CODING-PRACTICES.md)**
 - **[PHP Coding Clean](CODING-CLEAN.md)**

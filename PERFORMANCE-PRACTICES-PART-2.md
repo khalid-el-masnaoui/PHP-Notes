@@ -1,5 +1,5 @@
 
-# PHP Performance Best Practices
+# PHP Performance Best Practices Part 2
 
 ## Overview
 
@@ -56,3 +56,13 @@ try {
     throw $e;
 }
 ```
+
+|Rule|Detail|
+|---|---|
+|`ERRMODE_EXCEPTION`|Always — silent failures hide bugs|
+|`EMULATE_PREPARES = false`|Real server-side prepared statements — actual SQL injection protection|
+|`FETCH_ASSOC` default|Less memory than `FETCH_BOTH` (default)|
+|`charset=utf8mb4` in DSN|MySQL: full Unicode including emoji|
+|Named params `:name`|Clearer than positional `?` for 3+ parameters|
+|Transactions for multi-statement|Atomicity — all succeed or all roll back|
+|`fetchAll()` caution|Loads entire result into memory — use `fetch()` in loop for large results|

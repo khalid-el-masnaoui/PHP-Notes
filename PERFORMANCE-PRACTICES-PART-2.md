@@ -28,3 +28,31 @@ opcache_invalidate('/path/to/file.php', true);  // force=true ignores mtime
 |Wasted memory|<5%|Restart PHP-FPM or increase `max_wasted_percentage`|
 |`cache_full`|false|Increase `memory_consumption`|
 |`oom_restarts`|0|Increase memory — OOM caused forced restarts|
+
+
+## Database (PDO)
+
+```php
+// Recommended PDO configuration
+$pdo = new PDO('mysql:host=localhost;dbname=app;charset=utf8mb4', $user, $pass, [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,   // throw exceptions
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,         // assoc arrays
+    PDO::ATTR_EMULATE_PREPARES   => false,                    // real prepared statements
+]);
+
+// Named parameters — clearer for multiple params
+$stmt = $pdo->prepare('SELECT * FROM users WHERE email = :email AND active = :active');
+$stmt->execute(['email' => $email, 'active' => 1]);
+$user = $stmt->fetch();
+
+// Transactions
+$pdo->beginTransaction();
+try {
+    $pdo->prepare('UPDATE accounts SET balance = balance - ? WHERE id = ?')->execute([$amount, $from]);
+    $pdo->prepare('UPDATE accounts SET balance = balance + ? WHERE id = ?')->execute([$amount, $to]);
+    $pdo->commit();
+} catch (\Throwable $e) {
+    $pdo->rollBack();
+    throw $e;
+}
+```

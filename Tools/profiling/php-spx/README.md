@@ -52,6 +52,7 @@ SPX is a profiling extension for PHP that allows you to profile your PHP scripts
       + **[Auto-trigger SPX ONLY for Regressed Endpoints](#auto-trigger-spx-only-for-regressed-endpoints)**
 - **[Prometheus + Grafana (Live Dashboards)](#prometheus-grafana-live-dashboards)**
 - **[Conclusion/Recap](#conclusionrecap)**
+- **[Demo](#demo)**
 
 
 ## Key Features

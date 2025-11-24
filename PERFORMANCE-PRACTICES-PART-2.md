@@ -66,3 +66,42 @@ try {
 |Named params `:name`|Clearer than positional `?` for 3+ parameters|
 |Transactions for multi-statement|Atomicity — all succeed or all roll back|
 |`fetchAll()` caution|Loads entire result into memory — use `fetch()` in loop for large results|
+## Caching (Redis / Memcached)
+
+```php
+// Redis — cache-aside pattern
+$redis = new Redis();
+$redis->connect('127.0.0.1', 6379);
+
+$key = 'user:' . $userId;
+$cached = $redis->get($key);
+if ($cached !== false) {
+    return json_decode($cached, true);
+}
+$data = $db->fetchUser($userId);
+$redis->setex($key, 3600, json_encode($data));  // TTL 1 hour
+return $data;
+
+// Memcached
+$mc = new Memcached();
+$mc->addServer('127.0.0.1', 11211);
+$mc->set('key', $value, 3600);
+$value = $mc->get('key');
+```
+
+- **PHP Caching Layers**
+
+| Layer             | Tool                           | When                                             |
+| ----------------- | ------------------------------ | ------------------------------------------------ |
+| Bytecode          | OPcache                        | Always — eliminates recompilation                |
+| Application data  | Redis / Memcached              | DB query results, API responses, computed values |
+| HTTP              | Reverse proxy (Varnish, Nginx) | Full page / fragment caching                     |
+| Preloading (7.4+) | `opcache.preload`              | Framework classes loaded at startup              |
+
+| Pattern              | Detail                                          |
+| -------------------- | ----------------------------------------------- |
+| Cache-aside          | Check cache → miss → fetch → store → return     |
+| Invalidate on write  | Clear/update cache when data changes            |
+| TTL expiration       | Set appropriate time-to-live per data type      |
+| Cache stampede       | Use locking or probabilistic early refresh      |
+| `fetchAll()` + cache | Load once, cache result, avoid repeated queries |

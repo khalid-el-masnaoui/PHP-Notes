@@ -124,7 +124,7 @@ SPX_ENABLED=1 SPX_FP_LIVE=1 php your_script.php
 By setting **SPX_REPORT=full**, the report will appear in the web UI and can be analyzed in detail:
 
 ```php
-SPX_ENABLED=1 **SPX_REPORT=full php your_script.php
+SPX_ENABLED=1 SPX_REPORT=full php your_script.php
 ```
 
 

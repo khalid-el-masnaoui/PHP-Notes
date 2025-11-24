@@ -766,13 +766,14 @@ There are several more sophisticated performance monitoring solutions available 
 * **Nginx Amplify**:  Can collect many useful metrics, including slow queries. (not self-hosted & it uses server resources heavily compared to other solution!!)
 * **`New Relic`** : A cloud-based observability platform that provides application performance monitoring (APM), infrastructure monitoring, Browser Monitoring and user experience monitoring.
 * **`NetData`** : Can monitor PHP by collecting metrics from PHP-FPM (Connections, Requests, max children reached, slow requests and Resource Usage..), offering custom alerting => [self-hosted & open-source] 
+* **`Uptrace`** is an open source APM that supports distributed tracing, metrics, and logs. You can use it to monitor applications and troubleshoot issues.
 
 <p float="left" align="middle">
   <img src="./images/netdata_1.png" width = "40%" />
   <img src="./images/netdata_2.png" width="40%" /> 
 </p>
 
-**Note : I cover `NetData` & `NewRelic` in more details in the `Observabiloty : monitoring, logging and alerting` repository**
+**Note : I cover `NetData` & `NewRelic` in more details in the `Observability : monitoring, logging and tracing` repository**
 
 In addition to monitoring, **profiling your PHP code** allows you to pinpoint performance issues and optimize your application. It involves analyzing your application's code during execution to identify performance issues, memory leaks, and other issues that might slow down your application. Some of the key benefits of profiling include:
 

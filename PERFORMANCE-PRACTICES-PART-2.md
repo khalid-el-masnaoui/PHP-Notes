@@ -187,3 +187,13 @@ unset($item);  // CRITICAL — prevents bugs from lingering reference
 // array_map for simple transforms
 $names = array_map(fn($u) => $u->name, $users);
 ```
+
+| Pattern                 | Best for                                       |
+| ----------------------- | ---------------------------------------------- |
+| `foreach`               | Default for iterating arrays — idiomatic, fast |
+| `for` with cached count | Index-based access, early break by position    |
+| `array_map()`           | Simple 1:1 transforms with clean callback      |
+| `array_filter()`        | Filtering with predicate                       |
+| `array_walk()`          | Modify in-place by reference (less common)     |
+| `while` + `fgets()`     | Line-by-line file processing                   |
+| Generator + `foreach`   | Lazy iteration over large datasets             |

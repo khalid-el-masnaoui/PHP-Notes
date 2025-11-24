@@ -14,7 +14,7 @@ Many of the mentioned practices here are already in the first part
 
 ## Monitoring & Management
 
-```html
+```php
 // Check cache health
 $status = opcache_get_status();
 $hitRate = $status['opcache_statistics']['opcache_hit_rate'];  // target: >98%
@@ -27,3 +27,10 @@ opcache_reset();  // clears entire in-memory cache
 // Invalidate single file
 opcache_invalidate('/path/to/file.php', true);  // force=true ignores mtime
 ```
+
+|Indicator|Healthy|Action if unhealthy|
+|---|---|---|
+|Hit rate|>98%|Increase `max_accelerated_files` or `memory_consumption`|
+|Wasted memory|<5%|Restart PHP-FPM or increase `max_wasted_percentage`|
+|`cache_full`|false|Increase `memory_consumption`|
+|`oom_restarts`|0|Increase memory — OOM caused forced restarts|

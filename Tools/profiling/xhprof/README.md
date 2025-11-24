@@ -10,6 +10,17 @@ XHProf is a hierarchical, function-level profiler for PHP applications that coll
 ██╔╝ ██╗██║  ██║██║     ██║  ██║╚██████╔╝██║     
 ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝     
 ```
+
+# Table Of Contents
+
+- **[Key Features](#key-features)**
+- **[XHProf Default UI](#xhprof-default-ui)**
+- **[XHGUI](#xhgui)**
+- **[Configure Profiling Rate](#configure-profiling-rate)**
+    - **[XHProf](#xhprof)**
+    - **[XHGUI](#xhgui-1)**
+- **[Demo](#demo)**
+
 ## Key Features
 
 - **Function-Level Profiling:**  XHProf tracks metrics for each function during program execution, providing detailed insights into how different parts of your code are performing. 

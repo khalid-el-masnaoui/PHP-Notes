@@ -146,3 +146,10 @@ return array(
 ```
     
 );
+
+## Demo
+
+You can find two demos for using Xhprof, download and play with them:
+
+- **default-ui** : Docker based demo, using the default Xhrpof ui
+- **xhgui** : Docker based demo, using Xhgui as the UI (recommended)

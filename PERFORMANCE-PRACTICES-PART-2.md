@@ -117,3 +117,22 @@ $value = $mc->get('key');
 | `SplHeap` / `SplMinHeap` / `SplMaxHeap` | Heap operations                 | O(log n) insert/extract           |
 | `SplDoublyLinkedList`                   | Efficient insert/remove at ends | Better for frequent head/tail ops |
 | `SplObjectStorage`                      | Map objects to data             | Object identity as key            |
+
+## Micro-Optimizations
+
+## Function Choices — Prefer Faster Alternatives
+
+| Slower                          | Faster                                           | Why                                                                          |
+| ------------------------------- | ------------------------------------------------ | ---------------------------------------------------------------------------- |
+| `array_key_exists($k, $a)`      | `isset($a[$k])`                                  | Language construct, no function call (but returns `false` for `null` values) |
+| `in_array($v, $arr)` (repeated) | `isset($flipped[$v])`                            | O(1) hash lookup vs O(n) linear scan — flip once with `array_flip()`         |
+| `count($arr)` in loop condition | `$len = count($arr)` before loop                 | Avoid recalculating each iteration                                           |
+| `strpos($h, $n) !== false`      | `str_contains($h, $n)`                           | Cleaner, same speed (PHP 8.0+)                                               |
+| `substr($s, 0, 3) === 'foo'`    | `str_starts_with($s, 'foo')`                     | Purpose-built, clearer (PHP 8.0+)                                            |
+| `intval($v)` / `settype()`      | `(int) $v`                                       | Direct cast — no function call overhead                                      |
+| `floatval($v)`                  | `(float) $v`                                     | Direct cast                                                                  |
+| `strval($v)`                    | `(string) $v`                                    | Direct cast                                                                  |
+| `sprintf()` for simple join     | `.` concatenation or `implode()`                 | `sprintf()` parses format string                                             |
+| `array_push($a, $v)`            | `$a[] = $v`                                      | Language construct, no function call                                         |
+| `==` comparison                 | `===` comparison                                 | No type juggling overhead                                                    |
+| `array_merge()` in loop         | `$result[] = $items` + `array_merge(...$result)` | Single merge at end                                                          |

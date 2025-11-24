@@ -105,3 +105,15 @@ $value = $mc->get('key');
 | TTL expiration       | Set appropriate time-to-live per data type      |
 | Cache stampede       | Use locking or probabilistic early refresh      |
 | `fetchAll()` + cache | Load once, cache result, avoid repeated queries |
+
+## SPL Data Structures
+
+| Class                                   | Use for                         | vs Array                          |
+| --------------------------------------- | ------------------------------- | --------------------------------- |
+| `SplFixedArray`                         | Large fixed-size numeric arrays | ~50% less memory                  |
+| `SplStack`                              | LIFO stack (push/pop)           | Enforces stack semantics          |
+| `SplQueue`                              | FIFO queue (enqueue/dequeue)    | Enforces queue semantics          |
+| `SplPriorityQueue`                      | Priority-based processing       | Built-in priority ordering        |
+| `SplHeap` / `SplMinHeap` / `SplMaxHeap` | Heap operations                 | O(log n) insert/extract           |
+| `SplDoublyLinkedList`                   | Efficient insert/remove at ends | Better for frequent head/tail ops |
+| `SplObjectStorage`                      | Map objects to data             | Object identity as key            |

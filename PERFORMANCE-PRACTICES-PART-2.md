@@ -136,3 +136,15 @@ $value = $mc->get('key');
 | `array_push($a, $v)`            | `$a[] = $v`                                      | Language construct, no function call                                         |
 | `==` comparison                 | `===` comparison                                 | No type juggling overhead                                                    |
 | `array_merge()` in loop         | `$result[] = $items` + `array_merge(...$result)` | Single merge at end                                                          |
+
+### Strings & Arrays
+
+| Pattern                         | Detail                                                 |
+| ------------------------------- | ------------------------------------------------------ |
+| String building in loops        | Collect in array, `implode()` at end (not `.=`)        |
+| `array_column($rows, 'id')`     | Extract column from 2D array — faster than foreach     |
+| `array_map()` for transforms    | Clean for simple callbacks; foreach for complex logic  |
+| `array_filter()` preserves keys | Use `array_values()` to reindex if needed              |
+| Generators for large data       | `yield` instead of building arrays in memory           |
+| `SplFixedArray`                 | Pre-sized array for large fixed-size datasets          |
+| `in_array()` strict mode        | Always `in_array($v, $a, true)` — avoids type juggling |

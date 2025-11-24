@@ -148,3 +148,25 @@ $value = $mc->get('key');
 | Generators for large data       | `yield` instead of building arrays in memory           |
 | `SplFixedArray`                 | Pre-sized array for large fixed-size datasets          |
 | `in_array()` strict mode        | Always `in_array($v, $a, true)` — avoids type juggling |
+### Memory Management
+
+```php
+// Monitor memory usage
+echo memory_get_usage(true);      // real OS allocation
+echo memory_get_peak_usage(true); // max during script
+
+// Free large variables explicitly
+unset($largeArray);
+
+// Force garbage collection in long-running processes
+gc_collect_cycles();
+```
+
+|Rule|Detail|
+|---|---|
+|`unset()` large variables|Frees memory when no other references exist|
+|`gc_collect_cycles()`|Manual GC for long-running CLI scripts|
+|Generators over arrays|Process items one-by-one instead of loading all into memory|
+|Streaming file reads|`fgets()` / `SplFileObject` — never `file_get_contents()` on large files|
+|Typed properties|Enable engine optimizations and reduce memory|
+|`memory_get_peak_usage(true)`|Track high-water mark during profiling|

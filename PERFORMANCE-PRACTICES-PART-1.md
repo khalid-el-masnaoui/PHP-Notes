@@ -169,6 +169,9 @@ opcache.jit_buffer_size =  # determines the amount of memory allocated for stori
 opcache.jit = on  # default 'tracing/on' JIT compilation mode[check INTERNALS.md]
 ```
 
+**Note:**
+- **OPcache** must be **on** in production. Size memory and accelerated files realistically.
+- **JIT** can help **CPU-bound** workloads. It’s not a silver bullet for I/O-bound apps—**measure**.
 ## Enable Realpath Cache
 
 The PHP realpath cache is a mechanism within PHP that stores the resolved, canonical paths of files and directories. When PHP needs to access a file, it often first needs to determine its absolute path, resolving any symbolic links, relative path components (like `.` or `..`), and directory separators. This process can be computationally intensive, especially when dealing with complex file structures or frequent file access.

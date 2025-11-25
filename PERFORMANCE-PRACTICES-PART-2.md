@@ -198,3 +198,13 @@ $names = array_map(fn($u) => $u->name, $users);
 | `array_walk()`          | Modify in-place by reference (less common)     |
 | `while` + `fgets()`     | Line-by-line file processing                   |
 | Generator + `foreach`   | Lazy iteration over large datasets             |
+
+## More On PHP Memory
+
+### Key Concepts in PHP Memory Management:
+
+|Concept|Description|
+|---|---|
+|**References**|Variables are referenced by their values. When a variable is assigned to another variable or passed to a function, it creates a reference.|
+|**Zval**|Each variable in PHP is stored as a `zval` (Zend value), which contains the variable's value and metadata (like type, reference count, etc.).|
+|**Reference Counting**|PHP uses **reference counting** to track how many variables point to a particular `zval`. When the count reaches zero, the memory is freed.|

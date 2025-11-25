@@ -208,3 +208,12 @@ $names = array_map(fn($u) => $u->name, $users);
 |**References**|Variables are referenced by their values. When a variable is assigned to another variable or passed to a function, it creates a reference.|
 |**Zval**|Each variable in PHP is stored as a `zval` (Zend value), which contains the variable's value and metadata (like type, reference count, etc.).|
 |**Reference Counting**|PHP uses **reference counting** to track how many variables point to a particular `zval`. When the count reaches zero, the memory is freed.|
+
+###  The Reference Counting Mechanism
+
+At its core, PHP uses reference counting as its primary memory management strategy. Every PHP variable is stored as a zval (Zend value) container, which includes:
+
+- The variable’s type
+- The actual value
+- Reference count
+- Is_ref flag for reference tracking  

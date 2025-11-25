@@ -118,7 +118,7 @@ $value = $mc->get('key');
 | `SplDoublyLinkedList`                   | Efficient insert/remove at ends | Better for frequent head/tail ops |
 | `SplObjectStorage`                      | Map objects to data             | Object identity as key            |
 
-**Note:** You can check some bench-marking for spl data structures [here](https://github.com/elazar/spl-benchmarks) and [here](https://gist.github.com/andrewdalpino/492bbf4261d31dad5f847f9f4c42cbf9)
+**Note:** You can check bench-marking for spl data structures to arrays [here](https://github.com/elazar/spl-benchmarks) and [here](https://gist.github.com/andrewdalpino/492bbf4261d31dad5f847f9f4c42cbf9)
 ## Micro-Optimizations
 
 ## Function Choices — Prefer Faster Alternatives

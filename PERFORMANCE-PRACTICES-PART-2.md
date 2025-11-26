@@ -57,15 +57,15 @@ try {
 }
 ```
 
-|Rule|Detail|
-|---|---|
-|`ERRMODE_EXCEPTION`|Always — silent failures hide bugs|
-|`EMULATE_PREPARES = false`|Real server-side prepared statements — actual SQL injection protection|
-|`FETCH_ASSOC` default|Less memory than `FETCH_BOTH` (default)|
-|`charset=utf8mb4` in DSN|MySQL: full Unicode including emoji|
-|Named params `:name`|Clearer than positional `?` for 3+ parameters|
-|Transactions for multi-statement|Atomicity — all succeed or all roll back|
-|`fetchAll()` caution|Loads entire result into memory — use `fetch()` in loop for large results|
+| Rule                             | Detail                                                                    |
+| -------------------------------- | ------------------------------------------------------------------------- |
+| `ERRMODE_EXCEPTION`              | Always — silent failures hide bugs                                        |
+| `EMULATE_PREPARES = false`       | Real server-side prepared statements — actual SQL injection protection    |
+| `FETCH_ASSOC` default            | Less memory than `FETCH_BOTH` (default)                                   |
+| `charset=utf8mb4` in DSN         | MySQL: full Unicode including emoji                                       |
+| Named params `:name`             | Clearer than positional `?` for 3+ parameters                             |
+| Transactions for multi-statement | Atomicity — all succeed or all roll back                                  |
+| `fetchAll()` caution             | Loads entire result into memory — use `fetch()` in loop for large results |
 ## Caching (Redis / Memcached)
 
 ```php
@@ -228,3 +228,24 @@ $b = $a;
 // Decreases refcount to 1
 unset($a);
 ```
+
+### Circular References and the Garbage Collector
+
+While reference counting works well for simple scenarios, it falls short when dealing with circular references. Consider this example:
+
+```php
+class Parent {
+     public $child;
+}
+class Child {
+     public $parent;
+}
+$parent = new Parent();
+$child = new Child();
+$parent->child = $child;
+$child->parent = $parent;
+unset($parent);
+unset($child);
+```
+
+Even after unsetting both variables, the objects remain in memory because they reference each other. This is where PHP’s cycle-collecting garbage collector comes into play.

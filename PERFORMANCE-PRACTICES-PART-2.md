@@ -253,3 +253,7 @@ Even after unsetting both variables, the objects remain in memory because they r
 
 1. **Reference Counting**: PHP keeps track of how many variables reference each `zval`.
 2. **Finalizers and Cyclic References**: If an object has a cyclic reference (e.g., `A` references `B`, and `B` references `A`), the GC may not be able to free it until PHP’s garbage collector is run explicitly.
+3. **Garbage Collection in PHP**:
+    - PHP automatically runs the GC at certain intervals.
+    - You can also call the garbage collector manually using `gc_collect_cycles()`.
+

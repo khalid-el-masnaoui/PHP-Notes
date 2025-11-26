@@ -249,3 +249,6 @@ unset($child);
 ```
 
 Even after unsetting both variables, the objects remain in memory because they reference each other. This is where PHP’s cycle-collecting garbage collector comes into play.
+### How Does PHP Garbage Collection Work?
+
+1. **Reference Counting**: PHP keeps track of how many variables reference each `zval`.

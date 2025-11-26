@@ -217,3 +217,14 @@ At its core, PHP uses reference counting as its primary memory management strate
 - The actual value
 - Reference count
 - Is_ref flag for reference tracking  
+
+When you create a variable, PHP initializes a zval with a reference count of 1
+
+```php
+// Creates new zval, refcount = 1
+$a = "Hello World";
+// Increases refcount to 2
+$b = $a;
+// Decreases refcount to 1
+unset($a);
+```

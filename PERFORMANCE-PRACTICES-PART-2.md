@@ -289,3 +289,4 @@ Memory leaks are particularly dangerous in long-running scripts (e.g., workers o
 - Do not leave long-running processes or large data structures in memory unnecessarily.
 - Close database connections, file handles, and other resources when they are no longer needed.
 - Use `unset()` to free up memory when variables are no longer needed.
+- **Data Serialization and Deserialization**:  Avoid unnecessary serialization and deserialization of large objects or arrays, as this can increase memory usage. If you need to serialize data, try to keep the data structure minim

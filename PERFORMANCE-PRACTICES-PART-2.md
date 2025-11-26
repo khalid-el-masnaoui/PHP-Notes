@@ -261,3 +261,6 @@ Even after unsetting both variables, the objects remain in memory because they r
 PHP’s garbage collector operates in three phases:
 
 1. **Root Buffer Collection:** PHP stores possible circular reference candidates in a root buffer.
+2. **Cycle Detection:** The collector analyzes the buffer to identify genuine circular references.
+3. **Cleanup:** Identified cycles are broken and memory is freed.  
+    

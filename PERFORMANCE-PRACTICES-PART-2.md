@@ -287,3 +287,5 @@ Memory leaks are particularly dangerous in long-running scripts (e.g., workers o
 **Avoid Memory Leaks**
 
 - Do not leave long-running processes or large data structures in memory unnecessarily.
+- Close database connections, file handles, and other resources when they are no longer needed.
+- Use `unset()` to free up memory when variables are no longer needed.

@@ -264,3 +264,14 @@ PHP’s garbage collector operates in three phases:
 2. **Cycle Detection:** The collector analyzes the buffer to identify genuine circular references.
 3. **Cleanup:** Identified cycles are broken and memory is freed.  
     
+
+**Configuring Garbage Collection**
+
+You can fine-tune garbage collection behavior through several PHP.ini settings:
+
+```ini
+zend.enable_gc = 1 ; Enable/disable garbage collection
+gc_probability = 1 ; Probability of GC running
+gc_divisor = 100 ; Combined with gc_probability
+gc_maxlifetime = 1440 ; Maximum lifetime of sessions
+```

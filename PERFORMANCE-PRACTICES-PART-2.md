@@ -275,3 +275,11 @@ gc_probability = 1 ; Probability of GC running
 gc_divisor = 100 ; Combined with gc_probability
 gc_maxlifetime = 1440 ; Maximum lifetime of sessions
 ```
+
+### Memory Leaks
+
+A memory leak occurs when a PHP script or application continuously consumes memory without releasing it after it is no longer needed. Over time, this leads to growing memory usage, resulting in performance degradation, application crashes, and even server reboots.
+
+Unlike languages like C or C++, PHP is a garbage-collected language, meaning it automatically reclaims memory. However, certain coding patterns, resource mismanagement, or misconfigured extensions can bypass the garbage collector, leading to memory that remains allocated and unfreed.
+
+Memory leaks are particularly dangerous in long-running scripts (e.g., workers or Laravel queues) or persistent environments like **PHP-FPM**, where scripts don't reset after each request.

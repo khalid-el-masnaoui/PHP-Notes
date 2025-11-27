@@ -298,3 +298,10 @@ Memory leaks are particularly dangerous in long-running scripts (e.g., workers o
 4. **Implement Caching:** Reduce memory usage by caching frequently accessed data
 5. **Regular Monitoring:** Implement monitoring tools to track memory usage patterns
 6. **Code Review Focus:** Make memory management a key aspect of code reviews
+
+| Concept                | Description                                                             |
+| ---------------------- | ----------------------------------------------------------------------- |
+| **Garbage Collection** | PHP automatically frees memory when variables are no longer referenced. |
+| **Reference Counting** | PHP tracks how many variables reference a particular `zval`.            |
+| **Manual GC**          | Use `gc_collect_cycles()` to manually trigger garbage collection.       |
+| **Memory Usage**       | Use `memory_get_usage()` and `memory_get_peak_usage()` for debugging.   |

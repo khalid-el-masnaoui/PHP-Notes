@@ -293,3 +293,4 @@ Memory leaks are particularly dangerous in long-running scripts (e.g., workers o
 ### Best Practices for Memory Management
 
 1. **Release Resources Explicitly:** Close file handles, database connections, and other resources when no longer needed
+2. **Use Generators:** For processing large datasets without loading everything into memory

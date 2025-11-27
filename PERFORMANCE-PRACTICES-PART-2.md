@@ -296,3 +296,5 @@ Memory leaks are particularly dangerous in long-running scripts (e.g., workers o
 2. **Use Generators:** For processing large datasets without loading everything into memory
 3. **Stream Processing for Large Files**: process Large files as a Stream
 4. **Implement Caching:** Reduce memory usage by caching frequently accessed data
+5. **Regular Monitoring:** Implement monitoring tools to track memory usage patterns
+6. **Code Review Focus:** Make memory management a key aspect of code reviews

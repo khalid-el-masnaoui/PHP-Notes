@@ -295,3 +295,4 @@ Memory leaks are particularly dangerous in long-running scripts (e.g., workers o
 1. **Release Resources Explicitly:** Close file handles, database connections, and other resources when no longer needed
 2. **Use Generators:** For processing large datasets without loading everything into memory
 3. **Stream Processing for Large Files**: process Large files as a Stream
+4. **Implement Caching:** Reduce memory usage by caching frequently accessed data

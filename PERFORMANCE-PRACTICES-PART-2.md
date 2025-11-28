@@ -18,7 +18,13 @@ This document provides expert guidance for accelerating PHP applications, coveri
    * **[Strings & Arrays](#strings-arrays)**
    * **[Memory Management](#memory-management)**
    * **[Loops](#loops)**
-
+- **[More On PHP Memory](#more-on-php-memory)**
+   * **[Key Concepts in PHP Memory Management:](#key-concepts-in-php-memory-management)**
+   * **[The Reference Counting Mechanism](#the-reference-counting-mechanism)**
+   * **[Circular References and the Garbage Collector](#circular-references-and-the-garbage-collecto**r)
+   * **[How Does PHP Garbage Collection Work?](#how-does-php-garbage-collection-work)**
+   * **[Memory Leaks](#memory-leaks)**
+   * **[Best Practices for Memory Management](#best-practices-for-memory-management)**
 
 ## Monitoring & Management
 

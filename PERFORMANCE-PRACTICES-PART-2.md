@@ -10,6 +10,7 @@ This document provides expert guidance for accelerating PHP applications, coveri
 ## Table Of Contents
 
 - **[Monitoring & Management](#monitoring-management)**
+- **[Database (PDO)](#database-pdo)**
 
 
 ## Monitoring & Management

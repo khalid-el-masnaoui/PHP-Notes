@@ -11,6 +11,13 @@ This document provides expert guidance for accelerating PHP applications, coveri
 
 - **[Monitoring & Management](#monitoring-management)**
 - **[Database (PDO)](#database-pdo)**
+- **[Caching (Redis / Memcached)](#caching-redis-memcached)
+- **[SPL Data Structures](#spl-data-structures)**
+- **[Micro-Optimizations](#micro-optimizations)**
+- **[Function Choices — Prefer Faster Alternatives](#function-choices-prefer-faster-alternatives)**
+   * **[Strings & Arrays](#strings-arrays)**
+   * **[Memory Management](#memory-management)**
+   * **[Loops](#loops)**
 
 
 ## Monitoring & Management
